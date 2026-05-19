@@ -6,6 +6,19 @@ import AppRoot from "./app/AppRoot";
 import AppRouterShell from "./app/AppRouterShell";
 import { getActivePreloadedState, initializeBrowserPreloadedState } from "./lib/preloadState";
 
+// Suppress ResizeObserver loop error from Radix UI components
+// This is a non-critical warning that occurs with rapid layout changes
+const originalError = console.error;
+console.error = (...args: any[]) => {
+  if (
+    args[0]?.message === "ResizeObserver loop completed with undelivered notifications." ||
+    (typeof args[0] === "string" && args[0].includes("ResizeObserver loop completed"))
+  ) {
+    return;
+  }
+  originalError.call(console, ...args);
+};
+
 const queryClient = new QueryClient();
 const container = document.getElementById("root");
 
