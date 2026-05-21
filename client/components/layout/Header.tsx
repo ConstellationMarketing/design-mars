@@ -23,8 +23,8 @@ export default function Header() {
 
   return (
     <>
-      {/* Sticky header wrapper - transparent */}
-      <div className="sticky top-0 z-50 bg-transparent backdrop-blur-sm">
+      {/* Sticky header wrapper - transparent with semi-transparent bg for contrast */}
+      <div className="sticky top-0 z-50 bg-black/20">
         <div className="max-w-[2560px] mx-auto w-[95%] h-[90px] flex items-center justify-between">
           {/* Logo - Left */}
           <div className="flex items-center">

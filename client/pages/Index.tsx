@@ -32,8 +32,10 @@ export default function Index() {
   const heroContent = content.hero;
   const partnerLogos = content.partnerLogos;
 
+  const heroBackgroundImage = 'https://atzgmwcxbdnswerpqzzi.supabase.co/storage/v1/object/public/media/library/1779351750724-20d0za.webp';
+
   return (
-    <Layout>
+    <Layout heroBackgroundImage={heroBackgroundImage}>
       <Seo
         title={title || "Home"}
         meta={meta}
@@ -42,13 +44,8 @@ export default function Index() {
         updatedTime={updatedAt}
       />
 
-      {/* Hero Section - Full Width with Background */}
-      <div
-        className="min-h-screen w-full flex items-center justify-center py-[60px] md:py-[100px] relative bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(https://atzgmwcxbdnswerpqzzi.supabase.co/storage/v1/object/public/media/library/1779351750724-20d0za.webp)',
-        }}
-      >
+      {/* Hero Section - Full Width */}
+      <div className="min-h-screen w-full flex items-center justify-center py-[60px] md:py-[100px] relative">
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/40"></div>
 
