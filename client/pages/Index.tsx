@@ -50,37 +50,37 @@ export default function Index() {
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.35)' }}></div>
 
         {/* Content */}
-        <div className="max-w-[1200px] w-[90%] relative z-10 text-center">
-          <div className="flex flex-col items-center justify-center gap-4 md:gap-6">
-            {/* Main Headline - BIGGEST at 96px on desktop */}
-            <h1 className="font-poppins text-[42px] sm:text-[56px] md:text-[96px] font-bold leading-[1.08] text-white max-w-5xl">
+        <div className="max-w-[1000px] w-[85%] md:w-[90%] relative z-10 text-center">
+          <div className="flex flex-col items-center justify-center gap-5 md:gap-6">
+            {/* Main Headline - BIGGEST at 96px on desktop, bold, 3-line */}
+            <h1 className="font-poppins text-[48px] sm:text-[64px] md:text-[96px] font-bold leading-[1.0] text-white max-w-4xl">
               {heroContent.headline}
             </h1>
 
-            {/* Subheading/description below headline - smaller, white */}
+            {/* Subheading/description below headline - white uppercase */}
             {heroContent.tagline && (
-              <p className="font-poppins text-[16px] md:text-[20px] font-normal tracking-wide uppercase text-white max-w-3xl">
+              <p className="font-poppins text-[18px] md:text-[22px] font-normal tracking-wider uppercase text-white max-w-2xl">
                 {heroContent.tagline}
               </p>
             )}
 
             {/* Gold text above button - from h1Title field */}
             {heroContent.h1Title && (
-              <p className="font-poppins text-[13px] md:text-[14px] font-normal tracking-widest uppercase text-brand-accent mt-4 md:mt-6">
+              <p className="font-poppins text-[14px] md:text-[15px] font-normal tracking-widest uppercase text-brand-accent mt-3 md:mt-4">
                 {heroContent.h1Title}
               </p>
             )}
 
-            {/* CTA Button with gold background and shadow effect */}
+            {/* CTA Button with gold background and gold top border shadow */}
             <button
               onClick={() => window.location.href = '#contact-section'}
-              className="font-poppins text-[16px] md:text-[18px] font-normal uppercase text-black bg-brand-accent px-8 md:px-12 py-3 md:py-4 hover:bg-brand-accent-dark transition-all duration-300 mt-6 md:mt-8 flex items-center justify-center gap-3"
+              className="font-poppins text-[16px] md:text-[17px] font-normal uppercase text-black bg-brand-accent px-10 md:px-14 py-3 md:py-4 hover:bg-opacity-90 transition-all duration-300 mt-5 md:mt-6 flex items-center justify-center gap-3 relative"
               style={{
-                boxShadow: '0 -4px 0 0 rgba(207, 171, 85, 0.8)'
+                borderTop: '3px solid rgba(207, 171, 85, 1)',
               }}
             >
               {heroContent.buttonText || "Request Free Consultation"}
-              <span className="text-lg">›</span>
+              <span className="text-xl">›</span>
             </button>
           </div>
         </div>
