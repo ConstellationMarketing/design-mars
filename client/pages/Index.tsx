@@ -73,12 +73,13 @@ export default function Index() {
               </p>
             )}
 
-            {/* CTA Button with gold background and gold top border shadow */}
+            {/* CTA Button with gold background, black border, and gold top accent */}
             <button
               onClick={() => window.location.href = '#contact-section'}
               className="font-poppins text-[16px] md:text-[17px] font-normal uppercase text-black bg-brand-accent px-10 md:px-14 py-3 md:py-4 hover:bg-opacity-90 transition-all duration-300 mt-5 md:mt-6 flex items-center justify-center gap-3 relative"
               style={{
-                borderTop: '3px solid rgba(207, 171, 85, 1)',
+                border: '2px solid #000',
+                boxShadow: 'inset 0 3px 0 0 #cfab55, -2px -2px 0 0 #cfab55',
               }}
             >
               {heroContent.buttonText || "Request Free Consultation"}
