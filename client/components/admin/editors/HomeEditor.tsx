@@ -360,12 +360,12 @@ function PracticeAreasItemsSection({ content, update }: SectionProps) {
         items={content.practiceAreas}
         onChange={(items) => update("practiceAreas", items)}
         itemLabel="Practice Area"
-        newItem={() => ({ title: "", image: "", imageAlt: "", link: "/practice-areas" })}
+        newItem={() => ({ title: "", image: "", imageAlt: "", link: "/practice-areas", learnMoreLink: "/practice-areas", consultationLink: "/contact/" })}
         renderItem={(item, _, upd) => (
           <div className="grid gap-3">
             <div>
               <Label>Title</Label>
-              <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} />
+              <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="e.g. CAR ACCIDENTS" />
             </div>
             <ImageField
               label="Image"
@@ -384,9 +384,19 @@ function PracticeAreasItemsSection({ content, update }: SectionProps) {
               <Label>Image Alt Text</Label>
               <Input value={item.imageAlt} onChange={(e) => upd({ ...item, imageAlt: e.target.value })} placeholder="Describe the image" />
             </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <Label>Main Link</Label>
+                <Input value={item.link} onChange={(e) => upd({ ...item, link: e.target.value })} placeholder="/practice-areas/car-accidents/" />
+              </div>
+              <div>
+                <Label>"Learn More" Link</Label>
+                <Input value={item.learnMoreLink || ""} onChange={(e) => upd({ ...item, learnMoreLink: e.target.value })} placeholder="/practice-areas/car-accidents/" />
+              </div>
+            </div>
             <div>
-              <Label>Link</Label>
-              <Input value={item.link} onChange={(e) => upd({ ...item, link: e.target.value })} />
+              <Label>"Free Consultation" Link</Label>
+              <Input value={item.consultationLink || ""} onChange={(e) => upd({ ...item, consultationLink: e.target.value })} placeholder="/contact/" />
             </div>
           </div>
         )}

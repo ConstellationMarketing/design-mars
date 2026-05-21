@@ -30,28 +30,55 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
           <div className="mb-12 md:mb-16">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {areas.map((area, index) => (
-                <Link
+                <div
                   key={index}
-                  to={area.link}
-                  className="relative min-h-[150px] md:min-h-[200px] overflow-hidden group"
+                  className="relative overflow-hidden group"
                   role="img"
                   aria-label={area.imageAlt || area.title}
-                  style={{
-                    backgroundImage: `url(${area.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
                 >
-                  {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all duration-300"></div>
+                  {/* Background Image */}
+                  <div
+                    className="relative min-h-[150px] md:min-h-[200px] overflow-hidden"
+                    style={{
+                      backgroundImage: `url(${area.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  >
+                    {/* Dark Overlay */}
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all duration-300"></div>
 
-                  {/* Content */}
-                  <div className="relative h-full flex items-center justify-center p-4">
-                    <h3 className="font-poppins text-[14px] md:text-[16px] leading-tight text-white font-bold text-center uppercase transition-all duration-300 group-hover:text-brand-accent">
+                    {/* Content */}
+                    <div className="relative h-full flex items-center justify-center p-4">
+                      <h3 className="font-poppins text-[14px] md:text-[16px] leading-tight text-white font-bold text-center uppercase transition-all duration-300 group-hover:text-brand-accent">
+                        {area.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Hover Buttons */}
+                  <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 className="font-poppins text-[14px] md:text-[16px] font-bold text-white uppercase text-center">
                       {area.title}
                     </h3>
+                    {area.learnMoreLink && (
+                      <Link
+                        to={area.learnMoreLink}
+                        className="font-poppins text-[12px] md:text-[13px] font-normal text-white uppercase border border-white px-4 py-2 hover:bg-white hover:text-black transition-all duration-300"
+                      >
+                        Learn More
+                      </Link>
+                    )}
+                    {area.consultationLink && (
+                      <Link
+                        to={area.consultationLink}
+                        className="font-poppins text-[12px] md:text-[13px] font-normal text-white uppercase border border-white px-4 py-2 hover:bg-white hover:text-black transition-all duration-300"
+                      >
+                        Free Consultation
+                      </Link>
+                    )}
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </div>

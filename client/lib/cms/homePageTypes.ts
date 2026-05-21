@@ -46,6 +46,8 @@ export interface PracticeAreaItem {
   image: string;
   imageAlt: string;
   link: string;
+  learnMoreLink?: string;
+  consultationLink?: string;
 }
 
 export interface PracticeAreasIntroContent {
@@ -251,14 +253,70 @@ export const defaultHomeContent: HomePageContent = {
     buttonTextLine2: "",
   },
   practiceAreas: [
-    { title: "CAR ACCIDENTS", image: "", imageAlt: "Car accidents", link: "/practice-areas/car-accidents/" },
-    { title: "TRUCK ACCIDENTS", image: "", imageAlt: "Truck accidents", link: "/practice-areas/truck-accidents/" },
-    { title: "MOTORCYCLE ACCIDENTS", image: "", imageAlt: "Motorcycle accidents", link: "/practice-areas/motorcycle-accidents/" },
-    { title: "WRONGFUL DEATH", image: "", imageAlt: "Wrongful death", link: "/practice-areas/wrongful-death/" },
-    { title: "PERSONAL INJURY", image: "", imageAlt: "Personal injury", link: "/practice-areas/personal-injury/" },
-    { title: "SLIP & FALL", image: "", imageAlt: "Slip and fall", link: "/practice-areas/slip-fall/" },
-    { title: "MEDICAL MALPRACTICE", image: "", imageAlt: "Medical malpractice", link: "/practice-areas/medical-malpractice/" },
-    { title: "WORKERS COMPENSATION", image: "", imageAlt: "Workers compensation", link: "/practice-areas/workers-compensation/" },
+    {
+      title: "CAR ACCIDENTS",
+      image: "",
+      imageAlt: "Car accidents",
+      link: "/practice-areas/car-accidents/",
+      learnMoreLink: "/practice-areas/car-accidents/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "TRUCK ACCIDENTS",
+      image: "",
+      imageAlt: "Truck accidents",
+      link: "/practice-areas/truck-accidents/",
+      learnMoreLink: "/practice-areas/truck-accidents/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "MOTORCYCLE ACCIDENTS",
+      image: "",
+      imageAlt: "Motorcycle accidents",
+      link: "/practice-areas/motorcycle-accidents/",
+      learnMoreLink: "/practice-areas/motorcycle-accidents/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "WRONGFUL DEATH",
+      image: "",
+      imageAlt: "Wrongful death",
+      link: "/practice-areas/wrongful-death/",
+      learnMoreLink: "/practice-areas/wrongful-death/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "PERSONAL INJURY",
+      image: "",
+      imageAlt: "Personal injury",
+      link: "/practice-areas/personal-injury/",
+      learnMoreLink: "/practice-areas/personal-injury/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "SLIP & FALL",
+      image: "",
+      imageAlt: "Slip and fall",
+      link: "/practice-areas/slip-fall/",
+      learnMoreLink: "/practice-areas/slip-fall/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "MEDICAL MALPRACTICE",
+      image: "",
+      imageAlt: "Medical malpractice",
+      link: "/practice-areas/medical-malpractice/",
+      learnMoreLink: "/practice-areas/medical-malpractice/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "WORKERS COMPENSATION",
+      image: "",
+      imageAlt: "Workers compensation",
+      link: "/practice-areas/workers-compensation/",
+      learnMoreLink: "/practice-areas/workers-compensation/",
+      consultationLink: "/contact/"
+    },
   ],
   awards: {
     sectionLabel: "",
