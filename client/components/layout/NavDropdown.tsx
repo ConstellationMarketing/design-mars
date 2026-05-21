@@ -11,9 +11,10 @@ interface NavDropdownItem {
 
 interface NavDropdownProps {
   item: NavDropdownItem;
+  isHeaderNav?: boolean;
 }
 
-export default function NavDropdown({ item }: NavDropdownProps) {
+export default function NavDropdown({ item, isHeaderNav = false }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -50,7 +51,11 @@ export default function NavDropdown({ item }: NavDropdownProps) {
     >
       <Link
         to={item.href}
-        className="font-poppins text-[20px] text-black py-[31px] mr-[20px] whitespace-nowrap hover:opacity-80 transition-opacity duration-400 inline-flex items-center gap-1"
+        className={`font-poppins text-[20px] uppercase font-semibold inline-flex items-center gap-1 transition-opacity duration-300 ${
+          isHeaderNav
+            ? "text-white hover:text-white/80"
+            : "text-black hover:opacity-80"
+        }`}
       >
         {item.label}
         <ChevronDown
@@ -59,7 +64,7 @@ export default function NavDropdown({ item }: NavDropdownProps) {
       </Link>
 
       <div
-        className={`absolute top-full left-0 mt-0 min-w-[220px] bg-white border border-brand-border rounded-md shadow-xl z-50 py-2 transition-all duration-200 ${
+        className={`absolute top-full left-0 mt-2 min-w-[240px] bg-white border border-brand-border rounded-md shadow-lg z-50 py-2 transition-all duration-200 ${
           open
             ? "visible opacity-100 pointer-events-auto"
             : "invisible opacity-0 pointer-events-none"
@@ -86,7 +91,7 @@ export default function NavDropdown({ item }: NavDropdownProps) {
                 {hasGrandchildren && <span className="text-black/50">›</span>}
               </Link>
               {hasGrandchildren && (
-                <div className="invisible absolute left-full top-0 min-w-[220px] rounded-md border border-brand-border bg-white py-2 opacity-0 shadow-xl transition-all duration-200 group-hover/item:visible group-hover/item:opacity-100 group-focus-within/item:visible group-focus-within/item:opacity-100">
+                <div className="invisible absolute left-full top-0 min-w-[240px] rounded-md border border-brand-border bg-white py-2 opacity-0 shadow-lg transition-all duration-200 group-hover/item:visible group-hover/item:opacity-100 group-focus-within/item:visible group-focus-within/item:opacity-100">
                   {child.children!.map((grandchild, grandchildIdx) => (
                     <Link
                       key={grandchildIdx}
