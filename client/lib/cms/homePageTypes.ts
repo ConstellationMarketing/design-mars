@@ -130,6 +130,21 @@ export interface StatsContent {
   cases: CaseStatItem[];
 }
 
+export interface AboutFeatureItem {
+  title: string;
+  description: string;
+  icon?: string;
+}
+
+export interface HomeAboutContent {
+  heading: string;
+  experienceTitle: string;
+  yearsNumber: string;
+  yearsLabel: string;
+  experienceDescription: string;
+  features: AboutFeatureItem[];
+}
+
 export interface ContactContent {
   sectionLabel: string;
   heading: string;
@@ -150,6 +165,7 @@ export interface HomePageContent {
   hero: HeroContent;
   partnerLogos: PartnerLogo[];
   stats: StatsContent;
+  homeAbout: HomeAboutContent;
   about: AboutContent;
   practiceAreasIntro: PracticeAreasIntroContent;
   practiceAreas: PracticeAreaItem[];
@@ -183,6 +199,35 @@ export const defaultHomeContent: HomePageContent = {
       { label: "CAR ACCIDENT", amount: "$1 MILLION" },
       { label: "CAR ACCIDENT", amount: "$1 MILLION" },
       { label: "TRUCK ACCIDENT", amount: "$3.8 MILLION" },
+    ],
+  },
+  homeAbout: {
+    heading: "When It Matters Most, We're On Your Side.",
+    experienceTitle: "OVER",
+    yearsNumber: "150",
+    yearsLabel: "YEARS OF EXPERIENCE",
+    experienceDescription: "Constellation Law is a top rated law firm with 150 years of collective experience. Our partners worked for the largest firm in Atlanta, and now leverage their backgrounds and legal knowledge to stand up to the corporations they once defended",
+    features: [
+      {
+        title: "AMAZING TEAM",
+        description: "Our award-winning legal team brings over 150 years of collective experience to every case, ensuring you receive the skilled representation you deserve.",
+      },
+      {
+        title: "YOUR NEEDS COME FIRST",
+        description: "We prioritize your recovery and peace of mind. Our client-focused approach means you get personalized attention and dedicated advocacy throughout your case.",
+      },
+      {
+        title: "WE COME TO YOU 24/7",
+        description: "Injured and can't travel? We come to you. Our attorneys are available 24/7 for consultations at your hospital, home, or wherever is most convenient.",
+      },
+      {
+        title: "MULTILINGUAL STAFF",
+        description: "Language should never be a barrier to justice. Our multilingual team ensures clear communication in Spanish, Portuguese, and other languages.",
+      },
+      {
+        title: "NO FEES UNTIL WE WIN",
+        description: "You don't pay attorney fees unless we win your case. This contingency fee structure means we're invested in your success and you can focus on healing without financial stress.",
+      },
     ],
   },
   about: {

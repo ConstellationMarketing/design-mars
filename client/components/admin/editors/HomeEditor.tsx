@@ -16,6 +16,7 @@ export default function HomeEditor({ content, onChange }: HomeEditorProps) {
       <HeroSection content={content} update={update} />
       <PartnerLogosSection content={content} update={update} />
       <StatsSectionEditor content={content} update={update} />
+      <HomeAboutSectionEditor content={content} update={update} />
       <AboutSectionEditor content={content} update={update} />
       <PracticeAreasIntroSection content={content} update={update} />
       <PracticeAreasItemsSection content={content} update={update} />
@@ -139,6 +140,75 @@ function StatsSectionEditor({ content, update }: SectionProps) {
               <div>
                 <Label>Amount Won</Label>
                 <Input value={item.amount} onChange={(e) => upd({ ...item, amount: e.target.value })} placeholder="e.g. $1 MILLION" />
+              </div>
+            </div>
+          )}
+        />
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function HomeAboutSectionEditor({ content, update }: SectionProps) {
+  const homeAbout = content.homeAbout;
+  const set = (patch: Partial<typeof homeAbout>) => update("homeAbout", { ...homeAbout, ...patch });
+
+  return (
+    <Section title="Home About Section (When It Matters Most)" defaultOpen={false}>
+      <div className="grid gap-4">
+        <div>
+          <Label>Heading</Label>
+          <Input
+            value={homeAbout.heading}
+            onChange={(e) => set({ heading: e.target.value })}
+            placeholder="When It Matters Most, We're On Your Side."
+          />
+        </div>
+
+        <h4 className="font-medium mt-4">Experience Box (Left Side)</h4>
+        <div>
+          <Label>Experience Title (above number)</Label>
+          <Input value={homeAbout.experienceTitle} onChange={(e) => set({ experienceTitle: e.target.value })} placeholder="OVER" />
+        </div>
+        <div>
+          <Label>Years Number</Label>
+          <Input value={homeAbout.yearsNumber} onChange={(e) => set({ yearsNumber: e.target.value })} placeholder="150" />
+        </div>
+        <div>
+          <Label>Years Label (below number)</Label>
+          <Input value={homeAbout.yearsLabel} onChange={(e) => set({ yearsLabel: e.target.value })} placeholder="YEARS OF EXPERIENCE" />
+        </div>
+        <div>
+          <Label>Experience Description</Label>
+          <Textarea
+            value={homeAbout.experienceDescription}
+            onChange={(e) => set({ experienceDescription: e.target.value })}
+            placeholder="Description text about the firm..."
+            rows={4}
+          />
+        </div>
+
+        <h4 className="font-medium mt-4">Features (Right Side - 5 items)</h4>
+        <ArrayEditor
+          items={homeAbout.features}
+          onChange={(items) => set({ features: items })}
+          itemLabel="Feature"
+          newItem={() => ({ title: "", description: "" })}
+          renderItem={(item, _, upd) => (
+            <div className="grid gap-3">
+              <div>
+                <Label>Feature Title</Label>
+                <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="e.g. AMAZING TEAM" />
+              </div>
+              <div>
+                <Label>Feature Description</Label>
+                <Textarea
+                  value={item.description}
+                  onChange={(e) => upd({ ...item, description: e.target.value })}
+                  placeholder="Feature description text..."
+                  rows={3}
+                />
               </div>
             </div>
           )}

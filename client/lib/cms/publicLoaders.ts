@@ -499,6 +499,11 @@ export function mergeHomeContentWithDefaults(cmsContent: Partial<HomePageContent
       ...cmsContent.stats,
       cases: cmsContent.stats?.cases?.length ? cmsContent.stats.cases : defaults.stats.cases,
     },
+    homeAbout: {
+      ...defaults.homeAbout,
+      ...cmsContent.homeAbout,
+      features: cmsContent.homeAbout?.features?.length ? cmsContent.homeAbout.features : defaults.homeAbout.features,
+    },
     about: {
       ...defaults.about,
       ...cmsContent.about,
