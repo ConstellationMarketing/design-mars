@@ -29,6 +29,8 @@ export interface SiteSettings {
   applyPhoneGlobally: boolean;
   headerCtaText: string;
   headerCtaUrl: string;
+  headerCtaLabel: string;
+  headerCtaTagline: string;
   navigationItems: {
     label: string;
     href: string;
@@ -155,6 +157,8 @@ interface SiteSettingsRow {
   apply_phone_globally?: boolean | null;
   header_cta_text?: string | null;
   header_cta_url?: string | null;
+  header_cta_label?: string | null;
+  header_cta_tagline?: string | null;
   navigation_items?: SiteSettings["navigationItems"] | null;
   footer_about_links?: SiteSettings["footerAboutLinks"] | null;
   footer_practice_links?: SiteSettings["footerPracticeLinks"] | null;
@@ -193,6 +197,8 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   applyPhoneGlobally: true,
   headerCtaText: "",
   headerCtaUrl: "",
+  headerCtaLabel: "FREE CONSULTATIONS",
+  headerCtaTagline: "NO FEES UNTIL WE WIN",
   navigationItems: [],
   footerAboutLinks: [],
   footerPracticeLinks: [],
@@ -429,6 +435,8 @@ export function shapeSiteSettings(row?: SiteSettingsRow | null): SiteSettings {
     applyPhoneGlobally: row.apply_phone_globally ?? DEFAULT_SITE_SETTINGS.applyPhoneGlobally,
     headerCtaText: row.header_cta_text || DEFAULT_SITE_SETTINGS.headerCtaText,
     headerCtaUrl: row.header_cta_url || DEFAULT_SITE_SETTINGS.headerCtaUrl,
+    headerCtaLabel: row.header_cta_label || DEFAULT_SITE_SETTINGS.headerCtaLabel,
+    headerCtaTagline: row.header_cta_tagline || DEFAULT_SITE_SETTINGS.headerCtaTagline,
     navigationItems: row.navigation_items?.length ? row.navigation_items : DEFAULT_SITE_SETTINGS.navigationItems,
     footerAboutLinks: row.footer_about_links?.length ? row.footer_about_links : DEFAULT_SITE_SETTINGS.footerAboutLinks,
     footerPracticeLinks: row.footer_practice_links?.length ? row.footer_practice_links : DEFAULT_SITE_SETTINGS.footerPracticeLinks,

@@ -20,6 +20,8 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
 
   const ctaText = settings.headerCtaText?.trim() || "";
   const ctaUrl = settings.headerCtaUrl?.trim() || "/contact";
+  const ctaLabel = settings.headerCtaLabel?.trim() || "FREE CONSULTATIONS";
+  const ctaTagline = settings.headerCtaTagline?.trim() || "NO FEES UNTIL WE WIN";
 
   const navItems = [...(settings.navigationItems ?? [])].sort(
     (a, b) => (a.order ?? 0) - (b.order ?? 0),
@@ -87,10 +89,17 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
             {phoneNumber && (
               <a
                 href={`tel:${phoneNumber.replace(/\D/g, "")}`}
-                className="flex items-center gap-2 text-white px-4 py-2 font-poppins font-semibold hover:text-white/80 transition-colors duration-300"
+                className="bg-black/60 backdrop-blur-sm px-6 py-4 rounded flex flex-col items-start gap-2 hover:bg-black/80 transition-colors duration-300"
               >
-                <Phone className="w-5 h-5" />
-                {phoneDisplay}
+                <span className="font-poppins text-white text-[12px] tracking-wide font-semibold">
+                  {ctaLabel}
+                </span>
+                <span className="font-poppins text-brand-accent text-[20px] font-bold leading-none">
+                  {phoneDisplay}
+                </span>
+                <span className="font-poppins text-white text-[10px] tracking-wide font-semibold">
+                  {ctaTagline}
+                </span>
               </a>
             )}
           </div>
@@ -116,12 +125,19 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
                   );
                 })}
                 {phoneNumber && (
-                  <a 
+                  <a
                     href={`tel:${phoneNumber.replace(/\D/g, "")}`}
-                    className="flex items-center gap-2 bg-brand-accent text-black px-4 py-3 rounded font-poppins font-semibold w-full justify-center hover:bg-brand-accent-dark transition-colors"
+                    className="bg-black/60 px-4 py-4 rounded flex flex-col items-center gap-2 hover:bg-black/80 transition-colors w-full"
                   >
-                    <Phone className="w-5 h-5" />
-                    {phoneDisplay}
+                    <span className="font-poppins text-white text-[11px] tracking-wide font-semibold">
+                      {ctaLabel}
+                    </span>
+                    <span className="font-poppins text-brand-accent text-[18px] font-bold leading-none">
+                      {phoneDisplay}
+                    </span>
+                    <span className="font-poppins text-white text-[9px] tracking-wide font-semibold">
+                      {ctaTagline}
+                    </span>
                   </a>
                 )}
               </nav>
