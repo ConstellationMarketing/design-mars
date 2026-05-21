@@ -17,8 +17,8 @@ export default function StatsSection({ content }: StatsSectionProps) {
           <div className="flex justify-center -mt-40 md:-mt-48 mb-8 md:mb-12 relative z-10">
             {/* Outer gold border */}
             <div className="border-4 border-brand-accent p-4 md:p-6 bg-black">
-              {/* Inner white border with black bg */}
-              <div className="border-2 border-white bg-black px-8 md:px-12 py-6 md:py-8 text-center">
+              {/* Inner gold border with black bg */}
+              <div className="border-2 border-brand-accent bg-black px-8 md:px-12 py-6 md:py-8 text-center">
                 <div className="font-poppins text-[32px] md:text-[48px] font-bold text-white leading-tight">
                   {content.totalAmount}
                 </div>
