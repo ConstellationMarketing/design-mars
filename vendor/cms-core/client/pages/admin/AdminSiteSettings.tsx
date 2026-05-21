@@ -998,6 +998,39 @@ export default function AdminSiteSettings() {
 
           <Card>
             <CardHeader>
+              <CardTitle>Header CTA</CardTitle>
+              <CardDescription>
+                Call-to-action text displayed above and below the phone number in the header
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="headerCtaLabel">CTA Label (above phone)</Label>
+                <Input
+                  id="headerCtaLabel"
+                  value={settings.headerCtaLabel || ""}
+                  onChange={(e) =>
+                    updateSettings({ headerCtaLabel: e.target.value })
+                  }
+                  placeholder="FREE CONSULTATIONS"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="headerCtaTagline">CTA Tagline (below phone)</Label>
+                <Input
+                  id="headerCtaTagline"
+                  value={settings.headerCtaTagline || ""}
+                  onChange={(e) =>
+                    updateSettings({ headerCtaTagline: e.target.value })
+                  }
+                  placeholder="NO FEES UNTIL WE WIN"
+                />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
               <CardTitle>Address</CardTitle>
               <CardDescription>
                 Physical address displayed in the footer
