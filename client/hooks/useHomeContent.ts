@@ -145,3 +145,12 @@ export function clearHomeContentCache() {
   cachedPublishedAt = null;
   cachedUpdatedAt = null;
 }
+
+// Clear cache on route change or page visibility
+if (typeof window !== "undefined") {
+  window.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") {
+      clearHomeContentCache();
+    }
+  });
+}

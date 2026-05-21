@@ -50,31 +50,34 @@ export default function Index() {
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.35)' }}></div>
 
         {/* Content */}
-        <div className="max-w-[900px] w-[90%] relative z-10 text-center">
+        <div className="max-w-[1200px] w-[90%] relative z-10 text-center">
           <div className="flex flex-col items-center justify-center gap-6 md:gap-8">
-            {/* Main Headline - 3 lines */}
-            <h1 className="font-poppins text-[48px] md:text-[64px] font-bold leading-[1.15] text-white max-w-3xl">
-              {heroContent.headline}
-            </h1>
-
-            {/* Subheading */}
+            {/* Gold tagline text above - from h1Title field */}
             {heroContent.h1Title && (
-              <p className="font-poppins text-[18px] md:text-[20px] font-normal tracking-wide uppercase text-white">
+              <p className="font-poppins text-[14px] md:text-[16px] font-normal tracking-widest uppercase text-brand-accent">
                 {heroContent.h1Title}
               </p>
             )}
 
-            {/* Tagline in gold */}
+            {/* Main Headline - 96px on desktop */}
+            <h1 className="font-poppins text-[42px] sm:text-[56px] md:text-[96px] font-bold leading-[1.1] text-white max-w-5xl">
+              {heroContent.headline}
+            </h1>
+
+            {/* Subheading/description below headline */}
             {heroContent.tagline && (
-              <p className="font-poppins text-[13px] md:text-[14px] font-normal tracking-widest uppercase text-brand-accent">
+              <p className="font-poppins text-[16px] md:text-[18px] font-normal tracking-wide text-white max-w-2xl">
                 {heroContent.tagline}
               </p>
             )}
 
-            {/* CTA Button with gold background */}
+            {/* CTA Button with gold background and shadow effect */}
             <button
               onClick={() => window.location.href = '#contact-section'}
-              className="font-poppins text-[16px] md:text-[16px] font-normal uppercase text-black bg-brand-accent px-12 md:px-16 py-4 border-[2px] border-brand-accent hover:bg-brand-accent-dark hover:border-brand-accent-dark transition-all duration-300 mt-6 flex items-center justify-center gap-2"
+              className="font-poppins text-[16px] md:text-[18px] font-normal uppercase text-black bg-brand-accent px-8 md:px-12 py-3 md:py-4 hover:bg-brand-accent-dark transition-all duration-300 mt-8 md:mt-10 flex items-center justify-center gap-3"
+              style={{
+                boxShadow: '0 -4px 0 0 rgba(207, 171, 85, 0.8)'
+              }}
             >
               {heroContent.buttonText || "Request Free Consultation"}
               <span className="text-lg">›</span>
