@@ -89,7 +89,7 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
             {phoneNumber && (
               <a
                 href={`tel:${phoneNumber.replace(/\D/g, "")}`}
-                className="bg-black/60 backdrop-blur-sm px-6 py-4 rounded flex flex-col items-start gap-2 hover:bg-black/80 transition-colors duration-300"
+                className="flex flex-col items-center gap-2 hover:opacity-80 transition-opacity duration-300"
               >
                 <span className="font-poppins text-white text-[12px] tracking-wide font-semibold">
                   {ctaLabel}
@@ -127,15 +127,15 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
                 {phoneNumber && (
                   <a
                     href={`tel:${phoneNumber.replace(/\D/g, "")}`}
-                    className="bg-black/60 px-4 py-4 rounded flex flex-col items-center gap-2 hover:bg-black/80 transition-colors w-full"
+                    className="flex flex-col items-center gap-2 hover:opacity-80 transition-opacity w-full py-2"
                   >
-                    <span className="font-poppins text-white text-[11px] tracking-wide font-semibold">
+                    <span className="font-poppins text-black text-[11px] tracking-wide font-semibold">
                       {ctaLabel}
                     </span>
                     <span className="font-poppins text-brand-accent text-[18px] font-bold leading-none">
                       {phoneDisplay}
                     </span>
-                    <span className="font-poppins text-white text-[9px] tracking-wide font-semibold">
+                    <span className="font-poppins text-black text-[9px] tracking-wide font-semibold">
                       {ctaTagline}
                     </span>
                   </a>
