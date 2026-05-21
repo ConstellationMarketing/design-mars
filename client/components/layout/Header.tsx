@@ -173,7 +173,7 @@ function MobileNavItem({
         to={item.href}
         target={item.openInNewTab ? "_blank" : undefined}
         rel={item.openInNewTab ? "noopener noreferrer" : undefined}
-        className="font-poppins text-[18px] text-black uppercase font-semibold py-2 hover:text-brand-accent transition-colors"
+        className="font-poppins text-[20px] text-black uppercase font-semibold py-2 hover:text-brand-accent transition-colors"
       >
         {item.label}
       </Link>
@@ -185,7 +185,7 @@ function MobileNavItem({
       <div className="flex items-center justify-between">
         <Link
           to={item.href}
-          className="font-poppins text-[18px] text-black uppercase font-semibold py-2 hover:text-brand-accent transition-colors flex-1"
+          className="font-poppins text-[20px] text-black uppercase font-semibold py-2 hover:text-brand-accent transition-colors flex-1"
         >
           {item.label}
         </Link>
