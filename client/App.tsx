@@ -7,13 +7,14 @@ import AppRouterShell from "./app/AppRouterShell";
 import { getActivePreloadedState, initializeBrowserPreloadedState } from "./lib/preloadState";
 
 // Suppress ResizeObserver loop error from Radix UI components
-// This is a non-critical warning that occurs with rapid layout changes
+// This is a non-critical warning that occurs with rapid layout changes and fixed positioning
 if (typeof window !== "undefined") {
   const originalError = console.error;
   console.error = (...args: any[]) => {
+    const errorMsg = args[0]?.message || String(args[0]) || "";
     if (
-      args[0]?.message === "ResizeObserver loop completed with undelivered notifications." ||
-      (typeof args[0] === "string" && args[0].includes("ResizeObserver loop completed"))
+      errorMsg.includes("ResizeObserver loop completed with undelivered notifications") ||
+      errorMsg.includes("ResizeObserver loop completed")
     ) {
       return;
     }
@@ -21,10 +22,16 @@ if (typeof window !== "undefined") {
   };
 
   window.addEventListener("error", (event: ErrorEvent) => {
-    if (
-      event.error?.message?.includes("ResizeObserver loop completed") ||
-      event.message?.includes("ResizeObserver loop completed")
-    ) {
+    const errorMsg = (event.error?.message || event.message || "").toString();
+    if (errorMsg.includes("ResizeObserver loop completed")) {
+      event.preventDefault();
+    }
+  });
+
+  // Additional suppression for unhandled promise rejections related to ResizeObserver
+  window.addEventListener("unhandledrejection", (event) => {
+    const errorMsg = (event.reason?.message || String(event.reason) || "").toString();
+    if (errorMsg.includes("ResizeObserver loop completed")) {
       event.preventDefault();
     }
   });
