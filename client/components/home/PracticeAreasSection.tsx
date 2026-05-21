@@ -22,6 +22,7 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
             <h2 className="font-poppins text-[32px] md:text-[42px] font-bold text-black max-w-3xl mx-auto leading-tight">
               {content?.heading || "Where We Fight For You"}
             </h2>
+            <div className="w-24 h-px bg-brand-accent mx-auto mt-6"></div>
           </div>
         )}
 
@@ -50,51 +51,33 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
 
                     {/* Content */}
                     <div className="relative h-full flex items-center justify-center p-4">
-                      <h3 className="font-poppins text-[14px] md:text-[16px] leading-tight text-white font-bold text-center uppercase transition-all duration-300 group-hover:text-brand-accent">
+                      <h3 className="font-poppins text-[14px] md:text-[16px] leading-tight text-white font-normal text-center uppercase transition-all duration-300 group-hover:text-brand-accent">
                         {area.title}
                       </h3>
                     </div>
                   </div>
 
-                  {/* Hover Buttons */}
-                  <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <h3 className="font-poppins text-[14px] md:text-[16px] font-bold text-white uppercase text-center">
-                      {area.title}
-                    </h3>
-                    {area.learnMoreLink && (
-                      <Link
-                        to={area.learnMoreLink}
-                        className="font-poppins text-[12px] md:text-[13px] font-normal text-white uppercase border border-white px-4 py-2 hover:bg-white hover:text-black transition-all duration-300"
-                      >
-                        Learn More
-                      </Link>
-                    )}
-                    {area.consultationLink && (
-                      <Link
-                        to={area.consultationLink}
-                        className="font-poppins text-[12px] md:text-[13px] font-normal text-white uppercase border border-white px-4 py-2 hover:bg-white hover:text-black transition-all duration-300"
-                      >
-                        Free Consultation
-                      </Link>
-                    )}
-                  </div>
+                  {/* Hover Overlay - just slightly darker */}
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               ))}
             </div>
           </div>
         )}
 
-        {/* See All Button */}
+        {/* See All Button - styled like hero button */}
         <div className="flex justify-center">
-          <Link
-            to={content?.buttonLink || "/practice-areas/"}
-            className="inline-block border-2 border-brand-accent bg-brand-accent px-8 md:px-12 py-3 md:py-4 hover:bg-white hover:text-black transition-all duration-300"
-          >
-            <span className="font-poppins text-[14px] md:text-[16px] font-normal uppercase text-black hover:text-black">
-              {content?.buttonTextLine1 || "SEE ALL AREAS OF PRACTICE"}
-            </span>
-            <span className="ml-2">›</span>
-          </Link>
+          <div className="inline-block border-2 border-brand-accent p-1">
+            <Link
+              to={content?.buttonLink || "/practice-areas/"}
+              className="inline-block bg-brand-accent border-2 border-brand-accent px-8 md:px-12 py-3 md:py-4 hover:bg-white hover:text-black transition-all duration-300"
+            >
+              <span className="font-poppins text-[14px] md:text-[16px] font-normal uppercase text-black">
+                {content?.buttonTextLine1 || "SEE ALL AREAS OF PRACTICE"}
+              </span>
+              <span className="ml-2">›</span>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
