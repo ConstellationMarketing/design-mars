@@ -123,10 +123,7 @@ export default function Index() {
       <HomeAboutSection content={content.homeAbout} />
 
       {/* Practice Areas Section */}
-      <PracticeAreasSection content={content.practiceAreasIntro} />
-
-      {/* Practice Areas Grid */}
-      <PracticeAreasGrid areas={content.practiceAreas} />
+      <PracticeAreasSection content={content.practiceAreasIntro} areas={content.practiceAreas} />
 
       {/* Awards & Membership Section */}
       <AwardsSection content={content.awards} headingTag={content.headingTags?.["awards.sectionLabel"]} />
