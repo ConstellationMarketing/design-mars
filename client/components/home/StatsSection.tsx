@@ -12,10 +12,10 @@ export default function StatsSection({ content }: StatsSectionProps) {
   return (
     <div className="w-full bg-brand-accent pt-0 md:pt-0 pb-12 md:pb-16 relative">
       <div className="max-w-[2560px] mx-auto w-[95%]">
-        {/* Total wins card - overlapping hero */}
+        {/* Total wins card - overlapping hero with gold border */}
         {content.totalAmount && (
           <div className="flex justify-center -mt-16 md:-mt-20 mb-12 md:mb-16 relative z-10">
-            <div className="bg-black border-2 border-white px-8 md:px-12 py-6 md:py-8 text-center max-w-md">
+            <div className="bg-black border-2 border-brand-accent px-8 md:px-12 py-6 md:py-8 text-center max-w-md">
               <div className="font-poppins text-[32px] md:text-[48px] font-bold text-white leading-tight">
                 {content.totalAmount}
               </div>
@@ -26,11 +26,18 @@ export default function StatsSection({ content }: StatsSectionProps) {
           </div>
         )}
 
-        {/* Case stats grid */}
+        {/* Case stats grid with black separators between columns */}
         {content.cases.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4">
             {content.cases.map((caseItem, index) => (
-              <div key={index} className="text-center">
+              <div
+                key={index}
+                className={`text-center py-6 md:py-8 px-4 md:px-6 ${
+                  index < content.cases.length - 1
+                    ? 'border-r-2 border-black'
+                    : ''
+                }`}
+              >
                 <div className="font-poppins text-[11px] md:text-[12px] font-semibold text-black tracking-wider uppercase">
                   {caseItem.label}
                 </div>
