@@ -5,6 +5,8 @@ export interface HeroContent {
   h1Title: string; // H1 title text (all caps, ~20px) between headline and phone button
   headline: string;
   highlightedText: string;
+  tagline: string; // Gold tagline text below headline
+  buttonText: string; // CTA button text
   phone: string;
   phoneLabel: string;
 }
@@ -155,6 +157,8 @@ export const defaultHomeContent: HomePageContent = {
     h1Title: "",
     headline: "",
     highlightedText: "",
+    tagline: "",
+    buttonText: "Request Free Consultation",
     phone: "",
     phoneLabel: "",
   },
