@@ -50,47 +50,34 @@ export default function Index() {
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.35)' }}></div>
 
         {/* Content */}
-        <div className="max-w-[2560px] w-[95%] relative z-10 text-center">
+        <div className="max-w-[900px] w-[90%] relative z-10 text-center">
           <div className="flex flex-col items-center justify-center gap-6 md:gap-8">
-            {/* Main Headline */}
-            <h1 className="font-poppins text-[clamp(2.5rem,8vw,70px)] font-bold leading-[1.1] text-white">
-              {heroContent.headline && heroContent.highlightedText && heroContent.headline.includes(heroContent.highlightedText)
-                ? (() => {
-                    const idx = heroContent.headline.indexOf(heroContent.highlightedText);
-                    const before = heroContent.headline.slice(0, idx);
-                    const match = heroContent.highlightedText;
-                    const after = heroContent.headline.slice(idx + match.length);
-                    return (
-                      <>
-                        {before}
-                        <span className="text-brand-accent">{match}</span>
-                        {after}
-                      </>
-                    );
-                  })()
-                : heroContent.headline}
+            {/* Main Headline - 3 lines */}
+            <h1 className="font-poppins text-[48px] md:text-[64px] font-bold leading-[1.15] text-white max-w-3xl">
+              {heroContent.headline}
             </h1>
 
             {/* Subheading */}
             {heroContent.h1Title && (
-              <p className="font-poppins text-[18px] md:text-[22px] font-normal tracking-wide uppercase text-white/90">
+              <p className="font-poppins text-[18px] md:text-[20px] font-normal tracking-wide uppercase text-white">
                 {heroContent.h1Title}
               </p>
             )}
 
             {/* Tagline in gold */}
             {heroContent.tagline && (
-              <p className="font-poppins text-[14px] md:text-[16px] font-normal tracking-widest uppercase text-brand-accent">
+              <p className="font-poppins text-[13px] md:text-[14px] font-normal tracking-widest uppercase text-brand-accent">
                 {heroContent.tagline}
               </p>
             )}
 
-            {/* CTA Button */}
+            {/* CTA Button with gold background */}
             <button
               onClick={() => window.location.href = '#contact-section'}
-              className="font-poppins text-[16px] md:text-[18px] font-normal uppercase text-white bg-transparent px-10 py-3 border-[3px] border-brand-accent hover:bg-brand-accent hover:text-black transition-all duration-300 mt-4"
+              className="font-poppins text-[16px] md:text-[16px] font-normal uppercase text-black bg-brand-accent px-12 md:px-16 py-4 border-[2px] border-brand-accent hover:bg-brand-accent-dark hover:border-brand-accent-dark transition-all duration-300 mt-6 flex items-center justify-center gap-2"
             >
               {heroContent.buttonText || "Request Free Consultation"}
+              <span className="text-lg">›</span>
             </button>
           </div>
         </div>
