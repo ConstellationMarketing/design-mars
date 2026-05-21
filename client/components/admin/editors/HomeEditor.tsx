@@ -18,7 +18,6 @@ export default function HomeEditor({ content, onChange }: HomeEditorProps) {
       <StatsSectionEditor content={content} update={update} />
       <AboutSectionEditor content={content} update={update} />
       <PracticeAreasIntroSection content={content} update={update} />
-      <PracticeAreasItemsSection content={content} update={update} />
       <AwardsSection content={content} update={update} />
       <TestimonialsSection content={content} update={update} />
       <ProcessSection content={content} update={update} />
@@ -330,77 +329,65 @@ function PracticeAreasIntroSection({ content, update }: SectionProps) {
           onTagChange={(t) => ht.set("practiceAreasIntro.sectionLabel", t)}
         />
         <div>
-          <Label>Text</Label>
-          <Input value={intro.heading} onChange={(e) => set({ heading: e.target.value })} />
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <Label>Button Text Line 1</Label>
-            <Input value={intro.buttonTextLine1 || ""} onChange={(e) => set({ buttonTextLine1: e.target.value })} placeholder="Discover" />
-          </div>
-          <div>
-            <Label>Button Text Line 2</Label>
-            <Input value={intro.buttonTextLine2 || ""} onChange={(e) => set({ buttonTextLine2: e.target.value })} placeholder="All Practice Areas" />
-          </div>
+          <Label>Main Heading</Label>
+          <Input value={intro.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Where We Fight For You" />
         </div>
         <div>
           <Label>Button Link</Label>
           <Input value={intro.buttonLink} onChange={(e) => set({ buttonLink: e.target.value })} placeholder="/practice-areas/" />
         </div>
-      </div>
-    </Section>
-  );
-}
+        <div>
+          <Label>Button Text</Label>
+          <Input value={intro.buttonTextLine1 || ""} onChange={(e) => set({ buttonTextLine1: e.target.value })} placeholder="SEE ALL AREAS OF PRACTICE" />
+        </div>
 
-/* ------------------------------------------------------------------ */
-function PracticeAreasItemsSection({ content, update }: SectionProps) {
-  return (
-    <Section title="Practice Areas Grid" defaultOpen={false}>
-      <ArrayEditor
-        items={content.practiceAreas}
-        onChange={(items) => update("practiceAreas", items)}
-        itemLabel="Practice Area"
-        newItem={() => ({ title: "", image: "", imageAlt: "", link: "/practice-areas", learnMoreLink: "/practice-areas", consultationLink: "/contact/" })}
-        renderItem={(item, _, upd) => (
-          <div className="grid gap-3">
-            <div>
-              <Label>Title</Label>
-              <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="e.g. CAR ACCIDENTS" />
-            </div>
-            <ImageField
-              label="Image"
-              value={item.image}
-              onChange={(url) => upd({ ...item, image: url })}
-              altValue={item.imageAlt}
-              onAltChange={(imageAlt) => upd({ ...item, imageAlt })}
-              onSelectAsset={(asset) => upd({
-                ...item,
-                image: asset.url,
-                imageAlt: asset.suggestedAltText || item.imageAlt,
-              })}
-              folder="practice-areas"
-            />
-            <div>
-              <Label>Image Alt Text</Label>
-              <Input value={item.imageAlt} onChange={(e) => upd({ ...item, imageAlt: e.target.value })} placeholder="Describe the image" />
-            </div>
-            <div className="grid grid-cols-2 gap-3">
+        <h4 className="font-medium mt-4">Practice Areas (8 items)</h4>
+        <ArrayEditor
+          items={content.practiceAreas}
+          onChange={(items) => update("practiceAreas", items)}
+          itemLabel="Practice Area"
+          newItem={() => ({ title: "", image: "", imageAlt: "", link: "/practice-areas", learnMoreLink: "/practice-areas", consultationLink: "/contact/" })}
+          renderItem={(item, _, upd) => (
+            <div className="grid gap-3">
               <div>
-                <Label>Main Link</Label>
-                <Input value={item.link} onChange={(e) => upd({ ...item, link: e.target.value })} placeholder="/practice-areas/car-accidents/" />
+                <Label>Title</Label>
+                <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="e.g. CAR ACCIDENTS" />
+              </div>
+              <ImageField
+                label="Image"
+                value={item.image}
+                onChange={(url) => upd({ ...item, image: url })}
+                altValue={item.imageAlt}
+                onAltChange={(imageAlt) => upd({ ...item, imageAlt })}
+                onSelectAsset={(asset) => upd({
+                  ...item,
+                  image: asset.url,
+                  imageAlt: asset.suggestedAltText || item.imageAlt,
+                })}
+                folder="practice-areas"
+              />
+              <div>
+                <Label>Image Alt Text</Label>
+                <Input value={item.imageAlt} onChange={(e) => upd({ ...item, imageAlt: e.target.value })} placeholder="Describe the image" />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label>Main Link</Label>
+                  <Input value={item.link} onChange={(e) => upd({ ...item, link: e.target.value })} placeholder="/practice-areas/car-accidents/" />
+                </div>
+                <div>
+                  <Label>"Learn More" Link</Label>
+                  <Input value={item.learnMoreLink || ""} onChange={(e) => upd({ ...item, learnMoreLink: e.target.value })} placeholder="/practice-areas/car-accidents/" />
+                </div>
               </div>
               <div>
-                <Label>"Learn More" Link</Label>
-                <Input value={item.learnMoreLink || ""} onChange={(e) => upd({ ...item, learnMoreLink: e.target.value })} placeholder="/practice-areas/car-accidents/" />
+                <Label>"Free Consultation" Link</Label>
+                <Input value={item.consultationLink || ""} onChange={(e) => upd({ ...item, consultationLink: e.target.value })} placeholder="/contact/" />
               </div>
             </div>
-            <div>
-              <Label>"Free Consultation" Link</Label>
-              <Input value={item.consultationLink || ""} onChange={(e) => upd({ ...item, consultationLink: e.target.value })} placeholder="/contact/" />
-            </div>
-          </div>
-        )}
-      />
+          )}
+        />
+      </div>
     </Section>
   );
 }
