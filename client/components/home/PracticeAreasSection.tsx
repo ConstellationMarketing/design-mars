@@ -8,8 +8,8 @@ interface PracticeAreasSectionProps {
 }
 
 export default function PracticeAreasSection({ content, areas }: PracticeAreasSectionProps) {
-  // Guard: if no meaningful content, don't render
-  if (!content || !content.heading) {
+  // Don't render if no areas at all, but show even if heading is empty (will use defaults)
+  if (!areas || areas.length === 0) {
     return null;
   }
 
@@ -17,10 +17,10 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
     <div className="w-full bg-white py-12 md:py-16">
       <div className="max-w-[2560px] mx-auto w-[95%]">
         {/* Heading */}
-        {content.heading && (
+        {(content?.heading || "Where We Fight For You") && (
           <div className="text-center mb-12 md:mb-16">
             <h2 className="font-poppins text-[32px] md:text-[42px] font-bold text-black max-w-3xl mx-auto leading-tight">
-              {content.heading}
+              {content?.heading || "Where We Fight For You"}
             </h2>
           </div>
         )}
@@ -85,19 +85,17 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
         )}
 
         {/* See All Button */}
-        {content.buttonLink && (
-          <div className="flex justify-center">
-            <Link
-              to={content.buttonLink}
-              className="inline-block border-2 border-brand-accent bg-brand-accent px-8 md:px-12 py-3 md:py-4 hover:bg-white hover:text-black transition-all duration-300"
-            >
-              <span className="font-poppins text-[14px] md:text-[16px] font-normal uppercase text-black hover:text-black">
-                {content.buttonTextLine1 || "SEE ALL AREAS OF PRACTICE"}
-              </span>
-              <span className="ml-2">›</span>
-            </Link>
-          </div>
-        )}
+        <div className="flex justify-center">
+          <Link
+            to={content?.buttonLink || "/practice-areas/"}
+            className="inline-block border-2 border-brand-accent bg-brand-accent px-8 md:px-12 py-3 md:py-4 hover:bg-white hover:text-black transition-all duration-300"
+          >
+            <span className="font-poppins text-[14px] md:text-[16px] font-normal uppercase text-black hover:text-black">
+              {content?.buttonTextLine1 || "SEE ALL AREAS OF PRACTICE"}
+            </span>
+            <span className="ml-2">›</span>
+          </Link>
+        </div>
       </div>
     </div>
   );
