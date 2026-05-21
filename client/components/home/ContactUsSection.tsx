@@ -36,7 +36,7 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
                   <DynamicHeading
                     tag={headingTag}
                     defaultTag="h2"
-                    className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-[#6b8d0c]"
+                    className="font-poppins text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-brand-accent"
                   >
                     {data.sectionLabel}
                   </DynamicHeading>
@@ -44,14 +44,14 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
               )}
               <div>
                 {data.heading && (
-                  <p className="font-playfair text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black pb-[10px]">
+                  <p className="font-poppins font-bold text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black pb-[10px]">
                     {data.heading}
                   </p>
                 )}
                 {data.description && (
                   <RichText
                     html={data.description}
-                    className="font-outfit text-[16px] md:text-[24px] leading-[24px] md:leading-[36px] text-black"
+                    className="font-poppins text-[16px] md:text-[24px] leading-[24px] md:leading-[36px] text-black"
                   />
                 )}
               </div>
@@ -110,13 +110,13 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
                   <div className="mx-auto max-w-full w-full text-center">
                     <div className="text-left">
                       {data.formHeading && (
-                        <h3 className="font-playfair text-[22px] md:text-[28px] leading-tight md:leading-[36.4px] text-white pb-[10px]">
+                        <h3 className="font-poppins font-bold text-[22px] md:text-[28px] leading-tight md:leading-[36.4px] text-white pb-[10px]">
                           {data.formHeading}
                         </h3>
                       )}
                       {data.availabilityText && (
                         <div>
-                          <p className="font-outfit text-[16px] md:text-[20px] leading-[24px] md:leading-[28px] text-white font-light">
+                          <p className="font-poppins text-[16px] md:text-[20px] leading-[24px] md:leading-[28px] text-white font-light">
                             {data.availabilityText}
                           </p>
                         </div>

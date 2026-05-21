@@ -25,7 +25,7 @@ export default function ProcessSection({ content, headingTags }: ProcessSectionP
             <DynamicHeading
               tag={headingTags?.["process.sectionLabel"]}
               defaultTag="h2"
-              className="font-outfit text-[24px] leading-[36px]"
+              className="font-poppins text-[24px] leading-[36px]"
               style={{ color: "rgb(186, 234, 160)" }}
             >
               {data.sectionLabel}
@@ -34,12 +34,12 @@ export default function ProcessSection({ content, headingTags }: ProcessSectionP
         )}
         <div className="text-center">
           {data.headingLine1 && (
-            <p className="font-playfair text-[28px] md:text-[40px] lg:text-[54px] leading-tight md:leading-[48.6px] text-white pb-[10px]">
+            <p className="font-poppins font-bold text-[28px] md:text-[40px] lg:text-[54px] leading-tight md:leading-[48.6px] text-white pb-[10px]">
               {data.headingLine1}
             </p>
           )}
           {data.headingLine2 && (
-            <p className="font-playfair text-[28px] md:text-[40px] lg:text-[54px] leading-tight md:leading-[48.6px] text-white pb-[10px]">
+            <p className="font-poppins font-bold text-[28px] md:text-[40px] lg:text-[54px] leading-tight md:leading-[48.6px] text-white pb-[10px]">
               {data.headingLine2}
             </p>
           )}
@@ -59,7 +59,7 @@ export default function ProcessSection({ content, headingTags }: ProcessSectionP
             {step.number && (
               <div className="mb-[20px]">
                 <p
-                  className="font-outfit text-[24px] leading-[36px]"
+                  className="font-poppins text-[24px] leading-[36px]"
                   style={{ color: "rgb(186, 234, 160)" }}
                 >
                   {step.number}
@@ -70,14 +70,14 @@ export default function ProcessSection({ content, headingTags }: ProcessSectionP
             {/* Step Content */}
             <div className="mb-[30px]">
               {step.title && (
-                <h3 className="font-outfit text-[32px] leading-[32px] text-white pb-[10px]">
+                <h3 className="font-poppins font-bold text-[32px] leading-[32px] text-white pb-[10px]">
                   {step.title}
                 </h3>
               )}
               {step.description && (
                 <RichText
                   html={step.description}
-                  className="font-outfit text-[20px] leading-[30px] text-white"
+                  className="font-poppins text-[20px] leading-[30px] text-white"
                 />
               )}
             </div>

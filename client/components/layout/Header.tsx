@@ -84,7 +84,7 @@ export default function Header() {
             {/* Contact CTA Button - Desktop */}
             <div className="hidden lg:block w-[280px]">
               {ctaText ? (
-                <Button asChild className="bg-white text-black font-outfit text-[22px] py-[25px] px-[15.4px] h-auto w-[200px] hover:bg-brand-accent hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+                <Button asChild className="bg-white text-black font-poppins text-[22px] py-[25px] px-[15.4px] h-auto w-[200px] hover:bg-brand-accent hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
                   <Link to={ctaUrl}>
                     {ctaText}
                     <ArrowRight className="w-5 h-5" />
@@ -114,7 +114,7 @@ export default function Header() {
                     );
                   })}
                   {ctaText ? (
-                    <Button asChild className="bg-white text-black font-outfit text-[22px] py-[25px] w-full hover:bg-brand-accent hover:text-white transition-all duration-300 flex items-center justify-center gap-2 mt-4">
+                    <Button asChild className="bg-white text-black font-poppins text-[22px] py-[25px] w-full hover:bg-brand-accent hover:text-white transition-all duration-300 flex items-center justify-center gap-2 mt-4">
                       <Link to={ctaUrl}>
                         {ctaText}
                         <ArrowRight className="w-5 h-5" />
@@ -155,7 +155,7 @@ function MobileNavItem({
         to={item.href}
         target={item.openInNewTab ? "_blank" : undefined}
         rel={item.openInNewTab ? "noopener noreferrer" : undefined}
-        className="font-outfit text-[20px] text-white py-[10px] px-[5%] border-b border-black/5 hover:opacity-80 transition-opacity"
+        className="font-poppins text-[20px] text-white py-[10px] px-[5%] border-b border-black/5 hover:opacity-80 transition-opacity"
       >
         {item.label}
       </Link>
@@ -167,7 +167,7 @@ function MobileNavItem({
       <div className="flex items-center border-b border-black/5">
         <Link
           to={item.href}
-          className="font-outfit text-[20px] text-white py-[10px] px-[5%] hover:opacity-80 transition-opacity flex-1"
+          className="font-poppins text-[20px] text-white py-[10px] px-[5%] hover:opacity-80 transition-opacity flex-1"
         >
           {item.label}
         </Link>
@@ -189,7 +189,7 @@ function MobileNavItem({
               to={child.href}
               target={child.openInNewTab ? "_blank" : undefined}
               rel={child.openInNewTab ? "noopener noreferrer" : undefined}
-              className="block font-outfit text-[17px] text-white/80 py-[8px] hover:text-white transition-colors"
+              className="block font-poppins text-[17px] text-white/80 py-[8px] hover:text-white transition-colors"
             >
               {child.label}
             </Link>
@@ -201,7 +201,7 @@ function MobileNavItem({
                     to={grandchild.href}
                     target={grandchild.openInNewTab ? "_blank" : undefined}
                     rel={grandchild.openInNewTab ? "noopener noreferrer" : undefined}
-                    className="block font-outfit text-[15px] text-white/65 py-[6px] hover:text-white transition-colors"
+                    className="block font-poppins text-[15px] text-white/65 py-[6px] hover:text-white transition-colors"
                   >
                     {grandchild.label}
                   </Link>

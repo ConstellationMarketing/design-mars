@@ -143,7 +143,7 @@ function FormInner({
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-brand-accent-dark text-brand-accent border-brand-accent font-outfit text-[22px] h-[50px] hover:bg-brand-accent hover:text-black transition-all duration-300 rounded-none"
+          className="w-full bg-brand-accent-dark text-brand-accent border-brand-accent font-poppins text-[22px] h-[50px] hover:bg-brand-accent hover:text-black transition-all duration-300 rounded-none"
         >
           {isSubmitting ? "SUBMITTING..." : form.submit_button_text}
         </Button>
@@ -221,13 +221,13 @@ function FormField({ field }: { field: FormFieldDef }) {
     case "checkbox":
       return (
         <fieldset>
-          <legend className="font-outfit text-[16px] text-[#6b6b6b] mb-2">
+          <legend className="font-poppins text-[16px] text-[#6b6b6b] mb-2">
             {field.label}
           </legend>
           {(field.options ?? []).map((opt) => (
             <label
               key={opt}
-              className="flex items-center gap-2 font-outfit text-[15px] text-[#6b6b6b] mb-1 cursor-pointer"
+              className="flex items-center gap-2 font-poppins text-[15px] text-[#6b6b6b] mb-1 cursor-pointer"
             >
               <input
                 type="checkbox"
@@ -244,13 +244,13 @@ function FormField({ field }: { field: FormFieldDef }) {
     case "radio":
       return (
         <fieldset>
-          <legend className="font-outfit text-[16px] text-[#6b6b6b] mb-2">
+          <legend className="font-poppins text-[16px] text-[#6b6b6b] mb-2">
             {field.label}
           </legend>
           {(field.options ?? []).map((opt) => (
             <label
               key={opt}
-              className="flex items-center gap-2 font-outfit text-[15px] text-[#6b6b6b] mb-1 cursor-pointer"
+              className="flex items-center gap-2 font-poppins text-[15px] text-[#6b6b6b] mb-1 cursor-pointer"
             >
               <input
                 type="radio"
@@ -268,7 +268,7 @@ function FormField({ field }: { field: FormFieldDef }) {
     case "file":
       return (
         <div>
-          <label className="block font-outfit text-[16px] text-[#6b6b6b] mb-1">
+          <label className="block font-poppins text-[16px] text-[#6b6b6b] mb-1">
             {field.label}
           </label>
           <input
@@ -276,7 +276,7 @@ function FormField({ field }: { field: FormFieldDef }) {
             name={field.name}
             required={field.required}
             accept={field.accept}
-            className="w-full text-[#6b6b6b] text-[16px] file:mr-4 file:py-2 file:px-4 file:border file:border-[#c4c4c4] file:bg-[#f7f7f7] file:text-[#6b6b6b] file:text-sm file:font-outfit file:rounded-none"
+            className="w-full text-[#6b6b6b] text-[16px] file:mr-4 file:py-2 file:px-4 file:border file:border-[#c4c4c4] file:bg-[#f7f7f7] file:text-[#6b6b6b] file:text-sm file:font-poppins file:rounded-none"
           />
         </div>
       );
@@ -284,7 +284,7 @@ function FormField({ field }: { field: FormFieldDef }) {
     case "html":
       return (
         <div
-          className="font-outfit text-[15px] text-[#6b6b6b] [&_a]:text-blue-600 [&_a]:underline"
+          className="font-poppins text-[15px] text-[#6b6b6b] [&_a]:text-blue-600 [&_a]:underline"
           dangerouslySetInnerHTML={{ __html: field.htmlContent ?? "" }}
         />
       );

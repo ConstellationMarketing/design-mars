@@ -32,7 +32,7 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
         <div className="aspect-[16/9] bg-gradient-to-br from-[#183658] to-[#0f2742] flex items-center justify-center">
           <span
             className="text-white/30 text-6xl font-light"
-            style={{ fontFamily: "Playfair Display, serif" }}
+            style={{ fontFamily: "Poppins, sans-serif" }}
           >
             {post.title.charAt(0)}
           </span>

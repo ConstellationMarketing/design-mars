@@ -33,7 +33,7 @@ export default function AboutSection({ content, headingTag }: AboutSectionProps)
               <DynamicHeading
                 tag={headingTag}
                 defaultTag="h2"
-                className="text-[rgb(107,141,12)] font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] mb-[10px]"
+                className="text-brand-accent font-poppins text-[18px] md:text-[24px] leading-tight md:leading-[36px] mb-[10px]"
               >
                 {data.sectionLabel}
               </DynamicHeading>
@@ -42,14 +42,14 @@ export default function AboutSection({ content, headingTag }: AboutSectionProps)
             {/* Subtitle */}
             <div className="mb-[20px] md:mb-[9.27%]">
               {data.heading && (
-                <p className="font-playfair text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black pb-[10px]">
+                <p className="font-poppins font-bold text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black pb-[10px]">
                   {data.heading}
                 </p>
               )}
               {data.description && (
                 <RichText
                   html={data.description}
-                  className="font-outfit text-[16px] md:text-[20px] leading-[24px] md:leading-[30px] text-black"
+                  className="font-poppins text-[16px] md:text-[20px] leading-[24px] md:leading-[30px] text-black"
                 />
               )}
             </div>
@@ -65,10 +65,10 @@ export default function AboutSection({ content, headingTag }: AboutSectionProps)
                     />
                   </div>
                   <div className="flex-1">
-                    <p className="font-outfit text-[16px] md:text-[18px] leading-tight text-black pb-[10px] group-hover:text-white transition-colors duration-300">
+                    <p className="font-poppins text-[16px] md:text-[18px] leading-tight text-black pb-[10px] group-hover:text-white transition-colors duration-300">
                       {phoneLabel}
                     </p>
-                    <p className="font-outfit text-[28px] md:text-[40px] text-black leading-none group-hover:text-white transition-colors duration-300">
+                    <p className="font-poppins text-[28px] md:text-[40px] text-black leading-none group-hover:text-white transition-colors duration-300">
                       {phoneDisplay}
                     </p>
                   </div>
@@ -87,10 +87,10 @@ export default function AboutSection({ content, headingTag }: AboutSectionProps)
                     />
                   </div>
                   <div className="flex-1">
-                    <p className="font-outfit text-[16px] md:text-[18px] leading-tight text-black pb-[10px] group-hover:text-white transition-colors duration-300">
+                    <p className="font-poppins text-[16px] md:text-[18px] leading-tight text-black pb-[10px] group-hover:text-white transition-colors duration-300">
                       {data.contactLabel}
                     </p>
-                    <p className="font-outfit text-[18px] md:text-[24px] text-black leading-none group-hover:text-white transition-colors duration-300">
+                    <p className="font-poppins text-[18px] md:text-[24px] text-black leading-none group-hover:text-white transition-colors duration-300">
                       {data.contactText}
                     </p>
                   </div>
@@ -119,12 +119,12 @@ export default function AboutSection({ content, headingTag }: AboutSectionProps)
               {features.map((feature, index) => (
                 <div key={index}>
                   <div className="mb-[20px] md:mb-[30px]">
-                    <h3 className="font-outfit text-[22px] md:text-[28px] leading-tight md:leading-[28px] text-black pb-[10px]">
+                    <h3 className="font-poppins font-bold text-[22px] md:text-[28px] leading-tight md:leading-[28px] text-black pb-[10px]">
                       {feature.number}. {feature.title}
                     </h3>
                     <RichText
                       html={feature.description}
-                      className="font-outfit text-[16px] md:text-[20px] leading-[24px] md:leading-[30px] text-black"
+                      className="font-poppins text-[16px] md:text-[20px] leading-[24px] md:leading-[30px] text-black"
                     />
                   </div>
                   {index < features.length - 1 && (
@@ -149,7 +149,7 @@ export default function AboutSection({ content, headingTag }: AboutSectionProps)
                   <h4 className="font-[Crimson_Pro,Georgia,Times_New_Roman,serif] text-[40px] md:text-[60px] leading-tight md:leading-[60px] text-black pb-[10px]">
                     {stat.value}
                   </h4>
-                  <div className="font-outfit text-[16px] md:text-[20px] font-light text-black text-center">
+                  <div className="font-poppins text-[16px] md:text-[20px] font-light text-black text-center">
                     {stat.label}
                   </div>
                 </div>

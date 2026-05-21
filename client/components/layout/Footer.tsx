@@ -123,9 +123,9 @@ const enabledSocialLinks = (settings.socialLinks ?? []).filter((s) => s.enabled)
 
         {/* Resources Column */}
         <div className="lg:w-[20%] lg:mr-[3%]">
-          <div className="font-outfit text-[18px] md:text-[24px] font-light leading-tight md:leading-[36px] text-white">
+          <div className="font-poppins text-[18px] md:text-[24px] font-light leading-tight md:leading-[36px] text-white">
             {resourcesHeading ? (
-              <h3 className="font-outfit text-[28px] md:text-[36px] leading-tight md:leading-[36px] text-white pb-[10px]">
+              <h3 className="font-poppins text-[28px] md:text-[36px] leading-tight md:leading-[36px] text-white pb-[10px]">
                 {resourcesHeading}
               </h3>
             ) : null}
@@ -149,9 +149,9 @@ const enabledSocialLinks = (settings.socialLinks ?? []).filter((s) => s.enabled)
 
         {/* Practice Areas Column */}
         <div className="lg:w-[20%] lg:mr-[3%]">
-          <div className="font-outfit text-[18px] md:text-[24px] font-light leading-tight md:leading-[36px] text-white">
+          <div className="font-poppins text-[18px] md:text-[24px] font-light leading-tight md:leading-[36px] text-white">
             {practiceAreasHeading ? (
-              <h3 className="font-outfit text-[28px] md:text-[36px] leading-tight md:leading-[36px] text-white pb-[10px]">
+              <h3 className="font-poppins text-[28px] md:text-[36px] leading-tight md:leading-[36px] text-white pb-[10px]">
                 {practiceAreasHeading}
               </h3>
             ) : null}
@@ -197,7 +197,7 @@ const enabledSocialLinks = (settings.socialLinks ?? []).filter((s) => s.enabled)
       {/* Copyright Section */}
       <div className="border-t border-[#838383] max-w-[2560px] mx-auto w-full py-[10px] px-[30px]">
         <div className="w-full mx-auto my-auto">
-          <div className="font-outfit text-[18px] font-light leading-[27px] text-white text-center">
+          <div className="font-poppins text-[18px] font-light leading-[27px] text-white text-center">
             {copyrightText ? <p>{copyrightText}</p> : null}
           </div>
         </div>

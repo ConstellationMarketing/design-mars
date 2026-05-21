@@ -32,8 +32,8 @@ export default function AwardsSection({ content, headingTag }: AwardsSectionProp
               <DynamicHeading
                 tag={headingTag}
                 defaultTag="h2"
-                className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px]"
-                style={{ color: "#6b8d0c" }}
+                className="font-poppins text-[18px] md:text-[24px] leading-tight md:leading-[36px]"
+                style={{ color: "#cfab55" }}
               >
                 {data.sectionLabel}
               </DynamicHeading>
@@ -41,14 +41,14 @@ export default function AwardsSection({ content, headingTag }: AwardsSectionProp
           )}
           <div>
             {data.heading && (
-              <p className="font-playfair text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black pb-[10px]">
+              <p className="font-poppins font-bold text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black pb-[10px]">
                 {data.heading}
               </p>
             )}
             {data.description && (
               <RichText
                 html={data.description}
-                className="font-outfit text-[20px] leading-[30px] text-black"
+                className="font-poppins text-[20px] leading-[30px] text-black"
               />
             )}
           </div>
