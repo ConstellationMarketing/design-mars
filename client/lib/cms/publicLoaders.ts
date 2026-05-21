@@ -512,7 +512,7 @@ export function mergeHomeContentWithDefaults(cmsContent: Partial<HomePageContent
     },
     practiceAreasIntro: {
       ...defaults.practiceAreasIntro,
-      ...cmsContent.practiceAreasIntro,
+      ...(cmsContent.practiceAreasIntro || {}),
     },
     practiceAreas: cmsContent.practiceAreas?.length ? cmsContent.practiceAreas : defaults.practiceAreas,
     awards: {

@@ -4,7 +4,6 @@ import ContactForm from "@site/components/home/ContactForm";
 import StatsSection from "@site/components/home/StatsSection";
 import HomeAboutSection from "@site/components/home/HomeAboutSection";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
-import PracticeAreasGrid from "@site/components/home/PracticeAreasGrid";
 import AwardsSection from "@site/components/home/AwardsSection";
 import TestimonialsSection from "@site/components/home/TestimonialsSection";
 import ProcessSection from "@site/components/home/ProcessSection";
