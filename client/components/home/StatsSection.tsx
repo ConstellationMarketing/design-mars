@@ -10,12 +10,12 @@ export default function StatsSection({ content }: StatsSectionProps) {
   }
 
   return (
-    <div className="w-full bg-brand-accent pt-0 md:pt-0 pb-12 md:pb-16 relative">
+    <div className="w-full bg-brand-accent pt-20 md:pt-24 pb-12 md:pb-16 relative">
       <div className="max-w-[2560px] mx-auto w-[95%]">
         {/* Total wins card - overlapping hero with gold border */}
         {content.totalAmount && (
-          <div className="flex justify-center -mt-32 md:-mt-40 mb-12 md:mb-16 relative z-10">
-            <div className="bg-black border-2 border-brand-accent px-8 md:px-12 py-6 md:py-8 text-center max-w-md">
+          <div className="flex justify-center -mt-40 md:-mt-48 mb-8 md:mb-12 relative z-10">
+            <div className="bg-black border-3 border-brand-accent px-8 md:px-12 py-6 md:py-8 text-center max-w-md">
               <div className="font-poppins text-[32px] md:text-[48px] font-bold text-white leading-tight">
                 {content.totalAmount}
               </div>
