@@ -73,18 +73,28 @@ export default function Index() {
               </p>
             )}
 
-            {/* CTA Button with gold background, black border, and gold top accent */}
-            <button
-              onClick={() => window.location.href = '#contact-section'}
-              className="font-poppins text-[16px] md:text-[17px] font-normal uppercase text-black bg-brand-accent px-10 md:px-14 py-3 md:py-4 hover:bg-opacity-90 transition-all duration-300 mt-5 md:mt-6 flex items-center justify-center gap-3 relative"
-              style={{
-                border: '2px solid #000',
-                boxShadow: 'inset 0 3px 0 0 #cfab55, -2px -2px 0 0 #cfab55',
-              }}
-            >
-              {heroContent.buttonText || "Request Free Consultation"}
-              <span className="text-xl">›</span>
-            </button>
+            {/* CTA Button wrapper with shadow above */}
+            <div className="relative mt-5 md:mt-6">
+              {/* Gold shadow box above button */}
+              <div
+                className="absolute left-1/2 transform -translate-x-1/2 -top-3 w-[280px] md:w-[350px] h-1"
+                style={{
+                  backgroundColor: '#cfab55',
+                  boxShadow: '0 0 0 3px #000',
+                }}
+              />
+              {/* CTA Button with gold background and centered black border */}
+              <button
+                onClick={() => window.location.href = '#contact-section'}
+                className="font-poppins text-[16px] md:text-[17px] font-normal uppercase text-black bg-brand-accent px-10 md:px-14 py-3 md:py-4 hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center gap-3 w-full md:w-auto"
+                style={{
+                  border: '3px solid #000',
+                }}
+              >
+                {heroContent.buttonText || "Request Free Consultation"}
+                <span className="text-xl">›</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
