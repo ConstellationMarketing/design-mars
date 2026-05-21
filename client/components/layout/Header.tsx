@@ -41,7 +41,7 @@ export default function Header() {
                     height={50}
                   />
                 ) : (
-                  <span className="font-outfit text-white text-[22px] leading-none">
+                  <span className="font-poppins text-black text-[22px] leading-none font-bold">
                     {settings.siteName || " "}
                   </span>
                 )}
@@ -70,7 +70,7 @@ export default function Header() {
                               ? "noopener noreferrer"
                               : undefined
                           }
-                          className="font-outfit text-[20px] text-white py-[31px] mr-[20px] whitespace-nowrap hover:opacity-80 transition-opacity duration-400"
+                          className="font-poppins text-[20px] text-black py-[31px] mr-[20px] whitespace-nowrap hover:opacity-80 transition-opacity duration-400"
                         >
                           {item.label}
                         </Link>

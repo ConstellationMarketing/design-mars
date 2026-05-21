@@ -60,7 +60,7 @@ const enabledSocialLinks = (settings.socialLinks ?? []).filter((s) => s.enabled)
           <div>
 {footerTaglineHtml ? (
   <div
-    className="font-playfair text-[clamp(2rem,6vw,59.136px)] leading-tight md:leading-[70.9632px] font-light text-white"
+    className="font-poppins text-[clamp(2rem,6vw,59.136px)] leading-tight md:leading-[70.9632px] font-bold text-black"
     dangerouslySetInnerHTML={{ __html: footerTaglineHtml }}
   />
 ) : null}
@@ -84,11 +84,11 @@ const enabledSocialLinks = (settings.socialLinks ?? []).filter((s) => s.enabled)
                   </span>
                 </div>
                 <div className="table-cell align-top pl-[15px]">
-                  <p className="font-outfit text-[16px] md:text-[18px] leading-tight text-black pb-[10px] group-hover:text-white transition-colors duration-300">
+                  <p className="font-poppins text-[16px] md:text-[18px] leading-tight text-black pb-[10px] group-hover:text-white transition-colors duration-300">
                     {phoneLabel}
                   </p>
                   <div>
-                    <p className="font-outfit text-[28px] md:text-[40px] leading-tight md:leading-[44px] text-black group-hover:text-white transition-colors duration-300 whitespace-nowrap">
+                    <p className="font-poppins text-[28px] md:text-[40px] leading-tight md:leading-[44px] text-black group-hover:text-white transition-colors duration-300 whitespace-nowrap">
                       {phoneDisplay}
                     </p>
                   </div>
@@ -113,7 +113,7 @@ const enabledSocialLinks = (settings.socialLinks ?? []).filter((s) => s.enabled)
                 height={33}
               />
             ) : (
-              <span className="font-outfit text-white text-[24px] leading-none">
+              <span className="font-poppins text-black text-[24px] leading-none font-bold">
                 {settings.siteName || " "}
               </span>
             )}

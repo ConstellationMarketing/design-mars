@@ -85,12 +85,12 @@ export default function ContactPage() {
             <DynamicHeading
               tag={content.headingTags?.["hero.sectionLabel"]}
               defaultTag="h1"
-              className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-brand-accent mb-[10px]"
+              className="font-poppins text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-brand-accent mb-[10px]"
             >
               {content.hero.sectionLabel}
             </DynamicHeading>
             {/* Tagline - styled as large text but not H1 */}
-            <p className="font-playfair text-[clamp(2.5rem,7vw,68.8px)] font-light leading-[1.2] text-white mb-[20px] md:mb-[30px]">
+            <p className="font-poppins text-[clamp(2.5rem,7vw,68.8px)] font-bold leading-[1.2] text-black mb-[20px] md:mb-[30px]">
               <span
                 dangerouslySetInnerHTML={{
                   __html: content.hero.tagline.replace(
@@ -102,7 +102,7 @@ export default function ContactPage() {
             </p>
             <RichText
               html={content.hero.description}
-              className="font-outfit text-[16px] md:text-[20px] leading-[24px] md:leading-[30px] text-white/90"
+              className="font-poppins text-[16px] md:text-[20px] leading-[24px] md:leading-[30px] text-black/80"
             />
           </div>
         </div>
@@ -127,10 +127,10 @@ export default function ContactPage() {
                       />
                     </div>
                   </div>
-                  <h3 className="font-playfair text-[24px] md:text-[28px] leading-tight text-brand-accent mb-[15px]">
+                  <h3 className="font-poppins text-[24px] md:text-[28px] leading-tight text-brand-accent mb-[15px] font-bold">
                     {method.title}
                   </h3>
-                  <p className="font-outfit text-[18px] md:text-[20px] text-white mb-[8px]">
+                  <p className="font-poppins text-[18px] md:text-[20px] text-black mb-[8px]">
                     {method.title === "Phone" ? (
                       <a href={`tel:${method.detail.replace(/\D/g, "")}`}>
                         {method.detail}
@@ -139,7 +139,7 @@ export default function ContactPage() {
                       method.detail
                     )}
                   </p>
-                  <p className="font-outfit text-[14px] md:text-[16px] text-white/70">
+                  <p className="font-poppins text-[14px] md:text-[16px] text-black/70">
                     {method.subdDetail}
                   </p>
                 </div>
@@ -156,13 +156,13 @@ export default function ContactPage() {
             {/* Left Side - Contact Form */}
             <div>
               <div className="mb-[20px] md:mb-[30px]">
-                <h2 className="font-playfair text-[32px] md:text-[40px] leading-tight text-white pb-[10px]">
+                <h2 className="font-poppins text-[32px] md:text-[40px] leading-tight text-black pb-[10px] font-bold">
                   {content.form.heading}
                 </h2>
                 {content.form.subtext && (
                   <RichText
                     html={content.form.subtext}
-                    className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-white/80"
+                    className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black/80"
                   />
                 )}
               </div>
@@ -180,7 +180,7 @@ export default function ContactPage() {
                       strokeWidth={1.5}
                     />
                   </div>
-                  <h3 className="font-playfair text-[24px] md:text-[28px] leading-tight text-white">
+                  <h3 className="font-poppins text-[24px] md:text-[28px] leading-tight text-black font-bold">
                     {content.officeHours.heading}
                   </h3>
                 </div>
@@ -190,10 +190,10 @@ export default function ContactPage() {
                       key={index}
                       className="flex justify-between items-center pb-[15px] border-b border-brand-border/50 last:border-0 last:pb-0"
                     >
-                      <span className="font-outfit text-[16px] md:text-[18px] text-white/80">
+                      <span className="font-poppins text-[16px] md:text-[18px] text-black/80">
                         {item.day}
                       </span>
-                      <span className="font-outfit text-[16px] md:text-[18px] text-brand-accent font-medium">
+                      <span className="font-poppins text-[16px] md:text-[18px] text-brand-accent font-medium">
                         {item.hours}
                       </span>
                     </div>
@@ -203,7 +203,7 @@ export default function ContactPage() {
                   <div className="mt-[25px] pt-[25px] border-t border-brand-border/50">
                     <RichText
                       html={content.officeHours.note}
-                      className="font-outfit text-[14px] md:text-[16px] text-white/70 leading-[22px] md:leading-[24px]"
+                      className="font-poppins text-[14px] md:text-[16px] text-black/70 leading-[22px] md:leading-[24px]"
                     />
                   </div>
                 )}
@@ -238,16 +238,16 @@ export default function ContactPage() {
               <DynamicHeading
                 tag={content.headingTags?.["process.sectionLabel"]}
                 defaultTag="h2"
-                className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-[rgb(107,141,12)]"
+                className="font-poppins text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-brand-accent"
               >
                 {content.process.sectionLabel}
               </DynamicHeading>
             </div>
-            <p className="font-playfair text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black">
+            <p className="font-poppins text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black font-bold">
               {content.process.heading}
             </p>
             {content.process.subtitle && (
-              <p className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black/80 mt-[15px]">
+              <p className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black/80 mt-[15px]">
                 {content.process.subtitle}
               </p>
             )}
@@ -258,17 +258,17 @@ export default function ContactPage() {
               <div key={index} className="text-center">
                 <div className="mb-[20px] flex justify-center">
                   <div className="w-[60px] h-[60px] md:w-[70px] md:h-[70px] bg-brand-accent flex items-center justify-center">
-                    <span className="font-playfair text-[32px] md:text-[40px] text-black font-bold">
+                    <span className="font-poppins text-[32px] md:text-[40px] text-black font-bold">
                       {item.number}
                     </span>
                   </div>
                 </div>
-                <h3 className="font-playfair text-[22px] md:text-[26px] leading-tight text-black pb-[12px]">
+                <h3 className="font-poppins text-[22px] md:text-[26px] leading-tight text-black pb-[12px] font-bold">
                   {item.title}
                 </h3>
                 <RichText
                   html={item.description}
-                  className="font-outfit text-[14px] md:text-[16px] leading-[22px] md:leading-[24px] text-black/80"
+                  className="font-poppins text-[14px] md:text-[16px] leading-[22px] md:leading-[24px] text-black/80"
                 />
               </div>
             ))}
@@ -280,13 +280,13 @@ export default function ContactPage() {
       <div className="bg-brand-dark py-[40px] md:py-[60px]">
         <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%]">
           <div className="text-center mb-[30px] md:mb-[40px]">
-            <h2 className="font-playfair text-[32px] md:text-[48px] leading-tight text-white pb-[10px]">
+            <h2 className="font-poppins text-[32px] md:text-[48px] leading-tight text-black pb-[10px] font-bold">
               {content.visitOffice.heading}
             </h2>
             {content.visitOffice.subtext && (
               <RichText
                 html={content.visitOffice.subtext}
-                className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-white/80"
+                className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black/80"
               />
             )}
           </div>

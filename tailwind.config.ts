@@ -14,21 +14,15 @@ export default {
     },
     extend: {
       fontFamily: {
-        playfair: [
-          '"Playfair Display"',
-          "Georgia",
-          '"Times New Roman"',
-          "serif",
-        ],
-        outfit: ["Outfit", "Helvetica", "Arial", "Lucida", "sans-serif"],
+        poppins: ["Poppins", "Helvetica", "Arial", "sans-serif"],
       },
       colors: {
-        // TEMPLATE: Update brand colors for each new project
-        "brand-dark": "rgb(6, 29, 27)",
-        "brand-card": "rgb(20, 41, 40)",
-        "brand-border": "rgb(97, 111, 111)",
-        "brand-accent": "rgb(186, 234, 160)",
-        "brand-accent-dark": "rgb(45, 70, 58)",
+        // Constellation Law brand colors
+        "brand-dark": "rgb(255, 255, 255)",
+        "brand-card": "rgb(255, 255, 255)",
+        "brand-border": "rgb(230, 230, 230)",
+        "brand-accent": "rgb(207, 171, 85)",
+        "brand-accent-dark": "rgb(185, 150, 60)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
