@@ -12,15 +12,19 @@ export default function StatsSection({ content }: StatsSectionProps) {
   return (
     <div className="w-full bg-brand-accent pt-20 md:pt-24 pb-12 md:pb-16 relative">
       <div className="max-w-[2560px] mx-auto w-[95%]">
-        {/* Total wins card - overlapping hero with gold border */}
+        {/* Total wins card - overlapping hero with double border effect */}
         {content.totalAmount && (
           <div className="flex justify-center -mt-40 md:-mt-48 mb-8 md:mb-12 relative z-10">
-            <div className="bg-black border-3 border-brand-accent px-8 md:px-12 py-6 md:py-8 text-center max-w-md">
-              <div className="font-poppins text-[32px] md:text-[48px] font-bold text-white leading-tight">
-                {content.totalAmount}
-              </div>
-              <div className="font-poppins text-[12px] md:text-[14px] font-semibold text-white tracking-widest uppercase mt-3 md:mt-4">
-                {content.totalLabel}
+            {/* Outer gold border */}
+            <div className="border-4 border-brand-accent p-4 md:p-6 bg-black">
+              {/* Inner white border with black bg */}
+              <div className="border-2 border-white bg-black px-8 md:px-12 py-6 md:py-8 text-center">
+                <div className="font-poppins text-[32px] md:text-[48px] font-bold text-white leading-tight">
+                  {content.totalAmount}
+                </div>
+                <div className="font-poppins text-[12px] md:text-[14px] font-semibold text-white tracking-widest uppercase mt-3 md:mt-4">
+                  {content.totalLabel}
+                </div>
               </div>
             </div>
           </div>
