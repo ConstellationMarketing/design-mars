@@ -43,8 +43,15 @@ export default function Index() {
       />
 
       {/* Hero and Contact Form Section */}
-      <div className="max-w-[2560px] mx-auto w-[95%] py-[27px] my-[20px] md:my-[40px]">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-[3%]">
+      <div
+        className="max-w-[2560px] mx-auto w-[95%] py-[27px] my-[20px] md:my-[40px] relative bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(https://atzgmwcxbdnswerpqzzi.supabase.co/storage/v1/object/public/media/library/1779351750724-20d0za.webp)',
+        }}
+      >
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-white/70"></div>
+        <div className="relative flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-[3%] z-10">
           {/* Left Side: Headline and Call Box */}
           <div className="lg:w-[65.667%]">
             <div className="mb-[30px] md:mb-[40px]">
