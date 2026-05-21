@@ -52,22 +52,24 @@ export default function Index() {
         {/* Content */}
         <div className="max-w-[1000px] w-[85%] md:w-[90%] relative z-10 text-center">
           <div className="flex flex-col items-center justify-center gap-5 md:gap-6">
-            {/* Main Headline - BIGGEST at 96px on desktop, bold, 3-line */}
-            <h1 className="font-poppins text-[48px] sm:text-[64px] md:text-[96px] font-bold leading-[1.0] text-white max-w-4xl">
-              {heroContent.headline}
-            </h1>
+            {/* H1 Title - BIGGEST at 96px on desktop, bold, white, 3-line */}
+            {heroContent.h1Title && (
+              <h1 className="font-poppins text-[48px] sm:text-[64px] md:text-[96px] font-bold leading-[1.0] text-white max-w-4xl">
+                {heroContent.h1Title}
+              </h1>
+            )}
 
-            {/* Subheading/description below headline - white uppercase */}
-            {heroContent.tagline && (
+            {/* Full Headline - white uppercase below h1 title */}
+            {heroContent.headline && (
               <p className="font-poppins text-[18px] md:text-[22px] font-normal tracking-wider uppercase text-white max-w-2xl">
-                {heroContent.tagline}
+                {heroContent.headline}
               </p>
             )}
 
-            {/* Gold text above button - from h1Title field */}
-            {heroContent.h1Title && (
+            {/* Highlighted Text - gold text above button */}
+            {heroContent.highlightedText && (
               <p className="font-poppins text-[14px] md:text-[15px] font-normal tracking-widest uppercase text-brand-accent mt-3 md:mt-4">
-                {heroContent.h1Title}
+                {heroContent.highlightedText}
               </p>
             )}
 
