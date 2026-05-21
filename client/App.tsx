@@ -10,28 +10,39 @@ import { getActivePreloadedState, initializeBrowserPreloadedState } from "./lib/
 // This is a non-critical warning that occurs with rapid layout changes and fixed positioning
 if (typeof window !== "undefined") {
   const originalError = console.error;
+  const originalWarn = console.warn;
+
+  const isResizeObserverError = (msg: any): boolean => {
+    const errorStr = String(msg || "");
+    return (
+      errorStr.includes("ResizeObserver loop completed") ||
+      errorStr.includes("undelivered notifications") ||
+      (msg?.message && String(msg.message).includes("ResizeObserver"))
+    );
+  };
+
   console.error = (...args: any[]) => {
-    const errorMsg = args[0]?.message || String(args[0]) || "";
-    if (
-      errorMsg.includes("ResizeObserver loop completed with undelivered notifications") ||
-      errorMsg.includes("ResizeObserver loop completed")
-    ) {
+    if (isResizeObserverError(args[0])) {
       return;
     }
     originalError.call(console, ...args);
   };
 
+  console.warn = (...args: any[]) => {
+    if (isResizeObserverError(args[0])) {
+      return;
+    }
+    originalWarn.call(console, ...args);
+  };
+
   window.addEventListener("error", (event: ErrorEvent) => {
-    const errorMsg = (event.error?.message || event.message || "").toString();
-    if (errorMsg.includes("ResizeObserver loop completed")) {
+    if (isResizeObserverError(event.error) || isResizeObserverError(event.message)) {
       event.preventDefault();
     }
   });
 
-  // Additional suppression for unhandled promise rejections related to ResizeObserver
-  window.addEventListener("unhandledrejection", (event) => {
-    const errorMsg = (event.reason?.message || String(event.reason) || "").toString();
-    if (errorMsg.includes("ResizeObserver loop completed")) {
+  window.addEventListener("unhandledrejection", (event: PromiseRejectionEvent) => {
+    if (isResizeObserverError(event.reason)) {
       event.preventDefault();
     }
   });
