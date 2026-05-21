@@ -178,7 +178,12 @@ export const defaultHomeContent: HomePageContent = {
   stats: {
     totalAmount: "$1,662,903,076",
     totalLabel: "WON FOR CLIENTS",
-    cases: [],
+    cases: [
+      { label: "BUGHUARE CAR ACCIDENT", amount: "$1 MILLION" },
+      { label: "CAR ACCIDENT", amount: "$1 MILLION" },
+      { label: "CAR ACCIDENT", amount: "$1 MILLION" },
+      { label: "TRUCK ACCIDENT", amount: "$3.8 MILLION" },
+    ],
   },
   about: {
     sectionLabel: "",
