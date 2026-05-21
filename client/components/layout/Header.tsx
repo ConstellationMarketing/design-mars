@@ -6,7 +6,11 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useSiteSettings, useGlobalPhone } from "@site/contexts/SiteSettingsContext";
 import NavDropdown from "./NavDropdown";
 
-export default function Header() {
+interface HeaderProps {
+  heroBackgroundImage?: string;
+}
+
+export default function Header({ heroBackgroundImage }: HeaderProps) {
   const { settings } = useSiteSettings();
   const { phoneNumber, phoneDisplay } = useGlobalPhone();
 
@@ -23,8 +27,8 @@ export default function Header() {
 
   return (
     <>
-      {/* Sticky header wrapper - transparent with semi-transparent bg for contrast */}
-      <div className="sticky top-0 z-50 bg-black/20">
+      {/* Sticky header wrapper - overlay only when background present */}
+      <div className="sticky top-0 z-50" style={{ backgroundColor: heroBackgroundImage ? 'rgba(0, 0, 0, 0.35)' : 'transparent' }}>
         <div className="max-w-[2560px] mx-auto w-[95%] h-[90px] flex items-center justify-between">
           {/* Logo - Left */}
           <div className="flex items-center">

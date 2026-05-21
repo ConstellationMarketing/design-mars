@@ -46,8 +46,8 @@ export default function Index() {
 
       {/* Hero Section - Full Width */}
       <div className="min-h-screen w-full flex items-center justify-center py-[60px] md:py-[100px] relative">
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        {/* Dark overlay for text readability - matches header overlay */}
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.35)' }}></div>
 
         {/* Content */}
         <div className="max-w-[2560px] w-[95%] relative z-10 text-center">
