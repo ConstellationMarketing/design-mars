@@ -8,44 +8,44 @@ import { getActivePreloadedState, initializeBrowserPreloadedState } from "./lib/
 
 // Suppress ResizeObserver loop error from Radix UI components
 // This is a non-critical warning that occurs with rapid layout changes and fixed positioning
+// Set up suppression immediately to catch errors early
 if (typeof window !== "undefined") {
+  // Helper to detect ResizeObserver errors
+  const isResizeObserverError = (msg: any): boolean => {
+    if (!msg) return false;
+    const msgStr = String(msg);
+    return msgStr.includes("ResizeObserver loop completed") || msgStr.includes("undelivered notifications");
+  };
+
+  // Intercept console methods
   const originalError = console.error;
   const originalWarn = console.warn;
 
-  const isResizeObserverError = (msg: any): boolean => {
-    const errorStr = String(msg || "");
-    return (
-      errorStr.includes("ResizeObserver loop completed") ||
-      errorStr.includes("undelivered notifications") ||
-      (msg?.message && String(msg.message).includes("ResizeObserver"))
-    );
-  };
-
   console.error = (...args: any[]) => {
-    if (isResizeObserverError(args[0])) {
-      return;
+    if (!isResizeObserverError(args[0])) {
+      originalError.call(console, ...args);
     }
-    originalError.call(console, ...args);
   };
 
   console.warn = (...args: any[]) => {
-    if (isResizeObserverError(args[0])) {
-      return;
+    if (!isResizeObserverError(args[0])) {
+      originalWarn.call(console, ...args);
     }
-    originalWarn.call(console, ...args);
   };
 
+  // Intercept uncaught errors
   window.addEventListener("error", (event: ErrorEvent) => {
-    if (isResizeObserverError(event.error) || isResizeObserverError(event.message)) {
+    if (isResizeObserverError(event.message) || isResizeObserverError(event.error?.toString())) {
       event.preventDefault();
     }
-  });
+  }, true); // Use capture phase to intercept early
 
+  // Intercept unhandled promise rejections
   window.addEventListener("unhandledrejection", (event: PromiseRejectionEvent) => {
-    if (isResizeObserverError(event.reason)) {
+    if (isResizeObserverError(event.reason?.toString())) {
       event.preventDefault();
     }
-  });
+  }, true); // Use capture phase to intercept early
 }
 
 const queryClient = new QueryClient();
