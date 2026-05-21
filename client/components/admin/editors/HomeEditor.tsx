@@ -16,7 +16,6 @@ export default function HomeEditor({ content, onChange }: HomeEditorProps) {
       <HeroSection content={content} update={update} />
       <PartnerLogosSection content={content} update={update} />
       <StatsSectionEditor content={content} update={update} />
-      <HomeAboutSectionEditor content={content} update={update} />
       <AboutSectionEditor content={content} update={update} />
       <PracticeAreasIntroSection content={content} update={update} />
       <PracticeAreasItemsSection content={content} update={update} />
@@ -150,12 +149,12 @@ function StatsSectionEditor({ content, update }: SectionProps) {
 }
 
 /* ------------------------------------------------------------------ */
-function HomeAboutSectionEditor({ content, update }: SectionProps) {
+function AboutSectionEditor({ content, update }: SectionProps) {
   const homeAbout = content.homeAbout;
   const set = (patch: Partial<typeof homeAbout>) => update("homeAbout", { ...homeAbout, ...patch });
 
   return (
-    <Section title="Home About Section (When It Matters Most)" defaultOpen={false}>
+    <Section title="About Section" defaultOpen={false}>
       <div className="grid gap-4">
         <div>
           <Label>Heading</Label>
@@ -219,13 +218,13 @@ function HomeAboutSectionEditor({ content, update }: SectionProps) {
 }
 
 /* ------------------------------------------------------------------ */
-function AboutSectionEditor({ content, update }: SectionProps) {
+function LegacyAboutSectionEditor({ content, update }: SectionProps) {
   const about = content.about;
   const set = (patch: Partial<typeof about>) => update("about", { ...about, ...patch });
   const ht = useHeadingTag(content, update);
 
   return (
-    <Section title="About Section" defaultOpen={false}>
+    <Section title="Unused - Legacy About Section" defaultOpen={false}>
       <div className="grid gap-4">
         <HeadingField
           label="Section Heading"
