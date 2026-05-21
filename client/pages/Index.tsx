@@ -73,23 +73,12 @@ export default function Index() {
               </p>
             )}
 
-            {/* CTA Button wrapper with shadow above */}
-            <div className="relative mt-5 md:mt-6">
-              {/* Gold shadow box above button */}
-              <div
-                className="absolute left-1/2 transform -translate-x-1/2 -top-3 w-[280px] md:w-[350px] h-1"
-                style={{
-                  backgroundColor: '#cfab55',
-                  boxShadow: '0 0 0 3px #000',
-                }}
-              />
-              {/* CTA Button with gold background and centered black border */}
+            {/* CTA Button wrapper - outer gold border with padding */}
+            <div className="inline-block border-[3px] border-brand-accent p-1.5 mt-5 md:mt-6 hover:border-black transition-all duration-300">
+              {/* CTA Button with gold background and black border */}
               <button
                 onClick={() => window.location.href = '#contact-section'}
-                className="font-poppins text-[16px] md:text-[17px] font-normal uppercase text-black bg-brand-accent px-10 md:px-14 py-3 md:py-4 hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center gap-3 w-full md:w-auto"
-                style={{
-                  border: '3px solid #000',
-                }}
+                className="font-poppins text-[16px] md:text-[17px] font-medium uppercase text-black bg-brand-accent px-8 md:px-10 py-3 md:py-4 border-2 border-black hover:bg-white hover:text-black transition-all duration-300 flex items-center justify-center gap-3"
               >
                 {heroContent.buttonText || "Request Free Consultation"}
                 <span className="text-xl">›</span>
