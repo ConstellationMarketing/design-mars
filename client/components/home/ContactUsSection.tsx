@@ -24,7 +24,7 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
     [settings.addressLine1, settings.addressLine2].filter(Boolean).join(", ");
 
   return (
-    <div className="bg-white pt-[30px] md:pt-[54px] relative">
+    <div className="bg-white pt-[30px] md:pt-[54px] relative" id="contact-section">
       <div className="max-w-[1600px] mx-auto w-[95%] md:w-[85%] lg:w-[80%] relative flex flex-col lg:flex-row gap-8 lg:gap-[3%]">
         {/* Left Side */}
         <div className="lg:w-[65.667%] relative">

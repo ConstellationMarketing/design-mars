@@ -23,8 +23,8 @@ export default function Header() {
 
   return (
     <>
-      {/* Sticky header wrapper - full width */}
-      <div className="sticky top-0 z-50 bg-brand-accent">
+      {/* Sticky header wrapper - transparent */}
+      <div className="sticky top-0 z-50 bg-transparent backdrop-blur-sm">
         <div className="max-w-[2560px] mx-auto w-[95%] h-[90px] flex items-center justify-between">
           {/* Logo - Left */}
           <div className="flex items-center">
@@ -81,9 +81,9 @@ export default function Header() {
           {/* Phone CTA - Right */}
           <div className="hidden lg:block flex-shrink-0">
             {phoneNumber && (
-              <a 
+              <a
                 href={`tel:${phoneNumber.replace(/\D/g, "")}`}
-                className="flex items-center gap-2 bg-black text-white px-6 py-3 rounded hover:bg-black/90 transition-colors duration-300 font-poppins font-semibold"
+                className="flex items-center gap-2 text-white px-4 py-2 font-poppins font-semibold hover:text-white/80 transition-colors duration-300"
               >
                 <Phone className="w-5 h-5" />
                 {phoneDisplay}

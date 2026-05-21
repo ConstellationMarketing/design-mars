@@ -42,82 +42,54 @@ export default function Index() {
         updatedTime={updatedAt}
       />
 
-      {/* Hero and Contact Form Section */}
+      {/* Hero Section - Full Width with Background */}
       <div
-        className="max-w-[2560px] mx-auto w-[95%] py-[27px] my-[20px] md:my-[40px] relative bg-cover bg-center bg-no-repeat"
+        className="min-h-screen w-full flex items-center justify-center py-[60px] md:py-[100px] relative bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url(https://atzgmwcxbdnswerpqzzi.supabase.co/storage/v1/object/public/media/library/1779351750724-20d0za.webp)',
         }}
       >
-        {/* Overlay for text readability */}
-        <div className="absolute inset-0 bg-white/70"></div>
-        <div className="relative flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-[3%] z-10">
-          {/* Left Side: Headline and Call Box */}
-          <div className="lg:w-[65.667%]">
-            <div className="mb-[30px] md:mb-[40px]">
-              <div className="relative">
-                <p className="font-poppins text-[clamp(2.5rem,7vw,68.8px)] font-bold leading-[1.2] text-black text-left">
-                  {heroContent.highlightedText && heroContent.headline.includes(heroContent.highlightedText)
-                    ? (() => {
-                        const idx = heroContent.headline.indexOf(heroContent.highlightedText);
-                        const before = heroContent.headline.slice(0, idx);
-                        const match = heroContent.highlightedText;
-                        const after = heroContent.headline.slice(idx + match.length);
-                        return (
-                          <>
-                            {before}
-                            <span className="text-brand-accent">{match}</span>
-                            {after}
-                          </>
-                        );
-                      })()
-                    : (
-                      <>
-                        <span className="text-brand-accent">{heroContent.highlightedText}</span>
-                        <br />
-                        {heroContent.headline}
-                      </>
-                    )
-                  }
-                </p>
-              </div>
-              {/* H1 Title - All caps, positioned between headline and phone button */}
-              {heroContent.h1Title && (
-                <h1 className="font-poppins text-[18px] md:text-[20px] font-medium tracking-wider uppercase text-black mt-[20px] md:mt-[30px]">
-                  {heroContent.h1Title}
-                </h1>
-              )}
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/40"></div>
+
+        {/* Content */}
+        <div className="max-w-[2560px] w-[95%] relative z-10 text-center">
+          <div className="flex flex-col items-center justify-center gap-8 md:gap-10">
+            {/* Headline */}
+            <div>
+              <h1 className="font-poppins text-[clamp(2.5rem,8vw,70px)] font-bold leading-[1.1] text-white mb-6">
+                {heroContent.headline && heroContent.highlightedText && heroContent.headline.includes(heroContent.highlightedText)
+                  ? (() => {
+                      const idx = heroContent.headline.indexOf(heroContent.highlightedText);
+                      const before = heroContent.headline.slice(0, idx);
+                      const match = heroContent.highlightedText;
+                      const after = heroContent.headline.slice(idx + match.length);
+                      return (
+                        <>
+                          {before}
+                          <span className="text-brand-accent">{match}</span>
+                          {after}
+                        </>
+                      );
+                    })()
+                  : heroContent.headline}
+              </h1>
             </div>
 
-            {/* Call Box */}
-            <a href={`tel:${phoneNumber.replace(/\D/g, "")}`}>
-              <div className="bg-brand-accent p-[8px] w-full max-w-[400px] cursor-pointer transition-all duration-300 hover:bg-brand-accent-dark group">
-                <div className="flex items-start gap-4">
-                  <div className="bg-white p-[15px] mt-1 flex items-center justify-center group-hover:bg-black transition-colors duration-300">
-                    <svg
-                      className="w-8 h-8 text-black group-hover:text-white transition-colors duration-300"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-poppins text-[16px] md:text-[18px] leading-tight text-black pb-[10px] font-normal group-hover:text-white transition-colors duration-300">
-                      {phoneLabel}
-                    </p>
-                    <p className="font-poppins text-[clamp(1.75rem,5vw,40px)] text-black leading-tight group-hover:text-white transition-colors duration-300">
-                      {phoneDisplay}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
+            {/* Subheading */}
+            {heroContent.h1Title && (
+              <p className="font-poppins text-[18px] md:text-[22px] font-medium tracking-wide uppercase text-white/90 max-w-2xl">
+                {heroContent.h1Title}
+              </p>
+            )}
 
-          {/* Right Side: Contact Form */}
-          <div className="lg:w-[31.3333%]">
-            <ContactForm />
+            {/* CTA Button */}
+            <button
+              onClick={() => window.location.href = '#contact-section'}
+              className="font-poppins text-[18px] md:text-[20px] font-bold uppercase text-black bg-brand-accent px-12 py-4 border-[5px] border-brand-accent hover:bg-brand-accent-dark hover:border-brand-accent-dark transition-all duration-300 mt-6"
+            >
+              Request Free Consultation
+            </button>
           </div>
         </div>
       </div>
