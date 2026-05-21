@@ -1,18 +1,17 @@
 import type { HomeAboutContent } from "@site/lib/cms/homePageTypes";
-import { Award, Clock, MessageSquare, Users, DollarSign, Heart } from "lucide-react";
+import { GraduationCap, Crown, Clock, Globe, Trophy } from "lucide-react";
 
 interface HomeAboutSectionProps {
   content: HomeAboutContent;
 }
 
-const iconMap: { [key: string]: any } = {
-  award: Award,
-  clock: Clock,
-  message: MessageSquare,
-  users: Users,
-  dollar: DollarSign,
-  heart: Heart,
-};
+const featureIcons = [
+  GraduationCap,
+  Crown,
+  Clock,
+  Globe,
+  Trophy,
+];
 
 export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
   if (!content) {
@@ -39,7 +38,7 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
             {/* Black box with gold border */}
             <div className="border-4 border-brand-accent p-4 md:p-6 bg-black h-full">
               <div className="border-2 border-brand-accent bg-black px-6 md:px-8 py-8 md:py-10 text-center h-full flex flex-col justify-center">
-                <div className="font-poppins text-[12px] md:text-[13px] font-normal text-white tracking-widest uppercase">
+                <div className="font-poppins text-[12px] md:text-[13px] font-normal text-brand-accent tracking-widest uppercase">
                   {content.experienceTitle}
                 </div>
                 <div className="font-poppins text-[56px] md:text-[72px] font-bold text-white leading-tight my-2">
@@ -48,7 +47,7 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
                 <div className="font-poppins text-[11px] md:text-[12px] font-normal text-brand-accent tracking-widest uppercase mb-6">
                   {content.yearsLabel}
                 </div>
-                <div className="border-t border-brand-accent pt-6">
+                <div className="pt-6">
                   <p className="font-poppins text-[13px] md:text-[14px] font-normal text-white leading-relaxed">
                     {content.experienceDescription}
                   </p>
@@ -60,25 +59,26 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
           {/* Right column - Features grid */}
           <div className="md:col-span-2">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {content.features.map((feature, index) => (
-                <div key={index} className="flex gap-4">
-                  {/* Icon - circular badge */}
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="flex items-center justify-center w-6 h-6 rounded-full border-2 border-brand-accent">
-                      <span className="text-sm text-brand-accent">◆</span>
+              {content.features.map((feature, index) => {
+                const IconComponent = featureIcons[index] || GraduationCap;
+                return (
+                  <div key={index} className="flex gap-4">
+                    {/* Icon */}
+                    <div className="flex-shrink-0 mt-1">
+                      <IconComponent className="w-6 h-6 text-brand-accent" />
+                    </div>
+                    {/* Content */}
+                    <div className="flex-1">
+                      <h3 className="font-poppins text-[13px] md:text-[14px] font-semibold text-black tracking-wider uppercase mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="font-poppins text-[13px] md:text-[14px] font-normal text-black/80 leading-relaxed">
+                        {feature.description}
+                      </p>
                     </div>
                   </div>
-                  {/* Content */}
-                  <div className="flex-1">
-                    <h3 className="font-poppins text-[13px] md:text-[14px] font-semibold text-black tracking-wider uppercase mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="font-poppins text-[13px] md:text-[14px] font-normal text-black/80 leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
