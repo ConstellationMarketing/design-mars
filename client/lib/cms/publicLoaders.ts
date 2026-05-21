@@ -494,6 +494,11 @@ export function mergeHomeContentWithDefaults(cmsContent: Partial<HomePageContent
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
     partnerLogos: cmsContent.partnerLogos?.length ? cmsContent.partnerLogos : defaults.partnerLogos,
+    stats: {
+      ...defaults.stats,
+      ...cmsContent.stats,
+      cases: cmsContent.stats?.cases?.length ? cmsContent.stats.cases : defaults.stats.cases,
+    },
     about: {
       ...defaults.about,
       ...cmsContent.about,

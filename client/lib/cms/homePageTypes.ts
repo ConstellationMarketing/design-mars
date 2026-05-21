@@ -119,6 +119,17 @@ export interface FaqContent {
   items: FaqItem[];
 }
 
+export interface CaseStatItem {
+  label: string;
+  amount: string;
+}
+
+export interface StatsContent {
+  totalAmount: string;
+  totalLabel: string;
+  cases: CaseStatItem[];
+}
+
 export interface ContactContent {
   sectionLabel: string;
   heading: string;
@@ -138,6 +149,7 @@ export interface ContactContent {
 export interface HomePageContent {
   hero: HeroContent;
   partnerLogos: PartnerLogo[];
+  stats: StatsContent;
   about: AboutContent;
   practiceAreasIntro: PracticeAreasIntroContent;
   practiceAreas: PracticeAreaItem[];
@@ -163,6 +175,11 @@ export const defaultHomeContent: HomePageContent = {
     phoneLabel: "",
   },
   partnerLogos: [],
+  stats: {
+    totalAmount: "$1,662,903,076",
+    totalLabel: "WON FOR CLIENTS",
+    cases: [],
+  },
   about: {
     sectionLabel: "",
     heading: "",
