@@ -64,15 +64,30 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
             <div className="clear-both"></div>
           </div>
 
-          {/* Right Side - Form with shadow box */}
-          <div>
-            {/* Form container on black with shadow */}
-            <div className="bg-black p-8 md:p-10" style={{ boxShadow: "12px 12px 24px rgba(0, 0, 0, 0.4)" }}>
-              {/* Form Heading */}
+          {/* Right Side - Form with gold shadow box */}
+          <div className="relative">
+            {/* Gold shadow box behind */}
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundColor: "#cfab57",
+                transform: "translate(12px, 12px)",
+                zIndex: 0
+              }}
+            ></div>
+
+            {/* Form container on black with gold right border */}
+            <div
+              className="bg-black p-8 md:p-10 border-r-4 relative z-10"
+              style={{ borderRightColor: "#cfab57" }}
+            >
+              {/* Form Heading with white underline */}
               {data.formHeading && (
-                <h3 className="font-poppins text-2xl md:text-3xl font-bold text-white mb-8">
-                  {data.formHeading}
-                </h3>
+                <div className="pb-4 mb-8 border-b border-white">
+                  <h3 className="font-poppins text-2xl md:text-3xl font-bold text-white">
+                    {data.formHeading}
+                  </h3>
+                </div>
               )}
 
               {/* Form */}
