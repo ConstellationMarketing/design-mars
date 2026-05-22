@@ -38,7 +38,7 @@ export default function StatsSection({ content }: StatsSectionProps) {
                 key={index}
                 className={`text-center py-6 md:py-8 px-4 md:px-6 ${
                   index < content.cases.length - 1
-                    ? 'border-r-2 border-black'
+                    ? 'md:border-r-2 md:border-black'
                     : ''
                 }`}
               >
