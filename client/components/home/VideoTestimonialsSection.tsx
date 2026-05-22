@@ -60,9 +60,10 @@ export default function VideoTestimonialsSection({
                     src={video.videoUrl}
                     title={video.title || `Video ${index + 1}`}
                     className="w-full aspect-video border-0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen; web-share"
                     allowFullScreen
                     loading="lazy"
+                    sandbox="allow-same-origin allow-scripts allow-presentation allow-popups"
                   />
                 )}
               </div>
