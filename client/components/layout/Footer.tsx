@@ -5,6 +5,8 @@ import {
   Youtube,
   Linkedin,
   Twitter,
+  Phone,
+  MapPin,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useSiteSettings } from "@site/contexts/SiteSettingsContext";
@@ -45,16 +47,22 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-12 md:py-20">
         {/* Top Section - Contact Info in two columns */}
         <div className="grid grid-cols-2 gap-4 mb-12 pb-8" style={{ borderBottomColor: "#cfab57", borderBottomWidth: "1px" }}>
-          <div className="text-center text-sm md:text-base">
+          <div className="text-center text-sm md:text-base flex items-center justify-center gap-2">
             {phoneNumber && (
-              <a href={`tel:${phoneNumber.replace(/\D/g, "")}`} className="hover:text-brand-accent transition-colors">
-                <span style={{ color: "#cfab57" }}>📞</span> {phoneNumber}
-              </a>
+              <>
+                <Phone className="w-5 h-5 md:w-6 md:h-6" style={{ color: "#cfab57" }} />
+                <a href={`tel:${phoneNumber.replace(/\D/g, "")}`} className="hover:text-brand-accent transition-colors">
+                  {phoneNumber}
+                </a>
+              </>
             )}
           </div>
-          <div className="text-center text-sm md:text-base text-gray-300">
+          <div className="text-center text-sm md:text-base text-gray-300 flex items-center justify-center gap-2">
             {(addressLine1 || addressLine2) && (
-              <span>📍 {[addressLine1, addressLine2].filter(Boolean).join(", ")}</span>
+              <>
+                <MapPin className="w-5 h-5 md:w-6 md:h-6" style={{ color: "#cfab57" }} />
+                <span>{[addressLine1, addressLine2].filter(Boolean).join(", ")}</span>
+              </>
             )}
           </div>
         </div>
