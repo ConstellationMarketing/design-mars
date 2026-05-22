@@ -72,7 +72,7 @@ export default function Footer() {
         </div>
 
         {/* Logo */}
-        <div className="text-center mb-4 pb-4" style={{ borderBottomColor: "#cfab57", borderBottomWidth: "1px" }}>
+        <div className="text-center mb-4 pb-4">
           {logoUrl ? (
             <div className="flex justify-center">
               <img
