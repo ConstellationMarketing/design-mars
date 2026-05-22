@@ -73,11 +73,11 @@ export interface TestimonialItem {
   author: string;
   clientType: string;
   badgeType: string; // "google", "facebook", "yelp", etc.
-  badgeRating?: string; // e.g., "5.0"
-  badgeImage?: string; // Badge image (e.g., Google 5 star badge)
-  badgeImageAlt?: string;
-  companyLogo?: string; // Company logo image
-  companyLogoAlt?: string;
+  badgeServiceName: string; // e.g., "Google"
+  badgeLogo?: string; // Service logo (e.g., Google logo)
+  badgeLogoAlt?: string;
+  badgeStarCount: number; // e.g., 5
+  badgeRating: string; // e.g., "5.0"
 }
 
 export interface TestimonialsContent {

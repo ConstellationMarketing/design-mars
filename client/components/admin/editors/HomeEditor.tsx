@@ -478,7 +478,7 @@ function TestimonialsSection({ content, update }: SectionProps) {
           items={t.items}
           onChange={(items) => set({ items })}
           itemLabel="Testimonial"
-          newItem={() => ({ text: "", author: "", clientType: "", badgeType: "google", badgeRating: "5.0", badgeImage: "", badgeImageAlt: "", companyLogo: "", companyLogoAlt: "" })}
+          newItem={() => ({ text: "", author: "", clientType: "", badgeType: "google", badgeServiceName: "Google", badgeLogo: "", badgeLogoAlt: "", badgeStarCount: 5, badgeRating: "5.0" })}
           renderItem={(item, _, upd) => (
             <div className="grid gap-3">
               <div>
@@ -493,8 +493,9 @@ function TestimonialsSection({ content, update }: SectionProps) {
                 <Label>Client Type</Label>
                 <Input value={item.clientType} onChange={(e) => upd({ ...item, clientType: e.target.value })} placeholder="e.g., CAR ACCIDENT CLIENT" />
               </div>
+              <h4 className="font-medium mt-4">Badge Section</h4>
               <div>
-                <Label>Service Badge Type</Label>
+                <Label>Badge Type</Label>
                 <select
                   value={item.badgeType}
                   onChange={(e) => upd({ ...item, badgeType: e.target.value })}
@@ -508,35 +509,40 @@ function TestimonialsSection({ content, update }: SectionProps) {
                 </select>
               </div>
               <div>
-                <Label>Badge Rating</Label>
-                <Input value={item.badgeRating || ""} onChange={(e) => upd({ ...item, badgeRating: e.target.value })} placeholder="5.0" />
+                <Label>Service Name (e.g., Google)</Label>
+                <Input value={item.badgeServiceName || ""} onChange={(e) => upd({ ...item, badgeServiceName: e.target.value })} placeholder="Google" />
               </div>
               <ImageField
-                label="Badge Image (e.g., Google 5-star badge)"
-                value={item.badgeImage}
-                onChange={(url) => upd({ ...item, badgeImage: url })}
-                altValue={item.badgeImageAlt || ""}
-                onAltChange={(badgeImageAlt) => upd({ ...item, badgeImageAlt })}
+                label="Service Logo"
+                value={item.badgeLogo}
+                onChange={(url) => upd({ ...item, badgeLogo: url })}
+                altValue={item.badgeLogoAlt || ""}
+                onAltChange={(badgeLogoAlt) => upd({ ...item, badgeLogoAlt })}
                 onSelectAsset={(asset) => upd({
                   ...item,
-                  badgeImage: asset.url,
-                  badgeImageAlt: asset.suggestedAltText || item.badgeImageAlt || "",
+                  badgeLogo: asset.url,
+                  badgeLogoAlt: asset.suggestedAltText || item.badgeLogoAlt || "",
                 })}
                 folder="badges"
               />
-              <ImageField
-                label="Company Logo"
-                value={item.companyLogo}
-                onChange={(url) => upd({ ...item, companyLogo: url })}
-                altValue={item.companyLogoAlt || ""}
-                onAltChange={(companyLogoAlt) => upd({ ...item, companyLogoAlt })}
-                onSelectAsset={(asset) => upd({
-                  ...item,
-                  companyLogo: asset.url,
-                  companyLogoAlt: asset.suggestedAltText || item.companyLogoAlt || "",
-                })}
-                folder="logos"
-              />
+              <div>
+                <Label>Number of Stars</Label>
+                <select
+                  value={item.badgeStarCount || 5}
+                  onChange={(e) => upd({ ...item, badgeStarCount: parseInt(e.target.value) })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded bg-white"
+                >
+                  <option value={1}>1 Star</option>
+                  <option value={2}>2 Stars</option>
+                  <option value={3}>3 Stars</option>
+                  <option value={4}>4 Stars</option>
+                  <option value={5}>5 Stars</option>
+                </select>
+              </div>
+              <div>
+                <Label>Rating Number</Label>
+                <Input value={item.badgeRating || ""} onChange={(e) => upd({ ...item, badgeRating: e.target.value })} placeholder="5.0" />
+              </div>
             </div>
           )}
         />
