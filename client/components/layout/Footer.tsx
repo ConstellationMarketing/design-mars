@@ -71,7 +71,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Logo and Company Name */}
+        {/* Logo */}
         <div className="text-center mb-4 pb-4" style={{ borderBottomColor: "#cfab57", borderBottomWidth: "1px" }}>
           {logoUrl ? (
             <div className="flex justify-center">
@@ -82,29 +82,17 @@ export default function Footer() {
               />
             </div>
           ) : null}
-          <h2 className="font-poppins text-3xl md:text-4xl font-bold">
-            {siteName}
-          </h2>
-          <p className="text-xs md:text-sm text-gray-300 tracking-widest mt-2">
-            PROTECTING YOUR RIGHTS
-          </p>
         </div>
 
-        {/* Description - Blurbs with gold separators */}
+        {/* Description - Blurbs */}
         {footerTaglineHtml && (
           <div className="text-center max-w-3xl mx-auto mb-12">
-            {/* Split content by <p> tags and render with gold separators */}
             {footerTaglineHtml.split(/<\/?p[^>]*>/g)
               .filter(text => text.trim())
-              .map((text, idx, arr) => (
-                <div key={idx}>
-                  <p className="text-xs md:text-sm text-gray-300 leading-relaxed mb-4">
-                    {text.trim()}
-                  </p>
-                  {idx < arr.length - 1 && (
-                    <div className="h-px bg-brand-accent mx-auto mb-6 max-w-2xl" style={{ backgroundColor: "#cfab57" }}></div>
-                  )}
-                </div>
+              .map((text, idx) => (
+                <p key={idx} className="text-xs md:text-sm text-gray-300 leading-relaxed mb-4">
+                  {text.trim()}
+                </p>
               ))}
           </div>
         )}
