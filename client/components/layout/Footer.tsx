@@ -72,9 +72,9 @@ export default function Footer() {
         </div>
 
         {/* Logo and Company Name */}
-        <div className="text-center mb-8 pb-8" style={{ borderBottomColor: "#cfab57", borderBottomWidth: "1px" }}>
+        <div className="text-center mb-4 pb-4" style={{ borderBottomColor: "#cfab57", borderBottomWidth: "1px" }}>
           {logoUrl ? (
-            <div className="flex justify-center mb-2">
+            <div className="flex justify-center">
               <img
                 src={logoUrl}
                 alt={logoAlt}
