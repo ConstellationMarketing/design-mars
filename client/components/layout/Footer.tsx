@@ -90,7 +90,7 @@ export default function Footer() {
             {footerTaglineHtml.split(/<\/?p[^>]*>/g)
               .filter(text => text.trim())
               .map((text, idx) => (
-                <p key={idx} className="text-xs md:text-sm text-gray-300 leading-relaxed mb-4">
+                <p key={idx} className="text-sm md:text-sm text-gray-300 leading-relaxed mb-4">
                   {text.trim()}
                 </p>
               ))}
