@@ -8,23 +8,6 @@ interface AttorneysSectionProps {
   headingTag?: string;
 }
 
-const styles = `
-  @keyframes slideInFade {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-slide-in-fade {
-    animation: slideInFade 0.6s ease-out;
-  }
-`;
-
 export default function AttorneysSection({
   content,
   headingTag,
@@ -60,7 +43,6 @@ export default function AttorneysSection({
 
   return (
     <div className="w-full py-16 md:py-24 bg-white">
-      <style>{styles}</style>
       <div className="max-w-7xl mx-auto px-4">
         {/* Title */}
         {data.heading && (
@@ -81,13 +63,13 @@ export default function AttorneysSection({
 
         {/* Carousel Container */}
         <div className="relative group">
-          {/* Attorney Carousel - 3 visible, infinite loop */}
+          {/* Attorney Carousel - 3 visible, smooth scroll */}
           <div className="overflow-hidden mb-12">
-            <div className="flex justify-center gap-6 md:gap-8">
+            <div className="flex justify-center gap-6 md:gap-8 transition-all duration-500 ease-in-out">
               {visibleAttorneys.map((attorney, index) => (
                 <div
                   key={`${attorney.name}-${index}`}
-                  className="flex flex-col items-center w-1/3 flex-shrink-0 animate-slide-in-fade"
+                  className="flex flex-col items-center w-1/3 flex-shrink-0"
                 >
                   {/* Photo */}
                   <div className="mb-4 w-full max-w-xs overflow-hidden rounded-lg">
