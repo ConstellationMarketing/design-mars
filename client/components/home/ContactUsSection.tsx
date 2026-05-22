@@ -36,10 +36,10 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
           </div>
         )}
 
-        {/* Two Column Layout with text wrapping */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 items-start">
-          {/* Left/Center - Content with wrapped image */}
-          <div className="lg:col-span-2">
+        {/* Two Column Layout with equal widths and text wrapping */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
+          {/* Left - Content with wrapped image */}
+          <div>
             {/* Badge/Icon - floated left so text wraps around */}
             {data.image && (
               <div className="float-left mr-8 mb-4">
@@ -64,13 +64,10 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
             <div className="clear-both"></div>
           </div>
 
-          {/* Right Side - Form with shadow background */}
-          <div className="lg:col-span-1 relative">
-            {/* Shadow box background */}
-            <div className="absolute inset-0 bg-gray-800 -z-10 transform translate-y-2 translate-x-2"></div>
-
-            {/* Form container on black */}
-            <div className="bg-black p-8 md:p-10 relative z-10">
+          {/* Right Side - Form with shadow box */}
+          <div>
+            {/* Form container on black with shadow */}
+            <div className="bg-black p-8 md:p-10" style={{ boxShadow: "12px 12px 24px rgba(0, 0, 0, 0.4)" }}>
               {/* Form Heading */}
               {data.formHeading && (
                 <h3 className="font-poppins text-2xl md:text-3xl font-bold text-white mb-8">
