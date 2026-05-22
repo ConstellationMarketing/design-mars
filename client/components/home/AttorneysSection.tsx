@@ -74,7 +74,7 @@ export default function AttorneysSection({
         )}
 
         {/* Carousel Container */}
-        <div className="relative group">
+        <div className="relative group px-12 md:px-16">
           {/* Attorney Carousel - 3 visible, smooth scroll */}
           <div className="overflow-hidden mb-12">
             <div className="flex justify-center gap-6 md:gap-8 transition-all duration-500 ease-in-out">
@@ -115,14 +115,14 @@ export default function AttorneysSection({
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-0 top-1/3 -translate-y-1/2 -translate-x-12 md:-translate-x-16 text-gray-400 hover:text-black transition-colors z-10 p-2"
+                className="absolute left-0 top-1/3 -translate-y-1/2 text-gray-400 hover:text-black transition-colors z-10 p-2"
                 aria-label="Previous attorneys"
               >
                 <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-0 top-1/3 -translate-y-1/2 translate-x-12 md:translate-x-16 text-gray-400 hover:text-black transition-colors z-10 p-2"
+                className="absolute right-0 top-1/3 -translate-y-1/2 text-gray-400 hover:text-black transition-colors z-10 p-2"
                 aria-label="Next attorneys"
               >
                 <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
