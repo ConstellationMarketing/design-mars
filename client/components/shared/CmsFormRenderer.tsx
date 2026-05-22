@@ -140,14 +140,14 @@ function FormInner({
       ))}
 
       <div>
-        <div className="inline-block border-2 border-brand-accent p-1 w-full hover:border-black transition-all duration-300 hover:bg-black">
+        <div className="inline-block border-2 border-brand-accent p-1 w-full hover:border-black transition-all duration-300 hover:bg-white">
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="group w-full bg-brand-accent border-2 border-black px-8 py-3 font-poppins text-[14px] font-semibold uppercase text-black hover:bg-black hover:text-white hover:border-black transition-all duration-300 rounded-none h-auto"
+            className="w-full bg-brand-accent border-2 border-black px-8 py-3 font-poppins text-[14px] font-semibold uppercase text-black hover:bg-white hover:text-black hover:border-white transition-all duration-300 rounded-none h-auto flex items-center justify-center gap-2"
           >
             {isSubmitting ? "SUBMITTING..." : form.submit_button_text}
-            <span className="ml-2 text-black group-hover:text-white transition-colors duration-300">›</span>
+            <span className="text-lg">›</span>
           </Button>
         </div>
       </div>
