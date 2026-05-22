@@ -25,68 +25,46 @@ export default function FaqSection({ content }: FaqSectionProps) {
   };
 
   return (
-    <div className="bg-white pt-[30px] md:pt-[54px]">
-      {/* Header Section */}
-      <div className="max-w-[1080px] mx-auto w-[95%] md:w-[85%] lg:w-[80%] py-[20px] md:py-[27px]">
-        <div className="text-center">
+    <div className="w-full py-16 md:py-24" style={{ backgroundColor: '#f5f5f5' }}>
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header Section */}
+        <div className="text-center mb-12 md:mb-16">
           {data.heading && (
-            <h2 className="font-poppins font-bold text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black pb-[10px]">
-              {data.heading}
-            </h2>
-          )}
-          {data.description && (
-            <RichText
-              html={data.description}
-              className="font-poppins text-[16px] md:text-[24px] leading-[24px] md:leading-[36px] text-black text-center"
-            />
+            <div className="inline-block">
+              <h2 className="font-poppins font-bold text-4xl md:text-5xl text-black leading-tight">
+                {data.heading}
+              </h2>
+              <div className="h-px bg-brand-accent mt-4"></div>
+            </div>
           )}
         </div>
-      </div>
 
-      {/* Content Section */}
-      <div className="max-w-[1600px] mx-auto w-[95%] md:w-[85%] lg:w-[80%] py-[20px] md:py-[27px] flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-[5.5%]">
-        {/* Left Side - Image */}
-        {data.videoThumbnail && (
-          <div className="lg:w-[47.25%]">
-            <img
-              src={data.videoThumbnail}
-              alt={data.videoThumbnailAlt || "Frequently Asked Questions"}
-              className="w-full h-auto object-cover"
-              width={720}
-              height={480}
-              loading="lazy"
-            />
-          </div>
-        )}
-
-        {/* Right Side - Custom Accordion */}
-        <div className={`${data.videoThumbnail ? "lg:w-[47.25%]" : "w-full"}`}>
+        {/* FAQ Accordion */}
+        <div className="max-w-3xl mx-auto space-y-0">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className={`border-[0.8px] border-[rgb(217,217,217)] ${
-                index < faqs.length - 1 ? "mb-[5.82%]" : ""
-              } ${openIndex === index ? "bg-brand-dark" : "bg-white"}`}
+              className="border border-gray-300 bg-white"
             >
               <button
                 onClick={() => toggleFaq(index)}
-                className={`w-full font-poppins text-[28px] leading-[28px] px-[20px] py-[20px] text-left flex items-center justify-between cursor-pointer ${
-                  openIndex === index ? "text-white" : "text-[rgb(67,67,67)]"
-                }`}
+                className="w-full font-poppins text-lg md:text-xl px-6 md:px-8 py-5 md:py-6 text-left flex items-center justify-between cursor-pointer hover:bg-gray-50 transition-colors duration-200 text-gray-700"
               >
-                <span className="pr-[50px]">{faq.question}</span>
+                <span className="font-medium pr-8">{faq.question}</span>
                 <ChevronDown
-                  className={`h-6 w-6 flex-shrink-0 transition-transform duration-200 ${
+                  className={`h-5 w-5 flex-shrink-0 transition-transform duration-300 text-gray-600 ${
                     openIndex === index ? "rotate-180" : ""
                   }`}
                 />
               </button>
-              <RichText
-                html={faq.answer}
-                hidden={openIndex !== index}
-                aria-hidden={openIndex !== index}
-                className="font-poppins text-[22px] leading-[33px] font-light px-[20px] pb-[20px] pt-[20px] text-white"
-              />
+              {openIndex === index && (
+                <div className="border-t border-gray-300 bg-white px-6 md:px-8 py-5 md:py-6">
+                  <RichText
+                    html={faq.answer}
+                    className="font-poppins text-base md:text-lg leading-relaxed text-gray-700"
+                  />
+                </div>
+              )}
             </div>
           ))}
         </div>
