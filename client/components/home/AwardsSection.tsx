@@ -6,7 +6,7 @@ interface AwardsSectionProps {
 }
 
 export default function AwardsSection({ content, headingTag }: AwardsSectionProps) {
-  if (!content || !content.heading) {
+  if (!content) {
     return null;
   }
 
@@ -16,20 +16,22 @@ export default function AwardsSection({ content, headingTag }: AwardsSectionProp
     <section className="w-full py-16" style={{ backgroundColor: '#f5f5f5' }}>
       <div className="max-w-7xl mx-auto px-4">
         {/* Title with gold underline */}
-        <div className="text-center mb-16">
-          <div className="border-b border-brand-accent pb-6 mb-6 max-w-2xl mx-auto">
-            {headingTag ? (
-              // @ts-ignore
-              <headingTag className="text-4xl md:text-5xl font-bold text-black">
-                {data.heading}
-              </headingTag>
-            ) : (
-              <h2 className="text-4xl md:text-5xl font-bold text-black">
-                {data.heading}
-              </h2>
-            )}
+        {data.heading && (
+          <div className="text-center mb-16">
+            <div className="border-b border-brand-accent pb-6 mb-6 max-w-2xl mx-auto">
+              {headingTag ? (
+                // @ts-ignore
+                <headingTag className="text-4xl md:text-5xl font-bold text-black">
+                  {data.heading}
+                </headingTag>
+              ) : (
+                <h2 className="text-4xl md:text-5xl font-bold text-black">
+                  {data.heading}
+                </h2>
+              )}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
