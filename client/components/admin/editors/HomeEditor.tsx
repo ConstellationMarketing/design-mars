@@ -481,7 +481,10 @@ function TestimonialsSection({ content, update }: SectionProps) {
           newItem={() => ({ text: "", author: "", clientType: "", badgeType: "google", badgeRating: "5.0", companyLogo: "", companyLogoAlt: "" })}
           renderItem={(item, _, upd) => (
             <div className="grid gap-3">
-              <RichTextField label="Testimonial Text" value={item.text} onChange={(v) => upd({ ...item, text: v })} />
+              <div>
+                <Label>Testimonial Text</Label>
+                <Textarea value={item.text} onChange={(e) => upd({ ...item, text: e.target.value })} placeholder="Enter testimonial text..." />
+              </div>
               <div>
                 <Label>Author Name</Label>
                 <Input value={item.author} onChange={(e) => upd({ ...item, author: e.target.value })} placeholder="e.g., Maria Gonzalez" />

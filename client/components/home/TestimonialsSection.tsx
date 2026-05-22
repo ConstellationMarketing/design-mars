@@ -52,25 +52,25 @@ export default function TestimonialsSection({
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="border border-gray-700 p-6 md:p-8 flex flex-col"
-              style={{ backgroundColor: "#0a0a0a" }}
+              className="border-2 p-6 md:p-8 flex flex-col"
+              style={{ backgroundColor: "#0a0a0a", borderColor: "#CDA977" }}
             >
-              {/* Badge - Service type and rating */}
-              <div className="mb-6">
-                <div className="text-sm font-semibold text-white mb-1">
+              {/* Badge - Service type and rating with background */}
+              <div className="mb-6 bg-white p-3 rounded inline-block self-center">
+                <div className="text-xs font-semibold text-black mb-1">
                   {getBadgeLabel(testimonial.badgeType)}
                 </div>
-                <div className="text-sm text-gray-400 mb-3">
+                <div className="text-xs text-gray-600 mb-2">
                   {testimonial.badgeRating || "5.0"} Rating
                 </div>
 
-                {/* Company Logo */}
+                {/* Company Logo inside badge */}
                 {testimonial.companyLogo && (
                   <img
                     src={testimonial.companyLogo}
                     alt={testimonial.companyLogoAlt || "Company Logo"}
                     loading="lazy"
-                    className="h-8 mb-4"
+                    className="h-6"
                   />
                 )}
               </div>
@@ -80,8 +80,8 @@ export default function TestimonialsSection({
                 "{testimonial.text}"
               </p>
 
-              {/* Author and client type */}
-              <div className="text-xs md:text-sm font-semibold text-gray-400 uppercase tracking-wider">
+              {/* Author and client type in gold */}
+              <div className="text-xs md:text-sm font-semibold uppercase tracking-wider" style={{ color: "#CDA977" }}>
                 {testimonial.author}
                 {testimonial.clientType && `, ${testimonial.clientType}`}
               </div>
