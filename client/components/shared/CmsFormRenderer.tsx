@@ -140,13 +140,16 @@ function FormInner({
       ))}
 
       <div>
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full bg-brand-accent-dark text-brand-accent border-brand-accent font-poppins text-[22px] h-[50px] hover:bg-brand-accent hover:text-black transition-all duration-300 rounded-none"
-        >
-          {isSubmitting ? "SUBMITTING..." : form.submit_button_text}
-        </Button>
+        <div className="inline-block border-2 border-brand-accent p-1 w-full hover:border-black transition-all duration-300 hover:bg-black">
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="group w-full bg-brand-accent border-2 border-black px-8 py-3 font-poppins text-[14px] font-semibold uppercase text-black hover:bg-black hover:text-white hover:border-black transition-all duration-300 rounded-none h-auto"
+          >
+            {isSubmitting ? "SUBMITTING..." : form.submit_button_text}
+            <span className="ml-2 text-black group-hover:text-white transition-colors duration-300">›</span>
+          </Button>
+        </div>
       </div>
 
       <div className="absolute invisible" aria-hidden="true">

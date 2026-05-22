@@ -81,9 +81,9 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
               className="bg-black p-8 md:p-10 border-r-4 relative z-10"
               style={{ borderRightColor: "#cfab57" }}
             >
-              {/* Form Heading with white underline */}
+              {/* Form Heading with gold underline */}
               {data.formHeading && (
-                <div className="pb-4 mb-8 border-b border-white">
+                <div className="pb-4 mb-8" style={{ borderBottomColor: "#cfab57", borderBottomWidth: "1px" }}>
                   <h3 className="font-poppins text-2xl md:text-3xl font-bold text-white">
                     {data.formHeading}
                   </h3>
