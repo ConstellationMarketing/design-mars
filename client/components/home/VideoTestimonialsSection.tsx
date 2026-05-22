@@ -5,6 +5,48 @@ interface VideoTestimonialsSectionProps {
   headingTag?: string;
 }
 
+/**
+ * Extracts video URL from either a direct URL or an iframe code snippet
+ * Handles: YouTube URLs, embed URLs, iframe HTML, and other embed codes
+ */
+function getVideoEmbedUrl(input: string): string {
+  if (!input?.trim()) return "";
+
+  const trimmed = input.trim();
+
+  // If it's an iframe code, extract the src attribute
+  if (trimmed.includes("<iframe")) {
+    const srcMatch = trimmed.match(/src=["']([^"']+)["']/);
+    if (srcMatch?.[1]) {
+      return srcMatch[1];
+    }
+  }
+
+  // If it's already an embed URL, return it as-is
+  if (trimmed.includes("/embed/") || trimmed.includes("youtube-nocookie")) {
+    return trimmed;
+  }
+
+  // Convert YouTube watch URL to embed format
+  const youtubeWatchMatch = trimmed.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  if (youtubeWatchMatch?.[1]) {
+    return `https://www.youtube.com/embed/${youtubeWatchMatch[1]}`;
+  }
+
+  // Convert Vimeo URL to embed format
+  const vimeoMatch = trimmed.match(/vimeo\.com\/(\d+)/);
+  if (vimeoMatch?.[1]) {
+    return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
+  }
+
+  // If it looks like a URL, return it (assume it's already in correct format)
+  if (trimmed.startsWith("http")) {
+    return trimmed;
+  }
+
+  return trimmed;
+}
+
 export default function VideoTestimonialsSection({
   content,
   headingTag,
@@ -51,32 +93,36 @@ export default function VideoTestimonialsSection({
 
         {/* Video Grid - 2 columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          {videos.map((video, index) => (
-            <div key={index} className="flex flex-col items-center">
-              {/* Video Container */}
-              <div className="w-full bg-black rounded-lg overflow-hidden shadow-lg">
-                {video.videoUrl && (
-                  <iframe
-                    src={video.videoUrl}
-                    title={video.title || `Video ${index + 1}`}
-                    className="w-full aspect-video"
-                    width="100%"
-                    height="100%"
-                    style={{ minHeight: "400px" }}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                    allowFullScreen
-                  />
+          {videos.map((video, index) => {
+            const embedUrl = getVideoEmbedUrl(video.videoUrl);
+
+            return (
+              <div key={index} className="flex flex-col items-center">
+                {/* Video Container */}
+                <div className="w-full bg-black rounded-lg overflow-hidden shadow-lg">
+                  {embedUrl && (
+                    <iframe
+                      src={embedUrl}
+                      title={video.title || `Video ${index + 1}`}
+                      className="w-full aspect-video"
+                      width="100%"
+                      height="100%"
+                      style={{ minHeight: "400px" }}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                      allowFullScreen
+                    />
+                  )}
+                </div>
+
+                {/* Video Title */}
+                {video.title && (
+                  <p className="mt-4 text-black font-semibold text-center text-sm md:text-base">
+                    {video.title}
+                  </p>
                 )}
               </div>
-
-              {/* Video Title */}
-              {video.title && (
-                <p className="mt-4 text-black font-semibold text-center text-sm md:text-base">
-                  {video.title}
-                </p>
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

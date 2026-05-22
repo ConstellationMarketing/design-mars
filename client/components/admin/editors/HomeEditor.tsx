@@ -603,8 +603,15 @@ function VideoTestimonialsSection({ content, update }: SectionProps) {
                 <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="Video title" />
               </div>
               <div>
-                <Label>Video URL (embed URL from YouTube/Vimeo)</Label>
-                <Input value={item.videoUrl} onChange={(e) => upd({ ...item, videoUrl: e.target.value })} placeholder="https://www.youtube.com/embed/VIDEO_ID" />
+                <Label>Video URL or Embed Code</Label>
+                <Input
+                  value={item.videoUrl}
+                  onChange={(e) => upd({ ...item, videoUrl: e.target.value })}
+                  placeholder="Paste YouTube URL, embed URL, or iframe code"
+                />
+                <p className="text-xs text-gray-500 mt-2">
+                  Accepts: YouTube watch URL (youtube.com/watch?v=...), YouTube embed URL, Vimeo URL, or iframe HTML code
+                </p>
               </div>
             </div>
           )}
