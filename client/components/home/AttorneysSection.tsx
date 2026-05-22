@@ -1,4 +1,5 @@
 import { useState } from "react";
+import React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { AttorneysContent } from "@site/lib/cms/homePageTypes";
@@ -20,7 +21,17 @@ export default function AttorneysSection({
 
   const data = content;
   const attorneys = data.attorneys;
-  const itemsPerSlide = 3; // Always show 3 attorneys
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const itemsPerSlide = isMobile ? 1 : 3;
   const totalSlides = attorneys.length;
 
   const nextSlide = () => {
@@ -35,11 +46,10 @@ export default function AttorneysSection({
   const getAttorneyIndex = (offset: number) => {
     return (activeSlide + offset) % attorneys.length;
   };
-  const visibleAttorneys = [
-    attorneys[getAttorneyIndex(0)],
-    attorneys[getAttorneyIndex(1)],
-    attorneys[getAttorneyIndex(2)],
-  ];
+
+  const visibleAttorneys = Array.from({ length: itemsPerSlide }, (_, i) =>
+    attorneys[getAttorneyIndex(i)]
+  );
 
   return (
     <div className="w-full py-16 md:py-24 bg-white">
@@ -71,7 +81,7 @@ export default function AttorneysSection({
               {visibleAttorneys.map((attorney, index) => (
                 <div
                   key={`${attorney.name}-${index}`}
-                  className="flex flex-col items-center w-1/3 flex-shrink-0"
+                  className={`flex flex-col items-center flex-shrink-0 ${isMobile ? "w-full" : "w-1/3"}`}
                 >
                   {/* Photo */}
                   <div className="mb-4 w-full max-w-xs overflow-hidden rounded-lg">
