@@ -18,10 +18,10 @@ export default function AwardsSection({ content, headingTag }: AwardsSectionProp
         {/* Title with gold underline */}
         {data.heading && (
           <div className="text-center mb-16">
-            <div className="border-b border-brand-accent pb-6 mb-6 max-w-2xl mx-auto">
+            <div className="inline-block">
               {headingTag ? (
                 // @ts-ignore
-                <headingTag className="text-4xl md:text-5xl font-bold text-black">
+                <headingTag className="text-4xl md:text-5xl font-bold text-black block">
                   {data.heading}
                 </headingTag>
               ) : (
@@ -29,6 +29,7 @@ export default function AwardsSection({ content, headingTag }: AwardsSectionProp
                   {data.heading}
                 </h2>
               )}
+              <div className="h-px bg-brand-accent mt-4"></div>
             </div>
           </div>
         )}

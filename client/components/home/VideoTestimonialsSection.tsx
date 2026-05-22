@@ -33,17 +33,19 @@ export default function VideoTestimonialsSection({
         {/* Title */}
         {data.heading && (
           <div className="text-center mb-12 md:mb-16">
-            {headingTag ? (
-              // @ts-ignore
-              <headingTag className="text-4xl md:text-5xl font-bold text-black">
-                {data.heading}
-              </headingTag>
-            ) : (
-              <h2 className="text-4xl md:text-5xl font-bold text-black">
-                {data.heading}
-              </h2>
-            )}
-            <div className="w-24 h-px bg-black mx-auto mt-6"></div>
+            <div className="inline-block">
+              {headingTag ? (
+                // @ts-ignore
+                <headingTag className="text-4xl md:text-5xl font-bold text-black block">
+                  {data.heading}
+                </headingTag>
+              ) : (
+                <h2 className="text-4xl md:text-5xl font-bold text-black">
+                  {data.heading}
+                </h2>
+              )}
+              <div className="h-px bg-black mt-4"></div>
+            </div>
           </div>
         )}
 

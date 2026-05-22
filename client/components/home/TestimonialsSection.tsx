@@ -27,16 +27,19 @@ export default function TestimonialsSection({
         {/* Title */}
         {data.heading && (
           <div className="text-center mb-16">
-            {headingTag ? (
-              // @ts-ignore
-              <headingTag className="text-4xl md:text-5xl font-bold text-white">
-                {data.heading}
-              </headingTag>
-            ) : (
-              <h2 className="text-4xl md:text-5xl font-bold text-white">
-                {data.heading}
-              </h2>
-            )}
+            <div className="inline-block">
+              {headingTag ? (
+                // @ts-ignore
+                <headingTag className="text-4xl md:text-5xl font-bold text-white block">
+                  {data.heading}
+                </headingTag>
+              ) : (
+                <h2 className="text-4xl md:text-5xl font-bold text-white">
+                  {data.heading}
+                </h2>
+              )}
+              <div className="h-px bg-brand-accent mt-4"></div>
+            </div>
           </div>
         )}
 

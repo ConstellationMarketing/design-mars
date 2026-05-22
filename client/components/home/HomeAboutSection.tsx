@@ -24,10 +24,12 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
         {/* Main heading */}
         {content.heading && (
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-poppins text-[32px] md:text-[42px] font-bold text-black max-w-3xl mx-auto leading-tight">
-              {content.heading}
-            </h2>
-            <div className="h-px bg-brand-accent mx-auto mt-6 max-w-3xl"></div>
+            <div className="inline-block">
+              <h2 className="font-poppins text-[32px] md:text-[42px] font-bold text-black leading-tight">
+                {content.heading}
+              </h2>
+              <div className="h-px bg-brand-accent mt-4"></div>
+            </div>
           </div>
         )}
 
