@@ -108,7 +108,7 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
           <Sheet>
             <SheetTrigger asChild className="lg:hidden flex-shrink-0">
               <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
-                <Menu className="h-6 w-6" />
+                <Menu className="h-8 w-8" />
               </Button>
             </SheetTrigger>
             <SheetContent
@@ -125,22 +125,6 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
                     <MobileNavItem key={`${item.href}-${index}`} item={item} hasChildren={hasChildren} />
                   );
                 })}
-                {phoneNumber && (
-                  <a
-                    href={`tel:${phoneNumber.replace(/\D/g, "")}`}
-                    className="flex flex-col items-center gap-2 hover:opacity-80 transition-opacity w-full py-2"
-                  >
-                    <span className="font-poppins text-black text-[11px] tracking-wide font-semibold">
-                      {ctaLabel}
-                    </span>
-                    <span className="font-poppins text-brand-accent text-[18px] font-bold leading-none">
-                      {phoneDisplay}
-                    </span>
-                    <span className="font-poppins text-black text-[9px] tracking-wide font-semibold">
-                      {ctaTagline}
-                    </span>
-                  </a>
-                )}
               </nav>
             </SheetContent>
           </Sheet>
