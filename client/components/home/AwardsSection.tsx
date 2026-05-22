@@ -6,16 +6,11 @@ interface AwardsSectionProps {
 }
 
 export default function AwardsSection({ content, headingTag }: AwardsSectionProps) {
-  if (!content) {
+  if (!content || !content.heading) {
     return null;
   }
 
   const data = content;
-  const logos = data.logos || [];
-
-  // Use first 6 images for logo grid (left), 7th image as featured team photo (right)
-  const gridLogos = logos.slice(0, 6);
-  const featuredImage = logos.length > 6 ? logos[6] : null;
 
   return (
     <section className="w-full py-16" style={{ backgroundColor: '#f5f5f5' }}>
@@ -38,30 +33,24 @@ export default function AwardsSection({ content, headingTag }: AwardsSectionProp
 
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          {/* Left side - Logo grid with gold border */}
-          {gridLogos.length > 0 && (
+          {/* Left side - Logo image with gold border */}
+          {data.logoImage && (
             <div className="border border-brand-accent p-8">
-              <div className="grid grid-cols-3 gap-6">
-                {gridLogos.map((logo, index) => (
-                  <div key={index} className="flex items-center justify-center">
-                    <img
-                      src={logo.src}
-                      alt={logo.alt}
-                      loading="lazy"
-                      className="max-w-full h-auto"
-                    />
-                  </div>
-                ))}
-              </div>
+              <img
+                src={data.logoImage}
+                alt={data.logoImageAlt || "Award Logo"}
+                loading="lazy"
+                className="w-full h-auto"
+              />
             </div>
           )}
 
-          {/* Right side - Featured image with gold shadow */}
-          {featuredImage && (
+          {/* Right side - Team image with gold shadow */}
+          {data.teamImage && (
             <div style={{ boxShadow: '-12px 12px 0 0 #CDA977' }}>
               <img
-                src={featuredImage.src}
-                alt={featuredImage.alt}
+                src={data.teamImage}
+                alt={data.teamImageAlt || "Team Photo"}
                 loading="lazy"
                 className="w-full h-auto"
               />

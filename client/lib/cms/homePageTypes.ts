@@ -62,7 +62,10 @@ export interface AwardsContent {
   sectionLabel: string;
   heading: string;
   description: string;
-  logos: Array<{ src: string; alt: string }>;
+  logoImage: string;
+  logoImageAlt: string;
+  teamImage: string;
+  teamImageAlt: string;
 }
 
 export interface TestimonialItem {
@@ -320,9 +323,12 @@ export const defaultHomeContent: HomePageContent = {
   ],
   awards: {
     sectionLabel: "",
-    heading: "",
+    heading: "Press & Recognition",
     description: "",
-    logos: [],
+    logoImage: "",
+    logoImageAlt: "",
+    teamImage: "",
+    teamImageAlt: "",
   },
   testimonials: {
     sectionLabel: "",

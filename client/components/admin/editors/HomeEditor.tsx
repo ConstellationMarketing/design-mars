@@ -409,37 +409,37 @@ function AwardsSection({ content, update }: SectionProps) {
           onTagChange={(t) => ht.set("awards.sectionLabel", t)}
         />
         <div>
-          <Label>Subtitle</Label>
-          <Input value={awards.heading} onChange={(e) => set({ heading: e.target.value })} />
+          <Label>Title</Label>
+          <Input value={awards.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Press & Recognition" />
         </div>
         <RichTextField label="Description" value={awards.description} onChange={(v) => set({ description: v })} />
-        <h4 className="font-medium">Award Logos</h4>
-        <ArrayEditor
-          items={awards.logos}
-          onChange={(items) => set({ logos: items })}
-          itemLabel="Logo"
-          newItem={() => ({ src: "", alt: "" })}
-          renderItem={(item, _, upd) => (
-            <div className="grid gap-3">
-              <ImageField
-                label="Logo Image"
-                value={item.src}
-                onChange={(url) => upd({ ...item, src: url })}
-                altValue={item.alt}
-                onAltChange={(alt) => upd({ ...item, alt })}
-                onSelectAsset={(asset) => upd({
-                  ...item,
-                  src: asset.url,
-                  alt: asset.suggestedAltText || item.alt,
-                })}
-                folder="awards"
-              />
-              <div>
-                <Label>Alt Text</Label>
-                <Input value={item.alt} onChange={(e) => upd({ ...item, alt: e.target.value })} />
-              </div>
-            </div>
-          )}
+
+        <h4 className="font-medium mt-6">Left Side - Logo Image</h4>
+        <ImageField
+          label="Logo Image"
+          value={awards.logoImage}
+          onChange={(url) => set({ logoImage: url })}
+          altValue={awards.logoImageAlt}
+          onAltChange={(alt) => set({ logoImageAlt: alt })}
+          onSelectAsset={(asset) => set({
+            logoImage: asset.url,
+            logoImageAlt: asset.suggestedAltText || awards.logoImageAlt,
+          })}
+          folder="awards"
+        />
+
+        <h4 className="font-medium mt-6">Right Side - Team Photo</h4>
+        <ImageField
+          label="Team Photo"
+          value={awards.teamImage}
+          onChange={(url) => set({ teamImage: url })}
+          altValue={awards.teamImageAlt}
+          onAltChange={(alt) => set({ teamImageAlt: alt })}
+          onSelectAsset={(asset) => set({
+            teamImage: asset.url,
+            teamImageAlt: asset.suggestedAltText || awards.teamImageAlt,
+          })}
+          folder="awards"
         />
       </div>
     </Section>
