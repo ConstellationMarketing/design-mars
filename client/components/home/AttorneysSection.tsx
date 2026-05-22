@@ -1,5 +1,4 @@
-import { useState } from "react";
-import React from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { AttorneysContent } from "@site/lib/cms/homePageTypes";
@@ -23,7 +22,7 @@ export default function AttorneysSection({
   const attorneys = data.attorneys;
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
