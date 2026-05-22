@@ -153,6 +153,22 @@ export interface HomeAboutContent {
   features: AboutFeatureItem[];
 }
 
+export interface VideoItem {
+  title: string;
+  videoUrl: string;
+  thumbnailImage?: string;
+  thumbnailImageAlt?: string;
+}
+
+export interface VideoTestimonialsContent {
+  sectionLabel: string;
+  heading: string;
+  backgroundColor?: string;
+  backgroundImage?: string;
+  backgroundImageAlt?: string;
+  videos: VideoItem[];
+}
+
 export interface ContactContent {
   sectionLabel: string;
   heading: string;
@@ -179,6 +195,7 @@ export interface HomePageContent {
   practiceAreas: PracticeAreaItem[];
   awards: AwardsContent;
   testimonials: TestimonialsContent;
+  videoTestimonials: VideoTestimonialsContent;
   process: ProcessContent;
   googleReviews: GoogleReviewsContent;
   faq: FaqContent;
@@ -337,6 +354,14 @@ export const defaultHomeContent: HomePageContent = {
     sectionLabel: "",
     heading: "Committed To Excellence",
     items: [],
+  },
+  videoTestimonials: {
+    sectionLabel: "",
+    heading: "Hear What Our Clients Have to Say",
+    backgroundColor: "#cfab57",
+    backgroundImage: "",
+    backgroundImageAlt: "",
+    videos: [],
   },
   process: {
     sectionLabel: "",

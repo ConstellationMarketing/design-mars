@@ -20,6 +20,7 @@ export default function HomeEditor({ content, onChange }: HomeEditorProps) {
       <PracticeAreasIntroSection content={content} update={update} />
       <AwardsSection content={content} update={update} />
       <TestimonialsSection content={content} update={update} />
+      <VideoTestimonialsSection content={content} update={update} />
       <ProcessSection content={content} update={update} />
       <GoogleReviewsSection content={content} update={update} />
       <FaqSectionEditor content={content} update={update} />
@@ -542,6 +543,66 @@ function TestimonialsSection({ content, update }: SectionProps) {
               <div>
                 <Label>Rating Number</Label>
                 <Input value={item.badgeRating || ""} onChange={(e) => upd({ ...item, badgeRating: e.target.value })} placeholder="5.0" />
+              </div>
+            </div>
+          )}
+        />
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function VideoTestimonialsSection({ content, update }: SectionProps) {
+  const vt = content.videoTestimonials;
+  const set = (patch: Partial<typeof vt>) => update("videoTestimonials", { ...vt, ...patch });
+  const ht = useHeadingTag(content, update);
+
+  return (
+    <Section title="Video Testimonials" defaultOpen={false}>
+      <div className="grid gap-4">
+        <HeadingField
+          label="Section Heading"
+          value={vt.sectionLabel}
+          onChange={(v) => set({ sectionLabel: v })}
+          tag={ht.get("videoTestimonials.sectionLabel")}
+          onTagChange={(t) => ht.set("videoTestimonials.sectionLabel", t)}
+        />
+        <div>
+          <Label>Title</Label>
+          <Input value={vt.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Hear What Our Clients Have to Say" />
+        </div>
+        <div>
+          <Label>Background Color</Label>
+          <Input type="color" value={vt.backgroundColor || "#cfab57"} onChange={(e) => set({ backgroundColor: e.target.value })} />
+        </div>
+        <ImageField
+          label="Background Image (Optional)"
+          value={vt.backgroundImage}
+          onChange={(url) => set({ backgroundImage: url })}
+          altValue={vt.backgroundImageAlt || ""}
+          onAltChange={(backgroundImageAlt) => set({ backgroundImageAlt })}
+          onSelectAsset={(asset) => set({
+            backgroundImage: asset.url,
+            backgroundImageAlt: asset.suggestedAltText || vt.backgroundImageAlt || "",
+          })}
+          folder="backgrounds"
+        />
+        <h4 className="font-medium mt-4">Videos (2 recommended)</h4>
+        <ArrayEditor
+          items={vt.videos}
+          onChange={(items) => set({ videos: items })}
+          itemLabel="Video"
+          newItem={() => ({ title: "", videoUrl: "", thumbnailImage: "", thumbnailImageAlt: "" })}
+          renderItem={(item, _, upd) => (
+            <div className="grid gap-3">
+              <div>
+                <Label>Video Title</Label>
+                <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="Video title" />
+              </div>
+              <div>
+                <Label>Video URL (embed URL from YouTube/Vimeo)</Label>
+                <Input value={item.videoUrl} onChange={(e) => upd({ ...item, videoUrl: e.target.value })} placeholder="https://www.youtube.com/embed/VIDEO_ID" />
               </div>
             </div>
           )}

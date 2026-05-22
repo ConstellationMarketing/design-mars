@@ -6,6 +6,7 @@ import HomeAboutSection from "@site/components/home/HomeAboutSection";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
 import AwardsSection from "@site/components/home/AwardsSection";
 import TestimonialsSection from "@site/components/home/TestimonialsSection";
+import VideoTestimonialsSection from "@site/components/home/VideoTestimonialsSection";
 import ProcessSection from "@site/components/home/ProcessSection";
 import GoogleReviewsSection from "@site/components/home/GoogleReviewsSection";
 import FaqSection from "@site/components/home/FaqSection";
@@ -129,6 +130,9 @@ export default function Index() {
 
       {/* Testimonials Section */}
       <TestimonialsSection content={content.testimonials} headingTag={content.headingTags?.["testimonials.sectionLabel"]} />
+
+      {/* Video Testimonials Section */}
+      <VideoTestimonialsSection content={content.videoTestimonials} headingTag={content.headingTags?.["videoTestimonials.sectionLabel"]} />
 
       {/* Process Section */}
       <ProcessSection content={content.process} headingTags={content.headingTags} />
