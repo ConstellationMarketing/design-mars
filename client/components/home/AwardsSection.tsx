@@ -6,7 +6,7 @@ interface AwardsSectionProps {
 }
 
 export default function AwardsSection({ content, headingTag }: AwardsSectionProps) {
-  if (!content || !content.heading) {
+  if (!content) {
     return null;
   }
 
