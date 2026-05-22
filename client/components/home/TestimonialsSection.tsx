@@ -50,28 +50,26 @@ export default function TestimonialsSection({
             >
               {/* Badge - White rounded container with service info */}
               <div className="mb-8 flex justify-center">
-                <div className="bg-white rounded-lg p-4 md:p-5 text-center max-w-xs">
-                  {/* Service Logo */}
-                  {testimonial.badgeLogo && (
-                    <div className="mb-3 flex justify-center">
+                <div className="bg-white rounded-lg p-4 text-center inline-block">
+                  {/* Logo and Name in top row */}
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    {testimonial.badgeLogo && (
                       <img
                         src={testimonial.badgeLogo}
                         alt={testimonial.badgeLogoAlt || "Service Logo"}
                         loading="lazy"
-                        className="h-6"
+                        className="h-5 md:h-6"
                       />
-                    </div>
-                  )}
-
-                  {/* Service Name */}
-                  {testimonial.badgeServiceName && (
-                    <div className="text-sm font-semibold text-black mb-2">
-                      {testimonial.badgeServiceName}
-                    </div>
-                  )}
+                    )}
+                    {testimonial.badgeServiceName && (
+                      <div className="text-sm font-semibold text-black">
+                        {testimonial.badgeServiceName}
+                      </div>
+                    )}
+                  </div>
 
                   {/* Stars */}
-                  <div className="text-yellow-400 text-lg md:text-xl mb-1 tracking-wider">
+                  <div className="text-yellow-400 text-lg md:text-xl mb-1 tracking-wide">
                     {renderStars(testimonial.badgeStarCount || 5)}
                   </div>
 
