@@ -74,6 +74,8 @@ export interface TestimonialItem {
   clientType: string;
   badgeType: string; // "google", "facebook", "yelp", etc.
   badgeRating?: string; // e.g., "5.0"
+  badgeImage?: string; // Badge image (e.g., Google 5 star badge)
+  badgeImageAlt?: string;
   companyLogo?: string; // Company logo image
   companyLogoAlt?: string;
 }

@@ -478,7 +478,7 @@ function TestimonialsSection({ content, update }: SectionProps) {
           items={t.items}
           onChange={(items) => set({ items })}
           itemLabel="Testimonial"
-          newItem={() => ({ text: "", author: "", clientType: "", badgeType: "google", badgeRating: "5.0", companyLogo: "", companyLogoAlt: "" })}
+          newItem={() => ({ text: "", author: "", clientType: "", badgeType: "google", badgeRating: "5.0", badgeImage: "", badgeImageAlt: "", companyLogo: "", companyLogoAlt: "" })}
           renderItem={(item, _, upd) => (
             <div className="grid gap-3">
               <div>
@@ -511,6 +511,19 @@ function TestimonialsSection({ content, update }: SectionProps) {
                 <Label>Badge Rating</Label>
                 <Input value={item.badgeRating || ""} onChange={(e) => upd({ ...item, badgeRating: e.target.value })} placeholder="5.0" />
               </div>
+              <ImageField
+                label="Badge Image (e.g., Google 5-star badge)"
+                value={item.badgeImage}
+                onChange={(url) => upd({ ...item, badgeImage: url })}
+                altValue={item.badgeImageAlt || ""}
+                onAltChange={(badgeImageAlt) => upd({ ...item, badgeImageAlt })}
+                onSelectAsset={(asset) => upd({
+                  ...item,
+                  badgeImage: asset.url,
+                  badgeImageAlt: asset.suggestedAltText || item.badgeImageAlt || "",
+                })}
+                folder="badges"
+              />
               <ImageField
                 label="Company Logo"
                 value={item.companyLogo}

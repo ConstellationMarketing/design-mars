@@ -52,26 +52,35 @@ export default function TestimonialsSection({
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="border-2 p-6 md:p-8 flex flex-col"
-              style={{ backgroundColor: "#0a0a0a", borderColor: "#CDA977" }}
+              className="border p-6 md:p-8 flex flex-col"
+              style={{ backgroundColor: "#0a0a0a", borderColor: "#cfab57" }}
             >
-              {/* Badge - Service type and rating with background */}
-              <div className="mb-6 bg-white p-3 rounded inline-block self-center">
-                <div className="text-xs font-semibold text-black mb-1">
-                  {getBadgeLabel(testimonial.badgeType)}
-                </div>
-                <div className="text-xs text-gray-600 mb-2">
-                  {testimonial.badgeRating || "5.0"} Rating
-                </div>
-
-                {/* Company Logo inside badge */}
-                {testimonial.companyLogo && (
+              {/* Badge */}
+              <div className="mb-6 flex items-center justify-center">
+                {testimonial.badgeImage ? (
                   <img
-                    src={testimonial.companyLogo}
-                    alt={testimonial.companyLogoAlt || "Company Logo"}
+                    src={testimonial.badgeImage}
+                    alt={testimonial.badgeImageAlt || "Service Badge"}
                     loading="lazy"
-                    className="h-6"
+                    className="h-16"
                   />
+                ) : (
+                  <div className="bg-white p-3 rounded text-center">
+                    <div className="text-xs font-semibold text-black mb-1">
+                      {getBadgeLabel(testimonial.badgeType)}
+                    </div>
+                    <div className="text-xs text-gray-600 mb-2">
+                      {testimonial.badgeRating || "5.0"} Rating
+                    </div>
+                    {testimonial.companyLogo && (
+                      <img
+                        src={testimonial.companyLogo}
+                        alt={testimonial.companyLogoAlt || "Company Logo"}
+                        loading="lazy"
+                        className="h-6"
+                      />
+                    )}
+                  </div>
                 )}
               </div>
 
@@ -81,7 +90,7 @@ export default function TestimonialsSection({
               </p>
 
               {/* Author and client type in gold */}
-              <div className="text-xs md:text-sm font-semibold uppercase tracking-wider" style={{ color: "#CDA977" }}>
+              <div className="text-xs md:text-sm font-semibold uppercase tracking-wider" style={{ color: "#cfab57" }}>
                 {testimonial.author}
                 {testimonial.clientType && `, ${testimonial.clientType}`}
               </div>
