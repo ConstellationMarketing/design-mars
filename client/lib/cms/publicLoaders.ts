@@ -529,6 +529,11 @@ export function mergeHomeContentWithDefaults(cmsContent: Partial<HomePageContent
       ...(cmsContent.videoTestimonials || {}),
       videos: cmsContent.videoTestimonials?.videos?.length ? cmsContent.videoTestimonials.videos : defaults.videoTestimonials.videos,
     },
+    attorneys: {
+      ...defaults.attorneys,
+      ...(cmsContent.attorneys || {}),
+      attorneys: cmsContent.attorneys?.attorneys?.length ? cmsContent.attorneys.attorneys : defaults.attorneys.attorneys,
+    },
     process: {
       ...defaults.process,
       ...cmsContent.process,

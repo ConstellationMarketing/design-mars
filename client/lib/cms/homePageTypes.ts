@@ -169,6 +169,23 @@ export interface VideoTestimonialsContent {
   videos: VideoItem[];
 }
 
+export interface AttorneyItem {
+  name: string;
+  title: string;
+  yearsExperience: string;
+  photo: string;
+  photoAlt: string;
+  link?: string;
+}
+
+export interface AttorneysContent {
+  sectionLabel: string;
+  heading: string;
+  buttonText: string;
+  buttonLink: string;
+  attorneys: AttorneyItem[];
+}
+
 export interface ContactContent {
   sectionLabel: string;
   heading: string;
@@ -196,6 +213,7 @@ export interface HomePageContent {
   awards: AwardsContent;
   testimonials: TestimonialsContent;
   videoTestimonials: VideoTestimonialsContent;
+  attorneys: AttorneysContent;
   process: ProcessContent;
   googleReviews: GoogleReviewsContent;
   faq: FaqContent;
@@ -362,6 +380,13 @@ export const defaultHomeContent: HomePageContent = {
     backgroundImage: "",
     backgroundImageAlt: "",
     videos: [],
+  },
+  attorneys: {
+    sectionLabel: "",
+    heading: "Meet the Attorneys",
+    buttonText: "SEE ALL ATTORNEYS",
+    buttonLink: "/attorneys/",
+    attorneys: [],
   },
   process: {
     sectionLabel: "",

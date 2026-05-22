@@ -21,6 +21,7 @@ export default function HomeEditor({ content, onChange }: HomeEditorProps) {
       <AwardsSection content={content} update={update} />
       <TestimonialsSection content={content} update={update} />
       <VideoTestimonialsSection content={content} update={update} />
+      <AttorneysSectionEditor content={content} update={update} />
       <ProcessSection content={content} update={update} />
       <GoogleReviewsSection content={content} update={update} />
       <FaqSectionEditor content={content} update={update} />
@@ -603,6 +604,79 @@ function VideoTestimonialsSection({ content, update }: SectionProps) {
               <div>
                 <Label>Video URL (embed URL from YouTube/Vimeo)</Label>
                 <Input value={item.videoUrl} onChange={(e) => upd({ ...item, videoUrl: e.target.value })} placeholder="https://www.youtube.com/embed/VIDEO_ID" />
+              </div>
+            </div>
+          )}
+        />
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function AttorneysSectionEditor({ content, update }: SectionProps) {
+  const a = content.attorneys;
+  const set = (patch: Partial<typeof a>) => update("attorneys", { ...a, ...patch });
+  const ht = useHeadingTag(content, update);
+
+  return (
+    <Section title="Meet the Attorneys" defaultOpen={false}>
+      <div className="grid gap-4">
+        <HeadingField
+          label="Section Heading"
+          value={a.sectionLabel}
+          onChange={(v) => set({ sectionLabel: v })}
+          tag={ht.get("attorneys.sectionLabel")}
+          onTagChange={(t) => ht.set("attorneys.sectionLabel", t)}
+        />
+        <div>
+          <Label>Title</Label>
+          <Input value={a.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Meet the Attorneys" />
+        </div>
+        <div>
+          <Label>Button Text</Label>
+          <Input value={a.buttonText} onChange={(e) => set({ buttonText: e.target.value })} placeholder="SEE ALL ATTORNEYS" />
+        </div>
+        <div>
+          <Label>Button Link</Label>
+          <Input value={a.buttonLink} onChange={(e) => set({ buttonLink: e.target.value })} placeholder="/attorneys/" />
+        </div>
+        <h4 className="font-medium mt-4">Attorneys</h4>
+        <ArrayEditor
+          items={a.attorneys}
+          onChange={(items) => set({ attorneys: items })}
+          itemLabel="Attorney"
+          newItem={() => ({ name: "", title: "", yearsExperience: "", photo: "", photoAlt: "", link: "" })}
+          renderItem={(item, _, upd) => (
+            <div className="grid gap-3">
+              <div>
+                <Label>Attorney Name</Label>
+                <Input value={item.name} onChange={(e) => upd({ ...item, name: e.target.value })} placeholder="John Doe" />
+              </div>
+              <div>
+                <Label>Title/Position</Label>
+                <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="Managing Partner" />
+              </div>
+              <div>
+                <Label>Years of Experience</Label>
+                <Input value={item.yearsExperience} onChange={(e) => upd({ ...item, yearsExperience: e.target.value })} placeholder="15+ YEARS" />
+              </div>
+              <ImageField
+                label="Attorney Photo"
+                value={item.photo}
+                onChange={(url) => upd({ ...item, photo: url })}
+                altValue={item.photoAlt || ""}
+                onAltChange={(photoAlt) => upd({ ...item, photoAlt })}
+                onSelectAsset={(asset) => upd({
+                  ...item,
+                  photo: asset.url,
+                  photoAlt: asset.suggestedAltText || item.photoAlt || "",
+                })}
+                folder="attorneys"
+              />
+              <div>
+                <Label>Attorney Link (Optional)</Label>
+                <Input value={item.link || ""} onChange={(e) => upd({ ...item, link: e.target.value })} placeholder="/attorneys/john-doe/" />
               </div>
             </div>
           )}
