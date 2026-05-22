@@ -78,9 +78,9 @@ export default function Footer() {
               <img
                 src={logoUrl}
                 alt={logoAlt}
-                className="w-20 h-20 md:w-24 md:h-24 object-contain"
-                width={96}
-                height={96}
+                className="w-40 h-40 sm:w-64 sm:h-64 lg:w-[500px] lg:h-[500px] object-contain"
+                width={500}
+                height={500}
               />
             </div>
           ) : null}
