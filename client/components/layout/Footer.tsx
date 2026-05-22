@@ -123,8 +123,8 @@ export default function Footer() {
         )}
 
         {/* Copyright */}
-        <div className="pt-6 text-center text-sm text-gray-500">
-          {copyrightText && <p>{copyrightText}</p>}
+        <div className="pt-6 text-center text-gray-500">
+          {copyrightText && <p className="text-[14px]">{copyrightText}</p>}
         </div>
       </div>
     </footer>
