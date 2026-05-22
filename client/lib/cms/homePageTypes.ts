@@ -71,15 +71,16 @@ export interface AwardsContent {
 export interface TestimonialItem {
   text: string;
   author: string;
-  ratingImage: string;
-  ratingImageAlt?: string;
+  clientType: string;
+  badgeType: string; // "google", "facebook", "yelp", etc.
+  badgeRating?: string; // e.g., "5.0"
+  companyLogo?: string; // Company logo image
+  companyLogoAlt?: string;
 }
 
 export interface TestimonialsContent {
   sectionLabel: string;
   heading: string;
-  backgroundImage: string;
-  backgroundImageAlt?: string;
   items: TestimonialItem[];
 }
 
@@ -332,9 +333,7 @@ export const defaultHomeContent: HomePageContent = {
   },
   testimonials: {
     sectionLabel: "",
-    heading: "",
-    backgroundImage: "",
-    backgroundImageAlt: "",
+    heading: "Committed To Excellence",
     items: [],
   },
   process: {

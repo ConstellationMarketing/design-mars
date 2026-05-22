@@ -452,6 +452,14 @@ function TestimonialsSection({ content, update }: SectionProps) {
   const set = (patch: Partial<typeof t>) => update("testimonials", { ...t, ...patch });
   const ht = useHeadingTag(content, update);
 
+  const badgeOptions = [
+    { label: "Google", value: "google" },
+    { label: "Facebook", value: "facebook" },
+    { label: "Yelp", value: "yelp" },
+    { label: "Trustpilot", value: "trustpilot" },
+    { label: "Avvo", value: "avvo" },
+  ];
+
   return (
     <Section title="Testimonials" defaultOpen={false}>
       <div className="grid gap-4">
@@ -463,54 +471,56 @@ function TestimonialsSection({ content, update }: SectionProps) {
           onTagChange={(t2) => ht.set("testimonials.sectionLabel", t2)}
         />
         <div>
-          <Label>Subtitle</Label>
-          <Input value={t.heading} onChange={(e) => set({ heading: e.target.value })} />
-        </div>
-        <ImageField
-          label="Background Image"
-          value={t.backgroundImage}
-          onChange={(url) => set({ backgroundImage: url })}
-          altValue={t.backgroundImageAlt || ""}
-          onAltChange={(backgroundImageAlt) => set({ backgroundImageAlt })}
-          onSelectAsset={(asset) => set({
-            backgroundImage: asset.url,
-            backgroundImageAlt: asset.suggestedAltText || t.backgroundImageAlt || "",
-          })}
-          folder="backgrounds"
-        />
-        <div>
-          <Label>Background Image Alt Text</Label>
-          <Input value={t.backgroundImageAlt || ""} onChange={(e) => set({ backgroundImageAlt: e.target.value })} placeholder="Describe the background image" />
+          <Label>Title</Label>
+          <Input value={t.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Committed To Excellence" />
         </div>
         <ArrayEditor
           items={t.items}
           onChange={(items) => set({ items })}
           itemLabel="Testimonial"
-          newItem={() => ({ text: "", author: "", ratingImage: "", ratingImageAlt: "" })}
+          newItem={() => ({ text: "", author: "", clientType: "", badgeType: "google", badgeRating: "5.0", companyLogo: "", companyLogoAlt: "" })}
           renderItem={(item, _, upd) => (
             <div className="grid gap-3">
+              <RichTextField label="Testimonial Text" value={item.text} onChange={(v) => upd({ ...item, text: v })} />
               <div>
-                <Label>Author</Label>
-                <Input value={item.author} onChange={(e) => upd({ ...item, author: e.target.value })} />
+                <Label>Author Name</Label>
+                <Input value={item.author} onChange={(e) => upd({ ...item, author: e.target.value })} placeholder="e.g., Maria Gonzalez" />
               </div>
-              <RichTextField label="Text" value={item.text} onChange={(v) => upd({ ...item, text: v })} />
+              <div>
+                <Label>Client Type</Label>
+                <Input value={item.clientType} onChange={(e) => upd({ ...item, clientType: e.target.value })} placeholder="e.g., CAR ACCIDENT CLIENT" />
+              </div>
+              <div>
+                <Label>Service Badge Type</Label>
+                <select
+                  value={item.badgeType}
+                  onChange={(e) => upd({ ...item, badgeType: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded bg-white"
+                >
+                  {badgeOptions.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <Label>Badge Rating</Label>
+                <Input value={item.badgeRating || ""} onChange={(e) => upd({ ...item, badgeRating: e.target.value })} placeholder="5.0" />
+              </div>
               <ImageField
-                label="Rating Image"
-                value={item.ratingImage}
-                onChange={(url) => upd({ ...item, ratingImage: url })}
-                altValue={item.ratingImageAlt || ""}
-                onAltChange={(ratingImageAlt) => upd({ ...item, ratingImageAlt })}
+                label="Company Logo"
+                value={item.companyLogo}
+                onChange={(url) => upd({ ...item, companyLogo: url })}
+                altValue={item.companyLogoAlt || ""}
+                onAltChange={(companyLogoAlt) => upd({ ...item, companyLogoAlt })}
                 onSelectAsset={(asset) => upd({
                   ...item,
-                  ratingImage: asset.url,
-                  ratingImageAlt: asset.suggestedAltText || item.ratingImageAlt || "",
+                  companyLogo: asset.url,
+                  companyLogoAlt: asset.suggestedAltText || item.companyLogoAlt || "",
                 })}
                 folder="logos"
               />
-              <div>
-                <Label>Rating Image Alt Text</Label>
-                <Input value={item.ratingImageAlt || ""} onChange={(e) => upd({ ...item, ratingImageAlt: e.target.value })} placeholder="e.g. 5 star rating" />
-              </div>
             </div>
           )}
         />

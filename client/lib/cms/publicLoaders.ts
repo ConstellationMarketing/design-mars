@@ -521,7 +521,7 @@ export function mergeHomeContentWithDefaults(cmsContent: Partial<HomePageContent
     },
     testimonials: {
       ...defaults.testimonials,
-      ...cmsContent.testimonials,
+      ...(cmsContent.testimonials || {}),
       items: cmsContent.testimonials?.items?.length ? cmsContent.testimonials.items : defaults.testimonials.items,
     },
     process: {
