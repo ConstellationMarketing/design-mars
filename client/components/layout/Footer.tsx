@@ -83,14 +83,19 @@ export default function Footer() {
         {/* Description - Blurbs with gold separators */}
         {footerTaglineHtml && (
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <div
-              className="text-xs md:text-sm text-gray-300 leading-relaxed space-y-4"
-              dangerouslySetInnerHTML={{ __html: footerTaglineHtml }}
-              style={{
-                display: "grid",
-                gap: "24px"
-              }}
-            />
+            {/* Split content by <p> tags and render with gold separators */}
+            {footerTaglineHtml.split(/<\/?p[^>]*>/g)
+              .filter(text => text.trim())
+              .map((text, idx, arr) => (
+                <div key={idx}>
+                  <p className="text-xs md:text-sm text-gray-300 leading-relaxed mb-4">
+                    {text.trim()}
+                  </p>
+                  {idx < arr.length - 1 && (
+                    <div className="h-px bg-brand-accent mx-auto mb-6 max-w-2xl" style={{ backgroundColor: "#cfab57" }}></div>
+                  )}
+                </div>
+              ))}
           </div>
         )}
 
