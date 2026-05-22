@@ -31,7 +31,7 @@ export default function FaqSection({ content }: FaqSectionProps) {
         <div className="text-center mb-12 md:mb-16">
           {data.heading && (
             <div className="inline-block">
-              <h2 className="font-poppins font-bold text-4xl md:text-5xl text-black leading-tight">
+              <h2 className="font-poppins font-bold text-2xl md:text-5xl text-black leading-tight">
                 {data.heading}
               </h2>
               <div className="h-px bg-brand-accent mt-4"></div>

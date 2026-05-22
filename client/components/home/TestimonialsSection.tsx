@@ -30,11 +30,11 @@ export default function TestimonialsSection({
             <div className="inline-block">
               {headingTag ? (
                 // @ts-ignore
-                <headingTag className="text-4xl md:text-5xl font-bold text-white block">
+                <headingTag className="text-2xl md:text-5xl font-bold text-white block">
                   {data.heading}
                 </headingTag>
               ) : (
-                <h2 className="text-4xl md:text-5xl font-bold text-white">
+                <h2 className="text-2xl md:text-5xl font-bold text-white">
                   {data.heading}
                 </h2>
               )}

@@ -50,11 +50,11 @@ export default function AttorneysSection({
             <div className="inline-block">
               {headingTag ? (
                 // @ts-ignore
-                <headingTag className="text-4xl md:text-5xl font-bold text-black block">
+                <headingTag className="text-2xl md:text-5xl font-bold text-black block">
                   {data.heading}
                 </headingTag>
               ) : (
-                <h2 className="text-4xl md:text-5xl font-bold text-black">
+                <h2 className="text-2xl md:text-5xl font-bold text-black">
                   {data.heading}
                 </h2>
               )}
