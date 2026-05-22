@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import type { BlogSectionContent, PreloadedPostDocument } from "@site/lib/cms/homePageTypes";
 import { loadRecentPosts } from "@site/lib/cms/publicLoaders";
@@ -113,7 +114,7 @@ export default function BlogSection({
                     to={data.buttonLink}
                     className="group inline-block bg-brand-accent border-2 border-black px-6 md:px-8 py-2 md:py-3 hover:bg-black hover:border-black transition-all duration-300"
                   >
-                    <span className="font-poppins text-[12px] md:text-[14px] font-semibold uppercase text-black group-hover:text-white transition-colors duration-300">
+                    <span className="font-poppins text-[14px] md:text-[14px] font-semibold uppercase text-black group-hover:text-white transition-colors duration-300">
                       {data.buttonText}
                     </span>
                     <span className="ml-2 text-black group-hover:text-white transition-colors duration-300">›</span>

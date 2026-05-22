@@ -91,13 +91,13 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
                 href={`tel:${phoneNumber.replace(/\D/g, "")}`}
                 className="flex flex-col items-center gap-2 hover:opacity-80 transition-opacity duration-300"
               >
-                <span className="font-poppins text-white text-[12px] tracking-wide font-semibold">
+                <span className="font-poppins text-white text-[14px] tracking-wide font-semibold">
                   {ctaLabel}
                 </span>
                 <span className="font-poppins text-brand-accent text-[20px] font-bold leading-none">
                   {phoneDisplay}
                 </span>
-                <span className="font-poppins text-white text-[10px] tracking-wide font-semibold">
+                <span className="font-poppins text-white text-[14px] tracking-wide font-semibold">
                   {ctaTagline}
                 </span>
               </a>

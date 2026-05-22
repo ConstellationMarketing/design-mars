@@ -123,7 +123,7 @@ export default function Footer() {
         )}
 
         {/* Copyright */}
-        <div className="pt-6 text-center text-xs text-gray-500">
+        <div className="pt-6 text-center text-sm text-gray-500">
           {copyrightText && <p>{copyrightText}</p>}
         </div>
       </div>

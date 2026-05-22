@@ -77,7 +77,7 @@ export default function TestimonialsSection({
                   </div>
 
                   {/* Rating */}
-                  <div className="text-xs md:text-sm text-gray-700 font-medium">
+                  <div className="text-sm md:text-sm text-gray-700 font-medium">
                     {testimonial.badgeRating || "5.0"} Rating
                   </div>
                 </div>

@@ -22,7 +22,7 @@ export default function StatsSection({ content }: StatsSectionProps) {
                 <div className="font-poppins text-[32px] md:text-[48px] font-bold text-white leading-tight">
                   {content.totalAmount}
                 </div>
-                <div className="font-poppins text-[13px] md:text-[14px] font-semibold text-white tracking-widest uppercase mt-3 md:mt-4">
+                <div className="font-poppins text-[14px] md:text-[14px] font-semibold text-white tracking-widest uppercase mt-3 md:mt-4">
                   {content.totalLabel}
                 </div>
               </div>
@@ -42,7 +42,7 @@ export default function StatsSection({ content }: StatsSectionProps) {
                     : ''
                 }`}
               >
-                <div className="font-poppins text-[12px] md:text-[12px] font-semibold text-black tracking-wider uppercase">
+                <div className="font-poppins text-[14px] md:text-[12px] font-semibold text-black tracking-wider uppercase">
                   {caseItem.label}
                 </div>
                 <div className="font-poppins text-[18px] md:text-[24px] font-bold text-black mt-2 md:mt-3">

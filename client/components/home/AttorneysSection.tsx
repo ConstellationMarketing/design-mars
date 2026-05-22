@@ -101,7 +101,7 @@ export default function AttorneysSection({
                     <p className="font-poppins text-sm md:text-base font-semibold mb-1" style={{ color: "#cfab57" }}>
                       {attorney.title}
                     </p>
-                    <p className="font-poppins text-xs md:text-sm text-gray-500">
+                    <p className="font-poppins text-sm md:text-sm text-gray-500">
                       {attorney.yearsExperience}
                     </p>
                   </div>
