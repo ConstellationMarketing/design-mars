@@ -96,6 +96,11 @@ export default function VideoTestimonialsSection({
           {videos.map((video, index) => {
             const embedUrl = getVideoEmbedUrl(video.videoUrl);
 
+            // Debug log to help troubleshoot
+            if (embedUrl) {
+              console.log(`Video ${index + 1}: Original="${video.videoUrl}" → Converted="${embedUrl}"`);
+            }
+
             return (
               <div key={index} className="flex flex-col items-center">
                 {/* Video Container */}
@@ -104,12 +109,16 @@ export default function VideoTestimonialsSection({
                     <iframe
                       src={embedUrl}
                       title={video.title || `Video ${index + 1}`}
-                      className="w-full aspect-video"
-                      width="100%"
-                      height="100%"
-                      style={{ minHeight: "400px" }}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                      className="w-full h-auto"
+                      style={{
+                        aspectRatio: "16 / 9",
+                        minHeight: "300px",
+                        border: "none"
+                      }}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen; web-share"
                       allowFullScreen
+                      referrerPolicy="strict-origin-when-cross-origin"
                     />
                   )}
                 </div>
