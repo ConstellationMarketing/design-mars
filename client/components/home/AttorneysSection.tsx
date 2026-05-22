@@ -124,12 +124,12 @@ export default function AttorneysSection({
         {/* See All Attorneys Button */}
         {data.buttonText && data.buttonLink && (
           <div className="flex justify-center">
-            <div className="inline-block border-2 border-brand-accent p-1">
+            <div className="inline-block border-2 border-brand-accent p-1 hover:border-black transition-all duration-300 hover:bg-black">
               <Link
                 to={data.buttonLink}
-                className="inline-block bg-brand-accent border-2 border-brand-accent px-8 md:px-12 py-3 md:py-4 hover:bg-white hover:text-black transition-all duration-300"
+                className="inline-block bg-brand-accent border-2 border-black px-8 md:px-12 py-3 md:py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-300"
               >
-                <span className="font-poppins text-[14px] md:text-[16px] font-normal uppercase text-black">
+                <span className="font-poppins text-[14px] md:text-[16px] font-normal uppercase text-black hover:text-white">
                   {data.buttonText}
                 </span>
                 <span className="ml-2">›</span>
