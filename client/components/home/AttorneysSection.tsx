@@ -20,8 +20,9 @@ export default function AttorneysSection({
 
   const data = content;
   const attorneys = data.attorneys;
-  const itemsPerSlide = 4;
-  const totalSlides = Math.ceil(attorneys.length / itemsPerSlide);
+  // Display 1 less than total, so carousel can move
+  const itemsPerSlide = Math.max(1, attorneys.length - 1);
+  const totalSlides = attorneys.length > 1 ? attorneys.length - itemsPerSlide + 1 : 1;
 
   const nextSlide = () => {
     setActiveSlide((prev) => (prev + 1) % totalSlides);
@@ -31,7 +32,7 @@ export default function AttorneysSection({
     setActiveSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
-  const startIndex = activeSlide * itemsPerSlide;
+  const startIndex = activeSlide * 1; // Move 1 attorney at a time
   const visibleAttorneys = attorneys.slice(startIndex, startIndex + itemsPerSlide);
 
   return (
@@ -80,8 +81,8 @@ export default function AttorneysSection({
             ))}
           </div>
 
-          {/* Navigation Arrows - only show if more than 4 attorneys */}
-          {attorneys.length > itemsPerSlide && (
+          {/* Navigation Arrows - only show if carousel can move */}
+          {totalSlides > 1 && (
             <>
               <button
                 onClick={prevSlide}
