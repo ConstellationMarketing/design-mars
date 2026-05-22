@@ -45,14 +45,14 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-12 md:py-20">
         {/* Top Section - Contact Info in two columns */}
         <div className="grid grid-cols-2 gap-4 mb-12 pb-8" style={{ borderBottomColor: "#cfab57", borderBottomWidth: "1px" }}>
-          <div className="text-center text-xs md:text-sm">
+          <div className="text-center text-sm md:text-base">
             {phoneNumber && (
               <a href={`tel:${phoneNumber.replace(/\D/g, "")}`} className="hover:text-brand-accent transition-colors">
-                📞 {phoneNumber}
+                <span style={{ color: "#cfab57" }}>📞</span> {phoneNumber}
               </a>
             )}
           </div>
-          <div className="text-center text-xs md:text-sm text-gray-300">
+          <div className="text-center text-sm md:text-base text-gray-300">
             {(addressLine1 || addressLine2) && (
               <span>📍 {[addressLine1, addressLine2].filter(Boolean).join(", ")}</span>
             )}
