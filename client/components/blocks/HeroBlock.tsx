@@ -13,7 +13,7 @@ export default function HeroBlock({ block }: HeroBlockProps) {
 
   return (
     <div
-      className="bg-brand-dark pt-[30px] md:pt-[54px] pb-[30px] md:pb-[54px] relative z-10"
+      className="bg-brand-dark pt-[16px] md:pt-[54px] pb-[16px] md:pb-[54px] relative z-10"
       style={
         block.backgroundImage
           ? {
@@ -32,7 +32,7 @@ export default function HeroBlock({ block }: HeroBlockProps) {
               {block.sectionLabel}
             </h1>
 
-            <p className="font-poppins font-bold text-[clamp(2.5rem,7vw,68.8px)] leading-[1.2] text-white mb-[20px] md:mb-[30px]">
+            <p className="font-poppins font-bold text-[clamp(1.75rem,6vw,68.8px)] leading-[1.2] text-white mb-[20px] md:mb-[30px]">
               {block.tagline}
             </p>
 
