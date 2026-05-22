@@ -81,12 +81,12 @@ export default function TestimonialsSection({
               </div>
 
               {/* Testimonial text */}
-              <p className="text-white text-sm md:text-base leading-relaxed mb-6 flex-grow">
+              <p className="text-white text-sm md:text-base leading-relaxed mb-6 flex-grow text-center">
                 "{testimonial.text}"
               </p>
 
               {/* Author and client type in gold */}
-              <div className="text-xs md:text-sm font-semibold uppercase tracking-wider" style={{ color: "#cfab57" }}>
+              <div className="text-xs md:text-sm font-semibold uppercase tracking-wider text-center" style={{ color: "#cfab57" }}>
                 {testimonial.author}
                 {testimonial.clientType && `, ${testimonial.clientType}`}
               </div>
