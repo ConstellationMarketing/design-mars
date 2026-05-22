@@ -108,7 +108,7 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
           <Sheet>
             <SheetTrigger asChild className="lg:hidden flex-shrink-0">
               <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
-                <Menu className="h-8 w-8" />
+                <Menu className="h-10 w-10" />
               </Button>
             </SheetTrigger>
             <SheetContent
