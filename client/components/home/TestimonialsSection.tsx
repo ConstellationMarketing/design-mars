@@ -56,33 +56,16 @@ export default function TestimonialsSection({
               style={{ backgroundColor: "#0a0a0a", borderColor: "#cfab57" }}
             >
               {/* Badge */}
-              <div className="mb-6 flex items-center justify-center">
-                {testimonial.badgeImage ? (
+              {testimonial.badgeImage && (
+                <div className="mb-6 flex items-center justify-center">
                   <img
                     src={testimonial.badgeImage}
                     alt={testimonial.badgeImageAlt || "Service Badge"}
                     loading="lazy"
-                    className="h-16"
+                    className="max-w-full h-auto"
                   />
-                ) : (
-                  <div className="bg-white p-3 rounded text-center">
-                    <div className="text-xs font-semibold text-black mb-1">
-                      {getBadgeLabel(testimonial.badgeType)}
-                    </div>
-                    <div className="text-xs text-gray-600 mb-2">
-                      {testimonial.badgeRating || "5.0"} Rating
-                    </div>
-                    {testimonial.companyLogo && (
-                      <img
-                        src={testimonial.companyLogo}
-                        alt={testimonial.companyLogoAlt || "Company Logo"}
-                        loading="lazy"
-                        className="h-6"
-                      />
-                    )}
-                  </div>
-                )}
-              </div>
+                </div>
+              )}
 
               {/* Testimonial text */}
               <p className="text-white text-sm md:text-base leading-relaxed mb-6 flex-grow">
