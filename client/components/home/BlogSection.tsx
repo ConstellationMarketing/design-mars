@@ -50,9 +50,9 @@ export default function BlogSection({
   return (
     <div className="w-full py-16 md:py-24" style={bgStyle}>
       <div className="max-w-7xl mx-auto px-4">
-        {/* Blog Content Card with title inside */}
-        <div className="max-w-2xl mx-auto">
-          <div className="bg-white border-l-4 border-brand-accent p-8 md:p-10 shadow-xl">
+        {/* Blog Content Card with title inside - left aligned 2 column */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <div className="bg-white border-l-4 border-brand-accent p-8 md:p-10" style={{ boxShadow: "8px 8px 16px rgba(0, 0, 0, 0.15)" }}>
             {/* Title inside box */}
             {data.heading && (
               <div className="mb-6 pb-6 border-b border-brand-accent">
