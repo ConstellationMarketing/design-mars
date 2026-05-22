@@ -69,25 +69,39 @@ export default function BlogSection({
               </div>
             )}
 
-            {/* Description paragraphs with dividers */}
-            <div className="space-y-5 mb-8 text-gray-700 text-sm md:text-base leading-relaxed">
+            {/* Description and blog posts with dividers */}
+            <div className="mb-8">
+              {/* Description */}
               {data.description && (
-                <p>{data.description}</p>
+                <div className="pb-5 border-b border-gray-300">
+                  <p className="text-gray-700 text-sm md:text-base leading-relaxed">{data.description}</p>
+                </div>
               )}
 
+              {/* Blog Posts */}
               {!loading && posts.length > 0 && (
-                <>
-                  {posts.slice(0, 2).map((post, index) => (
-                    <div key={index}>
-                      <p>{post.excerpt || post.title}</p>
-                      {index < 1 && <div className="border-b border-gray-300 pt-5"></div>}
+                <div className="space-y-0">
+                  {posts.map((post, index) => (
+                    <div key={index} className="border-b border-gray-300">
+                      <Link
+                        to={`/blog/${post.slug}/`}
+                        className="block py-5 group hover:text-brand-accent transition-colors duration-300"
+                      >
+                        <h3 className="font-poppins font-semibold text-gray-700 group-hover:text-brand-accent text-sm md:text-base">
+                          {post.title}
+                        </h3>
+                      </Link>
                     </div>
                   ))}
-                </>
+                </div>
               )}
 
               {loading && (
-                <p className="text-gray-500">Loading blog posts...</p>
+                <p className="text-gray-500 py-5">Loading blog posts...</p>
+              )}
+
+              {!loading && posts.length === 0 && (
+                <p className="text-gray-500 py-5">No blog posts available.</p>
               )}
             </div>
 
