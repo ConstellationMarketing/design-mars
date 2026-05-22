@@ -39,9 +39,9 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
                 <img
                   src={logoUrl}
                   alt={logoAlt}
-                  className="h-[60px] w-auto"
-                  width={306}
-                  height={60}
+                  className="h-[40px] w-auto"
+                  width={204}
+                  height={40}
                 />
               ) : (
                 <span className="font-poppins text-black text-[24px] leading-none font-bold">
@@ -107,7 +107,7 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
           {/* Mobile Menu */}
           <Sheet>
             <SheetTrigger asChild className="lg:hidden flex-shrink-0">
-              <Button variant="ghost" size="icon" className="text-black hover:bg-white/20">
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
