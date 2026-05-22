@@ -50,30 +50,27 @@ export default function BlogSection({
   return (
     <div className="w-full py-16 md:py-24" style={bgStyle}>
       <div className="max-w-7xl mx-auto px-4">
-        {/* Title */}
-        {data.heading && (
-          <div className="text-center mb-12 md:mb-16">
-            <div className="inline-block">
-              {headingTag ? (
-                // @ts-ignore
-                <headingTag className="text-4xl md:text-5xl font-bold text-black block">
-                  {data.heading}
-                </headingTag>
-              ) : (
-                <h2 className="text-4xl md:text-5xl font-bold text-black">
-                  {data.heading}
-                </h2>
-              )}
-              <div className="h-px bg-brand-accent mt-4"></div>
-            </div>
-          </div>
-        )}
-
-        {/* Blog Content Card */}
+        {/* Blog Content Card with title inside */}
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white border-t-4 border-brand-accent rounded-lg p-8 md:p-12 shadow-lg">
-            {/* Description paragraphs from first post or default */}
-            <div className="space-y-4 mb-8 text-gray-700 text-base leading-relaxed">
+          <div className="bg-white border-l-4 border-brand-accent p-8 md:p-10 shadow-xl">
+            {/* Title inside box */}
+            {data.heading && (
+              <div className="mb-6 pb-6 border-b border-brand-accent">
+                {headingTag ? (
+                  // @ts-ignore
+                  <headingTag className="text-3xl md:text-4xl font-bold text-black">
+                    {data.heading}
+                  </headingTag>
+                ) : (
+                  <h2 className="text-3xl md:text-4xl font-bold text-black">
+                    {data.heading}
+                  </h2>
+                )}
+              </div>
+            )}
+
+            {/* Description paragraphs with dividers */}
+            <div className="space-y-5 mb-8 text-gray-700 text-sm md:text-base leading-relaxed">
               {data.description && (
                 <p>{data.description}</p>
               )}
@@ -81,7 +78,10 @@ export default function BlogSection({
               {!loading && posts.length > 0 && (
                 <>
                   {posts.slice(0, 2).map((post, index) => (
-                    <p key={index}>{post.excerpt || post.title}</p>
+                    <div key={index}>
+                      <p>{post.excerpt || post.title}</p>
+                      {index < 1 && <div className="border-b border-gray-300 pt-5"></div>}
+                    </div>
                   ))}
                 </>
               )}
