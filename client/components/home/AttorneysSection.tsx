@@ -20,9 +20,8 @@ export default function AttorneysSection({
 
   const data = content;
   const attorneys = data.attorneys;
-  // Display 1 less than total, so carousel can move
-  const itemsPerSlide = Math.max(1, attorneys.length - 1);
-  const totalSlides = attorneys.length > 1 ? attorneys.length - itemsPerSlide + 1 : 1;
+  const itemsPerSlide = 3; // Always show 3 attorneys
+  const totalSlides = attorneys.length;
 
   const nextSlide = () => {
     setActiveSlide((prev) => (prev + 1) % totalSlides);
@@ -32,8 +31,15 @@ export default function AttorneysSection({
     setActiveSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
-  const startIndex = activeSlide * 1; // Move 1 attorney at a time
-  const visibleAttorneys = attorneys.slice(startIndex, startIndex + itemsPerSlide);
+  // Get visible attorneys with infinite loop (wraps around)
+  const getAttorneyIndex = (offset: number) => {
+    return (activeSlide + offset) % attorneys.length;
+  };
+  const visibleAttorneys = [
+    attorneys[getAttorneyIndex(0)],
+    attorneys[getAttorneyIndex(1)],
+    attorneys[getAttorneyIndex(2)],
+  ];
 
   return (
     <div className="w-full py-16 md:py-24 bg-white">
@@ -57,16 +63,14 @@ export default function AttorneysSection({
 
         {/* Carousel Container */}
         <div className="relative group">
-          {/* Attorney Carousel - smooth scroll with transition */}
+          {/* Attorney Carousel - 3 visible, infinite loop */}
           <div className="overflow-hidden mb-12">
-            <div
-              className="flex transition-all duration-700 ease-in-out gap-6 md:gap-8"
-              style={{
-                transform: `translateX(calc(-${activeSlide * 100}% - ${activeSlide * 24}px))`,
-              }}
-            >
-              {attorneys.map((attorney, index) => (
-                <div key={index} className="flex flex-col items-center flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+            <div className="flex justify-center gap-6 md:gap-8">
+              {visibleAttorneys.map((attorney, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center w-1/3 flex-shrink-0 animate-fadeIn"
+                >
                   {/* Photo */}
                   <div className="mb-4 w-full max-w-xs overflow-hidden rounded-lg">
                     <img
