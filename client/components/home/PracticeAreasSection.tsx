@@ -72,12 +72,12 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
           <div className="inline-block border-2 border-brand-accent p-1 hover:border-black transition-all duration-300 hover:bg-black">
             <Link
               to={content?.buttonLink || "/practice-areas/"}
-              className="inline-block bg-brand-accent border-2 border-black px-8 md:px-12 py-3 md:py-4 hover:bg-black hover:text-white hover:border-black transition-all duration-300"
+              className="group inline-block bg-brand-accent border-2 border-black px-8 md:px-12 py-3 md:py-4 hover:bg-black hover:border-black transition-all duration-300"
             >
-              <span className="font-poppins text-[14px] md:text-[16px] font-normal uppercase text-black hover:text-white">
+              <span className="font-poppins text-[14px] md:text-[16px] font-normal uppercase text-black group-hover:text-white transition-colors duration-300">
                 {content?.buttonTextLine1 || "SEE ALL AREAS OF PRACTICE"}
               </span>
-              <span className="ml-2">›</span>
+              <span className="ml-2 text-black group-hover:text-white transition-colors duration-300">›</span>
             </Link>
           </div>
         </div>
