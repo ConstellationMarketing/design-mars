@@ -57,28 +57,39 @@ export default function AttorneysSection({
 
         {/* Carousel Container */}
         <div className="relative group">
-          {/* Attorney Grid - 4 columns, only show visible ones */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12">
-            {visibleAttorneys.map((attorney, index) => (
-              <div key={index} className="flex flex-col">
-                {/* Photo */}
-                <div className="mb-4 overflow-hidden rounded-lg">
-                  <img
-                    src={attorney.photo}
-                    alt={attorney.photoAlt || attorney.name}
-                    loading="lazy"
-                    className="w-full h-auto aspect-square object-cover"
-                  />
-                </div>
+          {/* Attorney Carousel - centered with transition */}
+          <div className="overflow-hidden mb-12">
+            <div
+              className="flex transition-transform duration-500 ease-in-out gap-6 md:gap-8 justify-center"
+              style={{ transform: `translateX(0)` }}
+            >
+              {visibleAttorneys.map((attorney, index) => (
+                <div key={index} className="flex flex-col items-center flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+                  {/* Photo */}
+                  <div className="mb-4 w-full max-w-xs overflow-hidden rounded-lg">
+                    <img
+                      src={attorney.photo}
+                      alt={attorney.photoAlt || attorney.name}
+                      loading="lazy"
+                      className="w-full h-auto aspect-square object-cover"
+                    />
+                  </div>
 
-                {/* Attorney Info */}
-                <h3 className="text-lg font-semibold text-black mb-1">
-                  {attorney.name}
-                </h3>
-                <p className="text-sm text-gray-600 mb-1">{attorney.title}</p>
-                <p className="text-xs text-gray-500">{attorney.yearsExperience}</p>
-              </div>
-            ))}
+                  {/* Attorney Info - centered */}
+                  <div className="text-center">
+                    <h3 className="font-poppins text-lg md:text-xl font-bold text-black mb-2">
+                      {attorney.name}
+                    </h3>
+                    <p className="font-poppins text-sm md:text-base font-semibold mb-1" style={{ color: "#cfab57" }}>
+                      {attorney.title}
+                    </p>
+                    <p className="font-poppins text-xs md:text-sm text-gray-500">
+                      {attorney.yearsExperience}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Navigation Arrows - only show if carousel can move */}
