@@ -46,8 +46,8 @@ export default function Footer() {
     <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 py-12 md:py-20">
         {/* Top Section - Contact Info in two columns with gold separator */}
-        <div className="grid grid-cols-2 gap-4 mb-12 pb-8 relative" style={{ borderBottomColor: "#cfab57", borderBottomWidth: "1px" }}>
-          <div className="text-center text-sm md:text-base flex items-center justify-center gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-4 mb-12 pb-8 relative" style={{ borderBottomColor: "#cfab57", borderBottomWidth: "1px" }}>
+          <div className="text-center text-sm md:text-base flex items-center justify-center gap-2 md:py-0 py-4">
             {phoneNumber && (
               <>
                 <Phone className="w-5 h-5 md:w-6 md:h-6" style={{ color: "#cfab57" }} />
@@ -58,10 +58,10 @@ export default function Footer() {
             )}
           </div>
 
-          {/* Gold vertical separator - doesn't touch bottom border */}
-          <div className="absolute left-1/2 top-2 bottom-2 w-px" style={{ backgroundColor: "#cfab57", transform: "translateX(-50%)" }}></div>
+          {/* Gold vertical separator - only show on desktop */}
+          <div className="hidden md:block absolute left-1/2 top-2 bottom-2 w-px" style={{ backgroundColor: "#cfab57", transform: "translateX(-50%)" }}></div>
 
-          <div className="text-center text-sm md:text-base text-gray-300 flex items-center justify-center gap-2">
+          <div className="text-center text-sm md:text-base text-gray-300 flex items-center justify-center gap-2 md:py-0 py-4">
             {(addressLine1 || addressLine2) && (
               <>
                 <MapPin className="w-5 h-5 md:w-6 md:h-6" style={{ color: "#cfab57" }} />
