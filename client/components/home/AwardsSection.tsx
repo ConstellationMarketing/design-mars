@@ -1,5 +1,4 @@
 import type { AwardsContent } from "@site/lib/cms/homePageTypes";
-import RichText from "@site/components/shared/RichText";
 import DynamicHeading from "@site/components/shared/DynamicHeading";
 
 interface AwardsSectionProps {
@@ -15,98 +14,54 @@ export default function AwardsSection({ content, headingTag }: AwardsSectionProp
 
   const data = content;
   const logos = data.logos;
+  // Use first logo as the main image on the right side
+  const mainImage = logos[0];
+  const gridLogos = logos.slice(1);
 
   return (
-    <div
-      className="relative pt-[30px] md:pt-[54px]"
-      style={{
-        backgroundImage:
-          "linear-gradient(rgb(6, 29, 27) 54%, rgb(255, 255, 255) 54%)",
-      }}
-    >
-      <div className="max-w-[1640px] mx-auto w-[95%] md:w-[85%] lg:w-[80%] flex flex-col lg:flex-row relative">
-        {/* Left Side - Text Content */}
-        <div className="lg:w-1/3 lg:min-w-[40%] bg-[rgb(239,239,239)] p-[30px] md:p-[40px] relative z-[2]">
-          {data.sectionLabel && (
-            <div className="mb-[10px]">
-              <DynamicHeading
-                tag={headingTag}
-                defaultTag="h2"
-                className="font-poppins text-[18px] md:text-[24px] leading-tight md:leading-[36px]"
-                style={{ color: "#cfab55" }}
-              >
-                {data.sectionLabel}
-              </DynamicHeading>
-            </div>
-          )}
-          <div>
-            {data.heading && (
-              <p className="font-poppins font-bold text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black pb-[10px]">
-                {data.heading}
-              </p>
-            )}
-            {data.description && (
-              <RichText
-                html={data.description}
-                className="font-poppins text-[20px] leading-[30px] text-black"
-              />
-            )}
+    <div className="w-full py-12 md:py-16" style={{ backgroundColor: '#f5f5f5' }}>
+      <div className="max-w-[2560px] mx-auto w-[95%]">
+        {/* Heading with gold underline */}
+        {data.heading && (
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="font-poppins text-[32px] md:text-[42px] font-bold text-black max-w-3xl mx-auto leading-tight">
+              {data.heading}
+            </h2>
+            <div className="w-24 h-px bg-brand-accent mx-auto mt-6"></div>
           </div>
-        </div>
+        )}
 
-        {/* Right Side - Logo Grid */}
-        <div className="lg:w-2/3 bg-[rgb(239,239,239)] relative z-[2]">
-          {/* First Row */}
-          {logos.slice(0, 4).length > 0 && (
-            <div className="flex p-[50px] px-[30px] w-full">
-              {logos.slice(0, 4).map((logo, index) => (
-                <div
-                  key={index}
-                  className="bg-white flex-shrink-0"
-                  style={{
-                    width: "21.574%",
-                    marginRight: index < 3 ? "4.569%" : "0",
-                  }}
-                >
-                  <div className="text-center">
-                    <img
-                      src={logo.src}
-                      alt={logo.alt}
-                      width={240}
-                      height={155}
-                      loading="lazy"
-                      className="max-w-full inline-block"
-                    />
-                  </div>
+        {/* Two-column layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+          {/* Left side - Logo grid with border */}
+          <div className="border border-brand-accent p-8 md:p-10 bg-white">
+            <div className="grid grid-cols-3 gap-4 md:gap-6">
+              {gridLogos.map((logo, index) => (
+                <div key={index} className="flex items-center justify-center">
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={120}
+                    height={80}
+                    loading="lazy"
+                    className="max-w-full max-h-[80px] object-contain"
+                  />
                 </div>
               ))}
             </div>
-          )}
+          </div>
 
-          {/* Second Row */}
-          {logos.slice(4, 8).length > 0 && (
-            <div className="flex p-[50px] px-[30px] w-full">
-              {logos.slice(4, 8).map((logo, index) => (
-                <div
-                  key={index}
-                  className="bg-white flex-shrink-0"
-                  style={{
-                    width: "21.574%",
-                    marginRight: index < 3 ? "4.569%" : "0",
-                  }}
-                >
-                  <div className="text-center">
-                    <img
-                      src={logo.src}
-                      alt={logo.alt}
-                      width={240}
-                      height={155}
-                      loading="lazy"
-                      className="max-w-full inline-block"
-                    />
-                  </div>
-                </div>
-              ))}
+          {/* Right side - Main image with gold border */}
+          {mainImage && (
+            <div className="border-4 border-brand-accent p-2 bg-black">
+              <img
+                src={mainImage.src}
+                alt={mainImage.alt}
+                width={400}
+                height={300}
+                loading="lazy"
+                className="w-full h-auto block"
+              />
             </div>
           )}
         </div>
