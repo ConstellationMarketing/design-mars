@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import type { BlogSectionContent, PreloadedPostDocument } from "@site/lib/cms/homePageTypes";
