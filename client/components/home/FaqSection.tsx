@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import type { FaqContent, FaqItem } from "@site/lib/cms/homePageTypes";
 import RichText from "@site/components/shared/RichText";
