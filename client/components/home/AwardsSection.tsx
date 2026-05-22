@@ -13,9 +13,9 @@ export default function AwardsSection({ content, headingTag }: AwardsSectionProp
   const data = content;
   const logos = data.logos || [];
 
-  // Use first image as featured (right side), rest for logo grid (left side)
-  const featuredImage = logos.length > 0 ? logos[0] : null;
+  // Use first 6 images for logo grid (left), 7th image as featured team photo (right)
   const gridLogos = logos.slice(0, 6);
+  const featuredImage = logos.length > 6 ? logos[6] : null;
 
   return (
     <section className="w-full py-16" style={{ backgroundColor: '#f5f5f5' }}>
