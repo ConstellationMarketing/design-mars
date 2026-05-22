@@ -58,8 +58,8 @@ export default function Footer() {
             )}
           </div>
 
-          {/* Gold vertical separator */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px" style={{ backgroundColor: "#cfab57", transform: "translateX(-50%)" }}></div>
+          {/* Gold vertical separator - doesn't touch bottom border */}
+          <div className="absolute left-1/2 top-2 bottom-2 w-px" style={{ backgroundColor: "#cfab57", transform: "translateX(-50%)" }}></div>
 
           <div className="text-center text-sm md:text-base text-gray-300 flex items-center justify-center gap-2">
             {(addressLine1 || addressLine2) && (
