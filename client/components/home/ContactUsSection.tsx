@@ -36,45 +36,54 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
           </div>
         )}
 
-        {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
-          {/* Left Side - Content with icon */}
-          <div>
-            {/* Badge/Icon */}
+        {/* Two Column Layout with text wrapping */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 items-start">
+          {/* Left/Center - Content with wrapped image */}
+          <div className="lg:col-span-2">
+            {/* Badge/Icon - floated left so text wraps around */}
             {data.image && (
-              <div className="mb-8 flex justify-start">
+              <div className="float-left mr-8 mb-4">
                 <img
                   src={data.image}
                   alt={data.imageAlt || "Badge"}
                   loading="lazy"
-                  className="w-32 h-32 object-contain"
+                  className="w-32 h-32 md:w-40 md:h-40 object-contain"
                 />
               </div>
             )}
 
-            {/* Description Text */}
+            {/* Description Text - wraps around image */}
             {data.description && (
               <RichText
                 html={data.description}
-                className="font-poppins text-base md:text-lg leading-relaxed text-gray-700 space-y-4"
+                className="font-poppins text-base md:text-lg leading-relaxed text-gray-700"
               />
             )}
+
+            {/* Clear float after text */}
+            <div className="clear-both"></div>
           </div>
 
-          {/* Right Side - Form */}
-          <div className="bg-black p-8 md:p-10">
-            {/* Form Heading */}
-            {data.formHeading && (
-              <h3 className="font-poppins text-2xl md:text-3xl font-bold text-white mb-8">
-                {data.formHeading}
-              </h3>
-            )}
+          {/* Right Side - Form with shadow background */}
+          <div className="lg:col-span-1 relative">
+            {/* Shadow box background */}
+            <div className="absolute inset-0 bg-gray-800 -z-10 transform translate-y-2 translate-x-2"></div>
 
-            {/* Form */}
-            <CmsFormRenderer 
-              formId="contact" 
-              className="space-y-5"
-            />
+            {/* Form container on black */}
+            <div className="bg-black p-8 md:p-10 relative z-10">
+              {/* Form Heading */}
+              {data.formHeading && (
+                <h3 className="font-poppins text-2xl md:text-3xl font-bold text-white mb-8">
+                  {data.formHeading}
+                </h3>
+              )}
+
+              {/* Form */}
+              <CmsFormRenderer
+                formId="contact"
+                className="space-y-5"
+              />
+            </div>
           </div>
         </div>
       </div>
