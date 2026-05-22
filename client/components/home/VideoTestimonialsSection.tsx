@@ -59,11 +59,12 @@ export default function VideoTestimonialsSection({
                   <iframe
                     src={video.videoUrl}
                     title={video.title || `Video ${index + 1}`}
-                    className="w-full aspect-video border-0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen; web-share"
+                    className="w-full aspect-video"
+                    width="100%"
+                    height="100%"
+                    style={{ minHeight: "400px" }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                     allowFullScreen
-                    loading="lazy"
-                    sandbox="allow-same-origin allow-scripts allow-presentation allow-popups"
                   />
                 )}
               </div>
