@@ -43,6 +43,7 @@ export default function VideoTestimonialsSection({
                 {data.heading}
               </h2>
             )}
+            <div className="w-24 h-px bg-black mx-auto mt-6"></div>
           </div>
         )}
 
