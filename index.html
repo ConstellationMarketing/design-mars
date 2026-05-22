@@ -24,12 +24,36 @@
     <script>
       // Suppress expected Supabase auth errors on public pages
       const originalError = console.error;
+      const originalWarn = console.warn;
+
+      // Check if a message contains auth-related errors
+      function isAuthError(msg) {
+        const str = String(msg || '');
+        return str.includes('AuthSessionMissingError') ||
+               str.includes('useUserRole') ||
+               str.includes('Auth session missing');
+      }
+
       console.error = function(...args) {
-        if (args[0]?.includes?.('AuthSessionMissingError') || args[0]?.includes?.('useUserRole')) {
-          return; // Suppress this expected error
+        if (args.length > 0 && isAuthError(args[0])) {
+          return; // Suppress expected auth error
         }
         originalError.apply(console, args);
       };
+
+      console.warn = function(...args) {
+        if (args.length > 0 && isAuthError(args[0])) {
+          return; // Suppress expected auth warning
+        }
+        originalWarn.apply(console, args);
+      };
+
+      // Also suppress unhandled promise rejections for auth errors
+      window.addEventListener('unhandledrejection', (event) => {
+        if (isAuthError(event.reason)) {
+          event.preventDefault();
+        }
+      });
     </script>
 
     <script type="module" src="/client/App.tsx"></script>
