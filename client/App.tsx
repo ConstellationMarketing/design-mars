@@ -63,10 +63,31 @@ if (typeof window !== "undefined") {
     const OriginalResizeObserver = window.ResizeObserver;
     window.ResizeObserver = class extends OriginalResizeObserver {
       constructor(callback: ResizeObserverCallback) {
-        super(callback);
+        // Wrap the callback to suppress ResizeObserver errors silently
+        super((entries, observer) => {
+          try {
+            callback(entries, observer);
+          } catch (e) {
+            if (!String(e || "").includes("ResizeObserver loop completed")) {
+              throw e;
+            }
+          }
+        });
       }
     } as any;
   }
+
+  // Additional: suppress via onError handler for errors that bubble up
+  const originalOnError = window.onerror;
+  window.onerror = function(message, source, lineno, colno, error) {
+    if (String(message || "").includes("ResizeObserver loop completed")) {
+      return true; // Suppress the error
+    }
+    if (originalOnError) {
+      return originalOnError(message, source, lineno, colno, error);
+    }
+    return false;
+  };
 }
 
 const queryClient = new QueryClient();
