@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, ChevronDown, Phone } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { useSiteSettings, useGlobalPhone } from "@site/contexts/SiteSettingsContext";
 import NavDropdown from "./NavDropdown";
 
@@ -115,6 +115,7 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
               side="right"
               className="bg-white border-l border-brand-border w-80"
             >
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <nav className="flex flex-col gap-6 mt-8">
                 {navItems.map((item, index) => {
                   const hasChildren =
