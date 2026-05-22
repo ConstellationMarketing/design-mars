@@ -53,7 +53,7 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
 
                     {/* Content */}
                     <div className="absolute inset-0 flex items-center justify-center p-4">
-                      <h3 className="font-poppins text-[14px] md:text-[16px] leading-tight text-white font-normal text-center uppercase transition-all duration-300">
+                      <h3 className="font-poppins text-[16px] md:text-[16px] leading-tight text-white font-normal text-center uppercase transition-all duration-300">
                         {area.title}
                       </h3>
                     </div>
