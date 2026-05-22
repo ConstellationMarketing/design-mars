@@ -186,6 +186,17 @@ export interface AttorneysContent {
   attorneys: AttorneyItem[];
 }
 
+export interface BlogSectionContent {
+  sectionLabel: string;
+  heading: string;
+  description: string;
+  buttonText: string;
+  buttonLink: string;
+  backgroundColor?: string;
+  backgroundImage?: string;
+  backgroundImageAlt?: string;
+}
+
 export interface ContactContent {
   sectionLabel: string;
   heading: string;
@@ -214,6 +225,7 @@ export interface HomePageContent {
   testimonials: TestimonialsContent;
   videoTestimonials: VideoTestimonialsContent;
   attorneys: AttorneysContent;
+  blog: BlogSectionContent;
   process: ProcessContent;
   googleReviews: GoogleReviewsContent;
   faq: FaqContent;
@@ -387,6 +399,16 @@ export const defaultHomeContent: HomePageContent = {
     buttonText: "SEE ALL ATTORNEYS",
     buttonLink: "/attorneys/",
     attorneys: [],
+  },
+  blog: {
+    sectionLabel: "",
+    heading: "News & Blog",
+    description: "Stay informed with our latest legal insights, case updates, and industry news.",
+    buttonText: "MORE NEWS",
+    buttonLink: "/blog/",
+    backgroundColor: "#f5f5f5",
+    backgroundImage: "",
+    backgroundImageAlt: "",
   },
   process: {
     sectionLabel: "",

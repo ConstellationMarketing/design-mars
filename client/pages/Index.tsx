@@ -8,6 +8,7 @@ import AwardsSection from "@site/components/home/AwardsSection";
 import TestimonialsSection from "@site/components/home/TestimonialsSection";
 import VideoTestimonialsSection from "@site/components/home/VideoTestimonialsSection";
 import AttorneysSection from "@site/components/home/AttorneysSection";
+import BlogSection from "@site/components/home/BlogSection";
 import ProcessSection from "@site/components/home/ProcessSection";
 import GoogleReviewsSection from "@site/components/home/GoogleReviewsSection";
 import FaqSection from "@site/components/home/FaqSection";
@@ -137,6 +138,9 @@ export default function Index() {
 
       {/* Meet the Attorneys Section */}
       <AttorneysSection content={content.attorneys} headingTag={content.headingTags?.["attorneys.sectionLabel"]} />
+
+      {/* Blog Section */}
+      <BlogSection content={content.blog} headingTag={content.headingTags?.["blog.sectionLabel"]} />
 
       {/* Process Section */}
       <ProcessSection content={content.process} headingTags={content.headingTags} />

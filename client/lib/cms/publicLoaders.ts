@@ -534,6 +534,10 @@ export function mergeHomeContentWithDefaults(cmsContent: Partial<HomePageContent
       ...(cmsContent.attorneys || {}),
       attorneys: cmsContent.attorneys?.attorneys?.length ? cmsContent.attorneys.attorneys : defaults.attorneys.attorneys,
     },
+    blog: {
+      ...defaults.blog,
+      ...(cmsContent.blog || {}),
+    },
     process: {
       ...defaults.process,
       ...cmsContent.process,

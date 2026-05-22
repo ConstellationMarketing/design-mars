@@ -22,6 +22,7 @@ export default function HomeEditor({ content, onChange }: HomeEditorProps) {
       <TestimonialsSection content={content} update={update} />
       <VideoTestimonialsSection content={content} update={update} />
       <AttorneysSectionEditor content={content} update={update} />
+      <BlogSectionEditor content={content} update={update} />
       <ProcessSection content={content} update={update} />
       <GoogleReviewsSection content={content} update={update} />
       <FaqSectionEditor content={content} update={update} />
@@ -680,6 +681,59 @@ function AttorneysSectionEditor({ content, update }: SectionProps) {
               </div>
             </div>
           )}
+        />
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function BlogSectionEditor({ content, update }: SectionProps) {
+  const b = content.blog;
+  const set = (patch: Partial<typeof b>) => update("blog", { ...b, ...patch });
+  const ht = useHeadingTag(content, update);
+
+  return (
+    <Section title="News & Blog" defaultOpen={false}>
+      <div className="grid gap-4">
+        <HeadingField
+          label="Section Heading"
+          value={b.sectionLabel}
+          onChange={(v) => set({ sectionLabel: v })}
+          tag={ht.get("blog.sectionLabel")}
+          onTagChange={(t) => ht.set("blog.sectionLabel", t)}
+        />
+        <div>
+          <Label>Title</Label>
+          <Input value={b.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="News & Blog" />
+        </div>
+        <div>
+          <Label>Description</Label>
+          <Textarea value={b.description} onChange={(e) => set({ description: e.target.value })} placeholder="Enter description text..." />
+        </div>
+        <div>
+          <Label>Button Text</Label>
+          <Input value={b.buttonText} onChange={(e) => set({ buttonText: e.target.value })} placeholder="MORE NEWS" />
+        </div>
+        <div>
+          <Label>Button Link</Label>
+          <Input value={b.buttonLink} onChange={(e) => set({ buttonLink: e.target.value })} placeholder="/blog/" />
+        </div>
+        <div>
+          <Label>Background Color</Label>
+          <Input type="color" value={b.backgroundColor || "#f5f5f5"} onChange={(e) => set({ backgroundColor: e.target.value })} />
+        </div>
+        <ImageField
+          label="Background Image (Optional)"
+          value={b.backgroundImage}
+          onChange={(url) => set({ backgroundImage: url })}
+          altValue={b.backgroundImageAlt || ""}
+          onAltChange={(backgroundImageAlt) => set({ backgroundImageAlt })}
+          onSelectAsset={(asset) => set({
+            backgroundImage: asset.url,
+            backgroundImageAlt: asset.suggestedAltText || b.backgroundImageAlt || "",
+          })}
+          folder="backgrounds"
         />
       </div>
     </Section>
