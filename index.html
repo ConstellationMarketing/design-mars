@@ -21,6 +21,17 @@
 
     <div id="root"></div>
 
+    <script>
+      // Suppress expected Supabase auth errors on public pages
+      const originalError = console.error;
+      console.error = function(...args) {
+        if (args[0]?.includes?.('AuthSessionMissingError') || args[0]?.includes?.('useUserRole')) {
+          return; // Suppress this expected error
+        }
+        originalError.apply(console, args);
+      };
+    </script>
+
     <script type="module" src="/client/App.tsx"></script>
   </body>
 </html>
