@@ -14,7 +14,7 @@ export default function StatsSection({ content }: StatsSectionProps) {
       <div className="max-w-[2560px] mx-auto w-[95%]">
         {/* Total wins card - overlapping hero with double border effect */}
         {content.totalAmount && (
-          <div className="flex justify-center -mt-40 md:-mt-48 mb-8 md:mb-12 relative z-10">
+          <div className="flex justify-center -mt-20 md:-mt-32 mb-8 md:mb-12 relative z-10">
             {/* Outer gold border */}
             <div className="border-4 border-brand-accent p-4 md:p-6 bg-black">
               {/* Inner gold border with black bg */}
