@@ -6,6 +6,21 @@ import AppRoot from "./app/AppRoot";
 import AppRouterShell from "./app/AppRouterShell";
 import { getActivePreloadedState, initializeBrowserPreloadedState } from "./lib/preloadState";
 
+// Redirect Supabase recovery links to the admin reset page.
+if (typeof window !== "undefined") {
+  const { pathname, hash } = window.location;
+  const looksLikeRecoveryFlow =
+    hash.includes("access_token=") ||
+    hash.includes("refresh_token=") ||
+    hash.includes("type=recovery") ||
+    hash.includes("error_code=otp_expired") ||
+    hash.includes("error=access_denied");
+
+  if (looksLikeRecoveryFlow && !pathname.startsWith("/admin/reset-password")) {
+    window.location.replace(`/admin/reset-password/${hash}`);
+  }
+}
+
 // Suppress ResizeObserver loop error from Radix UI components
 // This is a non-critical warning that occurs with rapid layout changes and fixed positioning
 if (typeof window !== "undefined") {

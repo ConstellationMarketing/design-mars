@@ -83,8 +83,10 @@ export default function AdminLogin() {
     setLoading(true);
     setError(null);
 
+    const siteUrl = (import.meta.env.VITE_SITE_URL || window.location.origin).replace(/\/+$/, '');
+
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin + '/admin/reset-password',
+      redirectTo: `${siteUrl}/admin/reset-password/`,
     });
 
     if (error) {
