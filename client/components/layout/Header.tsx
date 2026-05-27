@@ -58,7 +58,9 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
               {navItems.map((item, index) => {
                 const hasChildren =
                   item.children && item.children.length > 0;
-                const isActive = location.pathname.replace(/\/$/, '') === (item.href.replace(/\/$/, '') || '/');
+                const normalizedPathname = location.pathname === '/' ? '/' : location.pathname.replace(/\/$/, '');
+                const normalizedHref = item.href === '/' ? '/' : item.href.replace(/\/$/, '');
+                const isActive = normalizedPathname === normalizedHref;
 
                 return (
                   <li key={`${item.href}-${index}`} className="flex items-center">
