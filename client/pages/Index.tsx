@@ -53,7 +53,7 @@ export default function Index() {
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.35)' }}></div>
 
         {/* Content */}
-        <div className="max-w-[1000px] w-[85%] md:w-[90%] relative z-10 text-center" style={{ paddingTop: '186px' }}>
+        <div className="max-w-[1000px] w-[85%] md:w-[90%] relative z-10 text-center" style={{ paddingTop: '70px' }}>
           <div className="flex flex-col items-center justify-center gap-5 md:gap-6">
             {/* H1 Title - BIGGEST at 96px on desktop, bold, white, 3-line */}
             {heroContent.h1Title && (
