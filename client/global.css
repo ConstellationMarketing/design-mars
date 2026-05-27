@@ -184,6 +184,21 @@
     height: 0;
   }
 
+  /* 3D Card Flip Animation */
+  [style*="perspective"] {
+    perspective: 1000px;
+  }
+
+  [style*="transform-style: preserve-3d"] {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  [style*="transform-style: preserve-3d"] div {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
   /* Force Lucide icons to render as outlines */
   svg.lucide *,
   .lucide * {
