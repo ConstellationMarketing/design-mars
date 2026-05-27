@@ -58,6 +58,7 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
               {navItems.map((item, index) => {
                 const hasChildren =
                   item.children && item.children.length > 0;
+                const isActive = location.pathname.replace(/\/$/, '') === (item.href.replace(/\/$/, '') || '/');
 
                 return (
                   <li key={`${item.href}-${index}`} className="flex items-center">
@@ -75,7 +76,7 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
                             : undefined
                         }
                         className={`font-poppins text-[16px] uppercase font-medium transition-opacity duration-300 ${
-                          location.pathname.split('/')[1] === (item.href.split('/')[1] || '')
+                          isActive
                             ? "text-brand-accent"
                             : "text-white hover:text-white/80"
                         }`}
