@@ -67,7 +67,7 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
                   <div key={index} className="flex gap-4">
                     {/* Icon */}
                     <div className="flex-shrink-0 mt-1">
-                      <IconComponent className="w-6 h-6 text-brand-accent" />
+                      <IconComponent className="w-6 h-6 md:w-8 md:h-8 text-brand-accent" />
                     </div>
                     {/* Content */}
                     <div className="flex-1">
