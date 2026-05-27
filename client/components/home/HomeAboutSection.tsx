@@ -40,17 +40,17 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
             {/* Black box with gold border */}
             <div className="border-4 border-brand-accent p-4 md:p-6 bg-black h-full">
               <div className="border-2 border-brand-accent bg-black px-6 md:px-8 py-8 md:py-10 text-center h-full flex flex-col justify-center">
-                <div className="font-poppins text-[14px] md:text-[13px] font-normal text-brand-accent tracking-widest uppercase">
+                <div className="font-poppins text-[14px] md:text-[16px] font-normal text-brand-accent tracking-widest uppercase">
                   {content.experienceTitle}
                 </div>
-                <div className="font-poppins text-[56px] md:text-[72px] font-bold text-white leading-tight my-2">
+                <div className="font-poppins text-[56px] md:text-[60px] font-bold text-white leading-tight my-2">
                   {content.yearsNumber}
                 </div>
-                <div className="font-poppins text-[14px] md:text-[12px] font-normal text-brand-accent tracking-widest uppercase mb-6">
+                <div className="font-poppins text-[14px] md:text-[16px] font-normal text-brand-accent tracking-widest uppercase mb-6">
                   {content.yearsLabel}
                 </div>
                 <div className="pt-6">
-                  <p className="font-poppins text-[16px] md:text-[14px] font-normal text-white leading-relaxed">
+                  <p className="font-poppins text-[16px] md:text-[18px] font-normal text-white leading-relaxed">
                     {content.experienceDescription}
                   </p>
                 </div>
