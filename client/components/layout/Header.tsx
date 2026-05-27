@@ -75,7 +75,7 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
                             : undefined
                         }
                         className={`font-poppins text-[16px] uppercase font-medium transition-opacity duration-300 ${
-                          location.pathname === item.href
+                          location.pathname.split('/')[1] === (item.href.split('/')[1] || '')
                             ? "text-brand-accent"
                             : "text-white hover:text-white/80"
                         }`}
