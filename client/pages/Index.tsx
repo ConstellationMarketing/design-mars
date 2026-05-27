@@ -53,7 +53,7 @@ export default function Index() {
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.35)' }}></div>
 
         {/* Content */}
-        <div className="max-w-[1000px] w-[85%] md:w-[90%] relative z-10 text-center">
+        <div className="max-w-[1000px] w-[85%] md:w-[90%] relative z-10 text-center" style={{ paddingTop: '186px' }}>
           <div className="flex flex-col items-center justify-center gap-5 md:gap-6">
             {/* H1 Title - BIGGEST at 96px on desktop, bold, white, 3-line */}
             {heroContent.h1Title && (
@@ -77,7 +77,7 @@ export default function Index() {
             )}
 
             {/* CTA Button wrapper - outer gold border with padding */}
-            <div className="inline-block border-2 border-brand-accent p-1 mt-5 md:mt-6 mb-16 hover:border-black transition-all duration-300 hover:bg-white" style={{ marginBottom: '70px' }}>
+            <div className="inline-block border-2 border-brand-accent p-1 hover:border-black transition-all duration-300 hover:bg-white" style={{ marginTop: '70px', marginBottom: '70px' }}>
               {/* CTA Button with gold background and black border */}
               <button
                 onClick={() => window.location.href = '#contact-section'}
@@ -99,17 +99,27 @@ export default function Index() {
               position: 'absolute',
               left: '50%',
               transform: 'translateX(-50%)',
-              zIndex: 20
+              zIndex: 20,
+              marginTop: '70px'
             }}
           >
             {/* Outer gold border frame */}
-            <div className="border-4 border-brand-accent p-4 md:p-6 bg-black" style={{ borderColor: '#C9A84C' }}>
-              {/* Inner gold border with black background */}
-              <div className="border-2 border-brand-accent bg-black px-8 md:px-12 py-6 md:py-8 text-center" style={{ borderColor: '#C9A84C' }}>
-                <div className="font-poppins text-[32px] md:text-[48px] font-bold text-white leading-tight">
+            <div className="border-4 border-brand-accent bg-black" style={{ borderColor: '#C9A84C', padding: 0 }}>
+              {/* Inner gold border with black background - mobile */}
+              <div className="md:hidden border-2 border-brand-accent bg-black text-center" style={{ borderColor: '#C9A84C', padding: '24px 32px 16px 32px' }}>
+                <div className="font-poppins text-[32px] font-bold text-white leading-tight">
                   {content.stats.totalAmount}
                 </div>
-                <div className="font-poppins text-[14px] md:text-[14px] font-semibold uppercase tracking-widest" style={{ color: '#C9A84C' }}>
+                <div className="font-poppins font-semibold uppercase tracking-widest" style={{ color: '#C9A84C', fontSize: '16px' }}>
+                  {content.stats.totalLabel}
+                </div>
+              </div>
+              {/* Inner gold border with black background - desktop */}
+              <div className="hidden md:block border-2 border-brand-accent bg-black text-center" style={{ borderColor: '#C9A84C', padding: '30px 40px 18px 40px' }}>
+                <div className="font-poppins text-[48px] font-bold text-white leading-tight">
+                  {content.stats.totalAmount}
+                </div>
+                <div className="font-poppins font-semibold uppercase tracking-widest" style={{ color: '#C9A84C', fontSize: '18px' }}>
                   {content.stats.totalLabel}
                 </div>
               </div>
