@@ -85,11 +85,12 @@ export default function Index() {
             )}
 
             {/* CTA Button wrapper - outer gold border with padding */}
-            <div className="inline-block border-2 border-brand-accent p-1 hover:border-black transition-all duration-300 hover:bg-white" style={{ marginTop: '30px', marginBottom: '70px' }}>
+            <div className="border-2 border-brand-accent p-1 hover:border-black transition-all duration-300 hover:bg-white" style={{ marginTop: '30px', marginBottom: '70px', width: '393px' }}>
               {/* CTA Button with gold background and black border */}
               <button
                 onClick={() => window.location.href = '#contact-section'}
                 className="font-poppins text-[16px] md:text-[17px] font-medium uppercase text-black bg-brand-accent px-8 md:px-10 py-3 md:py-4 border-2 border-black hover:bg-white hover:text-black hover:border-white transition-all duration-300 flex items-center justify-center gap-3"
+                style={{ width: '100%' }}
               >
                 {heroContent.buttonText || "Request Free Consultation"}
                 <span className="text-xl">›</span>
