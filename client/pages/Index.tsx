@@ -77,7 +77,7 @@ export default function Index() {
             )}
 
             {/* CTA Button wrapper - outer gold border with padding */}
-            <div className="inline-block border-2 border-brand-accent p-1 hover:border-black transition-all duration-300 hover:bg-white" style={{ marginTop: '70px', marginBottom: '70px' }}>
+            <div className="inline-block border-2 border-brand-accent p-1 hover:border-black transition-all duration-300 hover:bg-white" style={{ marginTop: '30px', marginBottom: '70px' }}>
               {/* CTA Button with gold background and black border */}
               <button
                 onClick={() => window.location.href = '#contact-section'}
