@@ -103,30 +103,28 @@ export default function Index() {
               marginTop: '70px'
             }}
           >
-            {/* Badge with double-border effect using box-shadow - mobile */}
-            <div className="md:hidden bg-black text-center" style={{
-              border: '2px solid #C9A84C',
-              boxShadow: '0 0 0 4px rgba(201, 168, 76, 0.3), inset 0 0 0 2px #111',
-              padding: '24px 32px 16px 32px'
-            }}>
-              <div className="font-poppins font-bold text-white leading-tight" style={{ fontSize: '24px' }}>
-                {content.stats.totalAmount}
-              </div>
-              <div className="font-poppins font-semibold uppercase tracking-widest" style={{ color: '#C9A84C', fontSize: '16px' }}>
-                {content.stats.totalLabel}
+            {/* Outer gold border frame - mobile */}
+            <div className="md:hidden border-4 border-brand-accent p-4 bg-black" style={{ borderColor: '#C9A84C' }}>
+              {/* Inner black border */}
+              <div className="border-2 border-white bg-black text-center px-8 py-6">
+                <div className="font-poppins font-bold text-white leading-tight" style={{ fontSize: '24px' }}>
+                  {content.stats.totalAmount}
+                </div>
+                <div className="font-poppins font-semibold uppercase tracking-widest text-white" style={{ fontSize: '16px' }}>
+                  {content.stats.totalLabel}
+                </div>
               </div>
             </div>
-            {/* Badge with double-border effect using box-shadow - desktop */}
-            <div className="hidden md:block bg-black text-center" style={{
-              border: '2px solid #C9A84C',
-              boxShadow: '0 0 0 4px rgba(201, 168, 76, 0.3), inset 0 0 0 2px #111',
-              padding: '30px 40px 18px 40px'
-            }}>
-              <div className="font-poppins font-bold text-white leading-tight" style={{ fontSize: '30px' }}>
-                {content.stats.totalAmount}
-              </div>
-              <div className="font-poppins font-semibold uppercase tracking-widest" style={{ color: '#C9A84C', fontSize: '18px' }}>
-                {content.stats.totalLabel}
+            {/* Outer gold border frame - desktop */}
+            <div className="hidden md:block border-4 border-brand-accent p-6 bg-black" style={{ borderColor: '#C9A84C' }}>
+              {/* Inner black border */}
+              <div className="border-2 border-white bg-black text-center px-12 py-8">
+                <div className="font-poppins font-bold text-white leading-tight" style={{ fontSize: '30px' }}>
+                  {content.stats.totalAmount}
+                </div>
+                <div className="font-poppins font-semibold uppercase tracking-widest text-white" style={{ fontSize: '18px' }}>
+                  {content.stats.totalLabel}
+                </div>
               </div>
             </div>
           </div>
