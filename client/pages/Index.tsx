@@ -72,7 +72,7 @@ export default function Index() {
 
             {/* Full Headline - white uppercase below h1 title */}
             {heroContent.headline && (
-              <p className="font-poppins text-[18px] md:text-[22px] font-normal tracking-wider uppercase text-white max-w-2xl">
+              <p className="font-poppins text-[18px] md:text-[22px] font-semibold tracking-wider uppercase text-white max-w-2xl">
                 {heroContent.headline}
               </p>
             )}
