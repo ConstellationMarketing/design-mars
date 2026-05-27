@@ -77,7 +77,7 @@ export default function Index() {
             )}
 
             {/* CTA Button wrapper - outer gold border with padding */}
-            <div className="inline-block border-2 border-brand-accent p-1 mt-5 md:mt-6 hover:border-black transition-all duration-300 hover:bg-white">
+            <div className="inline-block border-2 border-brand-accent p-1 mt-5 md:mt-6 mb-16 hover:border-black transition-all duration-300 hover:bg-white" style={{ marginBottom: '64px' }}>
               {/* CTA Button with gold background and black border */}
               <button
                 onClick={() => window.location.href = '#contact-section'}
@@ -102,10 +102,10 @@ export default function Index() {
               zIndex: 20
             }}
           >
-            {/* Outer gold border */}
-            <div className="border-2 border-brand-accent bg-black" style={{ borderColor: '#C9A84C' }}>
-              {/* Inner content */}
-              <div className="bg-black px-8 md:px-12 py-6 md:py-8 text-center">
+            {/* Outer gold border frame */}
+            <div className="border-4 border-brand-accent p-4 md:p-6 bg-black" style={{ borderColor: '#C9A84C' }}>
+              {/* Inner gold border with black background */}
+              <div className="border-2 border-brand-accent bg-black px-8 md:px-12 py-6 md:py-8 text-center" style={{ borderColor: '#C9A84C' }}>
                 <div className="font-poppins text-[32px] md:text-[48px] font-bold text-white leading-tight">
                   {content.stats.totalAmount}
                 </div>
