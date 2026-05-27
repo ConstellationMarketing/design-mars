@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, ChevronDown, Phone } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
@@ -13,6 +13,7 @@ interface HeaderProps {
 export default function Header({ heroBackgroundImage }: HeaderProps) {
   const { settings } = useSiteSettings();
   const { phoneNumber, phoneDisplay } = useGlobalPhone();
+  const location = useLocation();
 
   const logoUrl = settings.logoUrl?.trim() || "";
   const logoAlt =
@@ -73,7 +74,11 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
                             ? "noopener noreferrer"
                             : undefined
                         }
-                        className="font-poppins text-[16px] text-white uppercase font-light hover:text-white/80 transition-opacity duration-300"
+                        className={`font-poppins text-[16px] uppercase font-medium transition-opacity duration-300 ${
+                          location.pathname === item.href
+                            ? "text-brand-accent"
+                            : "text-white hover:text-white/80"
+                        }`}
                       >
                         {item.label}
                       </Link>
