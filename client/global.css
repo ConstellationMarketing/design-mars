@@ -185,18 +185,31 @@
   }
 
   /* 3D Card Flip Animation */
-  [style*="perspective"] {
+  .practice-flip-card {
     perspective: 1000px;
   }
 
-  [style*="transform-style: preserve-3d"] {
-    transform-style: preserve-3d;
+  .practice-flip-card-front,
+  .practice-flip-card-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     transition: transform 0.5s ease-in-out;
   }
 
-  [style*="transform-style: preserve-3d"] div {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+  .practice-flip-card-front {
+    transform: rotateY(0deg);
+  }
+
+  .practice-flip-card-back {
+    transform: rotateY(180deg);
+  }
+
+  .practice-flip-card:hover .practice-flip-card-front {
+    transform: rotateY(-180deg);
+  }
+
+  .practice-flip-card:hover .practice-flip-card-back {
+    transform: rotateY(0deg);
   }
 
   /* Force Lucide icons to render as outlines */
