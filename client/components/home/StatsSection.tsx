@@ -31,7 +31,7 @@ export default function StatsSection({ content }: StatsSectionProps) {
                     }}
                   ></div>
                 )}
-                <div className="font-poppins text-[14px] md:text-[12px] font-semibold text-black tracking-wider uppercase">
+                <div className="font-poppins text-[14px] font-normal text-black tracking-wider uppercase">
                   {caseItem.label}
                 </div>
                 <div className="font-poppins text-[18px] md:text-[24px] font-bold text-black mt-2 md:mt-3">
