@@ -73,7 +73,7 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
                             ? "noopener noreferrer"
                             : undefined
                         }
-                        className="font-poppins text-[20px] text-white uppercase font-light hover:text-white/80 transition-opacity duration-300"
+                        className="font-poppins text-[16px] text-white uppercase font-light hover:text-white/80 transition-opacity duration-300"
                       >
                         {item.label}
                       </Link>
