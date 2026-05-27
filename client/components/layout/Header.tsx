@@ -31,8 +31,20 @@ export default function Header({ heroBackgroundImage }: HeaderProps) {
   return (
     <>
       {/* Sticky header wrapper - overlay only when background present */}
-      <div className="sticky top-0 z-50" style={{ backgroundColor: heroBackgroundImage ? 'rgba(0, 0, 0, 0.35)' : 'transparent', paddingTop: '50px' }}>
-        <div className="max-w-[2560px] mx-auto w-[95%] h-[90px] flex items-center justify-between">
+      <div className="sticky top-0 z-50" style={{ position: 'relative', paddingTop: '50px' }}>
+        {heroBackgroundImage && (
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+            zIndex: 0,
+            pointerEvents: 'none'
+          }}></div>
+        )}
+        <div className="max-w-[2560px] mx-auto w-[95%] h-[90px] flex items-center justify-between relative z-10">
           {/* Logo - Left */}
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
