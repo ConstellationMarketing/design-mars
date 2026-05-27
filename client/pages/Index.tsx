@@ -107,7 +107,7 @@ export default function Index() {
             <div className="border-4 border-brand-accent bg-black" style={{ borderColor: '#C9A84C', padding: 0 }}>
               {/* Inner gold border with black background - mobile */}
               <div className="md:hidden border-2 border-brand-accent bg-black text-center" style={{ borderColor: '#C9A84C', padding: '24px 32px 16px 32px' }}>
-                <div className="font-poppins text-[32px] font-bold text-white leading-tight">
+                <div className="font-poppins font-bold text-white leading-tight" style={{ fontSize: '24px' }}>
                   {content.stats.totalAmount}
                 </div>
                 <div className="font-poppins font-semibold uppercase tracking-widest" style={{ color: '#C9A84C', fontSize: '16px' }}>
@@ -116,7 +116,7 @@ export default function Index() {
               </div>
               {/* Inner gold border with black background - desktop */}
               <div className="hidden md:block border-2 border-brand-accent bg-black text-center" style={{ borderColor: '#C9A84C', padding: '30px 40px 18px 40px' }}>
-                <div className="font-poppins text-[48px] font-bold text-white leading-tight">
+                <div className="font-poppins font-bold text-white leading-tight" style={{ fontSize: '30px' }}>
                   {content.stats.totalAmount}
                 </div>
                 <div className="font-poppins font-semibold uppercase tracking-widest" style={{ color: '#C9A84C', fontSize: '18px' }}>
