@@ -5,31 +5,13 @@ interface StatsSectionProps {
 }
 
 export default function StatsSection({ content }: StatsSectionProps) {
-  if (!content || (!content.totalAmount && content.cases.length === 0)) {
+  if (!content || content.cases.length === 0) {
     return null;
   }
 
   return (
-    <div className="w-full bg-brand-accent pt-20 md:pt-24 pb-12 md:pb-16 relative">
+    <div className="w-full bg-brand-accent pt-32 md:pt-36 pb-12 md:pb-16 relative" style={{ marginTop: 0, paddingTop: '60px' }}>
       <div className="max-w-[2560px] mx-auto w-[95%]">
-        {/* Total wins card - overlapping hero with double border effect */}
-        {content.totalAmount && (
-          <div className="flex justify-center -mt-20 md:-mt-32 mb-8 md:mb-12 relative z-10">
-            {/* Outer gold border */}
-            <div className="border-4 border-brand-accent p-4 md:p-6 bg-black">
-              {/* Inner gold border with black bg */}
-              <div className="border-2 border-brand-accent bg-black px-8 md:px-12 py-6 md:py-8 text-center">
-                <div className="font-poppins text-[32px] md:text-[48px] font-bold text-white leading-tight">
-                  {content.totalAmount}
-                </div>
-                <div className="font-poppins text-[14px] md:text-[14px] font-semibold text-white tracking-widest uppercase mt-3 md:mt-4">
-                  {content.totalLabel}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Case stats grid with black separators between columns */}
         {content.cases.length > 0 && (
           <div className="grid grid-cols-2 md:grid-cols-4">

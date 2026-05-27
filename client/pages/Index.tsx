@@ -47,8 +47,8 @@ export default function Index() {
         updatedTime={updatedAt}
       />
 
-      {/* Hero Section - Full Width */}
-      <div className="w-full flex items-center justify-center py-[40px] md:py-[100px] pb-[40px] md:pb-[60px] relative">
+      {/* Hero Section - Full Width with floating badge overlay */}
+      <div className="w-full flex items-center justify-center py-[40px] md:py-[100px] pb-[100px] md:pb-[120px] relative overflow-visible" style={{ position: 'relative', overflow: 'visible' }}>
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.35)' }}></div>
 
@@ -89,6 +89,33 @@ export default function Index() {
             </div>
           </div>
         </div>
+
+        {/* Floating Badge - positioned to overlap hero and gold section */}
+        {content.stats?.totalAmount && (
+          <div
+            className="absolute left-1/2 z-20 transform -translate-x-1/2"
+            style={{
+              bottom: '-60px',
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              zIndex: 20
+            }}
+          >
+            {/* Outer gold border */}
+            <div className="border-2 border-brand-accent bg-black" style={{ borderColor: '#C9A84C' }}>
+              {/* Inner content */}
+              <div className="bg-black px-8 md:px-12 py-6 md:py-8 text-center">
+                <div className="font-poppins text-[32px] md:text-[48px] font-bold text-white leading-tight">
+                  {content.stats.totalAmount}
+                </div>
+                <div className="font-poppins text-[14px] md:text-[14px] font-semibold uppercase tracking-widest" style={{ color: '#C9A84C' }}>
+                  {content.stats.totalLabel}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Partner Badges Section - Bottom of Hero */}
