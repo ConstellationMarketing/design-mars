@@ -125,7 +125,7 @@ export default function Index() {
               </div>
             </div>
             {/* Outer gold border frame - desktop */}
-            <div className="hidden md:block border-4 border-brand-accent bg-black" style={{ borderColor: '#C9A84C', maxWidth: '332px', padding: '16px' }}>
+            <div className="hidden md:block border-4 border-brand-accent bg-black" style={{ borderColor: '#C9A84C', maxWidth: '332px', padding: '16px', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)' }}>
               {/* Inner gold border */}
               <div className="border-2 border-brand-accent bg-black text-center w-full" style={{ borderColor: '#C9A84C', padding: '30px 40px' }}>
                 <div className="font-poppins font-bold text-white leading-tight" style={{ fontSize: '30px' }}>
