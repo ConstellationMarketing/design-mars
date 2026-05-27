@@ -71,7 +71,7 @@ export default function Index() {
 
             {/* Highlighted Text - gold text above button */}
             {heroContent.highlightedText && (
-              <p className="font-poppins text-[14px] md:text-[15px] font-normal tracking-widest uppercase text-brand-accent mt-3 md:mt-4">
+              <p className="font-poppins text-[14px] md:text-[15px] font-normal tracking-widest uppercase text-brand-accent mt-1.5 md:mt-2">
                 {heroContent.highlightedText}
               </p>
             )}
