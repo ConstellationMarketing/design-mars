@@ -25,7 +25,7 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
         {content.heading && (
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block">
-              <h2 className="font-poppins text-[24px] md:text-[42px] font-bold text-black leading-tight">
+              <h2 className="font-poppins text-[24px] md:text-[42px] font-bold text-black leading-tight" style={{ maxWidth: '864px' }}>
                 {content.heading}
               </h2>
               <div className="h-px bg-brand-accent mt-4"></div>
