@@ -71,10 +71,10 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
                     </div>
                     {/* Content */}
                     <div className="flex-1">
-                      <h3 className="font-poppins text-[16px] md:text-[14px] font-semibold text-black tracking-wider uppercase mb-2">
+                      <h3 className="font-poppins text-[16px] md:text-[20px] font-semibold text-black tracking-wider uppercase mb-2">
                         {feature.title}
                       </h3>
-                      <p className="font-poppins text-[16px] md:text-[14px] font-normal text-black/80 leading-relaxed">
+                      <p className="font-poppins text-[16px] md:text-[18px] font-normal text-black/80 leading-relaxed">
                         {feature.description}
                       </p>
                     </div>
