@@ -58,11 +58,11 @@ export default function BlogSection({
               <div className="mb-6 pb-6 border-b border-brand-accent">
                 {headingTag ? (
                   // @ts-ignore
-                  <headingTag className="text-xl md:text-4xl font-bold text-black">
+                  <headingTag className="text-xl md:text-[48px] font-bold text-black">
                     {data.heading}
                   </headingTag>
                 ) : (
-                  <h2 className="text-xl md:text-4xl font-bold text-black">
+                  <h2 className="text-xl md:text-[48px] font-bold text-black">
                     {data.heading}
                   </h2>
                 )}

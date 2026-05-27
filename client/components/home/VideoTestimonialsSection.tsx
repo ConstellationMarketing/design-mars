@@ -82,7 +82,7 @@ export default function VideoTestimonialsSection({
                   {data.heading}
                 </headingTag>
               ) : (
-                <h2 className="text-2xl md:text-5xl font-bold text-black">
+                <h2 className="text-2xl md:text-[48px] font-bold text-black">
                   {data.heading}
                 </h2>
               )}

@@ -20,7 +20,7 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
         {(content?.heading || "Where We Fight For You") && (
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block">
-              <h2 className="font-poppins text-[24px] md:text-[42px] font-bold text-black leading-tight">
+              <h2 className="font-poppins text-[24px] md:text-[48px] font-bold text-black leading-tight">
                 {content?.heading || "Where We Fight For You"}
               </h2>
               <div className="h-px bg-brand-accent mt-4"></div>
