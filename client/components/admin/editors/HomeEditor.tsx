@@ -14,7 +14,6 @@ export default function HomeEditor({ content, onChange }: HomeEditorProps) {
   return (
     <div className="space-y-6">
       <HeroSection content={content} update={update} />
-      <PartnerLogosSection content={content} update={update} />
       <StatsSectionEditor content={content} update={update} />
       <AboutSectionEditor content={content} update={update} />
       <PracticeAreasIntroSection content={content} update={update} />
@@ -23,8 +22,6 @@ export default function HomeEditor({ content, onChange }: HomeEditorProps) {
       <VideoTestimonialsSection content={content} update={update} />
       <AttorneysSectionEditor content={content} update={update} />
       <BlogSectionEditor content={content} update={update} />
-      <ProcessSection content={content} update={update} />
-      <GoogleReviewsSection content={content} update={update} />
       <FaqSectionEditor content={content} update={update} />
       <ContactSectionEditor content={content} update={update} />
     </div>
@@ -71,41 +68,6 @@ function HeroSection({ content, update }: SectionProps) {
         </div>
         <p className="text-xs text-gray-500 italic">Phone number is managed in Site Settings &gt; Contact Info</p>
       </div>
-    </Section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-function PartnerLogosSection({ content, update }: SectionProps) {
-  return (
-    <Section title="Partner Logos" defaultOpen={false}>
-      <ArrayEditor
-        items={content.partnerLogos}
-        onChange={(items) => update("partnerLogos", items)}
-        itemLabel="Logo"
-        newItem={() => ({ src: "", alt: "" })}
-        renderItem={(item, _, upd) => (
-          <div className="grid gap-3">
-            <ImageField
-              label="Logo Image"
-              value={item.src}
-              onChange={(url) => upd({ ...item, src: url })}
-              altValue={item.alt}
-              onAltChange={(alt) => upd({ ...item, alt })}
-              onSelectAsset={(asset) => upd({
-                ...item,
-                src: asset.url,
-                alt: asset.suggestedAltText || item.alt,
-              })}
-              folder="logos"
-            />
-            <div>
-              <Label>Alt Text</Label>
-              <Input value={item.alt} onChange={(e) => upd({ ...item, alt: e.target.value })} />
-            </div>
-          </div>
-        )}
-      />
     </Section>
   );
 }
@@ -747,113 +709,7 @@ function BlogSectionEditor({ content, update }: SectionProps) {
   );
 }
 
-/* ------------------------------------------------------------------ */
-function ProcessSection({ content, update }: SectionProps) {
-  const p = content.process;
-  const set = (patch: Partial<typeof p>) => update("process", { ...p, ...patch });
-  const ht = useHeadingTag(content, update);
 
-  return (
-    <Section title="Process Steps" defaultOpen={false}>
-      <div className="grid gap-4">
-        <HeadingField
-          label="Section Heading"
-          value={p.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={ht.get("process.sectionLabel")}
-          onTagChange={(t) => ht.set("process.sectionLabel", t)}
-        />
-        <div>
-          <Label>Subtitle Line 1</Label>
-          <Input value={p.headingLine1} onChange={(e) => set({ headingLine1: e.target.value })} />
-        </div>
-        <div>
-          <Label>Subtitle Line 2</Label>
-          <Input value={p.headingLine2} onChange={(e) => set({ headingLine2: e.target.value })} />
-        </div>
-        <ArrayEditor
-          items={p.steps}
-          onChange={(items) => set({ steps: items })}
-          itemLabel="Step"
-          newItem={() => ({ number: "", title: "", description: "" })}
-          renderItem={(item, _, upd) => (
-            <div className="grid gap-3">
-              <div className="grid grid-cols-4 gap-3">
-                <div>
-                  <Label>Number</Label>
-                  <Input value={item.number} onChange={(e) => upd({ ...item, number: e.target.value })} />
-                </div>
-                <div className="col-span-3">
-                  <Label>Title</Label>
-                  <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} />
-                </div>
-              </div>
-              <RichTextField label="Description" value={item.description} onChange={(v) => upd({ ...item, description: v })} />
-            </div>
-          )}
-        />
-      </div>
-    </Section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-function GoogleReviewsSection({ content, update }: SectionProps) {
-  const r = content.googleReviews;
-  const set = (patch: Partial<typeof r>) => update("googleReviews", { ...r, ...patch });
-  const ht = useHeadingTag(content, update);
-
-  return (
-    <Section title="Google Reviews" defaultOpen={false}>
-      <div className="grid gap-4">
-        <HeadingField
-          label="Section Heading"
-          value={r.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={ht.get("googleReviews.sectionLabel")}
-          onTagChange={(t) => ht.set("googleReviews.sectionLabel", t)}
-        />
-        <div>
-          <Label>Subtitle</Label>
-          <Input value={r.heading} onChange={(e) => set({ heading: e.target.value })} />
-        </div>
-        <RichTextField label="Description" value={r.description} onChange={(v) => set({ description: v })} />
-        <ArrayEditor
-          items={r.reviews}
-          onChange={(items) => set({ reviews: items })}
-          itemLabel="Review"
-          newItem={() => ({ text: "", author: "", ratingImage: "", ratingImageAlt: "" })}
-          renderItem={(item, _, upd) => (
-            <div className="grid gap-3">
-              <div>
-                <Label>Author</Label>
-                <Input value={item.author} onChange={(e) => upd({ ...item, author: e.target.value })} />
-              </div>
-              <RichTextField label="Review Text" value={item.text} onChange={(v) => upd({ ...item, text: v })} />
-              <ImageField
-                label="Rating Image"
-                value={item.ratingImage}
-                onChange={(url) => upd({ ...item, ratingImage: url })}
-                altValue={item.ratingImageAlt || ""}
-                onAltChange={(ratingImageAlt) => upd({ ...item, ratingImageAlt })}
-                onSelectAsset={(asset) => upd({
-                  ...item,
-                  ratingImage: asset.url,
-                  ratingImageAlt: asset.suggestedAltText || item.ratingImageAlt || "",
-                })}
-                folder="logos"
-              />
-              <div>
-                <Label>Rating Image Alt Text</Label>
-                <Input value={item.ratingImageAlt || ""} onChange={(e) => upd({ ...item, ratingImageAlt: e.target.value })} placeholder="e.g. 5 star rating" />
-              </div>
-            </div>
-          )}
-        />
-      </div>
-    </Section>
-  );
-}
 
 /* ------------------------------------------------------------------ */
 function FaqSectionEditor({ content, update }: SectionProps) {
