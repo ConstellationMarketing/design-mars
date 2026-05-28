@@ -16,14 +16,15 @@ export default function AboutPageAboutSection({ content, headingTag = "h2" }: Ab
   return (
     <div className="w-full bg-white pt-[30px] md:pt-[54px] pb-[30px] md:pb-[54px]">
       <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%]">
-        {/* Heading */}
+        {/* Centered Heading with Underline */}
         {content.heading && (
-          <div className="mb-[30px] md:mb-[50px]">
-            <HeadingTag className="font-poppins text-[32px] md:text-[48px] font-bold leading-tight text-black">
-              {content.heading}
-            </HeadingTag>
-            {/* Underline */}
-            <div className="w-[60px] h-[2px] bg-brand-accent mt-[15px]"></div>
+          <div className="text-center mb-[30px] md:mb-[50px]">
+            <div className="inline-block">
+              <HeadingTag className="font-poppins text-[36px] md:text-[48px] font-bold text-black leading-tight">
+                {content.heading}
+              </HeadingTag>
+              <div className="h-px bg-brand-accent mt-4 max-w-[60%] mx-auto"></div>
+            </div>
           </div>
         )}
 
