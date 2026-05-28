@@ -35,7 +35,7 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
               .pa-grid {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
-                gap: 0;
+                gap: 12px;
               }
               @media (max-width: 1024px) {
                 .pa-grid { grid-template-columns: repeat(3, 1fr); }
@@ -71,26 +71,32 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                z-index: 10;
               }
               .pa-card-front span {
-                color: #fff;
+                color: #ffffff;
                 font-size: 16px;
                 font-weight: 700;
                 text-transform: uppercase;
                 text-align: center;
                 padding: 0 16px;
                 letter-spacing: 1px;
+                position: relative;
+                z-index: 20;
+                opacity: 1;
               }
               .pa-card-bg {
                 position: absolute;
                 inset: 0;
                 background-size: cover;
                 background-position: center;
+                z-index: 1;
               }
               .pa-card-overlay {
                 position: absolute;
                 inset: 0;
                 background: rgba(0,0,0,0.45);
+                z-index: 5;
               }
               .pa-card-back {
                 position: absolute;
