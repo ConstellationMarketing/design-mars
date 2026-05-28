@@ -1,5 +1,5 @@
-import type { PracticeAreasPageContent } from "@site/lib/cms/practiceAreasPageTypes";
-import { Section, ArrayEditor, ImageField, GlobalSectionInfo, RichTextField, HeadingField, Input, Label, Textarea } from "./EditorShared";
+import type { PracticeAreasPageContent, ValueItemWithIcon } from "@site/lib/cms/practiceAreasPageTypes";
+import { Section, ArrayEditor, ImageField, RichTextField, HeadingField, Input, Label, Textarea } from "./EditorShared";
 
 interface PracticeAreasEditorProps {
   content: PracticeAreasPageContent;
@@ -14,14 +14,14 @@ export default function PracticeAreasEditor({ content, onChange }: PracticeAreas
   return (
     <div className="space-y-6">
       <HeroSection content={content} update={update} />
-      <GridSection content={content} update={update} />
-      <GlobalSectionInfo sectionTitle="Why Choose Us" managedIn="About Us" />
-      <GlobalSectionInfo sectionTitle="Call to Action" managedIn="About Us" />
+      <PracticeAreasIntroSection content={content} update={update} />
+      <PracticeAreasGridSection content={content} update={update} />
+      <ValuesSection content={content} update={update} />
     </div>
   );
 }
 
-/* ------------------------------------------------------------------ */
+/* ========== Types ========== */
 type Updater = <K extends keyof PracticeAreasPageContent>(key: K, value: PracticeAreasPageContent[K]) => void;
 type SectionProps = { content: PracticeAreasPageContent; update: Updater };
 
@@ -33,7 +33,7 @@ function useHeadingTag(content: PracticeAreasPageContent, update: Updater) {
   };
 }
 
-/* ------------------------------------------------------------------ */
+/* ========== Section 1: Hero Section (from Home) ========== */
 function HeroSection({ content, update }: SectionProps) {
   const hero = content.hero;
   const set = (patch: Partial<typeof hero>) => update("hero", { ...hero, ...patch });
@@ -42,61 +42,103 @@ function HeroSection({ content, update }: SectionProps) {
   return (
     <Section title="Hero Section">
       <div className="grid gap-4">
+        <p className="text-xs text-gray-600 mb-2">Fully independent from Home page</p>
         <HeadingField
-          label="Section Heading"
-          value={hero.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={content.headingTags?.["hero.sectionLabel"] ?? "h1"}
-          onTagChange={(t) => ht.set("hero.sectionLabel", t)}
+          label="H1 Title"
+          value={hero.h1Title}
+          onChange={(v) => set({ h1Title: v })}
+          tag={ht.get("hero.h1Title")}
+          onTagChange={(t) => ht.set("hero.h1Title", t)}
         />
+        <div>
+          <Label>Headline</Label>
+          <Input value={hero.headline} onChange={(e) => set({ headline: e.target.value })} />
+        </div>
+        <div>
+          <Label>Highlighted Text</Label>
+          <Input value={hero.highlightedText} onChange={(e) => set({ highlightedText: e.target.value })} />
+        </div>
         <div>
           <Label>Tagline</Label>
           <Input value={hero.tagline} onChange={(e) => set({ tagline: e.target.value })} />
         </div>
-        <RichTextField label="Description" value={hero.description} onChange={(v) => set({ description: v })} />
+        <div>
+          <Label>Button Text</Label>
+          <Input value={hero.buttonText} onChange={(e) => set({ buttonText: e.target.value })} />
+        </div>
+        <ImageField
+          label="Background Image"
+          value={hero.backgroundImage || ""}
+          onChange={(url) => set({ backgroundImage: url })}
+          folder="practice-areas"
+        />
         <p className="text-xs text-gray-500 italic">Phone number is managed in Site Settings &gt; Contact Info</p>
       </div>
     </Section>
   );
 }
 
-/* ------------------------------------------------------------------ */
-function GridSection({ content, update }: SectionProps) {
-  const grid = content.grid;
-  const set = (patch: Partial<typeof grid>) => update("grid", { ...grid, ...patch });
+/* ========== Section 2: Practice Areas Intro ========== */
+function PracticeAreasIntroSection({ content, update }: SectionProps) {
+  const intro = content.practiceAreasIntro;
+  const set = (patch: Partial<typeof intro>) => update("practiceAreasIntro", { ...intro, ...patch });
+  const ht = useHeadingTag(content, update);
+
+  return (
+    <Section title="Practice Areas Intro" defaultOpen={false}>
+      <div className="grid gap-4">
+        <p className="text-xs text-gray-600 mb-2">Fully independent from Home page</p>
+        <div>
+          <Label>Section Label</Label>
+          <Input value={intro.sectionLabel} onChange={(e) => set({ sectionLabel: e.target.value })} />
+        </div>
+        <HeadingField
+          label="Heading"
+          value={intro.heading}
+          onChange={(v) => set({ heading: v })}
+          tag={ht.get("practiceAreasIntro.heading")}
+          onTagChange={(t) => ht.set("practiceAreasIntro.heading", t)}
+        />
+        <div>
+          <Label>Button Link</Label>
+          <Input value={intro.buttonLink} onChange={(e) => set({ buttonLink: e.target.value })} />
+        </div>
+        <div>
+          <Label>Button Text Line 1</Label>
+          <Input value={intro.buttonTextLine1} onChange={(e) => set({ buttonTextLine1: e.target.value })} />
+        </div>
+        <div>
+          <Label>Button Text Line 2</Label>
+          <Input value={intro.buttonTextLine2} onChange={(e) => set({ buttonTextLine2: e.target.value })} />
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ========== Section 3: Practice Areas Grid ========== */
+function PracticeAreasGridSection({ content, update }: SectionProps) {
+  const areas = content.practiceAreas;
+  const set = (patch: Partial<typeof areas>) => update("practiceAreas", patch as typeof areas);
   const ht = useHeadingTag(content, update);
 
   return (
     <Section title="Practice Areas Grid" defaultOpen={false}>
       <div className="grid gap-4">
-        <HeadingField
-          label="Heading"
-          value={grid.heading}
-          onChange={(v) => set({ heading: v })}
-          tag={ht.get("grid.heading")}
-          onTagChange={(t) => ht.set("grid.heading", t)}
-        />
-        <RichTextField label="Description" value={grid.description} onChange={(v) => set({ description: v })} />
+        <p className="text-xs text-gray-600 mb-2">Fully independent from Home page</p>
         <ArrayEditor
-          items={grid.areas}
-          onChange={(items) => set({ areas: items })}
+          items={areas}
+          onChange={(items) => set(items as any)}
           itemLabel="Practice Area"
-          newItem={() => ({ icon: "FileText", title: "", description: "", image: "", imageAlt: "", link: "/practice-areas" })}
+          newItem={() => ({ title: "", image: "", imageAlt: "", link: "/practice-areas/", learnMoreLink: "", consultationLink: "" })}
           renderItem={(item, _, upd) => (
             <div className="grid gap-3">
-              <div className="grid grid-cols-4 gap-3">
-                <div>
-                  <Label>Icon</Label>
-                  <Input value={item.icon} onChange={(e) => upd({ ...item, icon: e.target.value })} placeholder="Lucide icon name" />
-                </div>
-                <div className="col-span-3">
-                  <Label>Title</Label>
-                  <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} />
-                </div>
+              <div>
+                <Label>Title</Label>
+                <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} />
               </div>
-              <RichTextField label="Description" value={item.description} onChange={(v) => upd({ ...item, description: v })} />
               <ImageField
-                label="Background Image"
+                label="Image"
                 value={item.image}
                 onChange={(url) => upd({ ...item, image: url })}
                 altValue={item.imageAlt}
@@ -109,12 +151,72 @@ function GridSection({ content, update }: SectionProps) {
                 folder="practice-areas"
               />
               <div>
-                <Label>Image Alt Text</Label>
-                <Input value={item.imageAlt} onChange={(e) => upd({ ...item, imageAlt: e.target.value })} placeholder="Describe the background image" />
-              </div>
-              <div>
                 <Label>Link</Label>
                 <Input value={item.link} onChange={(e) => upd({ ...item, link: e.target.value })} />
+              </div>
+              <div>
+                <Label>Learn More Link (optional)</Label>
+                <Input value={item.learnMoreLink || ""} onChange={(e) => upd({ ...item, learnMoreLink: e.target.value })} />
+              </div>
+              <div>
+                <Label>Consultation Link (optional)</Label>
+                <Input value={item.consultationLink || ""} onChange={(e) => upd({ ...item, consultationLink: e.target.value })} />
+              </div>
+            </div>
+          )}
+        />
+      </div>
+    </Section>
+  );
+}
+
+/* ========== Section 4: Values Section (from About) ========== */
+function ValuesSection({ content, update }: SectionProps) {
+  const values = content.values;
+  const set = (patch: Partial<typeof values>) => update("values", { ...values, ...patch });
+  const ht = useHeadingTag(content, update);
+
+  return (
+    <Section title="Values Section (Our Values)" defaultOpen={false}>
+      <div className="grid gap-4">
+        <p className="text-xs text-gray-600 mb-2">Fully independent from About page</p>
+        <div>
+          <Label>Section Label</Label>
+          <Input value={values.sectionLabel} onChange={(e) => set({ sectionLabel: e.target.value })} />
+        </div>
+        <HeadingField
+          label="Values Title"
+          value={values.valuesTitle}
+          onChange={(v) => set({ valuesTitle: v })}
+          tag={ht.get("values.valuesTitle")}
+          onTagChange={(t) => ht.set("values.valuesTitle", t)}
+        />
+        <ArrayEditor
+          items={values.values}
+          onChange={(items) => set({ values: items })}
+          itemLabel="Value"
+          newItem={() => ({ id: "excellence" as const, title: "", description: "" })}
+          renderItem={(item, _, upd) => (
+            <div className="grid gap-3">
+              <div>
+                <Label>Icon Type</Label>
+                <select
+                  value={item.id}
+                  onChange={(e) => upd({ ...item, id: e.target.value as "excellence" | "integrity" | "compassion", iconType: e.target.value as "excellence" | "integrity" | "compassion" })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded bg-white"
+                >
+                  <option value="excellence">Excellence (Trophy)</option>
+                  <option value="integrity">Integrity (Crown)</option>
+                  <option value="compassion">Compassion (People)</option>
+                </select>
+              </div>
+              <div>
+                <Label>Title</Label>
+                <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} />
+              </div>
+              <div>
+                <Label>Description</Label>
+                <Textarea value={item.description} onChange={(e) => upd({ ...item, description: e.target.value })} />
               </div>
             </div>
           )}

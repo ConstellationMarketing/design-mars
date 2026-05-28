@@ -281,9 +281,9 @@ const CONTACT_CONTENT_KEYS: (keyof ContactPageContent)[] = [
 
 const PRACTICE_AREAS_CONTENT_KEYS: (keyof PracticeAreasPageContent)[] = [
   "hero",
-  "grid",
-  "whyChoose",
-  "cta",
+  "practiceAreasIntro",
+  "practiceAreas",
+  "values",
 ];
 
 const PRACTICE_AREA_CONTENT_KEYS: (keyof PracticeAreaPageContent)[] = [
@@ -708,70 +708,18 @@ export function mergePracticeAreasContentWithDefaults(cmsContent: Partial<Practi
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
-    grid: {
-      ...defaults.grid,
-      ...cmsContent.grid,
-      areas: cmsContent.grid?.areas?.length ? cmsContent.grid.areas : defaults.grid.areas,
+    practiceAreasIntro: {
+      ...defaults.practiceAreasIntro,
+      ...cmsContent.practiceAreasIntro,
     },
-    whyChoose: {
-      ...defaults.whyChoose,
-      ...cmsContent.whyChoose,
-      items: cmsContent.whyChoose?.items?.length ? cmsContent.whyChoose.items : defaults.whyChoose.items,
-    },
-    cta: {
-      ...defaults.cta,
-      ...cmsContent.cta,
-      primaryButton: {
-        ...defaults.cta.primaryButton,
-        ...cmsContent.cta?.primaryButton,
-      },
-      secondaryButton: {
-        ...defaults.cta.secondaryButton,
-        ...cmsContent.cta?.secondaryButton,
-      },
+    practiceAreas: cmsContent.practiceAreas?.length ? cmsContent.practiceAreas : defaults.practiceAreas,
+    values: {
+      ...defaults.values,
+      ...cmsContent.values,
+      values: cmsContent.values?.values?.length ? cmsContent.values.values : defaults.values.values,
     },
     headingTags: cmsContent.headingTags ?? defaults.headingTags,
   };
-}
-
-export function applyPracticeSharedSectionsToPracticeAreas(content: PracticeAreasPageContent, sharedSections: PracticeSharedSections | null): PracticeAreasPageContent {
-  let mergedContent = content;
-
-  if (sharedSections?.whyChooseUs) {
-    mergedContent = {
-      ...mergedContent,
-      whyChoose: {
-        sectionLabel: sharedSections.whyChooseUs.sectionLabel || mergedContent.whyChoose.sectionLabel,
-        heading: sharedSections.whyChooseUs.heading || mergedContent.whyChoose.heading,
-        subtitle: mergedContent.whyChoose.subtitle,
-        description: sharedSections.whyChooseUs.description || mergedContent.whyChoose.description,
-        image: sharedSections.whyChooseUs.image || mergedContent.whyChoose.image,
-        imageAlt: sharedSections.whyChooseUs.imageAlt || mergedContent.whyChoose.imageAlt,
-        items: sharedSections.whyChooseUs.items?.length ? sharedSections.whyChooseUs.items : mergedContent.whyChoose.items,
-      },
-    };
-  }
-
-  if (sharedSections?.cta) {
-    mergedContent = {
-      ...mergedContent,
-      cta: {
-        ...mergedContent.cta,
-        heading: sharedSections.cta.heading || mergedContent.cta.heading,
-        description: sharedSections.cta.description || mergedContent.cta.description,
-        primaryButton: {
-          ...mergedContent.cta.primaryButton,
-          ...sharedSections.cta.primaryButton,
-        },
-        secondaryButton: {
-          ...mergedContent.cta.secondaryButton,
-          ...sharedSections.cta.secondaryButton,
-        },
-      },
-    };
-  }
-
-  return mergedContent;
 }
 
 export function mergePracticeAreaPageContentWithDefaults(cmsContent: Partial<PracticeAreaPageContent> | null | undefined, defaults: PracticeAreaPageContent = defaultPracticeAreaPageContent): PracticeAreaPageContent {
@@ -855,15 +803,12 @@ export function shapeContactPageDocument(row: CmsPageRow | null, sharedSections:
   };
 }
 
-export function shapePracticeAreasPageDocument(row: CmsPageRow | null, sharedSections: PracticeSharedSections | null = null): PreloadedPageDocument<PracticeAreasPageContent> | null {
+export function shapePracticeAreasPageDocument(row: CmsPageRow | null): PreloadedPageDocument<PracticeAreasPageContent> | null {
   if (!row) {
     return null;
   }
 
-  const content = applyPracticeSharedSectionsToPracticeAreas(
-    normalizePracticeAreasPageContent(row.content),
-    sharedSections,
-  );
+  const content = normalizePracticeAreasPageContent(row.content);
 
   return {
     urlPath: normalizeCmsUrlPath(row.url_path || "/practice-areas/"),
@@ -1004,14 +949,10 @@ export async function loadContactPageDocument() {
 }
 
 export async function loadPracticeAreasPageDocument() {
-  const [row, sharedSections] = await Promise.all([
-    fetchPublishedPageRow("/practice-areas/", PAGE_PUBLIC_SELECT),
-    loadAboutSharedSections(),
-  ]);
+  const row = await fetchPublishedPageRow("/practice-areas/", PAGE_PUBLIC_SELECT);
 
   return {
-    document: shapePracticeAreasPageDocument(row, sharedSections),
-    sharedSections,
+    document: shapePracticeAreasPageDocument(row),
   };
 }
 

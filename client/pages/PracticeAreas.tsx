@@ -1,62 +1,16 @@
 import Seo from "@site/components/Seo";
 import Layout from "@site/components/layout/Layout";
-import PracticeAreaCard from "@site/components/practice/PracticeAreaCard";
-import CallBox from "@site/components/shared/CallBox";
-import {
-  Phone,
-  Calendar,
-  Scale,
-  Car,
-  Briefcase,
-  Users,
-  Home,
-  DollarSign,
-  FileText,
-  Heart,
-  Shield,
-  TrendingUp,
-  Stethoscope,
-  Building,
-  type LucideIcon,
-} from "lucide-react";
 import { usePracticeAreasContent } from "@site/hooks/usePracticeAreasContent";
 import { useGlobalPhone } from "@site/contexts/SiteSettingsContext";
-import RichText from "@site/components/shared/RichText";
+import { Loader2, Phone } from "lucide-react";
+import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
+import AboutValuesSection from "@site/components/about/AboutValuesSection";
 import DynamicHeading from "@site/components/shared/DynamicHeading";
-import { Loader2 } from "lucide-react";
-
-// Icon mapping for practice areas
-const iconMap: Record<string, LucideIcon> = {
-  Car,
-  Stethoscope,
-  Briefcase,
-  Heart,
-  Building,
-  Shield,
-  Scale,
-  FileText,
-  Users,
-  Home,
-  DollarSign,
-  TrendingUp,
-};
+import RichText from "@site/components/shared/RichText";
 
 export default function PracticeAreas() {
   const { content, meta, title, publishedAt, updatedAt, isLoading } = usePracticeAreasContent();
   const { phoneNumber, phoneDisplay, phoneLabel } = useGlobalPhone();
-
-  // Map practice areas from CMS content with icon components
-  const practiceAreas = content.grid.areas.map((area) => ({
-    icon: iconMap[area.icon] || Scale,
-    title: area.title,
-    description: area.description,
-    image: area.image,
-    imageAlt: area.imageAlt,
-    link: area.link,
-  }));
-
-  // Map why choose items from CMS content
-  const whyChooseOurPractice = content.whyChoose.items;
 
   if (isLoading) {
     return (
@@ -68,8 +22,10 @@ export default function PracticeAreas() {
     );
   }
 
+  const heroBackgroundImage = content.hero.backgroundImage || 'https://atzgmwcxbdnswerpqzzi.supabase.co/storage/v1/object/public/media/library/1779351750724-20d0za.webp';
+
   return (
-    <Layout>
+    <Layout heroBackgroundImage={heroBackgroundImage}>
       <Seo
         title={title || "Practice Areas"}
         meta={meta}
@@ -78,278 +34,78 @@ export default function PracticeAreas() {
         updatedTime={updatedAt}
       />
 
-      {/* Hero Section */}
-      <div className="bg-brand-dark pt-[30px] md:pt-[54px] pb-[30px] md:pb-[54px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%]">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-[5%]">
-            {/* Left Side - Heading */}
-            <div className="lg:w-[65%]">
-              {/* H1 Title - Section Heading */}
-              <DynamicHeading
-                tag={content.headingTags?.["hero.sectionLabel"]}
-                defaultTag="h1"
-                className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-brand-accent mb-[10px]"
-              >
-                {content.hero.sectionLabel}
-              </DynamicHeading>
-              {/* Tagline - styled as large text */}
-              <p className="font-playfair text-[clamp(2.5rem,7vw,68.8px)] font-light leading-[1.2] text-white mb-[20px] md:mb-[30px]">
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: content.hero.tagline.replace(
-                      /(Expertise)/g,
-                      '<span class="text-brand-accent">$1</span>',
-                    ),
-                  }}
-                />
+      {/* ========== Section 1: Hero ========== */}
+      <div className="w-full flex items-center justify-center py-[40px] md:py-[100px] pb-[100px] md:pb-[120px] relative overflow-visible">
+        {/* Dark overlay */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.6)',
+          zIndex: 1
+        }}></div>
+
+        {/* Content */}
+        <div className="max-w-[1000px] w-[85%] md:w-[90%] relative z-10 text-center">
+          <div className="flex flex-col items-center justify-center gap-5 md:gap-6">
+            {/* Highlighted Text - large white text on top */}
+            {content.hero.highlightedText && (
+              <p className="font-poppins text-[48px] sm:text-[48px] md:text-[96px] font-bold leading-[1.0] text-white max-w-4xl">
+                {content.hero.highlightedText}
               </p>
-              <RichText
-                html={content.hero.description}
-                className="font-outfit text-[16px] md:text-[20px] leading-[24px] md:leading-[30px] text-white/90"
-              />
-            </div>
+            )}
 
-            {/* Right Side - CallBox */}
-            <div className="w-full lg:w-[30%] lg:flex lg:items-center">
-              <CallBox
-                icon={Phone}
-                title={phoneLabel}
-                subtitle={phoneDisplay}
-                phone={phoneNumber}
-              />
-            </div>
+            {/* Headline - white uppercase in middle */}
+            {content.hero.headline && (
+              <p className="font-poppins text-[18px] md:text-[22px] font-semibold tracking-wider uppercase text-white max-w-[60%] mx-auto text-center">
+                {content.hero.headline}
+              </p>
+            )}
+
+            {/* H1 Title - small yellow text on bottom */}
+            {content.hero.h1Title && (
+              <DynamicHeading
+                tag={content.headingTags?.["hero.h1Title"]}
+                defaultTag="h1"
+                className="font-poppins text-[18px] md:text-[24px] font-bold text-brand-accent uppercase tracking-wider"
+              >
+                {content.hero.h1Title}
+              </DynamicHeading>
+            )}
+
+            {/* Tagline */}
+            {content.hero.tagline && (
+              <p className="font-poppins text-[16px] md:text-[18px] text-white/90 max-w-[700px] mt-2">
+                {content.hero.tagline}
+              </p>
+            )}
+
+            {/* CTA Button */}
+            {content.hero.buttonText && (
+              <a
+                href={`tel:${phoneNumber.replace(/\D/g, "")}`}
+                className="mt-8 md:mt-10 bg-brand-accent px-8 py-4 font-poppins text-[18px] font-bold text-black hover:bg-brand-accent-dark transition-colors inline-block"
+              >
+                {content.hero.buttonText}
+              </a>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Practice Areas Grid Section */}
-      <div className="bg-white py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
-          <div className="text-center mb-[30px] md:mb-[50px]">
-            <h2 className="font-playfair text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black">
-              {content.grid.heading}
-            </h2>
-            <RichText
-              html={content.grid.description}
-              className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black/80 mt-[15px] max-w-[800px] mx-auto"
-            />
-          </div>
+      {/* ========== Section 2: Practice Areas Intro ========== */}
+      <PracticeAreasSection 
+        content={content.practiceAreasIntro}
+        areas={content.practiceAreas}
+      />
 
-          <style>{`
-            .pa-grid {
-              display: grid;
-              grid-template-columns: repeat(4, 1fr);
-              gap: 0;
-            }
-            @media (max-width: 1024px) {
-              .pa-grid { grid-template-columns: repeat(3, 1fr); }
-            }
-            @media (max-width: 768px) {
-              .pa-grid { grid-template-columns: repeat(2, 1fr); }
-            }
-            @media (max-width: 480px) {
-              .pa-grid { grid-template-columns: 1fr; }
-            }
-            .pa-card {
-              position: relative;
-              height: 280px;
-              overflow: hidden;
-              cursor: pointer;
-            }
-            .pa-card-bg {
-              position: absolute;
-              inset: 0;
-              background-size: cover;
-              background-position: center;
-              transition: opacity 0.4s ease;
-            }
-            .pa-card-overlay {
-              position: absolute;
-              inset: 0;
-              background: rgba(0,0,0,0.45);
-              transition: opacity 0.4s ease;
-            }
-            .pa-card-front {
-              position: absolute;
-              inset: 0;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              z-index: 2;
-              transition: opacity 0.4s ease;
-            }
-            .pa-card-front span {
-              color: #fff;
-              font-size: 16px;
-              font-weight: 700;
-              text-transform: uppercase;
-              text-align: center;
-              padding: 0 16px;
-              letter-spacing: 1px;
-            }
-            .pa-card-back {
-              position: absolute;
-              inset: 0;
-              background: #C9A84C;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              gap: 16px;
-              padding: 24px;
-              opacity: 0;
-              transition: opacity 0.4s ease;
-              z-index: 3;
-              pointer-events: none;
-            }
-            .pa-card:hover .pa-card-back {
-              opacity: 1;
-              pointer-events: auto;
-            }
-            .pa-card:hover .pa-card-bg,
-            .pa-card:hover .pa-card-overlay,
-            .pa-card:hover .pa-card-front {
-              opacity: 0;
-            }
-            .pa-card-back .pa-title {
-              font-size: 18px;
-              font-weight: 700;
-              text-transform: uppercase;
-              color: #111;
-              text-align: center;
-              margin: 0;
-            }
-            .pa-card-back .pa-learn {
-              font-size: 14px;
-              font-weight: 700;
-              text-transform: uppercase;
-              letter-spacing: 2px;
-              color: #111;
-              text-decoration: none;
-            }
-            .pa-card-back .pa-consult {
-              font-size: 14px;
-              font-weight: 400;
-              color: #111;
-              text-decoration: none;
-            }
-            .pa-card-back .pa-learn:hover,
-            .pa-card-back .pa-consult:hover {
-              text-decoration: underline;
-            }
-          `}</style>
-
-          <div className="pa-grid">
-            {content.grid.areas.map((area, index) => (
-              <div key={index} className="pa-card" style={{ outline: "4px solid red" }}>
-                <div className="pa-card-bg" style={{ backgroundImage: `url(${area.image})` }}></div>
-                <div className="pa-card-overlay"></div>
-                <div className="pa-card-front"><span>{area.title}</span></div>
-                <div className="pa-card-back">
-                  <p className="pa-title">{area.title}</p>
-                  <a href={area.link || "/contact"} className="pa-learn">Learn More</a>
-                  <a href={area.link || "/contact"} className="pa-consult">Free Consultation</a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Why Choose Our Practice Section */}
-      <div className="bg-brand-dark py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[80%]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[8%]">
-            {/* Left Side - Heading + Image */}
-            <div>
-              <div className="mb-[10px]">
-                <p className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-brand-accent">
-                  {content.whyChoose.sectionLabel}
-                </p>
-              </div>
-              <h2 className="font-playfair text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-white pb-[20px]">
-                {content.whyChoose.heading}
-              </h2>
-              {content.whyChoose.subtitle && (
-                <p className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-white/80 pb-[15px]">
-                  {content.whyChoose.subtitle}
-                </p>
-              )}
-              <RichText
-                html={content.whyChoose.description}
-                className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-white/90 mb-[30px]"
-              />
-              {/* Section image (shared from About page) */}
-              {content.whyChoose.image && (
-                <div className="hidden lg:block">
-                  <img
-                    src={content.whyChoose.image}
-                    alt={content.whyChoose.imageAlt || "Why Choose Us"}
-                    className="w-full max-w-[400px] h-auto object-cover"
-                    width={400}
-                    height={300}
-                    loading="lazy"
-                  />
-                </div>
-              )}
-            </div>
-
-            {/* Right Side - Features List */}
-            <div className="space-y-[20px] md:space-y-[30px]">
-              {whyChooseOurPractice.map((feature, index) => (
-                <div key={index}>
-                  <div className="mb-[15px] md:mb-[20px]">
-                    <h3 className="font-outfit text-[22px] md:text-[28px] leading-tight md:leading-[28px] text-white pb-[10px]">
-                      {feature.number}. {feature.title}
-                    </h3>
-                    <RichText
-                      html={feature.description}
-                      className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-white/80"
-                    />
-                  </div>
-                  {index < whyChooseOurPractice.length - 1 && (
-                    <div className="h-[1px] bg-brand-border/50"></div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Call to Action Section */}
-      <div className="bg-brand-accent py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[80%]">
-          <div className="text-center mb-[30px] md:mb-[40px]">
-            <h2 className="font-playfair text-[36px] md:text-[48px] lg:text-[60px] leading-tight text-black pb-[15px]">
-              {content.cta.heading}
-            </h2>
-            <RichText
-              html={content.cta.description}
-              className="font-outfit text-[18px] md:text-[22px] leading-[26px] md:leading-[32px] text-black/80"
-            />
-          </div>
-
-          <div className="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-center md:items-start">
-            <CallBox
-              icon={Phone}
-              title={phoneLabel}
-              subtitle={phoneDisplay}
-              phone={phoneNumber}
-              className="bg-brand-accent-dark hover:bg-black"
-              variant="dark"
-            />
-            <CallBox
-              icon={Calendar}
-              title={content.cta.secondaryButton.label}
-              subtitle={content.cta.secondaryButton.sublabel}
-              link={content.cta.secondaryButton.link}
-              className="bg-brand-accent-dark hover:bg-black"
-              variant="dark"
-            />
-          </div>
-        </div>
-      </div>
+      {/* ========== Section 3: Values ========== */}
+      <AboutValuesSection 
+        content={content.values}
+        headingTag={content.headingTags?.["values.valuesTitle"]}
+      />
     </Layout>
   );
 }
