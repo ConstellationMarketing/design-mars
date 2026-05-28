@@ -48,10 +48,12 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
 
             {/* Description Text - wraps around image */}
             {data.description && (
-              <RichText
-                html={data.description}
-                className="font-poppins text-base md:text-lg leading-relaxed text-gray-700 whitespace-pre-wrap"
-              />
+              <div className="description-block">
+                <RichText
+                  html={data.description}
+                  className="font-poppins text-base md:text-lg leading-relaxed text-gray-700"
+                />
+              </div>
             )}
 
             {/* Clear float after text */}

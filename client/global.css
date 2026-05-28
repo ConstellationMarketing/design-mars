@@ -276,6 +276,16 @@
     text-decoration: underline !important;
   }
 
+  /* Description block empty paragraph spacing */
+  .description-block p:empty {
+    height: 1em;
+    display: block;
+  }
+
+  .description-block p {
+    margin-bottom: 0;
+  }
+
   /* Force Lucide icons to render as outlines */
   svg.lucide *,
   .lucide * {
