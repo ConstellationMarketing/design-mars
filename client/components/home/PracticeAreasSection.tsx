@@ -31,36 +31,121 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
         {/* Practice Areas Grid */}
         {areas && areas.length > 0 && (
           <div className="mb-12 md:mb-16">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <style>{`
+              .pa-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0;
+              }
+              @media (max-width: 1024px) {
+                .pa-grid { grid-template-columns: repeat(3, 1fr); }
+              }
+              @media (max-width: 768px) {
+                .pa-grid { grid-template-columns: repeat(2, 1fr); }
+              }
+              @media (max-width: 480px) {
+                .pa-grid { grid-template-columns: 1fr; }
+              }
+              .pa-card {
+                position: relative;
+                height: 200px;
+                overflow: hidden;
+                cursor: pointer;
+              }
+              .pa-card-bg {
+                position: absolute;
+                inset: 0;
+                background-size: cover;
+                background-position: center;
+                transition: opacity 0.4s ease;
+              }
+              .pa-card-overlay {
+                position: absolute;
+                inset: 0;
+                background: rgba(0,0,0,0.45);
+                transition: opacity 0.4s ease;
+              }
+              .pa-card-front {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2;
+                transition: opacity 0.4s ease;
+              }
+              .pa-card-front span {
+                color: #fff;
+                font-size: 16px;
+                font-weight: 700;
+                text-transform: uppercase;
+                text-align: center;
+                padding: 0 16px;
+                letter-spacing: 1px;
+              }
+              .pa-card-back {
+                position: absolute;
+                inset: 0;
+                background: #C9A84C;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+                padding: 24px;
+                opacity: 0;
+                transition: opacity 0.4s ease;
+                z-index: 3;
+                pointer-events: none;
+              }
+              .pa-card:hover .pa-card-back {
+                opacity: 1;
+                pointer-events: auto;
+              }
+              .pa-card:hover .pa-card-bg,
+              .pa-card:hover .pa-card-overlay,
+              .pa-card:hover .pa-card-front {
+                opacity: 0;
+              }
+              .pa-card-back .pa-title {
+                font-size: 18px;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: #111;
+                text-align: center;
+                margin: 0;
+              }
+              .pa-card-back .pa-learn {
+                font-size: 14px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: #111;
+                text-decoration: none;
+              }
+              .pa-card-back .pa-consult {
+                font-size: 14px;
+                font-weight: 400;
+                color: #111;
+                text-decoration: none;
+              }
+              .pa-card-back .pa-learn:hover,
+              .pa-card-back .pa-consult:hover {
+                text-decoration: underline;
+              }
+            `}</style>
+
+            <div className="pa-grid">
               {areas.map((area, index) => (
-                <div
-                  key={index}
-                  className="relative overflow-hidden group"
-                  role="img"
-                  aria-label={area.imageAlt || area.title}
-                >
-                  {/* Background Image */}
-                  <div
-                    className="relative min-h-[150px] md:min-h-[200px] overflow-hidden"
-                    style={{
-                      backgroundImage: `url(${area.image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  >
-                    {/* Dark Overlay */}
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all duration-300"></div>
-
-                    {/* Content */}
-                    <div className="absolute inset-0 flex items-center justify-center p-4">
-                      <h3 className="font-poppins text-[16px] md:text-[16px] leading-tight text-white font-normal text-center uppercase transition-all duration-300">
-                        {area.title}
-                      </h3>
-                    </div>
+                <div key={index} className="pa-card" style={{ outline: "4px solid red" }}>
+                  <div className="pa-card-bg" style={{ backgroundImage: `url(${area.image})` }}></div>
+                  <div className="pa-card-overlay"></div>
+                  <div className="pa-card-front"><span>{area.title}</span></div>
+                  <div className="pa-card-back">
+                    <p className="pa-title">{area.title}</p>
+                    <a href={area.link || "/practice-areas/"} className="pa-learn">Learn More</a>
+                    <a href={area.link || "/practice-areas/"} className="pa-consult">Free Consultation</a>
                   </div>
-
-                  {/* Hover Overlay - just slightly darker */}
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               ))}
             </div>
