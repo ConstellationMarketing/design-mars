@@ -30,13 +30,36 @@ export default function AboutPageAboutSection({ content, headingTag = "h2" }: Ab
 
         {/* 50/50 Layout: Text on Left, Black Box on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[5%]">
-          {/* Left Side - Text Content */}
+          {/* Left Side - Text Content + Features */}
           <div>
+            {/* Experience Description */}
             {content.experienceDescription && (
-              <RichText
-                html={content.experienceDescription}
-                className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black"
-              />
+              <div className="mb-[30px]">
+                <RichText
+                  html={content.experienceDescription}
+                  className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black"
+                />
+              </div>
+            )}
+
+            {/* Features List */}
+            {content.features && content.features.length > 0 && (
+              <div className="space-y-[20px]">
+                {content.features.map((feature, index) => (
+                  <div key={index}>
+                    {feature.title && (
+                      <h3 className="font-poppins font-semibold text-[18px] md:text-[20px] text-black mb-[8px]">
+                        {feature.title}
+                      </h3>
+                    )}
+                    {feature.description && (
+                      <p className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black">
+                        {feature.description}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
             )}
           </div>
 
