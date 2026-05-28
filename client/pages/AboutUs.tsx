@@ -4,8 +4,8 @@ import { Loader2 } from "lucide-react";
 import { useAboutContent } from "@site/hooks/useAboutContent";
 
 // Import home page section components
-import HomeAboutSection from "@site/components/home/HomeAboutSection";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
+import AboutPageAboutSection from "@site/components/about/AboutPageAboutSection";
 import AwardsSection from "@site/components/home/AwardsSection";
 import TestimonialsSection from "@site/components/home/TestimonialsSection";
 import VideoTestimonialsSection from "@site/components/home/VideoTestimonialsSection";
@@ -95,8 +95,10 @@ export default function AboutUs() {
 
       </div>
 
-      {/* Page Sections - same as home page */}
-      <HomeAboutSection content={content.homeAbout} headingTag={content.headingTags?.["homeAbout.heading"]} />
+      {/* About Section - Custom Layout for About Page */}
+      <AboutPageAboutSection content={content.homeAbout} headingTag={content.headingTags?.["homeAbout.heading"]} />
+
+      {/* Page Sections */}
       <PracticeAreasSection content={content.practiceAreasIntro} areas={content.practiceAreas} headingTag={content.headingTags?.["practiceAreasIntro.sectionLabel"]} />
       <AwardsSection content={content.awards} headingTag={content.headingTags?.["awards.sectionLabel"]} />
       <TestimonialsSection content={content.testimonials} headingTag={content.headingTags?.["testimonials.sectionLabel"]} />
