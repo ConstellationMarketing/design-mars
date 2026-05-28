@@ -53,7 +53,7 @@ export default function TestimonialsSection({
             >
               {/* Badge - White rounded container with service info */}
               <div className="mb-8 flex justify-center">
-                <div className="bg-white rounded-lg p-4 text-center inline-block">
+                <div className="bg-white p-4 text-center inline-block" style={{ borderRadius: "10px" }}>
                   {/* Logo and Name in top row */}
                   <div className="flex items-center justify-center gap-2 mb-2">
                     {testimonial.badgeLogo && (
@@ -84,7 +84,7 @@ export default function TestimonialsSection({
               </div>
 
               {/* Testimonial text */}
-              <p className="text-white text-sm md:text-base leading-relaxed mb-6 flex-grow text-center">
+              <p className="text-white text-[18px] leading-relaxed mb-6 flex-grow text-center">
                 "{testimonial.text}"
               </p>
 
