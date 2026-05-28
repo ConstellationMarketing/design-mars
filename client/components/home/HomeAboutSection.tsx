@@ -38,7 +38,7 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
           {/* Left column - Experience box (wider, spans full height) */}
           <div className="md:col-span-2 md:row-span-2">
             {/* Black box with gold shadow and white inner border */}
-            <div className="bg-black h-full" style={{ boxShadow: '12px 12px 0 0 #cfab57' }}>
+            <div className="bg-black p-4 md:p-6 h-full" style={{ boxShadow: '12px 12px 0 0 #cfab57' }}>
               <div className="border-2 border-white bg-black px-6 md:px-8 py-8 md:py-10 text-center h-full flex flex-col justify-center">
                 <div className="font-poppins text-[14px] md:text-[16px] font-normal text-brand-accent tracking-widest uppercase">
                   {content.experienceTitle}
