@@ -1,12 +1,10 @@
 import { lazy, Suspense, Component, type ReactNode, type ErrorInfo } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Loader2, AlertTriangle } from "lucide-react";
+import AdminLayout from "../../vendor/cms-core/client/components/admin/AdminLayout";
 
-// Lazy load admin components from cms-core submodule
+// Lazy load other admin components from cms-core submodule
 // This prevents the route scanner from following these imports at build time
-const AdminLayout = lazy(
-  () => import("../../vendor/cms-core/client/components/admin/AdminLayout"),
-);
 const AdminLogin = lazy(
   () => import("../../vendor/cms-core/client/pages/admin/AdminLogin"),
 );
