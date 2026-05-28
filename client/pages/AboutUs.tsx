@@ -136,16 +136,16 @@ export default function AboutUs() {
       </div>
 
       {/* Page Sections - same as home page */}
-      <StatsSection content={content} headingTag={content.headingTags?.["stats.sectionLabel"]} />
-      <HomeAboutSection content={content} headingTag={content.headingTags?.["homeAbout.heading"]} />
-      <PracticeAreasSection content={content} headingTag={content.headingTags?.["practiceAreasIntro.sectionLabel"]} />
-      <AwardsSection content={content} headingTag={content.headingTags?.["awards.sectionLabel"]} />
-      <TestimonialsSection content={content} headingTag={content.headingTags?.["testimonials.sectionLabel"]} />
-      <VideoTestimonialsSection content={content} headingTag={content.headingTags?.["videoTestimonials.sectionLabel"]} />
-      <AttorneysSection content={content} headingTag={content.headingTags?.["attorneys.sectionLabel"]} />
-      <BlogSection content={content} headingTag={content.headingTags?.["blog.sectionLabel"]} />
-      <FaqSection content={content} headingTag={content.headingTags?.["faq.heading"]} />
-      <ContactUsSection content={content} headingTag={content.headingTags?.["contact.sectionLabel"]} />
+      <StatsSection content={content.stats} />
+      <HomeAboutSection content={content.homeAbout} headingTag={content.headingTags?.["homeAbout.heading"]} />
+      <PracticeAreasSection content={content.practiceAreasIntro} areas={content.practiceAreas} headingTag={content.headingTags?.["practiceAreasIntro.sectionLabel"]} />
+      <AwardsSection content={content.awards} headingTag={content.headingTags?.["awards.sectionLabel"]} />
+      <TestimonialsSection content={content.testimonials} headingTag={content.headingTags?.["testimonials.sectionLabel"]} />
+      <VideoTestimonialsSection content={content.videoTestimonials} headingTag={content.headingTags?.["videoTestimonials.sectionLabel"]} />
+      <AttorneysSection content={content.attorneys} headingTag={content.headingTags?.["attorneys.sectionLabel"]} />
+      <BlogSection content={content.blog} headingTag={content.headingTags?.["blog.sectionLabel"]} />
+      <FaqSection content={content.faq} headingTag={content.headingTags?.["faq.heading"]} />
+      <ContactUsSection content={content.contact} headingTag={content.headingTags?.["contact.sectionLabel"]} />
     </Layout>
   );
 }
