@@ -95,10 +95,10 @@ export default function AboutUs() {
       {/* Page Sections */}
       <AboutValuesSection content={content.practiceAreasIntro} headingTag={content.headingTags?.["practiceAreasIntro.sectionLabel"]} />
 
-      {/* Awards Section with white background override */}
-      <section className="w-full bg-white py-16">
+      {/* Awards Section - uses same component as Home but with white background */}
+      <section className="w-full py-16" style={{ backgroundColor: '#ffffff' }}>
         <div className="max-w-[1280px] mx-auto w-[95%]">
-          {/* Title */}
+          {/* Title with gold underline */}
           {content.awards?.heading && (
             <div className="text-center mb-16">
               <div className="inline-block">
@@ -110,19 +110,11 @@ export default function AboutUs() {
             </div>
           )}
 
-          {/* Two-column centered layout */}
-          <div style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "24px",
-            maxWidth: "1280px",
-            margin: "0 auto",
-            flexDirection: "row",
-          }} className="flex-col lg:flex-row">
+          {/* Two-column layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Left side - Logo image with gold border */}
             {content.awards?.logoImage && (
-              <div className="border border-brand-accent p-8 flex-shrink-0" style={{ maxWidth: "45%" }}>
+              <div className="border border-brand-accent p-8">
                 <img
                   src={content.awards.logoImage}
                   alt={content.awards.logoImageAlt || "Award Logo"}
@@ -132,27 +124,17 @@ export default function AboutUs() {
               </div>
             )}
 
-            {/* Right side - Description and Team Photo */}
-            <div style={{ maxWidth: "45%" }}>
-              {content.awards?.description && (
-                <div className="mb-12 text-base leading-relaxed text-gray-700">
-                  <div dangerouslySetInnerHTML={{ __html: content.awards.description }} />
-                </div>
-              )}
-
-              {content.awards?.teamImage && (
+            {/* Right side - Team image with gold shadow */}
+            {content.awards?.teamImage && (
+              <div style={{ boxShadow: '-12px 12px 0 0 #CDA977' }}>
                 <img
                   src={content.awards.teamImage}
-                  alt={content.awards.teamImageAlt || "Team"}
+                  alt={content.awards.teamImageAlt || "Team Photo"}
                   loading="lazy"
                   className="w-full h-auto"
-                  style={{
-                    border: "2px solid #C9A84C",
-                    boxShadow: "8px 8px 0px #C9A84C",
-                  }}
                 />
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
