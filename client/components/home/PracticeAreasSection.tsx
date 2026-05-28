@@ -23,7 +23,7 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
               <h2 className="font-poppins text-[36px] md:text-[48px] font-bold text-black leading-tight">
                 {content?.heading || "Where We Fight For You"}
               </h2>
-              <div className="h-px bg-brand-accent mt-4 max-w-[60%]"></div>
+              <div className="h-px bg-brand-accent mt-4 max-w-[60%] mx-auto"></div>
             </div>
           </div>
         )}
