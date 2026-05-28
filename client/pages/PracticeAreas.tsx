@@ -241,7 +241,7 @@ export default function PracticeAreas() {
 
           <div className="pa-grid">
             {content.grid.areas.map((area, index) => (
-              <div key={index} className="pa-card">
+              <div key={index} className="pa-card" style={{ outline: "4px solid red" }}>
                 <div className="pa-card-bg" style={{ backgroundImage: `url(${area.image})` }}></div>
                 <div className="pa-card-overlay"></div>
                 <div className="pa-card-front"><span>{area.title}</span></div>
