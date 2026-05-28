@@ -72,14 +72,14 @@ export default function Index() {
 
             {/* Full Headline - white uppercase below h1 title */}
             {heroContent.headline && (
-              <p className="font-poppins text-[18px] md:text-[22px] font-semibold tracking-wider uppercase text-white max-w-[60%]">
+              <p className="font-poppins text-[18px] md:text-[22px] font-semibold tracking-wider uppercase text-white max-w-[60%] mx-auto text-center">
                 {heroContent.headline}
               </p>
             )}
 
             {/* Highlighted Text - gold text above button */}
             {heroContent.highlightedText && (
-              <p className="font-poppins text-[14px] md:text-[15px] font-normal tracking-widest uppercase text-brand-accent max-w-[60%]" style={{ marginTop: 0 }}>
+              <p className="font-poppins text-[14px] md:text-[15px] font-normal tracking-widest uppercase text-brand-accent max-w-[60%] mx-auto text-center" style={{ marginTop: 0 }}>
                 {heroContent.highlightedText}
               </p>
             )}
