@@ -21,18 +21,10 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
         {data.heading && (
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block">
-              {headingTag ? (
-                // @ts-ignore
-                <headingTag
-                  className="text-2xl md:text-[48px] font-bold text-black block"
-                  dangerouslySetInnerHTML={{ __html: data.heading }}
-                />
-              ) : (
-                <h2
-                  className="text-2xl md:text-[48px] font-bold text-black"
-                  dangerouslySetInnerHTML={{ __html: data.heading }}
-                />
-              )}
+              <RichText
+                html={data.heading}
+                className="text-2xl md:text-[48px] font-bold text-black block"
+              />
               <div className="h-px bg-brand-accent mt-4"></div>
             </div>
           </div>
@@ -58,7 +50,7 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
             {data.description && (
               <RichText
                 html={data.description}
-                className="font-poppins text-base md:text-lg leading-relaxed text-gray-700"
+                className="font-poppins text-base md:text-lg leading-relaxed text-gray-700 whitespace-pre-wrap"
               />
             )}
 

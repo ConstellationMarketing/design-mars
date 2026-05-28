@@ -156,9 +156,9 @@ export default function ContactPage() {
             {/* Left Side - Contact Form */}
             <div>
               <div className="mb-[20px] md:mb-[30px]">
-                <h2
+                <RichText
+                  html={content.form.heading}
                   className="font-poppins text-[32px] md:text-[40px] leading-tight text-black pb-[10px] font-bold"
-                  dangerouslySetInnerHTML={{ __html: content.form.heading }}
                 />
                 {content.form.subtext && (
                   <RichText
