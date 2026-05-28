@@ -32,10 +32,10 @@ export default function AboutPageAboutSection({ content, headingTag = "h2" }: Ab
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[5%]">
           {/* Left Side - Features List */}
           <div>
-            {/* Features List */}
-            {content.features && content.features.length > 0 && (
-              <div className="space-y-[20px]">
-                {content.features.map((feature, index) => (
+            {/* Features List - Show space even if empty */}
+            <div className="space-y-[20px] min-h-[200px]">
+              {content.features && content.features.length > 0 ? (
+                content.features.map((feature, index) => (
                   <div key={index}>
                     {feature.title && (
                       <h3 className="font-poppins font-semibold text-[18px] md:text-[20px] text-black mb-[8px]">
@@ -48,9 +48,11 @@ export default function AboutPageAboutSection({ content, headingTag = "h2" }: Ab
                       </p>
                     )}
                   </div>
-                ))}
-              </div>
-            )}
+                ))
+              ) : (
+                <div className="w-full h-full"></div>
+              )}
+            </div>
           </div>
 
           {/* Right Side - Black Box with Experience Info */}
@@ -69,7 +71,7 @@ export default function AboutPageAboutSection({ content, headingTag = "h2" }: Ab
 
                 {/* Experience Description - Inside Black Box */}
                 {content.experienceDescription && (
-                  <div className="border-t border-white pt-[15px]">
+                  <div className="pt-[15px]">
                     <RichText
                       html={content.experienceDescription}
                       className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-white text-center"
