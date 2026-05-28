@@ -293,17 +293,6 @@
     margin-top: 0.3em;
   }
 
-  /* Feature description empty paragraph spacing */
-  .feature-description-block p {
-    margin: 0;
-    padding: 0;
-  }
-
-  .feature-description-block p:empty {
-    height: 1em;
-    display: block;
-  }
-
   /* Force Lucide icons to render as outlines */
   svg.lucide *,
   .lucide * {

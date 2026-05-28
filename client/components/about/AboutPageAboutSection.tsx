@@ -43,10 +43,11 @@ export default function AboutPageAboutSection({ content, headingTag = "h2" }: Ab
                       </h3>
                     )}
                     {feature.description && (
-                      <div className="feature-description-block">
-                        <p className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black">
-                          {feature.description}
-                        </p>
+                      <div className="description-block">
+                        <div
+                          dangerouslySetInnerHTML={{ __html: feature.description }}
+                          className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black"
+                        />
                       </div>
                     )}
                   </div>
