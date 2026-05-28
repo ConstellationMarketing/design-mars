@@ -110,11 +110,19 @@ export default function AboutUs() {
             </div>
           )}
 
-          {/* Two-column layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Two-column centered layout */}
+          <div style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "24px",
+            maxWidth: "1280px",
+            margin: "0 auto",
+            flexDirection: "row",
+          }} className="flex-col lg:flex-row">
             {/* Left side - Logo image with gold border */}
             {content.awards?.logoImage && (
-              <div className="border border-brand-accent p-8">
+              <div className="border border-brand-accent p-8 flex-shrink-0" style={{ maxWidth: "45%" }}>
                 <img
                   src={content.awards.logoImage}
                   alt={content.awards.logoImageAlt || "Award Logo"}
@@ -125,7 +133,7 @@ export default function AboutUs() {
             )}
 
             {/* Right side - Description and Team Photo */}
-            <div>
+            <div style={{ maxWidth: "45%" }}>
               {content.awards?.description && (
                 <div className="mb-12 text-base leading-relaxed text-gray-700">
                   <div dangerouslySetInnerHTML={{ __html: content.awards.description }} />
@@ -138,6 +146,10 @@ export default function AboutUs() {
                   alt={content.awards.teamImageAlt || "Team"}
                   loading="lazy"
                   className="w-full h-auto"
+                  style={{
+                    border: "2px solid #C9A84C",
+                    boxShadow: "8px 8px 0px #C9A84C",
+                  }}
                 />
               )}
             </div>
