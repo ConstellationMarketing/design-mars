@@ -928,10 +928,7 @@ function ContactSectionEditor({ content, update }: SectionProps) {
           tag={ht.get("contact.sectionLabel")}
           onTagChange={(t) => ht.set("contact.sectionLabel", t)}
         />
-        <div>
-          <Label>Subtitle</Label>
-          <Input value={c.heading} onChange={(e) => set({ heading: e.target.value })} />
-        </div>
+        <RichTextField label="Subtitle" value={c.heading} onChange={(v) => set({ heading: v })} />
         <RichTextField label="Description" value={c.description} onChange={(v) => set({ description: v })} />
         <ImageField
           label="Section Image"

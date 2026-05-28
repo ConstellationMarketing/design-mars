@@ -23,13 +23,15 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
             <div className="inline-block">
               {headingTag ? (
                 // @ts-ignore
-                <headingTag className="text-2xl md:text-5xl font-bold text-black block">
-                  {data.heading}
-                </headingTag>
+                <headingTag
+                  className="text-2xl md:text-[48px] font-bold text-black block"
+                  dangerouslySetInnerHTML={{ __html: data.heading }}
+                />
               ) : (
-                <h2 className="text-2xl md:text-[48px] font-bold text-black">
-                  {data.heading}
-                </h2>
+                <h2
+                  className="text-2xl md:text-[48px] font-bold text-black"
+                  dangerouslySetInnerHTML={{ __html: data.heading }}
+                />
               )}
               <div className="h-px bg-brand-accent mt-4"></div>
             </div>
