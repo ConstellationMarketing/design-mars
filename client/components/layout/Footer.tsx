@@ -59,7 +59,7 @@ export default function Footer() {
           </div>
 
           {/* Gold vertical separator - only show on desktop */}
-          <div className="hidden md:block absolute left-1/2 top-2 bottom-2 w-px" style={{ backgroundColor: "#cfab57", transform: "translateX(-50%)" }}></div>
+          <div className="hidden md:block absolute left-1/2 top-1/4 bottom-1/4 w-px" style={{ backgroundColor: "#cfab57", transform: "translateX(-50%)" }}></div>
 
           <div className="text-center text-[18px] md:text-[20px] text-gray-300 flex items-center justify-center gap-2 md:py-0 py-4">
             {(addressLine1 || addressLine2) && (
