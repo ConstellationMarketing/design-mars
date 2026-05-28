@@ -89,7 +89,7 @@ export default function Index() {
               {/* CTA Button with gold background and black border */}
               <button
                 onClick={() => window.location.href = '#contact-section'}
-                className="font-poppins text-[16px] md:text-[17px] font-medium uppercase text-black bg-brand-accent px-8 md:px-10 py-3 md:py-4 border-2 border-black hover:bg-white hover:text-black hover:border-white transition-all duration-300 flex items-center justify-center gap-3"
+                className="font-poppins text-[18px] font-medium uppercase text-black bg-brand-accent px-10 py-5 border-2 border-black hover:bg-white hover:text-black hover:border-white transition-all duration-300 flex items-center justify-center gap-3"
                 style={{ width: '100%' }}
               >
                 {heroContent.buttonText || "Request Free Consultation"}
