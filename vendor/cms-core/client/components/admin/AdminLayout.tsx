@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
-import AdminSidebar from './AdminSidebar';
 import { Loader2 } from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
+
+const AdminSidebar = lazy(() => import('./AdminSidebar'));
 
 export default function AdminLayout() {
   const navigate = useNavigate();
@@ -64,7 +65,9 @@ export default function AdminLayout() {
 
   return (
     <div className="flex min-h-screen bg-gray-100">
-      <AdminSidebar />
+      <Suspense fallback={null}>
+        <AdminSidebar />
+      </Suspense>
       <main className="flex-1 p-8 overflow-auto">
         <Outlet context={{ user }} />
       </main>

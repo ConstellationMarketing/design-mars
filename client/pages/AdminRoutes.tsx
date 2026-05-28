@@ -104,6 +104,11 @@ class AdminErrorBoundary extends Component<
 
   componentDidCatch(error: Error, info: ErrorInfo) {
     console.error("[AdminErrorBoundary] Caught error:", error, info);
+    console.error("[AdminErrorBoundary] Full error details:", {
+      message: error.message,
+      stack: error.stack,
+      cause: (error as any).cause,
+    });
   }
 
   render() {
