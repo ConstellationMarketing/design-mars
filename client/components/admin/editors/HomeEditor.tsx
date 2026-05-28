@@ -66,6 +66,11 @@ function HeroSection({ content, update }: SectionProps) {
           <Input value={hero.highlightedText} onChange={(e) => set({ highlightedText: e.target.value })} />
           <p className="text-xs text-gray-500 mt-1">Enter the exact portion of the headline to display in accent color</p>
         </div>
+        <div>
+          <Label>CTA Button Text</Label>
+          <Input value={hero.buttonText} onChange={(e) => set({ buttonText: e.target.value })} placeholder="Request Free Consultation" />
+          <p className="text-xs text-gray-500 mt-1">The text displayed on the hero CTA button</p>
+        </div>
         <p className="text-xs text-gray-500 italic">Phone number is managed in Site Settings &gt; Contact Info</p>
       </div>
     </Section>
