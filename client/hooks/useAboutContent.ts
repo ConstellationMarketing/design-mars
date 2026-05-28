@@ -30,6 +30,7 @@ const ABOUT_CONTENT_KEYS: (keyof AboutPageContent)[] = [
   "about",
   "practiceAreasIntro",
   "practiceAreas",
+  "values",
   "awards",
   "testimonials",
   "videoTestimonials",

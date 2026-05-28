@@ -16,6 +16,7 @@ export default function AboutEditor({ content, onChange }: AboutEditorProps) {
       <HeroSection content={content} update={update} />
       <AboutSectionEditor content={content} update={update} />
       <PracticeAreasIntroSection content={content} update={update} />
+      <ValuesSection content={content} update={update} />
       <AwardsSection content={content} update={update} />
       <TestimonialsSection content={content} update={update} />
       <VideoTestimonialsSection content={content} update={update} />
@@ -299,6 +300,92 @@ function PracticeAreasIntroSection({ content, update }: SectionProps) {
               <div>
                 <Label>"Free Consultation" Link</Label>
                 <Input value={item.consultationLink || ""} onChange={(e) => upd({ ...item, consultationLink: e.target.value })} placeholder="/contact/" />
+              </div>
+            </div>
+          )}
+        />
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+function ValuesSection({ content, update }: SectionProps) {
+  const values = content.values;
+  const set = (patch: Partial<typeof values>) => update("values", { ...values, ...patch });
+  const ht = useHeadingTag(content, update);
+
+  const iconOptions = [
+    { label: "Trophy", value: "Trophy" },
+    { label: "Crown", value: "Crown" },
+    { label: "Users", value: "Users" },
+    { label: "Heart", value: "Heart" },
+    { label: "Star", value: "Star" },
+    { label: "Shield", value: "Shield" },
+    { label: "Zap", value: "Zap" },
+    { label: "Award", value: "Award" },
+  ];
+
+  return (
+    <Section title="Our Values" defaultOpen={false}>
+      <div className="grid gap-4">
+        <HeadingField
+          label="Section Heading"
+          value={values.sectionLabel}
+          onChange={(v) => set({ sectionLabel: v })}
+          tag={ht.get("values.sectionLabel")}
+          onTagChange={(t) => ht.set("values.sectionLabel", t)}
+        />
+        <div>
+          <Label>Title</Label>
+          <Input value={values.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Our Values" />
+        </div>
+        <div>
+          <Label>Background Color</Label>
+          <Input type="color" value={values.backgroundColor || "#f5f5f5"} onChange={(e) => set({ backgroundColor: e.target.value })} />
+        </div>
+        <ImageField
+          label="Background Image (Optional)"
+          value={values.backgroundImage || ""}
+          onChange={(url) => set({ backgroundImage: url })}
+          altValue={values.backgroundImageAlt || ""}
+          onAltChange={(backgroundImageAlt) => set({ backgroundImageAlt })}
+          onSelectAsset={(asset) => set({
+            backgroundImage: asset.url,
+            backgroundImageAlt: asset.suggestedAltText || values.backgroundImageAlt || "",
+          })}
+          folder="backgrounds"
+        />
+
+        <h4 className="font-medium mt-4">Values (3 items)</h4>
+        <ArrayEditor
+          items={values.items}
+          onChange={(items) => set({ items })}
+          itemLabel="Value"
+          newItem={() => ({ icon: "Trophy", title: "", description: "" })}
+          renderItem={(item, _, upd) => (
+            <div className="grid gap-3">
+              <div>
+                <Label>Icon</Label>
+                <select
+                  value={item.icon}
+                  onChange={(e) => upd({ ...item, icon: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded bg-white"
+                >
+                  {iconOptions.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <Label>Title</Label>
+                <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="e.g. Excellence" />
+              </div>
+              <div>
+                <Label>Description</Label>
+                <Textarea value={item.description} onChange={(e) => upd({ ...item, description: e.target.value })} placeholder="Description text..." rows={3} />
               </div>
             </div>
           )}

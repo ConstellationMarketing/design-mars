@@ -60,6 +60,21 @@ export interface PracticeAreasIntroContent {
   buttonTextLine2: string;
 }
 
+export interface ValueItem {
+  icon: string; // lucide-react icon name (e.g., "Trophy")
+  title: string;
+  description: string;
+}
+
+export interface ValuesContent {
+  sectionLabel: string;
+  heading: string;
+  backgroundColor?: string;
+  backgroundImage?: string;
+  backgroundImageAlt?: string;
+  items: ValueItem[];
+}
+
 export interface AwardsContent {
   sectionLabel: string;
   heading: string;
@@ -223,6 +238,7 @@ export interface AboutPageContent {
   about: AboutContent;
   practiceAreasIntro: PracticeAreasIntroContent;
   practiceAreas: PracticeAreaItem[];
+  values: ValuesContent;
   awards: AwardsContent;
   testimonials: TestimonialsContent;
   videoTestimonials: VideoTestimonialsContent;
@@ -353,6 +369,30 @@ export const defaultAboutContent: AboutPageContent = {
       consultationLink: "/contact/"
     },
   ],
+  values: {
+    sectionLabel: "About Us — Our Values",
+    heading: "About Us — Our Values",
+    backgroundColor: "#f5f5f5",
+    backgroundImage: "",
+    backgroundImageAlt: "",
+    items: [
+      {
+        icon: "Trophy",
+        title: "About Us — Excellence",
+        description: "About Us — We strive for excellence in every case, ensuring our clients receive the highest quality legal representation.",
+      },
+      {
+        icon: "Crown",
+        title: "About Us — Integrity",
+        description: "About Us — Our commitment to honesty and ethical practice guides every decision we make on behalf of our clients.",
+      },
+      {
+        icon: "Users",
+        title: "About Us — Compassion",
+        description: "About Us — We understand that behind every case is a real person with real needs, and we treat each client with care and respect.",
+      },
+    ],
+  },
   awards: {
     sectionLabel: "About Us — Section Label",
     heading: "About Us — Press & Recognition",

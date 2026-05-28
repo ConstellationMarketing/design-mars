@@ -6,6 +6,7 @@ import { useAboutContent } from "@site/hooks/useAboutContent";
 // Import home page section components
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
 import AboutPageAboutSection from "@site/components/about/AboutPageAboutSection";
+import ValuesSection from "@site/components/about/ValuesSection";
 import AwardsSection from "@site/components/home/AwardsSection";
 import TestimonialsSection from "@site/components/home/TestimonialsSection";
 import VideoTestimonialsSection from "@site/components/home/VideoTestimonialsSection";
@@ -100,6 +101,7 @@ export default function AboutUs() {
 
       {/* Page Sections */}
       <PracticeAreasSection content={content.practiceAreasIntro} areas={content.practiceAreas} headingTag={content.headingTags?.["practiceAreasIntro.sectionLabel"]} />
+      <ValuesSection content={content.values} headingTag={content.headingTags?.["values.sectionLabel"]} />
       <AwardsSection content={content.awards} headingTag={content.headingTags?.["awards.sectionLabel"]} />
       <TestimonialsSection content={content.testimonials} headingTag={content.headingTags?.["testimonials.sectionLabel"]} />
       <VideoTestimonialsSection content={content.videoTestimonials} headingTag={content.headingTags?.["videoTestimonials.sectionLabel"]} />
