@@ -95,10 +95,55 @@ export default function AboutUs() {
       {/* Page Sections */}
       <AboutValuesSection content={content.practiceAreasIntro} headingTag={content.headingTags?.["practiceAreasIntro.sectionLabel"]} />
 
-      {/* Awards Section with white background */}
-      <div className="bg-white">
-        <AwardsSection content={content.awards} headingTag={content.headingTags?.["awards.sectionLabel"]} />
-      </div>
+      {/* Awards Section with white background override */}
+      <section className="w-full bg-white py-16">
+        <div className="max-w-[1280px] mx-auto w-[95%]">
+          {/* Title */}
+          {content.awards?.heading && (
+            <div className="text-center mb-16">
+              <div className="inline-block">
+                <h2 className="text-[36px] md:text-[48px] font-bold text-black">
+                  {content.awards.heading}
+                </h2>
+                <div className="h-px bg-brand-accent mt-4 max-w-[60%] mx-auto"></div>
+              </div>
+            </div>
+          )}
+
+          {/* Two-column layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Left side - Logo image with gold border */}
+            {content.awards?.logoImage && (
+              <div className="border border-brand-accent p-8">
+                <img
+                  src={content.awards.logoImage}
+                  alt={content.awards.logoImageAlt || "Award Logo"}
+                  loading="lazy"
+                  className="w-full h-auto"
+                />
+              </div>
+            )}
+
+            {/* Right side - Description and Team Photo */}
+            <div>
+              {content.awards?.description && (
+                <div className="mb-12 text-base leading-relaxed text-gray-700">
+                  <div dangerouslySetInnerHTML={{ __html: content.awards.description }} />
+                </div>
+              )}
+
+              {content.awards?.teamImage && (
+                <img
+                  src={content.awards.teamImage}
+                  alt={content.awards.teamImageAlt || "Team"}
+                  loading="lazy"
+                  className="w-full h-auto"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 }
