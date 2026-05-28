@@ -63,9 +63,9 @@ export default function Index() {
         {/* Content */}
         <div className="max-w-[1000px] w-[85%] md:w-[90%] relative z-10 text-center" style={{ paddingTop: '35px' }}>
           <div className="flex flex-col items-center justify-center gap-5 md:gap-6">
-            {/* H1 Title - BIGGEST at 96px on desktop, bold, white, 3-line */}
+            {/* H1 Title - now small yellow text (formerly Highlighted Text styling) */}
             {heroContent.h1Title && (
-              <h1 className="font-poppins text-[48px] sm:text-[48px] md:text-[96px] font-bold leading-[1.0] text-white max-w-4xl">
+              <h1 className="font-poppins text-[14px] md:text-[15px] font-normal tracking-widest uppercase text-brand-accent max-w-[60%] mx-auto text-center" style={{ marginTop: 0 }}>
                 {heroContent.h1Title}
               </h1>
             )}
@@ -77,9 +77,9 @@ export default function Index() {
               </p>
             )}
 
-            {/* Highlighted Text - gold text above button */}
+            {/* Highlighted Text - now large white text (formerly H1 Title styling) */}
             {heroContent.highlightedText && (
-              <p className="font-poppins text-[14px] md:text-[15px] font-normal tracking-widest uppercase text-brand-accent max-w-[60%] mx-auto text-center" style={{ marginTop: 0 }}>
+              <p className="font-poppins text-[48px] sm:text-[48px] md:text-[96px] font-bold leading-[1.0] text-white max-w-4xl">
                 {heroContent.highlightedText}
               </p>
             )}
