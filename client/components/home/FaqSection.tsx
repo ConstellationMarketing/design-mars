@@ -40,7 +40,7 @@ export default function FaqSection({ content }: FaqSectionProps) {
         </div>
 
         {/* FAQ Accordion */}
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="max-w-[1022px] mx-auto space-y-4">
           {faqs.map((faq, index) => (
             <div
               key={index}
