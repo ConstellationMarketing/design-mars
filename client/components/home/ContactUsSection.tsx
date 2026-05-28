@@ -21,8 +21,8 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
         {data.heading && (
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block">
-              <RichText
-                html={data.heading}
+              <div
+                dangerouslySetInnerHTML={{ __html: data.heading }}
                 className="text-2xl md:text-[48px] font-bold text-black block"
               />
               <div className="h-px bg-brand-accent mt-4"></div>
