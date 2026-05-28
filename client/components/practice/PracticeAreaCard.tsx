@@ -26,9 +26,10 @@ export default function PracticeAreaCard({
       <div
         role="img"
         aria-label={imageAlt || title}
-        className="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-110"
+        className="card-bg absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${image})`,
+          transition: "opacity 0.4s ease",
         }}
       ></div>
 

@@ -186,90 +186,94 @@
 
   /* Practice Card Hover Effect */
   .practice-card {
-    position: relative;
-    overflow: hidden;
+    position: relative !important;
+    overflow: hidden !important;
     cursor: pointer;
   }
 
   .practice-card .card-bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    transition: opacity 0.4s ease;
+    position: absolute !important;
+    inset: 0 !important;
+    background-size: cover !important;
+    background-position: center !important;
+    opacity: 1 !important;
+    transition: opacity 0.4s ease !important;
   }
 
   .practice-card .card-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
-    transition: opacity 0.4s ease;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)) !important;
+    opacity: 1 !important;
+    transition: opacity 0.4s ease !important;
   }
 
   .practice-card .card-front {
-    position: relative;
-    z-index: 2;
-    transition: opacity 0.4s ease;
+    position: relative !important;
+    z-index: 2 !important;
+    opacity: 1 !important;
+    transition: opacity 0.4s ease !important;
   }
 
   .practice-card .card-back {
-    position: absolute;
-    inset: 0;
-    background: #C9A84C;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    padding: 24px;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 3;
+    position: absolute !important;
+    inset: 0 !important;
+    background: #C9A84C !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 16px !important;
+    padding: 24px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.4s ease, pointer-events 0.4s ease !important;
+    z-index: 3 !important;
   }
 
   .practice-card:hover .card-back {
-    opacity: 1;
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
 
   .practice-card:hover .card-bg,
   .practice-card:hover .card-overlay,
   .practice-card:hover .card-front {
-    opacity: 0;
+    opacity: 0 !important;
   }
 
   .card-back .card-title {
-    font-size: 18px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #111;
-    text-align: center;
-    margin: 0;
-    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    color: #111 !important;
+    text-align: center !important;
+    margin: 0 !important;
   }
 
   .card-back .card-learn {
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #111;
-    text-decoration: none;
-    transition: text-decoration 0.3s ease;
-    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    color: #111 !important;
+    text-decoration: none !important;
+    transition: text-decoration 0.3s ease !important;
+    display: block !important;
   }
 
   .card-back .card-consult {
-    font-size: 14px;
-    font-weight: 400;
-    color: #111;
-    text-decoration: none;
-    transition: text-decoration 0.3s ease;
-    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: #111 !important;
+    text-decoration: none !important;
+    transition: text-decoration 0.3s ease !important;
+    display: block !important;
   }
 
   .card-back .card-learn:hover,
   .card-back .card-consult:hover {
-    text-decoration: underline;
+    text-decoration: underline !important;
   }
 
   /* Force Lucide icons to render as outlines */
