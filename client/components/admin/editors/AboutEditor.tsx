@@ -14,7 +14,6 @@ export default function AboutEditor({ content, onChange }: AboutEditorProps) {
   return (
     <div className="space-y-6">
       <HeroSection content={content} update={update} />
-      <StatsSectionEditor content={content} update={update} />
       <AboutSectionEditor content={content} update={update} />
       <PracticeAreasIntroSection content={content} update={update} />
       <AwardsSection content={content} update={update} />
@@ -67,46 +66,6 @@ function HeroSection({ content, update }: SectionProps) {
           <p className="text-xs text-gray-500 mt-1">Enter the exact portion of the headline to display in accent color</p>
         </div>
         <p className="text-xs text-gray-500 italic">Phone number is managed in Site Settings &gt; Contact Info</p>
-      </div>
-    </Section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-function StatsSectionEditor({ content, update }: SectionProps) {
-  const stats = content.stats;
-  const set = (patch: Partial<typeof stats>) => update("stats", { ...stats, ...patch });
-
-  return (
-    <Section title="Stats Section (Case Wins)" defaultOpen={false}>
-      <div className="grid gap-4">
-        <div>
-          <Label>Total Amount Won</Label>
-          <Input value={stats.totalAmount} onChange={(e) => set({ totalAmount: e.target.value })} placeholder="$1,662,903,076" />
-        </div>
-        <div>
-          <Label>Total Label</Label>
-          <Input value={stats.totalLabel} onChange={(e) => set({ totalLabel: e.target.value })} placeholder="WON FOR CLIENTS" />
-        </div>
-        <h4 className="font-medium mt-2">Case Types & Amounts</h4>
-        <ArrayEditor
-          items={stats.cases}
-          onChange={(items) => set({ cases: items })}
-          itemLabel="Case Type"
-          newItem={() => ({ label: "", amount: "" })}
-          renderItem={(item, _, upd) => (
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <Label>Case Type Label</Label>
-                <Input value={item.label} onChange={(e) => upd({ ...item, label: e.target.value })} placeholder="e.g. CAR ACCIDENT" />
-              </div>
-              <div>
-                <Label>Amount Won</Label>
-                <Input value={item.amount} onChange={(e) => upd({ ...item, amount: e.target.value })} placeholder="e.g. $1 MILLION" />
-              </div>
-            </div>
-          )}
-        />
       </div>
     </Section>
   );

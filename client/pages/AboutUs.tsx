@@ -4,7 +4,6 @@ import { Loader2 } from "lucide-react";
 import { useAboutContent } from "@site/hooks/useAboutContent";
 
 // Import home page section components
-import StatsSection from "@site/components/home/StatsSection";
 import HomeAboutSection from "@site/components/home/HomeAboutSection";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
 import AwardsSection from "@site/components/home/AwardsSection";
@@ -136,7 +135,6 @@ export default function AboutUs() {
       </div>
 
       {/* Page Sections - same as home page */}
-      <StatsSection content={content.stats} />
       <HomeAboutSection content={content.homeAbout} headingTag={content.headingTags?.["homeAbout.heading"]} />
       <PracticeAreasSection content={content.practiceAreasIntro} areas={content.practiceAreas} headingTag={content.headingTags?.["practiceAreasIntro.sectionLabel"]} />
       <AwardsSection content={content.awards} headingTag={content.headingTags?.["awards.sectionLabel"]} />
