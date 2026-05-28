@@ -37,9 +37,9 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12">
           {/* Left column - Experience box (wider, spans full height) */}
           <div className="md:col-span-2 md:row-span-2">
-            {/* Black box with gold border and shadow */}
-            <div className="border-4 border-brand-accent p-4 md:p-6 bg-black h-full" style={{ boxShadow: '12px 12px 0 0 rgba(207, 171, 87, 0.4)' }}>
-              <div className="border-2 border-brand-accent bg-black px-6 md:px-8 py-8 md:py-10 text-center h-full flex flex-col justify-center">
+            {/* Black box with gold shadow and white inner border */}
+            <div className="bg-black h-full" style={{ boxShadow: '12px 12px 0 0 #cfab57' }}>
+              <div className="border-2 border-white bg-black px-6 md:px-8 py-8 md:py-10 text-center h-full flex flex-col justify-center">
                 <div className="font-poppins text-[14px] md:text-[16px] font-normal text-brand-accent tracking-widest uppercase">
                   {content.experienceTitle}
                 </div>
@@ -89,7 +89,7 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
             const IconComponent = featureIcons[4] || Trophy;
             return (
               <div className="md:col-span-3 md:col-start-3">
-                <div className="border-t-4 border-brand-accent pt-6 md:pt-8">
+                <div className="border-t border-brand-accent pt-6 md:pt-8">
                   <div className="flex gap-4">
                     {/* Icon */}
                     <div className="flex-shrink-0 mt-1">
