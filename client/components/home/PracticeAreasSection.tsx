@@ -47,32 +47,30 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
                 .pa-grid { grid-template-columns: 1fr; }
               }
               .pa-card {
+                perspective: 1000px;
                 position: relative;
                 height: 200px;
                 overflow: hidden;
                 cursor: pointer;
               }
-              .pa-card-bg {
-                position: absolute;
-                inset: 0;
-                background-size: cover;
-                background-position: center;
-                transition: opacity 0.4s ease;
+              .pa-card-inner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                transform-style: preserve-3d;
+                transition: transform 0.6s ease;
               }
-              .pa-card-overlay {
-                position: absolute;
-                inset: 0;
-                background: rgba(0,0,0,0.45);
-                transition: opacity 0.4s ease;
+              .pa-card:hover .pa-card-inner {
+                transform: rotateY(180deg);
               }
               .pa-card-front {
                 position: absolute;
                 inset: 0;
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                z-index: 2;
-                transition: opacity 0.4s ease;
               }
               .pa-card-front span {
                 color: #fff;
@@ -83,9 +81,23 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
                 padding: 0 16px;
                 letter-spacing: 1px;
               }
+              .pa-card-bg {
+                position: absolute;
+                inset: 0;
+                background-size: cover;
+                background-position: center;
+              }
+              .pa-card-overlay {
+                position: absolute;
+                inset: 0;
+                background: rgba(0,0,0,0.45);
+              }
               .pa-card-back {
                 position: absolute;
                 inset: 0;
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+                transform: rotateY(180deg);
                 background: #C9A84C;
                 display: flex;
                 flex-direction: column;
@@ -93,19 +105,11 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
                 justify-content: center;
                 gap: 16px;
                 padding: 24px;
-                opacity: 0;
-                transition: opacity 0.4s ease;
-                z-index: 3;
+                opacity: 1;
                 pointer-events: none;
               }
               .pa-card:hover .pa-card-back {
-                opacity: 1;
                 pointer-events: auto;
-              }
-              .pa-card:hover .pa-card-bg,
-              .pa-card:hover .pa-card-overlay,
-              .pa-card:hover .pa-card-front {
-                opacity: 0;
               }
               .pa-card-back .pa-title {
                 font-size: 18px;
@@ -137,14 +141,18 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
 
             <div className="pa-grid">
               {areas.map((area, index) => (
-                <div key={index} className="pa-card" style={{ outline: "4px solid red" }}>
-                  <div className="pa-card-bg" style={{ backgroundImage: `url(${area.image})` }}></div>
-                  <div className="pa-card-overlay"></div>
-                  <div className="pa-card-front"><span>{area.title}</span></div>
-                  <div className="pa-card-back">
-                    <p className="pa-title">{area.title}</p>
-                    <a href={area.link || "/practice-areas/"} className="pa-learn">Learn More</a>
-                    <a href={area.link || "/practice-areas/"} className="pa-consult">Free Consultation</a>
+                <div key={index} className="pa-card">
+                  <div className="pa-card-inner">
+                    <div className="pa-card-front">
+                      <div className="pa-card-bg" style={{ backgroundImage: `url(${area.image})` }}></div>
+                      <div className="pa-card-overlay"></div>
+                      <span>{area.title}</span>
+                    </div>
+                    <div className="pa-card-back">
+                      <p className="pa-title">{area.title}</p>
+                      <a href={area.link || "/practice-areas/"} className="pa-learn">Learn More</a>
+                      <a href={area.link || "/practice-areas/"} className="pa-consult">Free Consultation</a>
+                    </div>
                   </div>
                 </div>
               ))}
