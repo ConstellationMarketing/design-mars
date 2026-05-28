@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import {
   LayoutDashboard,
   FileText,
@@ -16,11 +16,11 @@ import {
   Upload,
   FileInput,
 } from "lucide-react";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "../../lib/supabase";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { useUserRole } from "@/hooks/useUserRole";
-import { useSiteSettings } from "@/hooks/useSiteSettings";
+import { Button } from "../../components/ui/button";
+import { useUserRole } from "../../hooks/useUserRole";
+import { useSiteSettings } from "../../hooks/useSiteSettings";
 
 interface NavItem {
   label: string;
