@@ -15,7 +15,7 @@ export default function AboutPageAboutSection({ content, headingTag = "h2" }: Ab
 
   return (
     <div className="w-full bg-white pt-[30px] md:pt-[54px] pb-[30px] md:pb-[54px]">
-      <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%]">
+      <div className="max-w-[1280px] mx-auto w-[95%] md:w-[90%]">
         {/* Centered Heading with Underline */}
         {content.heading && (
           <div className="text-center mb-[30px] md:mb-[50px]">
