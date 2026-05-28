@@ -53,9 +53,8 @@ export default function AboutPageAboutSection({ content, headingTag = "h2" }: Ab
             )}
           </div>
 
-          {/* Right Side - Black Box with Experience + Experience Description */}
-          <div className="flex flex-col gap-[20px]">
-            {/* Black Box with Experience Info */}
+          {/* Right Side - Black Box with Experience Info */}
+          <div>
             <div className="bg-black p-4 md:p-6" style={{ boxShadow: '12px 12px 0 0 #cfab57' }}>
               <div className="border-2 border-white bg-black px-6 md:px-8 py-8 md:py-10 text-center flex flex-col justify-center">
                 <div className="font-poppins font-normal text-[16px] md:text-[18px] uppercase tracking-widest text-brand-accent mb-[10px]">
@@ -64,21 +63,21 @@ export default function AboutPageAboutSection({ content, headingTag = "h2" }: Ab
                 <div className="font-poppins font-bold text-[48px] md:text-[64px] leading-tight text-white mb-[10px]">
                   {content.yearsNumber}
                 </div>
-                <div className="font-poppins font-semibold text-[14px] md:text-[16px] uppercase tracking-widest text-white">
+                <div className="font-poppins font-semibold text-[14px] md:text-[16px] uppercase tracking-widest text-white mb-[15px]">
                   {content.yearsLabel}
                 </div>
+
+                {/* Experience Description - Inside Black Box */}
+                {content.experienceDescription && (
+                  <div className="border-t border-white pt-[15px]">
+                    <RichText
+                      html={content.experienceDescription}
+                      className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-white text-center"
+                    />
+                  </div>
+                )}
               </div>
             </div>
-
-            {/* Experience Description - Below Black Box */}
-            {content.experienceDescription && (
-              <div>
-                <RichText
-                  html={content.experienceDescription}
-                  className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black"
-                />
-              </div>
-            )}
           </div>
         </div>
       </div>
