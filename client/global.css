@@ -111,7 +111,7 @@
   }
 
   p {
-    font-size: clamp(16px, 18px, 24px);
+    font-size: 18px;
   }
 
   :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
