@@ -28,20 +28,10 @@ export default function AboutPageAboutSection({ content, headingTag = "h2" }: Ab
           </div>
         )}
 
-        {/* 50/50 Layout: Text on Left, Black Box on Right */}
+        {/* 50/50 Layout: Features on Left, Black Box + Experience Description on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[5%]">
-          {/* Left Side - Text Content + Features */}
+          {/* Left Side - Features List */}
           <div>
-            {/* Experience Description */}
-            {content.experienceDescription && (
-              <div className="mb-[30px]">
-                <RichText
-                  html={content.experienceDescription}
-                  className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black"
-                />
-              </div>
-            )}
-
             {/* Features List */}
             {content.features && content.features.length > 0 && (
               <div className="space-y-[20px]">
@@ -63,10 +53,11 @@ export default function AboutPageAboutSection({ content, headingTag = "h2" }: Ab
             )}
           </div>
 
-          {/* Right Side - Black Box with Experience */}
-          <div>
-            <div className="bg-black p-4 md:p-6 h-full" style={{ boxShadow: '12px 12px 0 0 #cfab57' }}>
-              <div className="border-2 border-white bg-black px-6 md:px-8 py-8 md:py-10 text-center h-full flex flex-col justify-center">
+          {/* Right Side - Black Box with Experience + Experience Description */}
+          <div className="flex flex-col gap-[20px]">
+            {/* Black Box with Experience Info */}
+            <div className="bg-black p-4 md:p-6" style={{ boxShadow: '12px 12px 0 0 #cfab57' }}>
+              <div className="border-2 border-white bg-black px-6 md:px-8 py-8 md:py-10 text-center flex flex-col justify-center">
                 <div className="font-poppins font-normal text-[16px] md:text-[18px] uppercase tracking-widest text-brand-accent mb-[10px]">
                   {content.experienceTitle}
                 </div>
@@ -78,6 +69,16 @@ export default function AboutPageAboutSection({ content, headingTag = "h2" }: Ab
                 </div>
               </div>
             </div>
+
+            {/* Experience Description - Below Black Box */}
+            {content.experienceDescription && (
+              <div>
+                <RichText
+                  html={content.experienceDescription}
+                  className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black"
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
