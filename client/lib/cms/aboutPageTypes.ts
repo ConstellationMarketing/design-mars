@@ -61,7 +61,8 @@ export interface PracticeAreasIntroContent {
 }
 
 export interface ValueItemWithIcon {
-  id: "excellence" | "integrity" | "compassion";
+  id: "excellence" | "integrity" | "compassion" | string;
+  iconType?: "excellence" | "integrity" | "compassion";
   title: string;
   description: string;
 }
