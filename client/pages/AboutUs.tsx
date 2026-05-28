@@ -3,17 +3,10 @@ import Layout from "@site/components/layout/Layout";
 import { Loader2 } from "lucide-react";
 import { useAboutContent } from "@site/hooks/useAboutContent";
 
-// Import home page section components
-import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
+// Import page section components
 import AboutPageAboutSection from "@site/components/about/AboutPageAboutSection";
 import AboutValuesSection from "@site/components/about/AboutValuesSection";
 import AwardsSection from "@site/components/home/AwardsSection";
-import TestimonialsSection from "@site/components/home/TestimonialsSection";
-import VideoTestimonialsSection from "@site/components/home/VideoTestimonialsSection";
-import AttorneysSection from "@site/components/home/AttorneysSection";
-import BlogSection from "@site/components/home/BlogSection";
-import FaqSection from "@site/components/home/FaqSection";
-import ContactUsSection from "@site/components/home/ContactUsSection";
 
 export default function AboutUs() {
   const { content, meta, title, publishedAt, updatedAt, isLoading } = useAboutContent();
@@ -101,13 +94,11 @@ export default function AboutUs() {
 
       {/* Page Sections */}
       <AboutValuesSection content={content.practiceAreasIntro} headingTag={content.headingTags?.["practiceAreasIntro.sectionLabel"]} />
-      <AwardsSection content={content.awards} headingTag={content.headingTags?.["awards.sectionLabel"]} />
-      <TestimonialsSection content={content.testimonials} headingTag={content.headingTags?.["testimonials.sectionLabel"]} />
-      <VideoTestimonialsSection content={content.videoTestimonials} headingTag={content.headingTags?.["videoTestimonials.sectionLabel"]} />
-      <AttorneysSection content={content.attorneys} headingTag={content.headingTags?.["attorneys.sectionLabel"]} />
-      <BlogSection content={content.blog} headingTag={content.headingTags?.["blog.sectionLabel"]} />
-      <FaqSection content={content.faq} headingTag={content.headingTags?.["faq.heading"]} />
-      <ContactUsSection content={content.contact} headingTag={content.headingTags?.["contact.sectionLabel"]} />
+
+      {/* Awards Section with white background */}
+      <div className="bg-white">
+        <AwardsSection content={content.awards} headingTag={content.headingTags?.["awards.sectionLabel"]} />
+      </div>
     </Layout>
   );
 }
