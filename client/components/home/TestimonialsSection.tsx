@@ -23,7 +23,7 @@ export default function TestimonialsSection({
 
   return (
     <div className="w-full py-16 md:py-24" style={{ backgroundColor: "#000" }}>
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-[1280px] mx-auto w-[95%]">
         {/* Title */}
         {data.heading && (
           <div className="text-center mb-16">

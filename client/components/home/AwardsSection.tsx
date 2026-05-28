@@ -14,7 +14,7 @@ export default function AwardsSection({ content, headingTag }: AwardsSectionProp
 
   return (
     <section className="w-full py-16" style={{ backgroundColor: '#f5f5f5' }}>
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-[1280px] mx-auto w-[95%]">
         {/* Title with gold underline */}
         {data.heading && (
           <div className="text-center mb-16">

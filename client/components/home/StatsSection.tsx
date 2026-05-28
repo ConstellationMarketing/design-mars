@@ -11,7 +11,7 @@ export default function StatsSection({ content }: StatsSectionProps) {
 
   return (
     <div className="w-full bg-brand-accent pt-32 md:pt-36 pb-12 md:pb-16 relative" style={{ marginTop: 0, paddingTop: '60px' }}>
-      <div className="mx-auto w-[95%]" style={{ maxWidth: '1248px' }}>
+      <div className="mx-auto w-[95%]" style={{ maxWidth: '1280px' }}>
         {/* Case stats grid with custom 1px separators */}
         {content.cases.length > 0 && (
           <div className="grid grid-cols-2 md:grid-cols-4">

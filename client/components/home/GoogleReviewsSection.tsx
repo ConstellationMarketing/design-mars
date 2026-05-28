@@ -55,7 +55,7 @@ export default function GoogleReviewsSection({
 
       {/* First Row - 3 Reviews */}
       {reviews.slice(0, 3).length > 0 && (
-        <div className="max-w-[1600px] mx-auto w-[80%] flex flex-col md:flex-row gap-0 mb-[30px]">
+        <div className="max-w-[1280px] mx-auto w-[80%] flex flex-col md:flex-row gap-0 mb-[30px]">
           {reviews.slice(0, 3).map((review, index) => (
             <div
               key={index}

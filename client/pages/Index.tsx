@@ -143,7 +143,7 @@ export default function Index() {
       {/* Partner Badges Section - Bottom of Hero */}
       {partnerLogos.length > 0 && (
         <div className="bg-brand-dark py-[20px] md:py-[30px]">
-          <div className="max-w-[2560px] mx-auto w-[95%]">
+          <div className="max-w-[1280px] mx-auto w-[95%]">
             <div className="bg-brand-card border border-brand-border py-[10px] px-0 flex flex-nowrap justify-center overflow-hidden">
               {partnerLogos.map((logo, index) => (
                 <div

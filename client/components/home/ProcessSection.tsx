@@ -47,7 +47,7 @@ export default function ProcessSection({ content, headingTags }: ProcessSectionP
       </div>
 
       {/* Steps Grid */}
-      <div className="max-w-[1600px] mx-auto w-[80%] flex flex-col md:flex-row gap-[3%]">
+      <div className="max-w-[1280px] mx-auto w-[80%] flex flex-col md:flex-row gap-[3%]">
         {steps.map((step, index) => (
           <div
             key={index}

@@ -15,7 +15,7 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
 
   return (
     <div className="w-full bg-white py-12 md:py-16">
-      <div className="max-w-[2560px] mx-auto w-[95%]">
+      <div className="max-w-[1280px] mx-auto w-[95%]">
         {/* Heading */}
         {(content?.heading || "Where We Fight For You") && (
           <div className="text-center mb-12 md:mb-16">

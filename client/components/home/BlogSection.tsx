@@ -49,7 +49,7 @@ export default function BlogSection({
 
   return (
     <div className="w-full py-16 md:py-24" style={bgStyle}>
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-[1280px] mx-auto w-[95%]">
         {/* Blog Content Card with title inside - left aligned 2 column */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
           <div className="bg-white border-l-4 border-brand-accent p-8 md:p-10" style={{ boxShadow: "8px 8px 16px rgba(0, 0, 0, 0.15)" }}>

@@ -20,7 +20,7 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
 
   return (
     <div className="w-full py-12 md:py-16" style={{ backgroundColor: '#f5f5f5' }}>
-      <div className="max-w-[2560px] mx-auto w-[95%]">
+      <div className="max-w-[1280px] mx-auto w-[95%]">
         {/* Main heading */}
         {content.heading && (
           <div className="text-center mb-12 md:mb-16">
