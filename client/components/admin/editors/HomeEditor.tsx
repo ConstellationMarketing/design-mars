@@ -71,6 +71,11 @@ function HeroSection({ content, update }: SectionProps) {
           <Input value={hero.buttonText} onChange={(e) => set({ buttonText: e.target.value })} placeholder="Request Free Consultation" />
           <p className="text-xs text-gray-500 mt-1">The text displayed on the hero CTA button</p>
         </div>
+        <div>
+          <Label>Hero Background Image URL</Label>
+          <Input value={hero.backgroundImage || ""} onChange={(e) => set({ backgroundImage: e.target.value })} placeholder="https://..." />
+          <p className="text-xs text-gray-500 mt-1">Full URL to the hero background image</p>
+        </div>
         <p className="text-xs text-gray-500 italic">Phone number is managed in Site Settings &gt; Contact Info</p>
       </div>
     </Section>

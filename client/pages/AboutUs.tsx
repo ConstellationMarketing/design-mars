@@ -29,7 +29,7 @@ export default function AboutUs() {
 
   // Hero content from About page
   const heroContent = content.hero;
-  const heroBackgroundImage = 'https://atzgmwcxbdnswerpqzzi.supabase.co/storage/v1/object/public/media/library/1779351750724-20d0za.webp';
+  const heroBackgroundImage = heroContent.backgroundImage || 'https://atzgmwcxbdnswerpqzzi.supabase.co/storage/v1/object/public/media/library/1779351750724-20d0za.webp';
 
   return (
     <Layout heroBackgroundImage={heroBackgroundImage}>

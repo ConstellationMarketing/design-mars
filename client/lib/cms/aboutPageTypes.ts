@@ -10,6 +10,7 @@ export interface HeroContent {
   buttonText: string; // CTA button text
   phone: string;
   phoneLabel: string;
+  backgroundImage?: string; // Hero background image URL
 }
 
 export interface PartnerLogo {
@@ -245,6 +246,7 @@ export const defaultAboutContent: AboutPageContent = {
     buttonText: "Request Free Consultation",
     phone: "",
     phoneLabel: "",
+    backgroundImage: "https://atzgmwcxbdnswerpqzzi.supabase.co/storage/v1/object/public/media/library/1779351750724-20d0za.webp",
   },
   partnerLogos: [],
   stats: {
