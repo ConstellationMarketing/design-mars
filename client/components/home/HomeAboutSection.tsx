@@ -85,27 +85,30 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
           </div>
 
           {/* Bottom row - NO FEES spanning full width (or 2 columns on right) */}
-          {content.features.length > 4 && content.features[4] && (
-            <div className="md:col-span-3 md:col-start-3">
-              <div className="border-t-4 border-brand-accent pt-6 md:pt-8">
-                <div className="flex gap-4">
-                  {/* Icon */}
-                  <div className="flex-shrink-0 mt-1">
-                    {featureIcons[4] && featureIcons[4]({ className: "w-6 h-6 md:w-8 md:h-8 text-brand-accent" })}
-                  </div>
-                  {/* Content */}
-                  <div className="flex-1">
-                    <h3 className="font-poppins text-[16px] md:text-[20px] font-semibold text-black tracking-wider uppercase mb-2">
-                      {content.features[4].title}
-                    </h3>
-                    <p className="font-poppins text-[16px] md:text-[18px] font-normal text-black/80 leading-relaxed">
-                      {content.features[4].description}
-                    </p>
+          {content.features.length > 4 && content.features[4] && (() => {
+            const IconComponent = featureIcons[4] || Trophy;
+            return (
+              <div className="md:col-span-3 md:col-start-3">
+                <div className="border-t-4 border-brand-accent pt-6 md:pt-8">
+                  <div className="flex gap-4">
+                    {/* Icon */}
+                    <div className="flex-shrink-0 mt-1">
+                      <IconComponent className="w-6 h-6 md:w-8 md:h-8 text-brand-accent" />
+                    </div>
+                    {/* Content */}
+                    <div className="flex-1">
+                      <h3 className="font-poppins text-[16px] md:text-[20px] font-semibold text-black tracking-wider uppercase mb-2">
+                        {content.features[4].title}
+                      </h3>
+                      <p className="font-poppins text-[16px] md:text-[18px] font-normal text-black/80 leading-relaxed">
+                        {content.features[4].description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
         </div>
       </div>
     </div>
