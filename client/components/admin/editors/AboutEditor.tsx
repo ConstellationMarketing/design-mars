@@ -111,29 +111,11 @@ function AboutSectionEditor({ content, update }: SectionProps) {
           />
         </div>
 
-        <h4 className="font-medium mt-4">Features (Right Side - 5 items)</h4>
-        <ArrayEditor
-          items={homeAbout.features}
-          onChange={(items) => set({ features: items })}
-          itemLabel="Feature"
-          newItem={() => ({ title: "", description: "" })}
-          renderItem={(item, _, upd) => (
-            <div className="grid gap-3">
-              <div>
-                <Label>Feature Title</Label>
-                <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="e.g. AMAZING TEAM" />
-              </div>
-              <div>
-                <Label>Feature Description</Label>
-                <Textarea
-                  value={item.description}
-                  onChange={(e) => upd({ ...item, description: e.target.value })}
-                  placeholder="Feature description text..."
-                  rows={3}
-                />
-              </div>
-            </div>
-          )}
+        <h4 className="font-medium mt-4">Features</h4>
+        <RichTextField
+          label="Features Description"
+          value={homeAbout.featuresDescription}
+          onChange={(v) => set({ featuresDescription: v })}
         />
       </div>
     </Section>

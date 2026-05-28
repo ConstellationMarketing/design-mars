@@ -30,32 +30,16 @@ export default function AboutPageAboutSection({ content, headingTag = "h2" }: Ab
 
         {/* 50/50 Layout: Features on Left, Black Box + Experience Description on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[5%]">
-          {/* Left Side - Features List */}
+          {/* Left Side - Features Description */}
           <div>
-            {/* Features List - Show space even if empty */}
-            <div className="space-y-[20px] min-h-[200px]">
-              {content.features && content.features.length > 0 ? (
-                content.features.map((feature, index) => (
-                  <div key={index}>
-                    {feature.title && (
-                      <h3 className="font-poppins font-semibold text-[18px] md:text-[20px] text-black mb-[8px]">
-                        {feature.title}
-                      </h3>
-                    )}
-                    {feature.description && (
-                      <div className="description-block">
-                        <div
-                          dangerouslySetInnerHTML={{ __html: feature.description }}
-                          className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black"
-                        />
-                      </div>
-                    )}
-                  </div>
-                ))
-              ) : (
-                <div className="w-full h-full"></div>
-              )}
-            </div>
+            {content.featuresDescription && (
+              <div className="description-block">
+                <div
+                  dangerouslySetInnerHTML={{ __html: content.featuresDescription }}
+                  className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black"
+                />
+              </div>
+            )}
           </div>
 
           {/* Right Side - Black Box with Experience Info */}

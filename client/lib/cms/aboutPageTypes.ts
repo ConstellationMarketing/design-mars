@@ -151,7 +151,7 @@ export interface HomeAboutContent {
   yearsNumber: string;
   yearsLabel: string;
   experienceDescription: string;
-  features: AboutFeatureItem[];
+  featuresDescription: string;
 }
 
 export interface VideoItem {
@@ -263,28 +263,7 @@ export const defaultAboutContent: AboutPageContent = {
     yearsNumber: "About Us — 150",
     yearsLabel: "About Us — YEARS OF EXPERIENCE",
     experienceDescription: "About Us — Constellation Law is a top rated law firm with 150 years of collective experience. Our partners worked for the largest firm in Atlanta, and now leverage their backgrounds and legal knowledge to stand up to the corporations they once defended",
-    features: [
-      {
-        title: "About Us — AMAZING TEAM",
-        description: "About Us — Our award-winning legal team brings over 150 years of collective experience to every case, ensuring you receive the skilled representation you deserve.",
-      },
-      {
-        title: "About Us — YOUR NEEDS COME FIRST",
-        description: "About Us — We prioritize your recovery and peace of mind. Our client-focused approach means you get personalized attention and dedicated advocacy throughout your case.",
-      },
-      {
-        title: "About Us — WE COME TO YOU 24/7",
-        description: "About Us — Injured and can't travel? We come to you. Our attorneys are available 24/7 for consultations at your hospital, home, or wherever is most convenient.",
-      },
-      {
-        title: "About Us — MULTILINGUAL STAFF",
-        description: "About Us — Language should never be a barrier to justice. Our multilingual team ensures clear communication in Spanish, Portuguese, and other languages.",
-      },
-      {
-        title: "About Us — NO FEES UNTIL WE WIN",
-        description: "About Us — You don't pay attorney fees unless we win your case. This contingency fee structure means we're invested in your success and you can focus on healing without financial stress.",
-      },
-    ],
+    featuresDescription: "About Us — Features Description",
   },
   about: {
     sectionLabel: "About Us — Section Label",
