@@ -135,9 +135,122 @@ export default function PracticeAreas() {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {practiceAreas.map((area, index) => (
-              <PracticeAreaCard key={index} {...area} />
+          <style>{`
+            .pa-grid {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 0;
+            }
+            @media (max-width: 1024px) {
+              .pa-grid { grid-template-columns: repeat(3, 1fr); }
+            }
+            @media (max-width: 768px) {
+              .pa-grid { grid-template-columns: repeat(2, 1fr); }
+            }
+            @media (max-width: 480px) {
+              .pa-grid { grid-template-columns: 1fr; }
+            }
+            .pa-card {
+              position: relative;
+              height: 280px;
+              overflow: hidden;
+              cursor: pointer;
+            }
+            .pa-card-bg {
+              position: absolute;
+              inset: 0;
+              background-size: cover;
+              background-position: center;
+              transition: opacity 0.4s ease;
+            }
+            .pa-card-overlay {
+              position: absolute;
+              inset: 0;
+              background: rgba(0,0,0,0.45);
+              transition: opacity 0.4s ease;
+            }
+            .pa-card-front {
+              position: absolute;
+              inset: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              z-index: 2;
+              transition: opacity 0.4s ease;
+            }
+            .pa-card-front span {
+              color: #fff;
+              font-size: 16px;
+              font-weight: 700;
+              text-transform: uppercase;
+              text-align: center;
+              padding: 0 16px;
+              letter-spacing: 1px;
+            }
+            .pa-card-back {
+              position: absolute;
+              inset: 0;
+              background: #C9A84C;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 16px;
+              padding: 24px;
+              opacity: 0;
+              transition: opacity 0.4s ease;
+              z-index: 3;
+              pointer-events: none;
+            }
+            .pa-card:hover .pa-card-back {
+              opacity: 1;
+              pointer-events: auto;
+            }
+            .pa-card:hover .pa-card-bg,
+            .pa-card:hover .pa-card-overlay,
+            .pa-card:hover .pa-card-front {
+              opacity: 0;
+            }
+            .pa-card-back .pa-title {
+              font-size: 18px;
+              font-weight: 700;
+              text-transform: uppercase;
+              color: #111;
+              text-align: center;
+              margin: 0;
+            }
+            .pa-card-back .pa-learn {
+              font-size: 14px;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 2px;
+              color: #111;
+              text-decoration: none;
+            }
+            .pa-card-back .pa-consult {
+              font-size: 14px;
+              font-weight: 400;
+              color: #111;
+              text-decoration: none;
+            }
+            .pa-card-back .pa-learn:hover,
+            .pa-card-back .pa-consult:hover {
+              text-decoration: underline;
+            }
+          `}</style>
+
+          <div className="pa-grid">
+            {content.grid.areas.map((area, index) => (
+              <div key={index} className="pa-card">
+                <div className="pa-card-bg" style={{ backgroundImage: `url(${area.image})` }}></div>
+                <div className="pa-card-overlay"></div>
+                <div className="pa-card-front"><span>{area.title}</span></div>
+                <div className="pa-card-back">
+                  <p className="pa-title">{area.title}</p>
+                  <a href={area.link || "/contact"} className="pa-learn">Learn More</a>
+                  <a href={area.link || "/contact"} className="pa-consult">Free Consultation</a>
+                </div>
+              </div>
             ))}
           </div>
         </div>
