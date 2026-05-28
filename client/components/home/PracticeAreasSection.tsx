@@ -76,7 +76,7 @@ export default function PracticeAreasSection({ content, areas }: PracticeAreasSe
               .pa-card-front span {
                 color: #ffffff;
                 font-size: 16px;
-                font-weight: 600;
+                font-weight: 500;
                 text-transform: uppercase;
                 text-align: center;
                 padding: 0 16px;
