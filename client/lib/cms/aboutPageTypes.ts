@@ -1,172 +1,448 @@
 // Type definitions for structured About page content
-// Each section maps directly to a static component's data needs
+// IDENTICAL TO HomePageContent but completely separate - no inheritance
+// This ensures About and Home page editing remain 100% independent
 
-export interface AboutHeroContent {
-  sectionLabel: string; // "– About Us" (H1)
-  tagline: string; // "Dedicated to Justice & Excellence" (styled paragraph)
-  description: string; // Description paragraph
+export interface HeroContent {
+  h1Title: string; // H1 title text (all caps, ~20px) between headline and phone button
+  headline: string;
+  highlightedText: string;
+  tagline: string; // Gold tagline text below headline
+  buttonText: string; // CTA button text
   phone: string;
   phoneLabel: string;
 }
 
-export interface StoryContent {
-  sectionLabel: string; // "– Our Story"
-  heading: string; // "Building Trust Since 1999"
-  paragraphs: string[]; // Array of paragraph texts
-  image: string;
-  imageAlt: string;
+export interface PartnerLogo {
+  src: string;
+  alt: string;
 }
 
-export interface MissionVisionContent {
-  mission: {
-    heading: string; // "Our Mission"
-    text: string; // Mission paragraph
-  };
-  vision: {
-    heading: string; // "Our Vision"
-    text: string; // Vision paragraph
-  };
-}
-
-export interface TeamMember {
-  name: string;
-  title: string;
-  bio: string;
-  image: string;
-  imageAlt: string;
-  specialties: string[];
-}
-
-export interface TeamContent {
-  sectionLabel: string; // "– Our Legal Team"
-  heading: string; // "Experienced Attorneys..."
-  members: TeamMember[];
-}
-
-export interface ValueItem {
-  icon: string; // Lucide icon name
-  title: string;
-  description: string;
-}
-
-export interface ValuesContent {
-  sectionLabel: string; // "– Our Values"
-  heading: string; // "Principles That Guide Our Practice"
-  subtitle: string; // Subtitle text (NEW)
-  items: ValueItem[];
-}
-
-export interface StatItem {
-  value: string;
-  label: string;
-}
-
-export interface StatsContent {
-  stats: StatItem[];
-}
-
-export interface WhyChooseUsItem {
+export interface AboutFeature {
   number: string;
   title: string;
   description: string;
 }
 
-export interface WhyChooseUsContent {
-  sectionLabel: string; // "– Why Choose Us"
-  heading: string; // "What Sets Us Apart"
-  description: string; // Intro paragraph
-  image: string; // Section image
-  imageAlt: string; // Image alt text
-  items: WhyChooseUsItem[];
+export interface AboutStat {
+  value: string;
+  label: string;
 }
 
-export interface CTAContent {
-  heading: string; // "Ready to Discuss Your Case?"
-  description: string; // Subtitle text
-  primaryButton: {
-    label: string; // "Call Us 24/7"
-    phone: string; // Phone number
-  };
-  secondaryButton: {
-    label: string; // "Schedule Now"
-    sublabel: string; // "Free Consultation"
-    link: string; // Link URL
-  };
+export interface AboutContent {
+  sectionLabel: string;
+  heading: string;
+  description: string;
+  phone: string;
+  phoneLabel: string;
+  contactLabel: string;
+  contactText: string;
+  attorneyImage: string;
+  attorneyImageAlt: string;
+  features: AboutFeature[];
+  stats: AboutStat[];
 }
 
-// Complete About page content structure
+export interface PracticeAreaItem {
+  title: string;
+  image: string;
+  imageAlt: string;
+  link: string;
+  learnMoreLink?: string;
+  consultationLink?: string;
+}
+
+export interface PracticeAreasIntroContent {
+  sectionLabel: string;
+  heading: string;
+  buttonLink: string;
+  buttonTextLine1: string;
+  buttonTextLine2: string;
+}
+
+export interface AwardsContent {
+  sectionLabel: string;
+  heading: string;
+  description: string;
+  logoImage: string;
+  logoImageAlt: string;
+  teamImage: string;
+  teamImageAlt: string;
+}
+
+export interface TestimonialItem {
+  text: string;
+  author: string;
+  clientType: string;
+  badgeType: string; // "google", "facebook", "yelp", etc.
+  badgeServiceName: string; // e.g., "Google"
+  badgeLogo?: string; // Service logo (e.g., Google logo)
+  badgeLogoAlt?: string;
+  badgeStarCount: number; // e.g., 5
+  badgeRating: string; // e.g., "5.0"
+}
+
+export interface TestimonialsContent {
+  sectionLabel: string;
+  heading: string;
+  items: TestimonialItem[];
+}
+
+export interface ProcessStep {
+  number: string;
+  title: string;
+  description: string;
+}
+
+export interface ProcessContent {
+  sectionLabel: string;
+  headingLine1: string;
+  headingLine2: string;
+  steps: ProcessStep[];
+}
+
+export interface GoogleReviewItem {
+  text: string;
+  author: string;
+  ratingImage: string;
+  ratingImageAlt?: string;
+}
+
+export interface GoogleReviewsContent {
+  sectionLabel: string;
+  heading: string;
+  description: string;
+  reviews: GoogleReviewItem[];
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface FaqContent {
+  heading: string;
+  description: string;
+  videoThumbnail: string;
+  videoThumbnailAlt?: string;
+  videoUrl: string;
+  items: FaqItem[];
+}
+
+export interface CaseStatItem {
+  label: string;
+  amount: string;
+}
+
+export interface StatsContent {
+  totalAmount: string;
+  totalLabel: string;
+  cases: CaseStatItem[];
+}
+
+export interface AboutFeatureItem {
+  title: string;
+  description: string;
+  icon?: string;
+}
+
+export interface HomeAboutContent {
+  heading: string;
+  experienceTitle: string;
+  yearsNumber: string;
+  yearsLabel: string;
+  experienceDescription: string;
+  features: AboutFeatureItem[];
+}
+
+export interface VideoItem {
+  title: string;
+  videoUrl: string;
+  thumbnailImage?: string;
+  thumbnailImageAlt?: string;
+}
+
+export interface VideoTestimonialsContent {
+  sectionLabel: string;
+  heading: string;
+  backgroundColor?: string;
+  backgroundImage?: string;
+  backgroundImageAlt?: string;
+  videos: VideoItem[];
+}
+
+export interface AttorneyItem {
+  name: string;
+  title: string;
+  yearsExperience: string;
+  photo: string;
+  photoAlt: string;
+  link?: string;
+}
+
+export interface AttorneysContent {
+  sectionLabel: string;
+  heading: string;
+  buttonText: string;
+  buttonLink: string;
+  attorneys: AttorneyItem[];
+}
+
+export interface BlogSectionContent {
+  sectionLabel: string;
+  heading: string;
+  description: string;
+  buttonText: string;
+  buttonLink: string;
+  backgroundColor?: string;
+  backgroundImage?: string;
+  backgroundImageAlt?: string;
+}
+
+export interface ContactContent {
+  sectionLabel: string;
+  heading: string;
+  description: string;
+  phone: string;
+  phoneLabel: string;
+  address: string;
+  formHeading: string;
+  availabilityText: string;
+  image: string;
+  imageAlt: string;
+  backgroundImage?: string;
+  backgroundImageAlt?: string;
+}
+
+// Complete About page content structure - IDENTICAL TO HomePageContent
 export interface AboutPageContent {
-  hero: AboutHeroContent;
-  story: StoryContent;
-  missionVision: MissionVisionContent;
-  team: TeamContent;
-  values: ValuesContent;
+  hero: HeroContent;
+  partnerLogos: PartnerLogo[];
   stats: StatsContent;
-  whyChooseUs: WhyChooseUsContent;
-  cta: CTAContent;
-  /** Maps heading keys (e.g. "story.heading") to HTML tag names (e.g. "h2") */
+  homeAbout: HomeAboutContent;
+  about: AboutContent;
+  practiceAreasIntro: PracticeAreasIntroContent;
+  practiceAreas: PracticeAreaItem[];
+  awards: AwardsContent;
+  testimonials: TestimonialsContent;
+  videoTestimonials: VideoTestimonialsContent;
+  attorneys: AttorneysContent;
+  blog: BlogSectionContent;
+  process: ProcessContent;
+  googleReviews: GoogleReviewsContent;
+  faq: FaqContent;
+  contact: ContactContent;
+  /** Maps heading keys (e.g. "about.heading") to HTML tag names (e.g. "h2") */
   headingTags?: Record<string, string>;
 }
 
-// Default content - empty defaults, content comes exclusively from the CMS
-export const defaultAboutContent: AboutPageContent = {
+// Default content for About page - all default text says "About Us — [section name]"
+export const defaultAboutPageContent: AboutPageContent = {
   hero: {
-    sectionLabel: "",
-    tagline: "",
-    description: "",
+    h1Title: "About Us — H1 Title",
+    headline: "About Us — Headline",
+    highlightedText: "About Us — Highlighted Text",
+    tagline: "About Us — Tagline",
+    buttonText: "Request Free Consultation",
     phone: "",
     phoneLabel: "",
   },
-  story: {
-    sectionLabel: "",
-    heading: "",
-    paragraphs: [],
-    image: "",
-    imageAlt: "",
-  },
-  missionVision: {
-    mission: {
-      heading: "",
-      text: "",
-    },
-    vision: {
-      heading: "",
-      text: "",
-    },
-  },
-  team: {
-    sectionLabel: "",
-    heading: "",
-    members: [],
-  },
-  values: {
-    sectionLabel: "",
-    heading: "",
-    subtitle: "",
-    items: [],
-  },
+  partnerLogos: [],
   stats: {
+    totalAmount: "About Us — Total Amount",
+    totalLabel: "About Us — Total Label",
+    cases: [
+      { label: "About Us — Case 1", amount: "About Us — Amount 1" },
+      { label: "About Us — Case 2", amount: "About Us — Amount 2" },
+      { label: "About Us — Case 3", amount: "About Us — Amount 3" },
+      { label: "About Us — Case 4", amount: "About Us — Amount 4" },
+    ],
+  },
+  homeAbout: {
+    heading: "About Us — When It Matters Most, We're On Your Side.",
+    experienceTitle: "About Us — OVER",
+    yearsNumber: "About Us — 150",
+    yearsLabel: "About Us — YEARS OF EXPERIENCE",
+    experienceDescription: "About Us — Constellation Law is a top rated law firm with 150 years of collective experience. Our partners worked for the largest firm in Atlanta, and now leverage their backgrounds and legal knowledge to stand up to the corporations they once defended",
+    features: [
+      {
+        title: "About Us — AMAZING TEAM",
+        description: "About Us — Our award-winning legal team brings over 150 years of collective experience to every case, ensuring you receive the skilled representation you deserve.",
+      },
+      {
+        title: "About Us — YOUR NEEDS COME FIRST",
+        description: "About Us — We prioritize your recovery and peace of mind. Our client-focused approach means you get personalized attention and dedicated advocacy throughout your case.",
+      },
+      {
+        title: "About Us — WE COME TO YOU 24/7",
+        description: "About Us — Injured and can't travel? We come to you. Our attorneys are available 24/7 for consultations at your hospital, home, or wherever is most convenient.",
+      },
+      {
+        title: "About Us — MULTILINGUAL STAFF",
+        description: "About Us — Language should never be a barrier to justice. Our multilingual team ensures clear communication in Spanish, Portuguese, and other languages.",
+      },
+      {
+        title: "About Us — NO FEES UNTIL WE WIN",
+        description: "About Us — You don't pay attorney fees unless we win your case. This contingency fee structure means we're invested in your success and you can focus on healing without financial stress.",
+      },
+    ],
+  },
+  about: {
+    sectionLabel: "About Us — Section Label",
+    heading: "About Us — Heading",
+    description: "About Us — Description",
+    phone: "",
+    phoneLabel: "",
+    contactLabel: "About Us — Contact Label",
+    contactText: "About Us — Contact Text",
+    attorneyImage: "",
+    attorneyImageAlt: "",
+    features: [],
     stats: [],
   },
-  whyChooseUs: {
-    sectionLabel: "",
-    heading: "",
-    description: "",
-    image: "",
-    imageAlt: "",
+  practiceAreasIntro: {
+    sectionLabel: "About Us — Section Label",
+    heading: "About Us — Where We Fight For You",
+    buttonLink: "/practice-areas/",
+    buttonTextLine1: "About Us — SEE ALL AREAS OF PRACTICE",
+    buttonTextLine2: "",
+  },
+  practiceAreas: [
+    {
+      title: "About Us — CAR ACCIDENTS",
+      image: "",
+      imageAlt: "Car accidents",
+      link: "/practice-areas/car-accidents/",
+      learnMoreLink: "/practice-areas/car-accidents/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "About Us — TRUCK ACCIDENTS",
+      image: "",
+      imageAlt: "Truck accidents",
+      link: "/practice-areas/truck-accidents/",
+      learnMoreLink: "/practice-areas/truck-accidents/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "About Us — MOTORCYCLE ACCIDENTS",
+      image: "",
+      imageAlt: "Motorcycle accidents",
+      link: "/practice-areas/motorcycle-accidents/",
+      learnMoreLink: "/practice-areas/motorcycle-accidents/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "About Us — WRONGFUL DEATH",
+      image: "",
+      imageAlt: "Wrongful death",
+      link: "/practice-areas/wrongful-death/",
+      learnMoreLink: "/practice-areas/wrongful-death/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "About Us — PERSONAL INJURY",
+      image: "",
+      imageAlt: "Personal injury",
+      link: "/practice-areas/personal-injury/",
+      learnMoreLink: "/practice-areas/personal-injury/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "About Us — SLIP & FALL",
+      image: "",
+      imageAlt: "Slip and fall",
+      link: "/practice-areas/slip-fall/",
+      learnMoreLink: "/practice-areas/slip-fall/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "About Us — MEDICAL MALPRACTICE",
+      image: "",
+      imageAlt: "Medical malpractice",
+      link: "/practice-areas/medical-malpractice/",
+      learnMoreLink: "/practice-areas/medical-malpractice/",
+      consultationLink: "/contact/"
+    },
+    {
+      title: "About Us — WORKERS COMPENSATION",
+      image: "",
+      imageAlt: "Workers compensation",
+      link: "/practice-areas/workers-compensation/",
+      learnMoreLink: "/practice-areas/workers-compensation/",
+      consultationLink: "/contact/"
+    },
+  ],
+  awards: {
+    sectionLabel: "About Us — Section Label",
+    heading: "About Us — Press & Recognition",
+    description: "About Us — Description",
+    logoImage: "",
+    logoImageAlt: "",
+    teamImage: "",
+    teamImageAlt: "",
+  },
+  testimonials: {
+    sectionLabel: "About Us — Section Label",
+    heading: "About Us — Committed To Excellence",
     items: [],
   },
-  cta: {
-    heading: "",
-    description: "",
-    primaryButton: {
-      label: "",
-      phone: "",
-    },
-    secondaryButton: {
-      label: "",
-      sublabel: "",
-      link: "",
-    },
+  videoTestimonials: {
+    sectionLabel: "About Us — Section Label",
+    heading: "About Us — Hear What Our Clients Have to Say",
+    backgroundColor: "#cfab57",
+    backgroundImage: "",
+    backgroundImageAlt: "",
+    videos: [],
+  },
+  attorneys: {
+    sectionLabel: "About Us — Section Label",
+    heading: "About Us — Meet the Attorneys",
+    buttonText: "About Us — SEE ALL ATTORNEYS",
+    buttonLink: "/attorneys/",
+    attorneys: [],
+  },
+  blog: {
+    sectionLabel: "About Us — Section Label",
+    heading: "About Us — News & Blog",
+    description: "About Us — Stay informed with our latest legal insights, case updates, and industry news.",
+    buttonText: "About Us — MORE NEWS",
+    buttonLink: "/blog/",
+    backgroundColor: "#f5f5f5",
+    backgroundImage: "",
+    backgroundImageAlt: "",
+  },
+  process: {
+    sectionLabel: "About Us — Section Label",
+    headingLine1: "About Us — Heading Line 1",
+    headingLine2: "About Us — Heading Line 2",
+    steps: [],
+  },
+  googleReviews: {
+    sectionLabel: "About Us — Section Label",
+    heading: "About Us — Heading",
+    description: "About Us — Description",
+    reviews: [],
+  },
+  faq: {
+    heading: "About Us — FAQ Heading",
+    description: "About Us — FAQ Description",
+    videoThumbnail: "",
+    videoThumbnailAlt: "",
+    videoUrl: "",
+    items: [],
+  },
+  contact: {
+    sectionLabel: "About Us — Section Label",
+    heading: "About Us — Contact Heading",
+    description: "About Us — Contact Description",
+    phone: "",
+    phoneLabel: "",
+    address: "",
+    formHeading: "About Us — Form Heading",
+    availabilityText: "About Us — Availability Text",
+    image: "",
+    imageAlt: "",
+    backgroundImage: "",
+    backgroundImageAlt: "",
   },
 };
