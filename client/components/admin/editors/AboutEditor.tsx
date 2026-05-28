@@ -255,25 +255,21 @@ function PracticeAreasIntroSection({ content, update }: SectionProps) {
           items={intro.values}
           onChange={(items) => set({ values: items })}
           itemLabel="Value"
-          newItem={() => ({ id: String(intro.values.length + 1), icon: "", title: "", description: "" })}
+          newItem={() => ({ id: "excellence" as const, title: "", description: "" })}
           renderItem={(item, _, upd) => (
             <div className="grid gap-3">
               <div>
-                <Label>Icon Image URL</Label>
-                <Input value={item.icon} onChange={(e) => upd({ ...item, icon: e.target.value })} placeholder="https://..." />
+                <Label>Icon Type</Label>
+                <select
+                  value={item.id}
+                  onChange={(e) => upd({ ...item, id: e.target.value as "excellence" | "integrity" | "compassion" })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded bg-white"
+                >
+                  <option value="excellence">Excellence (Trophy)</option>
+                  <option value="integrity">Integrity (Crown)</option>
+                  <option value="compassion">Compassion (People)</option>
+                </select>
               </div>
-              <ImageField
-                label="Icon (Media Library)"
-                value={item.icon}
-                onChange={(url) => upd({ ...item, icon: url })}
-                altValue=""
-                onAltChange={() => {}}
-                onSelectAsset={(asset) => upd({
-                  ...item,
-                  icon: asset.url,
-                })}
-                folder="icons"
-              />
               <div>
                 <Label>Title</Label>
                 <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="e.g. Excellence" />

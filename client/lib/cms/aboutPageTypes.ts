@@ -61,8 +61,7 @@ export interface PracticeAreasIntroContent {
 }
 
 export interface ValueItemWithIcon {
-  id: string;
-  icon: string; // Image URL
+  id: "excellence" | "integrity" | "compassion";
   title: string;
   description: string;
 }
@@ -299,20 +298,17 @@ export const defaultAboutContent: AboutPageContent = {
     valuesTitle: "About Us — Our Values",
     values: [
       {
-        id: "1",
-        icon: "https://cdn-icons-png.flaticon.com/512/3135/3135706.png",
+        id: "excellence",
         title: "Excellence",
         description: "We strive for excellence in every case, ensuring our clients receive the highest quality legal representation.",
       },
       {
-        id: "2",
-        icon: "https://cdn-icons-png.flaticon.com/512/1534/1534938.png",
+        id: "integrity",
         title: "Integrity",
         description: "Our commitment to honesty and ethical practice guides every decision we make on behalf of our clients.",
       },
       {
-        id: "3",
-        icon: "https://cdn-icons-png.flaticon.com/512/3048/3048127.png",
+        id: "compassion",
         title: "Compassion",
         description: "We understand that behind every case is a real person with real needs, and we treat each client with care and respect.",
       },
