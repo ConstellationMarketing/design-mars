@@ -6,7 +6,7 @@ import { useAboutContent } from "@site/hooks/useAboutContent";
 // Import home page section components
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
 import AboutPageAboutSection from "@site/components/about/AboutPageAboutSection";
-import ValuesSection from "@site/components/about/ValuesSection";
+import AboutValuesSection from "@site/components/about/AboutValuesSection";
 import AwardsSection from "@site/components/home/AwardsSection";
 import TestimonialsSection from "@site/components/home/TestimonialsSection";
 import VideoTestimonialsSection from "@site/components/home/VideoTestimonialsSection";
@@ -100,8 +100,7 @@ export default function AboutUs() {
       <AboutPageAboutSection content={content.homeAbout} headingTag={content.headingTags?.["homeAbout.heading"]} />
 
       {/* Page Sections */}
-      <PracticeAreasSection content={content.practiceAreasIntro} areas={content.practiceAreas} headingTag={content.headingTags?.["practiceAreasIntro.sectionLabel"]} />
-      <ValuesSection content={content.values} headingTag={content.headingTags?.["values.sectionLabel"]} />
+      <AboutValuesSection content={content.practiceAreasIntro} headingTag={content.headingTags?.["practiceAreasIntro.sectionLabel"]} />
       <AwardsSection content={content.awards} headingTag={content.headingTags?.["awards.sectionLabel"]} />
       <TestimonialsSection content={content.testimonials} headingTag={content.headingTags?.["testimonials.sectionLabel"]} />
       <VideoTestimonialsSection content={content.videoTestimonials} headingTag={content.headingTags?.["videoTestimonials.sectionLabel"]} />

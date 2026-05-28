@@ -60,20 +60,19 @@ export interface PracticeAreasIntroContent {
   buttonTextLine2: string;
 }
 
-export interface ValueItem {
-  icon: string; // lucide-react icon name (e.g., "Trophy")
+export interface ValueItemWithIcon {
+  id: string;
+  icon: string; // Image URL
   title: string;
   description: string;
 }
 
-export interface ValuesContent {
+export interface AboutPracticeAreasIntroContent {
   sectionLabel: string;
-  heading: string;
-  backgroundColor?: string;
-  backgroundImage?: string;
-  backgroundImageAlt?: string;
-  items: ValueItem[];
+  valuesTitle: string;
+  values: ValueItemWithIcon[];
 }
+
 
 export interface AwardsContent {
   sectionLabel: string;
@@ -236,9 +235,8 @@ export interface AboutPageContent {
   stats: StatsContent;
   homeAbout: HomeAboutContent;
   about: AboutContent;
-  practiceAreasIntro: PracticeAreasIntroContent;
+  practiceAreasIntro: AboutPracticeAreasIntroContent;
   practiceAreas: PracticeAreaItem[];
-  values: ValuesContent;
   awards: AwardsContent;
   testimonials: TestimonialsContent;
   videoTestimonials: VideoTestimonialsContent;
@@ -297,11 +295,28 @@ export const defaultAboutContent: AboutPageContent = {
     stats: [],
   },
   practiceAreasIntro: {
-    sectionLabel: "About Us — Section Label",
-    heading: "About Us — Where We Fight For You",
-    buttonLink: "/practice-areas/",
-    buttonTextLine1: "About Us — SEE ALL AREAS OF PRACTICE",
-    buttonTextLine2: "",
+    sectionLabel: "About Us — Our Values",
+    valuesTitle: "About Us — Our Values",
+    values: [
+      {
+        id: "1",
+        icon: "https://cdn-icons-png.flaticon.com/512/3135/3135706.png",
+        title: "Excellence",
+        description: "We strive for excellence in every case, ensuring our clients receive the highest quality legal representation.",
+      },
+      {
+        id: "2",
+        icon: "https://cdn-icons-png.flaticon.com/512/1534/1534938.png",
+        title: "Integrity",
+        description: "Our commitment to honesty and ethical practice guides every decision we make on behalf of our clients.",
+      },
+      {
+        id: "3",
+        icon: "https://cdn-icons-png.flaticon.com/512/3048/3048127.png",
+        title: "Compassion",
+        description: "We understand that behind every case is a real person with real needs, and we treat each client with care and respect.",
+      },
+    ],
   },
   practiceAreas: [
     {
@@ -369,30 +384,6 @@ export const defaultAboutContent: AboutPageContent = {
       consultationLink: "/contact/"
     },
   ],
-  values: {
-    sectionLabel: "About Us — Our Values",
-    heading: "About Us — Our Values",
-    backgroundColor: "#f5f5f5",
-    backgroundImage: "",
-    backgroundImageAlt: "",
-    items: [
-      {
-        icon: "Trophy",
-        title: "About Us — Excellence",
-        description: "About Us — We strive for excellence in every case, ensuring our clients receive the highest quality legal representation.",
-      },
-      {
-        icon: "Crown",
-        title: "About Us — Integrity",
-        description: "About Us — Our commitment to honesty and ethical practice guides every decision we make on behalf of our clients.",
-      },
-      {
-        icon: "Users",
-        title: "About Us — Compassion",
-        description: "About Us — We understand that behind every case is a real person with real needs, and we treat each client with care and respect.",
-      },
-    ],
-  },
   awards: {
     sectionLabel: "About Us — Section Label",
     heading: "About Us — Press & Recognition",

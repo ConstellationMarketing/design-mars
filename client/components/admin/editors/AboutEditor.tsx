@@ -239,67 +239,48 @@ function PracticeAreasIntroSection({ content, update }: SectionProps) {
     <Section title="Practice Areas Intro" defaultOpen={false}>
       <div className="grid gap-4">
         <HeadingField
-          label="Title"
+          label="Section Label"
           value={intro.sectionLabel}
           onChange={(v) => set({ sectionLabel: v })}
           tag={ht.get("practiceAreasIntro.sectionLabel")}
           onTagChange={(t) => ht.set("practiceAreasIntro.sectionLabel", t)}
         />
         <div>
-          <Label>Main Heading</Label>
-          <Input value={intro.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Where We Fight For You" />
-        </div>
-        <div>
-          <Label>Button Link</Label>
-          <Input value={intro.buttonLink} onChange={(e) => set({ buttonLink: e.target.value })} placeholder="/practice-areas/" />
-        </div>
-        <div>
-          <Label>Button Text</Label>
-          <Input value={intro.buttonTextLine1 || ""} onChange={(e) => set({ buttonTextLine1: e.target.value })} placeholder="SEE ALL AREAS OF PRACTICE" />
+          <Label>Values Title</Label>
+          <Input value={intro.valuesTitle} onChange={(e) => set({ valuesTitle: e.target.value })} placeholder="Our Values" />
         </div>
 
-        <h4 className="font-medium mt-4">Practice Areas (8 items)</h4>
+        <h4 className="font-medium mt-4">Values (3 items)</h4>
         <ArrayEditor
-          items={content.practiceAreas}
-          onChange={(items) => update("practiceAreas", items)}
-          itemLabel="Practice Area"
-          newItem={() => ({ title: "", image: "", imageAlt: "", link: "/practice-areas", learnMoreLink: "/practice-areas", consultationLink: "/contact/" })}
+          items={intro.values}
+          onChange={(items) => set({ values: items })}
+          itemLabel="Value"
+          newItem={() => ({ id: String(intro.values.length + 1), icon: "", title: "", description: "" })}
           renderItem={(item, _, upd) => (
             <div className="grid gap-3">
               <div>
-                <Label>Title</Label>
-                <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="e.g. CAR ACCIDENTS" />
+                <Label>Icon Image URL</Label>
+                <Input value={item.icon} onChange={(e) => upd({ ...item, icon: e.target.value })} placeholder="https://..." />
               </div>
               <ImageField
-                label="Image"
-                value={item.image}
-                onChange={(url) => upd({ ...item, image: url })}
-                altValue={item.imageAlt}
-                onAltChange={(imageAlt) => upd({ ...item, imageAlt })}
+                label="Icon (Media Library)"
+                value={item.icon}
+                onChange={(url) => upd({ ...item, icon: url })}
+                altValue=""
+                onAltChange={() => {}}
                 onSelectAsset={(asset) => upd({
                   ...item,
-                  image: asset.url,
-                  imageAlt: asset.suggestedAltText || item.imageAlt,
+                  icon: asset.url,
                 })}
-                folder="practice-areas"
+                folder="icons"
               />
               <div>
-                <Label>Image Alt Text</Label>
-                <Input value={item.imageAlt} onChange={(e) => upd({ ...item, imageAlt: e.target.value })} placeholder="Describe the image" />
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <Label>Main Link</Label>
-                  <Input value={item.link} onChange={(e) => upd({ ...item, link: e.target.value })} placeholder="/practice-areas/car-accidents/" />
-                </div>
-                <div>
-                  <Label>"Learn More" Link</Label>
-                  <Input value={item.learnMoreLink || ""} onChange={(e) => upd({ ...item, learnMoreLink: e.target.value })} placeholder="/practice-areas/car-accidents/" />
-                </div>
+                <Label>Title</Label>
+                <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="e.g. Excellence" />
               </div>
               <div>
-                <Label>"Free Consultation" Link</Label>
-                <Input value={item.consultationLink || ""} onChange={(e) => upd({ ...item, consultationLink: e.target.value })} placeholder="/contact/" />
+                <Label>Description</Label>
+                <Textarea value={item.description} onChange={(e) => upd({ ...item, description: e.target.value })} placeholder="Description text..." rows={3} />
               </div>
             </div>
           )}
