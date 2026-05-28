@@ -33,12 +33,12 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
           </div>
         )}
 
-        {/* Two-column layout: Left box + Right features */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-          {/* Left column - Experience box */}
-          <div className="md:col-span-1">
-            {/* Black box with gold border */}
-            <div className="border-4 border-brand-accent p-4 md:p-6 bg-black h-full">
+        {/* Two-column layout: Left box + Right features with NO FEES spanning */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12">
+          {/* Left column - Experience box (wider, spans full height) */}
+          <div className="md:col-span-2 md:row-span-2">
+            {/* Black box with gold border and shadow */}
+            <div className="border-4 border-brand-accent p-4 md:p-6 bg-black h-full" style={{ boxShadow: '12px 12px 0 0 rgba(207, 171, 87, 0.4)' }}>
               <div className="border-2 border-brand-accent bg-black px-6 md:px-8 py-8 md:py-10 text-center h-full flex flex-col justify-center">
                 <div className="font-poppins text-[14px] md:text-[16px] font-normal text-brand-accent tracking-widest uppercase">
                   {content.experienceTitle}
@@ -58,10 +58,10 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
             </div>
           </div>
 
-          {/* Right column - Features grid */}
-          <div className="md:col-span-2">
+          {/* Right column - Features grid (2x2) */}
+          <div className="md:col-span-3">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {content.features.map((feature, index) => {
+              {content.features.slice(0, 4).map((feature, index) => {
                 const IconComponent = featureIcons[index] || GraduationCap;
                 return (
                   <div key={index} className="flex gap-4">
@@ -83,6 +83,29 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
               })}
             </div>
           </div>
+
+          {/* Bottom row - NO FEES spanning full width (or 2 columns on right) */}
+          {content.features.length > 4 && content.features[4] && (
+            <div className="md:col-span-3 md:col-start-3">
+              <div className="border-t-4 border-brand-accent pt-6 md:pt-8">
+                <div className="flex gap-4">
+                  {/* Icon */}
+                  <div className="flex-shrink-0 mt-1">
+                    {featureIcons[4] && featureIcons[4]({ className: "w-6 h-6 md:w-8 md:h-8 text-brand-accent" })}
+                  </div>
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="font-poppins text-[16px] md:text-[20px] font-semibold text-black tracking-wider uppercase mb-2">
+                      {content.features[4].title}
+                    </h3>
+                    <p className="font-poppins text-[16px] md:text-[18px] font-normal text-black/80 leading-relaxed">
+                      {content.features[4].description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
