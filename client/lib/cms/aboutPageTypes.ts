@@ -236,7 +236,7 @@ export interface AboutPageContent {
 }
 
 // Default content for About page - all default text says "About Us — [section name]"
-export const defaultAboutPageContent: AboutPageContent = {
+export const defaultAboutContent: AboutPageContent = {
   hero: {
     h1Title: "About Us — H1 Title",
     headline: "About Us — Headline",
