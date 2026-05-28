@@ -24,13 +24,21 @@ let cachedUpdatedAt: string | null = null;
 
 const ABOUT_CONTENT_KEYS: (keyof AboutPageContent)[] = [
   "hero",
-  "story",
-  "missionVision",
-  "team",
-  "values",
+  "partnerLogos",
   "stats",
-  "whyChooseUs",
-  "cta",
+  "homeAbout",
+  "about",
+  "practiceAreasIntro",
+  "practiceAreas",
+  "awards",
+  "testimonials",
+  "videoTestimonials",
+  "attorneys",
+  "blog",
+  "process",
+  "googleReviews",
+  "faq",
+  "contact",
 ];
 
 function isAboutContentShape(content: unknown): content is Partial<AboutPageContent> {

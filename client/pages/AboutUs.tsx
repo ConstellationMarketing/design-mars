@@ -1,35 +1,22 @@
 import Seo from "@site/components/Seo";
 import Layout from "@site/components/layout/Layout";
-import CallBox from "@site/components/shared/CallBox";
-import StatsGrid from "@site/components/shared/StatsGrid";
-import TeamMemberCard from "@site/components/about/TeamMemberCard";
-import ValueCard from "@site/components/about/ValueCard";
-import {
-  Phone as PhoneIcon,
-  Calendar,
-  Scale,
-  Award,
-  Users,
-  Heart,
-  type LucideIcon,
-  Loader2,
-} from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useAboutContent } from "@site/hooks/useAboutContent";
-import { useGlobalPhone } from "@site/contexts/SiteSettingsContext";
-import RichText from "@site/components/shared/RichText";
-import DynamicHeading from "@site/components/shared/DynamicHeading";
 
-// Icon mapping for values section
-const iconMap: Record<string, LucideIcon> = {
-  Scale,
-  Award,
-  Users,
-  Heart,
-};
+// Import home page section components
+import StatsSection from "@site/components/home/StatsSection";
+import HomeAboutSection from "@site/components/home/HomeAboutSection";
+import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
+import AwardsSection from "@site/components/home/AwardsSection";
+import TestimonialsSection from "@site/components/home/TestimonialsSection";
+import VideoTestimonialsSection from "@site/components/home/VideoTestimonialsSection";
+import AttorneysSection from "@site/components/home/AttorneysSection";
+import BlogSection from "@site/components/home/BlogSection";
+import FaqSection from "@site/components/home/FaqSection";
+import ContactUsSection from "@site/components/home/ContactUsSection";
 
 export default function AboutUs() {
   const { content, meta, title, publishedAt, updatedAt, isLoading } = useAboutContent();
-  const { phoneNumber, phoneDisplay, phoneLabel } = useGlobalPhone();
 
   if (isLoading) {
     return (
@@ -41,24 +28,12 @@ export default function AboutUs() {
     );
   }
 
-  // Map team members from CMS content
-  const teamMembers = content.team.members;
-
-  // Map core values from CMS content with icon components
-  const coreValues = content.values.items.map((item) => ({
-    icon: iconMap[item.icon] || Scale,
-    title: item.title,
-    description: item.description,
-  }));
-
-  // Map stats from CMS content
-  const stats = content.stats.stats;
-
-  // Map why choose us from CMS content
-  const whyChooseUs = content.whyChooseUs.items;
+  // Hero content from About page
+  const heroContent = content.hero;
+  const heroBackgroundImage = 'https://atzgmwcxbdnswerpqzzi.supabase.co/storage/v1/object/public/media/library/1779351750724-20d0za.webp';
 
   return (
-    <Layout>
+    <Layout heroBackgroundImage={heroBackgroundImage}>
       <Seo
         title={title || "About Us"}
         meta={meta}
@@ -67,311 +42,110 @@ export default function AboutUs() {
         updatedTime={updatedAt}
       />
 
-      {/* Hero Section */}
-      <div className="bg-brand-dark pt-[30px] md:pt-[54px] pb-[30px] md:pb-[54px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%]">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-[5%]">
-            {/* Left Side - Heading */}
-            <div className="lg:w-[65%]">
-              {/* H1 Title - Section Heading */}
-              <DynamicHeading
-                tag={content.headingTags?.["hero.sectionLabel"]}
-                defaultTag="h1"
-                className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-brand-accent mb-[10px]"
-              >
-                {content.hero.sectionLabel}
-              </DynamicHeading>
-              {/* Tagline - styled as large text but not H1 */}
-              <p className="font-playfair text-[clamp(2.5rem,7vw,68.8px)] font-light leading-[1.2] text-white mb-[20px] md:mb-[30px]">
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: content.hero.tagline.replace(
-                      /(Justice & Excellence|Justice|Excellence)/g,
-                      '<span class="text-brand-accent">$1</span>',
-                    ),
-                  }}
-                />
-              </p>
-              <RichText
-                html={content.hero.description}
-                className="font-outfit text-[16px] md:text-[20px] leading-[24px] md:leading-[30px] text-white/90"
-              />
-            </div>
+      {/* Hero Section - same as home page */}
+      <div className="w-full flex items-center justify-center py-[40px] md:py-[100px] pb-[100px] md:pb-[120px] relative overflow-visible" style={{ position: 'relative', overflow: 'visible' }}>
+        {/* Dark overlay for text readability */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.6)',
+          zIndex: 1
+        }}></div>
 
-            {/* Right Side - CallBox */}
-            <div className="w-full lg:w-[30%] lg:flex lg:items-center">
-              <CallBox
-                icon={PhoneIcon}
-                title={phoneLabel}
-                subtitle={phoneDisplay}
-                phone={phoneNumber}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Our Story Section */}
-      {(content.story.heading || content.story.paragraphs.length > 0) && (
-      <div className="bg-white pt-[30px] md:pt-[54px] pb-[30px] md:pb-[54px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[80%]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[8%]">
-            {/* Left Side - Content */}
-            <div>
-              <div className="mb-[10px]">
-                <DynamicHeading
-                  tag={content.headingTags?.["story.sectionLabel"]}
-                  defaultTag="h2"
-                  className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-[rgb(107,141,12)]"
-                >
-                  {content.story.sectionLabel}
-                </DynamicHeading>
-              </div>
-              <p className="font-playfair text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black pb-[20px]">
-                {content.story.heading}
-              </p>
-              <div className="space-y-[15px] md:space-y-[20px]">
-                {content.story.paragraphs.map((paragraph, index) => (
-                  <RichText
-                    key={index}
-                    html={paragraph}
-                    className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black"
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Right Side - Image */}
-            <div className="flex items-center justify-center">
-              <div className="relative">
-                <img
-                  src={content.story.image}
-                  alt={content.story.imageAlt}
-                  className="max-w-full w-auto h-auto object-contain"
-                  width={338}
-                  height={462}
-                  loading="lazy"
-                />
-                {/* Fade-out gradient at the bottom */}
-                <div className="absolute bottom-0 left-0 right-0 h-[80px] bg-gradient-to-t from-white to-transparent pointer-events-none" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      )}
-
-      {/* Mission & Vision Section */}
-      {(content.missionVision.mission.heading || content.missionVision.vision.heading) && (
-      <div className="bg-brand-accent-dark py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[80%]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[8%]">
-            {/* Mission */}
-            <div className="text-center lg:text-left">
-              <h2 className="font-playfair text-[32px] md:text-[40px] leading-tight text-brand-accent pb-[15px] md:pb-[20px]">
-                {content.missionVision.mission.heading}
-              </h2>
-              <RichText
-                html={content.missionVision.mission.text}
-                className="font-outfit text-[16px] md:text-[18px] leading-[26px] md:leading-[30px] text-white"
-              />
-            </div>
-
-            {/* Vision */}
-            <div className="text-center lg:text-left">
-              <h2 className="font-playfair text-[32px] md:text-[40px] leading-tight text-brand-accent pb-[15px] md:pb-[20px]">
-                {content.missionVision.vision.heading}
-              </h2>
-              <RichText
-                html={content.missionVision.vision.text}
-                className="font-outfit text-[16px] md:text-[18px] leading-[26px] md:leading-[30px] text-white"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      )}
-
-      {/* Team Section */}
-      {teamMembers.length > 0 && (
-      <div className="bg-white pt-[40px] md:pt-[60px] pb-[30px] md:pb-[54px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
-          <div className="text-center mb-[30px] md:mb-[50px]">
-            <div className="mb-[10px]">
-              <DynamicHeading
-                tag={content.headingTags?.["team.sectionLabel"]}
-                defaultTag="h2"
-                className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-[rgb(107,141,12)]"
-              >
-                {content.team.sectionLabel}
-              </DynamicHeading>
-            </div>
-            <p className="font-playfair text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black">
-              {content.team.heading.split("\n").map((line, i) => (
-                <span key={i}>
-                  {line}
-                  {i < content.team.heading.split("\n").length - 1 && (
-                    <br className="hidden md:block" />
-                  )}
-                </span>
-              ))}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {teamMembers.map((member, index) => (
-              <TeamMemberCard key={index} {...member} />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      )}
-
-      {/* Core Values Section */}
-      {coreValues.length > 0 && (
-      <div className="bg-brand-dark py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
-          <div className="text-center mb-[30px] md:mb-[50px]">
-            <div className="mb-[10px]">
-              <DynamicHeading
-                tag={content.headingTags?.["values.sectionLabel"]}
-                defaultTag="h2"
-                className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-brand-accent"
-              >
-                {content.values.sectionLabel}
-              </DynamicHeading>
-            </div>
-            <p className="font-playfair text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-white">
-              {content.values.heading}
-            </p>
-            {content.values.subtitle && (
-              <p className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-white/80 mt-[15px]">
-                {content.values.subtitle}
+        {/* Content */}
+        <div className="max-w-[1000px] w-[85%] md:w-[90%] relative z-10 text-center" style={{ paddingTop: '35px' }}>
+          <div className="flex flex-col items-center justify-center gap-5 md:gap-6">
+            {/* Highlighted Text - large white text on top */}
+            {heroContent.highlightedText && (
+              <p className="font-poppins text-[48px] sm:text-[48px] md:text-[96px] font-bold leading-[1.0] text-white max-w-4xl">
+                {heroContent.highlightedText}
               </p>
             )}
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-[5%]">
-            {coreValues.map((value, index) => (
-              <ValueCard key={index} {...value} />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      )}
-
-      {/* Stats Section */}
-      {stats.length > 0 && (
-      <div className="bg-white py-[30px] md:py-[40px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%]">
-          <StatsGrid stats={stats} />
-        </div>
-      </div>
-
-      )}
-
-      {/* Why Choose Us Section */}
-      {whyChooseUs.length > 0 && (
-      <div className="bg-white pt-[30px] md:pt-[40px] pb-[40px] md:pb-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[80%]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[8%]">
-            {/* Left Side - Heading + Image */}
-            <div>
-              <div className="mb-[10px]">
-                <DynamicHeading
-                  tag={content.headingTags?.["whyChooseUs.sectionLabel"]}
-                  defaultTag="h2"
-                  className="font-outfit text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-[rgb(107,141,12)]"
-                >
-                  {content.whyChooseUs.sectionLabel}
-                </DynamicHeading>
-              </div>
-              <p className="font-playfair text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black pb-[20px]">
-                {content.whyChooseUs.heading}
+            {/* Full Headline - white uppercase in middle */}
+            {heroContent.headline && (
+              <p className="font-poppins text-[18px] md:text-[22px] font-semibold tracking-wider uppercase text-white max-w-[60%] mx-auto text-center">
+                {heroContent.headline}
               </p>
-              <RichText
-                html={content.whyChooseUs.description}
-                className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black mb-[30px]"
-              />
-              {/* Stock image */}
-              {content.whyChooseUs.image && (
-                <div className="hidden lg:block">
-                  <img
-                    src={content.whyChooseUs.image}
-                    alt={content.whyChooseUs.imageAlt || "Why Choose Us"}
-                    className="w-full max-w-[400px] h-auto object-cover"
-                    width={400}
-                    height={300}
-                    loading="lazy"
-                  />
-                </div>
-              )}
-            </div>
+            )}
 
-            {/* Right Side - Features List */}
-            <div className="space-y-[20px] md:space-y-[30px]">
-              {whyChooseUs.map((feature, index) => (
-                <div key={index}>
-                  <div className="mb-[15px] md:mb-[20px]">
-                    <h3 className="font-outfit text-[22px] md:text-[28px] leading-tight md:leading-[28px] text-black pb-[10px]">
-                      {feature.number}. {feature.title}
-                    </h3>
-                    <RichText
-                      html={feature.description}
-                      className="font-outfit text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black"
-                    />
-                  </div>
-                  {index < whyChooseUs.length - 1 && (
-                    <div className="h-[1px] bg-brand-border/30"></div>
-                  )}
-                </div>
-              ))}
+            {/* H1 Title - small yellow text on bottom */}
+            {heroContent.h1Title && (
+              <h1 className="font-poppins text-[14px] md:text-[15px] font-normal tracking-widest uppercase text-brand-accent max-w-[60%] mx-auto text-center" style={{ marginTop: 0 }}>
+                {heroContent.h1Title}
+              </h1>
+            )}
+
+            {/* CTA Button wrapper */}
+            <div className="border-2 border-brand-accent p-1 hover:border-black transition-all duration-300 hover:bg-white inline-block max-w-[80vw] md:max-w-none" style={{ marginTop: '30px', marginBottom: '70px' }}>
+              {/* CTA Button */}
+              <button
+                onClick={() => window.location.href = '#contact-section'}
+                className="font-poppins text-[18px] font-normal uppercase text-black bg-brand-accent px-6 py-3 border-2 border-black hover:bg-white hover:text-black hover:border-white transition-all duration-300 flex items-center justify-center gap-3 whitespace-nowrap"
+                style={{ width: '100%' }}
+              >
+                {heroContent.buttonText || "Request Free Consultation"}
+                <span className="text-xl">›</span>
+              </button>
             </div>
           </div>
         </div>
+
+        {/* Floating Badge */}
+        {content.stats?.totalAmount && (
+          <div
+            className="absolute left-1/2 z-20 transform -translate-x-1/2"
+            style={{
+              bottom: '-60px',
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              zIndex: 20,
+              marginTop: '70px'
+            }}
+          >
+            {/* Outer gold border frame - mobile */}
+            <div className="md:hidden border-4 border-brand-accent bg-black" style={{ borderColor: '#C9A84C', maxWidth: '332px', padding: '16px' }}>
+              {/* Inner gold border */}
+              <div className="border-2 border-brand-accent bg-black text-center w-full" style={{ borderColor: '#C9A84C', padding: '24px 32px' }}>
+                <div className="font-poppins font-bold text-white leading-tight" style={{ fontSize: '24px' }}>
+                  {content.stats.totalAmount}
+                </div>
+                <div className="font-poppins font-semibold uppercase tracking-widest text-white" style={{ fontSize: '16px' }}>
+                  {content.stats.totalLabel}
+                </div>
+              </div>
+            </div>
+            {/* Outer gold border frame - desktop */}
+            <div className="hidden md:block border-4 border-brand-accent bg-black" style={{ borderColor: '#C9A84C', maxWidth: '332px', padding: '16px', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)' }}>
+              {/* Inner gold border */}
+              <div className="border-2 border-brand-accent bg-black text-center w-full" style={{ borderColor: '#C9A84C', padding: '30px 40px' }}>
+                <div className="font-poppins font-bold text-white leading-tight" style={{ fontSize: '28px' }}>
+                  {content.stats.totalAmount}
+                </div>
+                <div className="font-poppins font-semibold uppercase tracking-widest text-white" style={{ fontSize: '18px' }}>
+                  {content.stats.totalLabel}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
-      )}
-
-      {/* Call to Action Section */}
-      {content.cta.heading && (
-      <div className="bg-brand-accent py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[80%]">
-          <div className="text-center mb-[30px] md:mb-[40px]">
-            <h2 className="font-playfair text-[36px] md:text-[48px] lg:text-[60px] leading-tight text-black pb-[15px]">
-              {content.cta.heading}
-            </h2>
-            <RichText
-              html={content.cta.description}
-              className="font-outfit text-[18px] md:text-[22px] leading-[26px] md:leading-[32px] text-black/80"
-            />
-          </div>
-
-          <div className="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-center md:items-start">
-            <CallBox
-              icon={PhoneIcon}
-              title={phoneLabel}
-              subtitle={phoneDisplay}
-              phone={phoneNumber}
-              className="bg-brand-accent-dark hover:bg-black"
-              variant="dark"
-            />
-            <CallBox
-              icon={Calendar}
-              title={content.cta.secondaryButton.label}
-              subtitle={content.cta.secondaryButton.sublabel}
-              link={content.cta.secondaryButton.link}
-              className="bg-brand-accent-dark hover:bg-black"
-              variant="dark"
-            />
-          </div>
-        </div>
-      </div>
-      )}
+      {/* Page Sections - same as home page */}
+      <StatsSection content={content} headingTag={content.headingTags?.["stats.sectionLabel"]} />
+      <HomeAboutSection content={content} headingTag={content.headingTags?.["homeAbout.heading"]} />
+      <PracticeAreasSection content={content} headingTag={content.headingTags?.["practiceAreasIntro.sectionLabel"]} />
+      <AwardsSection content={content} headingTag={content.headingTags?.["awards.sectionLabel"]} />
+      <TestimonialsSection content={content} headingTag={content.headingTags?.["testimonials.sectionLabel"]} />
+      <VideoTestimonialsSection content={content} headingTag={content.headingTags?.["videoTestimonials.sectionLabel"]} />
+      <AttorneysSection content={content} headingTag={content.headingTags?.["attorneys.sectionLabel"]} />
+      <BlogSection content={content} headingTag={content.headingTags?.["blog.sectionLabel"]} />
+      <FaqSection content={content} headingTag={content.headingTags?.["faq.heading"]} />
+      <ContactUsSection content={content} headingTag={content.headingTags?.["contact.sectionLabel"]} />
     </Layout>
   );
 }
