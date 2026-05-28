@@ -34,7 +34,7 @@ export default function FaqSection({ content }: FaqSectionProps) {
               <h2 className="font-poppins font-bold text-[36px] md:text-[48px] text-black leading-tight">
                 {data.heading}
               </h2>
-              <div className="h-px bg-brand-accent mt-4"></div>
+              <div className="h-px bg-brand-accent mt-4 max-w-[60%]"></div>
             </div>
           )}
         </div>

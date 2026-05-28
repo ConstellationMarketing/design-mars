@@ -38,7 +38,7 @@ export default function TestimonialsSection({
                   {data.heading}
                 </h2>
               )}
-              <div className="h-px bg-brand-accent mt-4"></div>
+              <div className="h-px bg-brand-accent mt-4 max-w-[60%]"></div>
             </div>
           </div>
         )}

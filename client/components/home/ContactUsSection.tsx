@@ -25,7 +25,7 @@ export default function ContactUsSection({ content, headingTag }: ContactUsSecti
                 dangerouslySetInnerHTML={{ __html: data.heading }}
                 className="text-2xl md:text-[48px] font-bold text-black leading-tight block"
               />
-              <div className="h-px bg-brand-accent mt-4"></div>
+              <div className="h-px bg-brand-accent mt-4 max-w-[60%]"></div>
             </div>
           </div>
         )}

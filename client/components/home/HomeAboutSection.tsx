@@ -28,7 +28,7 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
               <h2 className="font-poppins text-[36px] md:text-[48px] font-bold text-black leading-tight">
                 When It Matters Most, We're<br />On Your Side.
               </h2>
-              <div className="h-px bg-brand-accent mt-4"></div>
+              <div className="h-px bg-brand-accent mt-4 max-w-[60%]"></div>
             </div>
           </div>
         )}
