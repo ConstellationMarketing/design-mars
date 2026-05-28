@@ -65,7 +65,7 @@ export default function Index() {
           <div className="flex flex-col items-center justify-center gap-5 md:gap-6">
             {/* H1 Title - BIGGEST at 96px on desktop, bold, white, 3-line */}
             {heroContent.h1Title && (
-              <h1 className="font-poppins text-[28px] sm:text-[48px] md:text-[96px] font-bold leading-[1.0] text-white max-w-4xl">
+              <h1 className="font-poppins text-[48px] sm:text-[48px] md:text-[96px] font-bold leading-[1.0] text-white max-w-4xl">
                 {heroContent.h1Title}
               </h1>
             )}
