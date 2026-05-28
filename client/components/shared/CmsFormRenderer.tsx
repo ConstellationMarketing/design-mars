@@ -146,7 +146,7 @@ function FormInner({
             disabled={isSubmitting}
             className="w-full bg-brand-accent border-2 border-black px-10 py-5 font-poppins text-[16px] md:text-[18px] font-normal uppercase text-black hover:bg-white hover:text-black hover:border-white transition-all duration-300 rounded-none h-auto flex items-center justify-center gap-2"
           >
-            {isSubmitting ? "SUBMITTING..." : (form.submit_button_text || "SUBMIT YOUR REQUEST")}
+            {isSubmitting ? "SUBMITTING..." : "SUBMIT YOUR REQUEST"}
             <span className="text-lg">›</span>
           </Button>
         </div>
