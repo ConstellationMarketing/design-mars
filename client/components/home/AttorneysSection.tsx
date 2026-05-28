@@ -136,9 +136,9 @@ export default function AttorneysSection({
             <div className="inline-block border-2 border-brand-accent p-1 hover:border-black transition-all duration-300 hover:bg-black">
               <Link
                 to={data.buttonLink}
-                className="group inline-block bg-brand-accent border-2 border-black px-10 py-5 hover:bg-black hover:border-black transition-all duration-300"
+                className="group inline-block bg-brand-accent border-2 border-black px-6 py-3 hover:bg-black hover:border-black transition-all duration-300"
               >
-                <span className="font-poppins text-[16px] md:text-[18px] font-normal uppercase text-black group-hover:text-white transition-colors duration-300">
+                <span className="font-poppins text-[18px] font-normal uppercase text-black group-hover:text-white transition-colors duration-300 whitespace-nowrap">
                   {data.buttonText}
                 </span>
                 <span className="ml-2 text-black group-hover:text-white transition-colors duration-300">›</span>
