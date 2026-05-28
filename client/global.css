@@ -184,32 +184,92 @@
     height: 0;
   }
 
-  /* 3D Card Flip Animation */
-  .practice-flip-card {
-    perspective: 1000px;
+  /* Practice Card Hover Effect */
+  .practice-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
   }
 
-  .practice-flip-card-front,
-  .practice-flip-card-back {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transition: transform 0.5s ease-in-out;
+  .practice-card .card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.4s ease;
   }
 
-  .practice-flip-card-front {
-    transform: rotateY(0deg);
+  .practice-card .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
+    transition: opacity 0.4s ease;
   }
 
-  .practice-flip-card-back {
-    transform: rotateY(180deg);
+  .practice-card .card-front {
+    position: relative;
+    z-index: 2;
+    transition: opacity 0.4s ease;
   }
 
-  .practice-flip-card:hover .practice-flip-card-front {
-    transform: rotateY(-180deg);
+  .practice-card .card-back {
+    position: absolute;
+    inset: 0;
+    background: #C9A84C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 3;
   }
 
-  .practice-flip-card:hover .practice-flip-card-back {
-    transform: rotateY(0deg);
+  .practice-card:hover .card-back {
+    opacity: 1;
+  }
+
+  .practice-card:hover .card-bg,
+  .practice-card:hover .card-overlay,
+  .practice-card:hover .card-front {
+    opacity: 0;
+  }
+
+  .card-back .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #111;
+    text-align: center;
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  .card-back .card-learn {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #111;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  .card-back .card-consult {
+    font-size: 14px;
+    font-weight: 400;
+    color: #111;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  .card-back .card-learn:hover,
+  .card-back .card-consult:hover {
+    text-decoration: underline;
   }
 
   /* Force Lucide icons to render as outlines */
