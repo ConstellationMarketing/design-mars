@@ -41,7 +41,7 @@ export default function AboutValuesSection({ content, headingTag = "h2" }: About
   const HeadingTag = headingTag as keyof JSX.IntrinsicElements;
 
   return (
-    <section className="w-full py-20 bg-white">
+    <section className="w-full py-20" style={{ backgroundColor: "#f5f5f5" }}>
       <div className="max-w-[1280px] mx-auto w-[95%] md:w-[90%]">
         {/* Title */}
         {content.valuesTitle && (
@@ -69,12 +69,12 @@ export default function AboutValuesSection({ content, headingTag = "h2" }: About
                 </div>
 
                 {/* Title */}
-                <h3 className="font-poppins text-[14px] md:text-[14px] font-bold text-black mb-4 tracking-widest uppercase">
+                <h3 className="font-poppins text-[20px] md:text-[20px] font-bold text-black mb-4 tracking-widest uppercase">
                   {item.title}
                 </h3>
 
                 {/* Description */}
-                <p className="font-poppins text-[14px] md:text-[14px] leading-[1.6] text-gray-700">
+                <p className="font-poppins text-[18px] md:text-[18px] leading-[1.6] text-gray-700">
                   {item.description}
                 </p>
               </div>
