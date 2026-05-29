@@ -119,14 +119,14 @@ export interface PreloadedPageDocument<TContent = unknown> {
 }
 
 export interface BlogHeroData {
-  h1Title: string;
+  headingTag?: string;
   headline: string;
   highlightedText: string;
   tagline: string;
   buttonText: string;
-  phone: string;
-  phoneLabel: string;
+  buttonUrl: string;
   backgroundImage?: string;
+  backgroundImageAlt: string;
 }
 
 export interface RecentPostsConfig {
@@ -226,14 +226,14 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
 };
 
 export const DEFAULT_BLOG_HERO: BlogHeroData = {
-  h1Title: "",
+  headingTag: "H1",
   headline: "BLOG",
-  highlightedText: "STAY INFORMED ABOUT YOUR RIGHTS",
   tagline: "LEGAL INSIGHTS & NEWS",
+  highlightedText: "STAY INFORMED ABOUT YOUR RIGHTS",
   buttonText: "ASK A QUESTION",
-  phone: "",
-  phoneLabel: "",
+  buttonUrl: "/contact/",
   backgroundImage: "",
+  backgroundImageAlt: "Blog hero background",
 };
 
 export const DEFAULT_RECENT_POSTS_CONFIG: RecentPostsConfig = {
@@ -859,14 +859,14 @@ export function shapeBlogIndexView(document: PreloadedPageDocument<ContentBlock[
 
     if (heroBlock?.type === "hero") {
       hero = {
-        h1Title: heroBlock.h1Title || DEFAULT_BLOG_HERO.h1Title,
+        headingTag: heroBlock.headingTag || DEFAULT_BLOG_HERO.headingTag,
         headline: heroBlock.headline || DEFAULT_BLOG_HERO.headline,
         highlightedText: heroBlock.highlightedText || DEFAULT_BLOG_HERO.highlightedText,
         tagline: heroBlock.tagline || DEFAULT_BLOG_HERO.tagline,
         buttonText: heroBlock.buttonText || DEFAULT_BLOG_HERO.buttonText,
-        phone: heroBlock.phone || DEFAULT_BLOG_HERO.phone,
-        phoneLabel: heroBlock.phoneLabel || DEFAULT_BLOG_HERO.phoneLabel,
+        buttonUrl: heroBlock.buttonUrl || DEFAULT_BLOG_HERO.buttonUrl,
         backgroundImage: heroBlock.backgroundImage,
+        backgroundImageAlt: heroBlock.backgroundImageAlt || DEFAULT_BLOG_HERO.backgroundImageAlt,
       };
     }
 
