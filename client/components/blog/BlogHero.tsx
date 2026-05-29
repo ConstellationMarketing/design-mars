@@ -46,7 +46,7 @@ export default function BlogHero({ hero }: BlogHeroProps) {
 
           {/* Tagline */}
           {hero.tagline && (
-            <p className="font-poppins text-[16px] md:text-[18px] text-brand-accent max-w-[700px] mt-2">
+            <p className="font-poppins text-[16px] text-brand-accent max-w-[700px] mt-2">
               {hero.tagline}
             </p>
           )}
