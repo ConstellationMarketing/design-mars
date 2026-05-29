@@ -17,6 +17,7 @@ export default function PracticeAreasEditor({ content, onChange }: PracticeAreas
       <PracticeAreasIntroSection content={content} update={update} />
       <PracticeAreasGridSection content={content} update={update} />
       <ValuesSection content={content} update={update} />
+      <PracticeItemsSection content={content} update={update} />
     </div>
   );
 }
@@ -209,6 +210,74 @@ function ValuesSection({ content, update }: SectionProps) {
               <div>
                 <Label>Description</Label>
                 <Textarea value={item.description} onChange={(e) => upd({ ...item, description: e.target.value })} />
+              </div>
+            </div>
+          )}
+        />
+      </div>
+    </Section>
+  );
+}
+
+/* ========== Section 5: Practice Items ========== */
+function PracticeItemsSection({ content, update }: SectionProps) {
+  const items = content.practiceItems;
+  const set = (patch: Partial<typeof items>) => update("practiceItems", patch as typeof items);
+
+  return (
+    <Section title="Practice Items" defaultOpen={false}>
+      <div className="grid gap-4">
+        <p className="text-xs text-gray-600 mb-2">Fully independent from Home page - alternating text/image layout</p>
+        <ArrayEditor
+          items={items}
+          onChange={(newItems) => set(newItems as any)}
+          itemLabel="Practice Item"
+          newItem={() => ({ id: Math.random().toString(36).substring(7), icon: "", title: "", description: "", bullets: ["", "", "", ""], image: "", learnMoreUrl: "", getHelpUrl: "" })}
+          renderItem={(item, _, upd) => (
+            <div className="grid gap-3">
+              <ImageField
+                label="Icon URL"
+                value={item.icon}
+                onChange={(url) => upd({ ...item, icon: url })}
+                folder="practice-areas"
+              />
+              <div>
+                <Label>Title</Label>
+                <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} />
+              </div>
+              <div>
+                <Label>Description</Label>
+                <Textarea value={item.description} onChange={(e) => upd({ ...item, description: e.target.value })} />
+              </div>
+              <div>
+                <Label>Bullet 1</Label>
+                <Input value={item.bullets[0] || ""} onChange={(e) => upd({ ...item, bullets: [e.target.value, item.bullets[1] || "", item.bullets[2] || "", item.bullets[3] || ""] })} />
+              </div>
+              <div>
+                <Label>Bullet 2</Label>
+                <Input value={item.bullets[1] || ""} onChange={(e) => upd({ ...item, bullets: [item.bullets[0] || "", e.target.value, item.bullets[2] || "", item.bullets[3] || ""] })} />
+              </div>
+              <div>
+                <Label>Bullet 3</Label>
+                <Input value={item.bullets[2] || ""} onChange={(e) => upd({ ...item, bullets: [item.bullets[0] || "", item.bullets[1] || "", e.target.value, item.bullets[3] || ""] })} />
+              </div>
+              <div>
+                <Label>Bullet 4</Label>
+                <Input value={item.bullets[3] || ""} onChange={(e) => upd({ ...item, bullets: [item.bullets[0] || "", item.bullets[1] || "", item.bullets[2] || "", e.target.value] })} />
+              </div>
+              <ImageField
+                label="Image"
+                value={item.image}
+                onChange={(url) => upd({ ...item, image: url })}
+                folder="practice-areas"
+              />
+              <div>
+                <Label>Learn More URL</Label>
+                <Input value={item.learnMoreUrl} onChange={(e) => upd({ ...item, learnMoreUrl: e.target.value })} />
+              </div>
+              <div>
+                <Label>Get Help Now URL</Label>
+                <Input value={item.getHelpUrl} onChange={(e) => upd({ ...item, getHelpUrl: e.target.value })} />
               </div>
             </div>
           )}

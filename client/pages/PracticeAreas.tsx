@@ -105,6 +105,47 @@ export default function PracticeAreas() {
         content={content.values}
         headingTag={content.headingTags?.["values.valuesTitle"]}
       />
+
+      {/* ========== Section 4: Practice Items ========== */}
+      <section style={{ background: '#f5f5f5', padding: '80px 0' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', display: 'flex', flexDirection: 'column', gap: '80px' }}>
+          {content.practiceItems && content.practiceItems.map((item, index) => (
+            <div key={item.id} style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '64px',
+              alignItems: 'center',
+              direction: index % 2 === 0 ? 'ltr' : 'rtl'
+            }}>
+              <div style={{ direction: 'ltr' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                  {item.icon && <img src={item.icon} alt="" style={{ width: '32px', height: '32px', filter: 'invert(72%) sepia(55%) saturate(500%) hue-rotate(5deg)' }} />}
+                  <h3 style={{ fontSize: '22px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>{item.title}</h3>
+                </div>
+                <p style={{ fontSize: '16px', color: '#444', marginBottom: '20px', lineHeight: '1.7' }}>{item.description}</p>
+                <ul style={{ listStyle: 'none', padding: 0, marginBottom: '28px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {item.bullets && item.bullets.map((bullet, i) => (
+                    <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', color: '#333' }}>
+                      <span style={{ color: '#C9A84C', fontWeight: '700' }}>›</span> {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <div style={{ display: 'flex', gap: '12px' }}>
+                  <a href={item.learnMoreUrl} style={{ padding: '10px 24px', border: '1px solid #C9A84C', color: '#111', textDecoration: 'none', fontSize: '14px', fontWeight: '600' }}>
+                    Learn More ›
+                  </a>
+                  <a href={item.getHelpUrl} style={{ padding: '10px 24px', background: '#C9A84C', color: '#111', textDecoration: 'none', fontSize: '14px', fontWeight: '700' }}>
+                    Get Help Now ›
+                  </a>
+                </div>
+              </div>
+              <div style={{ direction: 'ltr' }}>
+                {item.image && <img src={item.image} alt={item.title} style={{ width: '100%', height: '380px', objectFit: 'cover' }} />}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </Layout>
   );
 }

@@ -46,12 +46,25 @@ export interface PracticeAreasValuesContent {
   values: PracticeAreasValueItem[];
 }
 
+// ========== Section 4: Practice Items (alternating layout)
+export interface PracticeItem {
+  id: string;
+  icon: string;
+  title: string;
+  description: string;
+  bullets: string[];
+  image: string;
+  learnMoreUrl: string;
+  getHelpUrl: string;
+}
+
 // ========== Complete page structure
 export interface PracticeAreasPageContent {
   hero: PracticeAreasHeroContent;
   practiceAreasIntro: PracticeAreasIntroContent;
   practiceAreas: PracticeAreaItem[];
   values: PracticeAreasValuesContent;
+  practiceItems: PracticeItem[];
   headingTags?: Record<string, string>;
 }
 
@@ -164,4 +177,36 @@ export const defaultPracticeAreasContent: PracticeAreasPageContent = {
       },
     ],
   },
+  practiceItems: [
+    {
+      id: "1",
+      icon: "",
+      title: "Car Accidents",
+      description: "When you've been injured in a car accident, we fight to get you the compensation you deserve.",
+      bullets: ["Free consultation", "No fees until we win", "Maximum compensation", "24/7 availability"],
+      image: "",
+      learnMoreUrl: "/practice-areas/car-accidents/",
+      getHelpUrl: "/contact/"
+    },
+    {
+      id: "2",
+      icon: "",
+      title: "Truck Accidents",
+      description: "Commercial truck accidents often result in severe injuries. We have the expertise to take on trucking companies.",
+      bullets: ["Complex liability cases", "Corporate defendants", "Severe injury expertise", "Proven track record"],
+      image: "",
+      learnMoreUrl: "/practice-areas/truck-accidents/",
+      getHelpUrl: "/contact/"
+    },
+    {
+      id: "3",
+      icon: "",
+      title: "Motorcycle Accidents",
+      description: "Motorcyclists face unique challenges on the road. We fight for full compensation for medical bills and lost wages.",
+      bullets: ["Bias-free representation", "Specialized knowledge", "Comprehensive damages", "Experienced advocacy"],
+      image: "",
+      learnMoreUrl: "/practice-areas/motorcycle-accidents/",
+      getHelpUrl: "/contact/"
+    }
+  ],
 };
