@@ -119,11 +119,13 @@ export interface PreloadedPageDocument<TContent = unknown> {
 }
 
 export interface BlogHeroData {
-  highlightedText: string;
-  headline: string;
   h1Title: string;
+  headline: string;
+  highlightedText: string;
   tagline: string;
   buttonText: string;
+  phone: string;
+  phoneLabel: string;
   backgroundImage?: string;
   headingTags?: Record<string, string>;
 }
@@ -225,11 +227,13 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
 };
 
 export const DEFAULT_BLOG_HERO: BlogHeroData = {
-  highlightedText: "STAY INFORMED ABOUT YOUR RIGHTS",
-  headline: "BLOG",
   h1Title: "",
+  headline: "BLOG",
+  highlightedText: "STAY INFORMED ABOUT YOUR RIGHTS",
   tagline: "LEGAL INSIGHTS & NEWS",
   buttonText: "ASK A QUESTION",
+  phone: "",
+  phoneLabel: "",
   backgroundImage: "",
 };
 
@@ -856,11 +860,13 @@ export function shapeBlogIndexView(document: PreloadedPageDocument<ContentBlock[
 
     if (heroBlock?.type === "hero") {
       hero = {
-        highlightedText: heroBlock.highlightedText || DEFAULT_BLOG_HERO.highlightedText,
-        headline: heroBlock.headline || DEFAULT_BLOG_HERO.headline,
         h1Title: heroBlock.h1Title || DEFAULT_BLOG_HERO.h1Title,
+        headline: heroBlock.headline || DEFAULT_BLOG_HERO.headline,
+        highlightedText: heroBlock.highlightedText || DEFAULT_BLOG_HERO.highlightedText,
         tagline: heroBlock.tagline || DEFAULT_BLOG_HERO.tagline,
         buttonText: heroBlock.buttonText || DEFAULT_BLOG_HERO.buttonText,
+        phone: heroBlock.phone || DEFAULT_BLOG_HERO.phone,
+        phoneLabel: heroBlock.phoneLabel || DEFAULT_BLOG_HERO.phoneLabel,
         backgroundImage: heroBlock.backgroundImage,
       };
     }

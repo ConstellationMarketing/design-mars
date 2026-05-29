@@ -38,7 +38,7 @@ function useHeadingTag(content: { hero: BlogHeroData }, update: Updater) {
 
 /* ========== Section 1: Hero Section ========== */
 function HeroSection({ content, update }: SectionProps) {
-  const hero = content?.hero || {};
+  const hero = content.hero;
   const set = (patch: Partial<typeof hero>) => update("hero", { ...hero, ...patch });
   const ht = useHeadingTag(content, update);
 
@@ -48,26 +48,26 @@ function HeroSection({ content, update }: SectionProps) {
         <p className="text-xs text-gray-600 mb-2">Fully independent from Home, About, and Practice Areas pages</p>
         <HeadingField
           label="H1 Title"
-          value={hero.h1Title || ""}
+          value={hero.h1Title}
           onChange={(v) => set({ h1Title: v })}
           tag={ht.get("hero.h1Title")}
           onTagChange={(t) => ht.set("hero.h1Title", t)}
         />
         <div>
           <Label>Headline</Label>
-          <Input value={hero.headline || ""} onChange={(e) => set({ headline: e.target.value })} />
+          <Input value={hero.headline} onChange={(e) => set({ headline: e.target.value })} />
         </div>
         <div>
           <Label>Highlighted Text</Label>
-          <Input value={hero.highlightedText || ""} onChange={(e) => set({ highlightedText: e.target.value })} />
+          <Input value={hero.highlightedText} onChange={(e) => set({ highlightedText: e.target.value })} />
         </div>
         <div>
           <Label>Tagline</Label>
-          <Input value={hero.tagline || ""} onChange={(e) => set({ tagline: e.target.value })} />
+          <Input value={hero.tagline} onChange={(e) => set({ tagline: e.target.value })} />
         </div>
         <div>
           <Label>Button Text</Label>
-          <Input value={hero.buttonText || ""} onChange={(e) => set({ buttonText: e.target.value })} />
+          <Input value={hero.buttonText} onChange={(e) => set({ buttonText: e.target.value })} />
         </div>
         <ImageField
           label="Background Image"
@@ -75,6 +75,7 @@ function HeroSection({ content, update }: SectionProps) {
           onChange={(url) => set({ backgroundImage: url })}
           folder="blog"
         />
+        <p className="text-xs text-gray-500 italic">Phone number is managed in Site Settings &gt; Contact Info</p>
       </div>
     </Section>
   );
