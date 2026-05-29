@@ -91,9 +91,14 @@ export default function BlogSection({
                         to={`/blog/${post.slug}/`}
                         className="block py-5 group hover:text-brand-accent transition-colors duration-300"
                       >
-                        <h3 className="font-poppins font-semibold text-gray-700 group-hover:text-brand-accent text-[18px]">
+                        <h3 className="font-poppins font-semibold text-gray-700 group-hover:text-brand-accent text-[18px] mb-2">
                           {post.title}
                         </h3>
+                        {post.excerpt && (
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            {post.excerpt}
+                          </p>
+                        )}
                       </Link>
                     </div>
                   ))}
