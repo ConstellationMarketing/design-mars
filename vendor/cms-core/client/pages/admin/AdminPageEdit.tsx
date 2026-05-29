@@ -415,6 +415,19 @@ export default function AdminPageEdit() {
   const hasExplicitFaqSchema = parseSchemaTypes(page?.schema_type).includes("FAQPage");
 
   const handleStructuredContentChange = (content: unknown) => {
+    // Handle Blog page: convert { hero: ... } back to ContentBlock[] format
+    if (normalizedUrlPath === "/blog") {
+      const blogContent = content as unknown as { hero: BlogHeroData };
+      const blocks: ContentBlock[] = [
+        {
+          type: "hero",
+          ...blogContent.hero,
+        } as unknown as ContentBlock,
+      ];
+      updatePage({ content: blocks });
+      return;
+    }
+
     if (isPracticeAreaPage) {
       updatePage({
         content: content as ContentBlock[],
