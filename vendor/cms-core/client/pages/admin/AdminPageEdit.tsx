@@ -493,7 +493,7 @@ export default function AdminPageEdit() {
 
         <TabsContent value="content" className="mt-6">
           <div className="grid grid-cols-1 gap-6">
-            {page?.page_id === 5 ? (
+            {normalizedUrlPath === "/blog/" ? (
               <BlogEditor
                 content={normalizedContent as unknown as { hero: BlogHeroData }}
                 onSave={handleStructuredContentChange}
