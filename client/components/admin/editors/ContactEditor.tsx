@@ -147,6 +147,49 @@ function FormSection({ content, update }: SectionProps) {
           onTagChange={(t) => ht.set("form.heading", t)}
         />
         <RichTextField label="Subtext" value={form.subtext} onChange={(v) => set({ subtext: v })} />
+
+        <div className="border-t pt-6 mt-6">
+          <p className="text-sm font-semibold mb-4">Contact Form Section</p>
+          <div className="grid gap-4">
+            <div>
+              <Label>Form Title</Label>
+              <Input value={form.formTitle} onChange={(e) => set({ formTitle: e.target.value })} placeholder="e.g., Free Case Evaluation" />
+            </div>
+            <div>
+              <Label>Benefits Title</Label>
+              <Input value={form.benefitsTitle} onChange={(e) => set({ benefitsTitle: e.target.value })} placeholder="e.g., Why Contact Constellation Law?" />
+            </div>
+            <div>
+              <p className="text-xs text-gray-600 mb-2">Benefits</p>
+              <ArrayEditor
+                items={form.benefits}
+                onChange={(items) => set({ benefits: items })}
+                itemLabel="Benefit"
+                newItem={() => ({ id: Date.now().toString(), icon: '', title: '', description: '' })}
+                renderItem={(item, _, upd) => (
+                  <div className="grid gap-3">
+                    <div>
+                      <ImageField
+                        label="Icon"
+                        value={item.icon}
+                        onChange={(v) => upd({ ...item, icon: v })}
+                        folder="benefit-icons"
+                      />
+                    </div>
+                    <div>
+                      <Label>Title</Label>
+                      <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="e.g., Top-Rated Legal Team" />
+                    </div>
+                    <div>
+                      <Label>Description</Label>
+                      <Textarea value={item.description} onChange={(e) => upd({ ...item, description: e.target.value })} rows={2} placeholder="Benefit description" />
+                    </div>
+                  </div>
+                )}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </Section>
   );

@@ -224,84 +224,111 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* Contact Form & Office Hours Section */}
-      <div className="bg-brand-dark py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[8%]">
-            {/* Left Side - Contact Form */}
-            <div>
-              <div className="mb-[20px] md:mb-[30px]">
-                <RichText
-                  html={content.form.heading}
-                  className="font-poppins text-[32px] md:text-[40px] leading-tight text-black pb-[10px] font-bold"
-                />
-                {content.form.subtext && (
-                  <RichText
-                    html={content.form.subtext}
-                    className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black/80"
-                  />
-                )}
-              </div>
+      {/* Contact Form Section */}
+      <div className="bg-white" style={{ padding: '80px 24px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+          <style>{`
+            @media (max-width: 768px) {
+              .form-layout {
+                flex-direction: column !important;
+              }
+              .form-benefits {
+                padding-left: 0 !important;
+                padding-top: 24px;
+              }
+            }
+          `}</style>
+
+          <div className="form-layout" style={{ display: 'flex', flexDirection: 'row', alignItems: 'stretch', gap: '0' }}>
+            {/* Left Side - Dark Form */}
+            <div style={{ background: '#111', padding: '40px', flex: '1' }}>
+              <h2 style={{ color: '#fff', fontSize: '24px', fontWeight: '700', marginBottom: '24px', fontFamily: 'Poppins, sans-serif' }}>
+                {content.form.formTitle}
+              </h2>
               <ContactForm />
             </div>
 
-            {/* Right Side - Office Hours & Additional Info */}
-            <div className="space-y-[30px] md:space-y-[40px]">
-              {/* Office Hours */}
-              <div className="bg-brand-card border border-brand-border p-[30px] md:p-[40px]">
-                <div className="flex items-center gap-3 mb-[20px]">
-                  <div className="bg-brand-accent p-[15px]">
-                    <Clock
-                      className="w-[30px] h-[30px] text-black"
-                      strokeWidth={1.5}
-                    />
+            {/* Right Side - Benefits */}
+            <div className="form-benefits" style={{ flex: '1', paddingLeft: '48px' }}>
+              <h3 style={{ fontSize: '24px', fontWeight: '700', color: '#111', marginBottom: '32px', fontFamily: 'Poppins, sans-serif', margin: '0 0 32px 0' }}>
+                {content.form.benefitsTitle}
+              </h3>
+              {content.form.benefits.map((item) => (
+                <div key={item.id} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', marginBottom: '24px' }}>
+                  {item.icon && (
+                    <img src={item.icon} alt="" style={{ width: '48px', height: '48px', objectFit: 'contain', flexShrink: 0 }} />
+                  )}
+                  <div>
+                    <h4 style={{ fontSize: '16px', fontWeight: '700', color: '#111', margin: '0 0 6px 0', fontFamily: 'Poppins, sans-serif' }}>
+                      {item.title}
+                    </h4>
+                    <p style={{ fontSize: '14px', color: '#555', lineHeight: '1.6', margin: 0, fontFamily: 'Poppins, sans-serif' }}>
+                      {item.description}
+                    </p>
                   </div>
-                  <h3 className="font-poppins text-[24px] md:text-[28px] leading-tight text-black font-bold">
-                    {content.officeHours.heading}
-                  </h3>
                 </div>
-                <div className="space-y-[15px]">
-                  {officeHours.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-between items-center pb-[15px] border-b border-brand-border/50 last:border-0 last:pb-0"
-                    >
-                      <span className="font-poppins text-[16px] md:text-[18px] text-black/80">
-                        {item.day}
-                      </span>
-                      <span className="font-poppins text-[16px] md:text-[18px] text-brand-accent font-medium">
-                        {item.hours}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                {content.officeHours.note && (
-                  <div className="mt-[25px] pt-[25px] border-t border-brand-border/50">
-                    <RichText
-                      html={content.officeHours.note}
-                      className="font-poppins text-[14px] md:text-[16px] text-black/70 leading-[22px] md:leading-[24px]"
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Call to Action Boxes */}
-              <div className="space-y-[20px]">
-                <CallBox
-                  icon={Phone}
-                  title={phoneLabel}
-                  subtitle={phoneDisplay}
-                  phone={phoneNumber}
-                  className="w-full max-w-none"
-                />
-                <CallBox
-                  icon={Calendar}
-                  title={content.cta.secondaryButton.label}
-                  subtitle={content.cta.secondaryButton.sublabel}
-                  className="w-full max-w-none"
-                />
-              </div>
+              ))}
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Office Hours Section */}
+      <div className="bg-brand-dark py-[40px] md:py-[60px]">
+        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
+          {/* Office Hours */}
+          <div className="bg-brand-card border border-brand-border p-[30px] md:p-[40px] mb-[30px] md:mb-[40px] max-w-[600px]">
+            <div className="flex items-center gap-3 mb-[20px]">
+              <div className="bg-brand-accent p-[15px]">
+                <Clock
+                  className="w-[30px] h-[30px] text-black"
+                  strokeWidth={1.5}
+                />
+              </div>
+              <h3 className="font-poppins text-[24px] md:text-[28px] leading-tight text-black font-bold">
+                {content.officeHours.heading}
+              </h3>
+            </div>
+            <div className="space-y-[15px]">
+              {officeHours.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex justify-between items-center pb-[15px] border-b border-brand-border/50 last:border-0 last:pb-0"
+                >
+                  <span className="font-poppins text-[16px] md:text-[18px] text-black/80">
+                    {item.day}
+                  </span>
+                  <span className="font-poppins text-[16px] md:text-[18px] text-brand-accent font-medium">
+                    {item.hours}
+                  </span>
+                </div>
+              ))}
+            </div>
+            {content.officeHours.note && (
+              <div className="mt-[25px] pt-[25px] border-t border-brand-border/50">
+                <RichText
+                  html={content.officeHours.note}
+                  className="font-poppins text-[14px] md:text-[16px] text-black/70 leading-[22px] md:leading-[24px]"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Call to Action Boxes */}
+          <div className="space-y-[20px] max-w-[600px]">
+            <CallBox
+              icon={Phone}
+              title={phoneLabel}
+              subtitle={phoneDisplay}
+              phone={phoneNumber}
+              className="w-full max-w-none"
+            />
+            <CallBox
+              icon={Calendar}
+              title={content.cta.secondaryButton.label}
+              subtitle={content.cta.secondaryButton.sublabel}
+              className="w-full max-w-none"
+            />
           </div>
         </div>
       </div>

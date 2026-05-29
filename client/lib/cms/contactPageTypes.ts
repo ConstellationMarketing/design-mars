@@ -24,9 +24,19 @@ export interface ContactMethodsContent {
   heading?: string; // Section heading "Get In Touch Today"
 }
 
+export interface ContactFormBenefit {
+  id: string;
+  icon: string; // Image URL from media library
+  title: string;
+  description: string;
+}
+
 export interface ContactFormContent {
   heading: string; // "Send Us a Message"
   subtext: string; // Description below heading
+  formTitle: string; // "Free Case Evaluation"
+  benefitsTitle: string; // "Why Contact Constellation Law?"
+  benefits: ContactFormBenefit[];
 }
 
 export interface OfficeHoursItem {
@@ -105,6 +115,14 @@ export const defaultContactContent: ContactPageContent = {
   form: {
     heading: "",
     subtext: "",
+    formTitle: "Free Case Evaluation",
+    benefitsTitle: "Why Contact Constellation Law?",
+    benefits: [
+      { id: '1', icon: '', title: 'Top-Rated Legal Team', description: 'Our attorneys have been recognized for excellence and have a proven track record of success in personal injury cases.' },
+      { id: '2', icon: '', title: '24/7 Availability', description: "Accidents don't happen on a schedule. We're available around the clock when you need it most." },
+      { id: '3', icon: '', title: 'No Fees Until We Win', description: "You don't pay attorney fees unless we successfully recover compensation. Your consultation is completely free." },
+      { id: '4', icon: '', title: 'Personal Attention', description: "Every client receives personalized attention from our experienced attorneys. You're not just a case number to us." }
+    ],
   },
   officeHours: {
     heading: "",
