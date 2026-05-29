@@ -42,6 +42,18 @@ export default function FeaturedArticle({ sectionTitle }: FeaturedArticleProps) 
 
   return (
     <section style={{ background: "#f5f5f5", padding: "80px 24px" }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .featured-article-wrapper {
+            flex-direction: column !important;
+          }
+          .featured-article-content {
+            padding-left: 0 !important;
+            padding-top: 24px;
+          }
+        }
+      `}</style>
+
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         {/* Section Heading */}
         <div style={{ textAlign: "center", marginBottom: "50px" }}>
@@ -65,15 +77,18 @@ export default function FeaturedArticle({ sectionTitle }: FeaturedArticleProps) 
         </div>
 
         {/* Featured Post - Two Column Layout */}
-        <div style={{
-          display: "flex",
-          gap: "48px",
-          alignItems: "stretch",
-          "@media (max-width: 768px)": {
-            flexDirection: "column",
-            gap: "0"
-          }
-        }} className="flex gap-12 lg:gap-12 md:flex-col">
+        <div
+          className="featured-article-wrapper"
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "48px",
+            maxWidth: "1280px",
+            margin: "0 auto",
+            padding: "0 24px"
+          }}
+        >
           {/* Left - Image */}
           <div style={{
             position: "relative",
@@ -130,14 +145,16 @@ export default function FeaturedArticle({ sectionTitle }: FeaturedArticleProps) 
           </div>
 
           {/* Right - Content */}
-          <div style={{
-            flex: "1",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            gap: "16px",
-            paddingLeft: "48px"
-          }} className="md:pl-0 md:pt-6">
+          <div
+            className="featured-article-content"
+            style={{
+              flex: "1",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              gap: "16px"
+            }}
+          >
             {/* Title */}
             <h3 style={{
               fontSize: "24px",
