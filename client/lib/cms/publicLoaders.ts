@@ -294,8 +294,7 @@ const CONTACT_CONTENT_KEYS: (keyof ContactPageContent)[] = [
   "contactMethods",
   "form",
   "officeHours",
-  "process",
-  "visitOffice",
+  "officeInfo",
   "cta",
 ];
 
@@ -670,18 +669,18 @@ export function mergeContactContentWithDefaults(cmsContent: Partial<ContactPageC
       ...cmsContent.contactMethods,
       methods: cmsContent.contactMethods?.methods?.length ? cmsContent.contactMethods.methods : defaults.contactMethods.methods,
     },
-    form: { ...defaults.form, ...cmsContent.form },
+    form: {
+      ...defaults.form,
+      ...cmsContent.form,
+      benefits: cmsContent.form?.benefits?.length ? cmsContent.form.benefits : defaults.form.benefits,
+    },
     officeHours: {
       ...defaults.officeHours,
       ...cmsContent.officeHours,
-      items: cmsContent.officeHours?.items?.length ? cmsContent.officeHours.items : defaults.officeHours.items,
+      hours: cmsContent.officeHours?.hours?.length ? cmsContent.officeHours.hours : defaults.officeHours.hours,
+      expectations: cmsContent.officeHours?.expectations?.length ? cmsContent.officeHours.expectations : defaults.officeHours.expectations,
     },
-    process: {
-      ...defaults.process,
-      ...cmsContent.process,
-      steps: cmsContent.process?.steps?.length ? cmsContent.process.steps : defaults.process.steps,
-    },
-    visitOffice: { ...defaults.visitOffice, ...cmsContent.visitOffice },
+    officeInfo: { ...defaults.officeInfo, ...cmsContent.officeInfo },
     cta: {
       ...defaults.cta,
       ...cmsContent.cta,
