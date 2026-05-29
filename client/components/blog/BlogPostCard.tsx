@@ -154,21 +154,16 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
         </div>
 
         {/* Read More Link */}
-        <a href={`/blog/${cleanSlug}/`} style={{
+        <span style={{
           color: "#C9A84C",
           fontWeight: "600",
           fontSize: "14px",
-          textDecoration: "none",
-          transition: "color 0.3s ease"
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.color = "#d1ab58";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.color = "#C9A84C";
+          cursor: "pointer",
+          transition: "color 0.3s ease",
+          display: "inline-block"
         }}>
           Read More →
-        </a>
+        </span>
       </div>
     </Link>
   );
