@@ -67,7 +67,7 @@ export default function AboutUs() {
 
             {/* H1 Title - small yellow text on bottom */}
             {heroContent.h1Title && (
-              <h1 className="font-poppins text-[14px] md:text-[15px] font-normal tracking-widest uppercase text-brand-accent max-w-[60%] mx-auto text-center" style={{ marginTop: 0 }}>
+              <h1 className="font-poppins text-[16px] font-normal tracking-widest uppercase text-brand-accent max-w-[60%] mx-auto text-center" style={{ marginTop: 0 }}>
                 {heroContent.h1Title}
               </h1>
             )}
