@@ -1,9 +1,9 @@
-import type { BlogHeroData } from "@site/lib/cms/publicLoaders";
+import type { BlogHeroData, RecentPostsConfig } from "@site/lib/cms/publicLoaders";
 import { Section, ImageField, HeadingField, Input, Label } from "./EditorShared";
 
 interface BlogEditorProps {
-  content: { hero: BlogHeroData };
-  onSave: (c: { hero: BlogHeroData }) => void;
+  content: { hero: BlogHeroData; recentPosts: RecentPostsConfig };
+  onSave: (c: { hero: BlogHeroData; recentPosts: RecentPostsConfig }) => void;
 }
 
 export default function BlogEditor({ content, onSave }: BlogEditorProps) {
@@ -14,6 +14,7 @@ export default function BlogEditor({ content, onSave }: BlogEditorProps) {
   return (
     <div className="space-y-6">
       <HeroSection content={content} update={update} />
+      <RecentPostsSection content={content} update={update} />
     </div>
   );
 }
@@ -22,7 +23,7 @@ export default function BlogEditor({ content, onSave }: BlogEditorProps) {
 type Updater = <K extends keyof typeof content>(key: K, value: any) => void;
 
 interface SectionProps {
-  content: { hero: BlogHeroData };
+  content: { hero: BlogHeroData; recentPosts: RecentPostsConfig };
   update: Updater;
 }
 
@@ -76,6 +77,32 @@ function HeroSection({ content, update }: SectionProps) {
           folder="blog"
         />
         <p className="text-xs text-gray-500 italic">Phone number is managed in Site Settings &gt; Contact Info</p>
+      </div>
+    </Section>
+  );
+}
+
+/* ========== Section 2: Recent Posts Section ========== */
+function RecentPostsSection({ content, update }: SectionProps) {
+  const recentPosts = content.recentPosts;
+  const set = (patch: Partial<typeof recentPosts>) => update("recentPosts", { ...recentPosts, ...patch });
+
+  return (
+    <Section title="Recent Posts Section" defaultOpen={false}>
+      <div className="grid gap-4">
+        <p className="text-xs text-gray-600 mb-2">Configure the recent blog posts display</p>
+        <div>
+          <Label>Section Label</Label>
+          <Input value={recentPosts.sectionLabel} onChange={(e) => set({ sectionLabel: e.target.value })} placeholder="e.g., LATEST INSIGHTS" />
+        </div>
+        <div>
+          <Label>Heading</Label>
+          <Input value={recentPosts.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="e.g., Recent Blog Posts" />
+        </div>
+        <div>
+          <Label>Post Count</Label>
+          <Input type="number" value={recentPosts.postCount} onChange={(e) => set({ postCount: parseInt(e.target.value) || 6 })} min="1" max="20" />
+        </div>
       </div>
     </Section>
   );

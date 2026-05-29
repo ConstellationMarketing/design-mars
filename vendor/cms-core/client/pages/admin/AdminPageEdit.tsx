@@ -15,8 +15,8 @@ import {
   normalizePracticeAreaContentSections,
 } from "@site/lib/cms/practiceAreaPageTypes";
 import type { PracticeAreaPageContent } from "@site/lib/cms/practiceAreaPageTypes";
-import { DEFAULT_BLOG_HERO } from "@site/lib/cms/publicLoaders";
-import type { BlogHeroData } from "@site/lib/cms/publicLoaders";
+import { DEFAULT_BLOG_HERO, DEFAULT_RECENT_POSTS_CONFIG } from "@site/lib/cms/publicLoaders";
+import type { BlogHeroData, RecentPostsConfig } from "@site/lib/cms/publicLoaders";
 import { clearPracticeAreaPageCache } from "@site/hooks/usePracticeAreaPageContent";
 import BlogEditor from "@site/components/admin/editors/BlogEditor";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
@@ -349,15 +349,21 @@ export default function AdminPageEdit() {
       const blocks = page?.content as ContentBlock[] | undefined;
       if (Array.isArray(blocks)) {
         const heroBlock = blocks.find((b) => b.type === "hero");
+        const recentPostsBlock = blocks.find((b) => b.type === "recent-posts");
         return {
           hero: mergeWithDefaults(
             heroBlock as unknown as Partial<BlogHeroData>,
             DEFAULT_BLOG_HERO
+          ),
+          recentPosts: mergeWithDefaults(
+            recentPostsBlock as unknown as Partial<RecentPostsConfig>,
+            DEFAULT_RECENT_POSTS_CONFIG
           )
         };
       }
       return {
-        hero: DEFAULT_BLOG_HERO
+        hero: DEFAULT_BLOG_HERO,
+        recentPosts: DEFAULT_RECENT_POSTS_CONFIG
       };
     }
 
@@ -415,13 +421,17 @@ export default function AdminPageEdit() {
   const hasExplicitFaqSchema = parseSchemaTypes(page?.schema_type).includes("FAQPage");
 
   const handleStructuredContentChange = (content: unknown) => {
-    // Handle Blog page: convert { hero: ... } back to ContentBlock[] format
+    // Handle Blog page: convert { hero, recentPosts } back to ContentBlock[] format
     if (normalizedUrlPath === "/blog") {
-      const blogContent = content as unknown as { hero: BlogHeroData };
+      const blogContent = content as unknown as { hero: BlogHeroData; recentPosts: RecentPostsConfig };
       const blocks: ContentBlock[] = [
         {
           type: "hero",
           ...blogContent.hero,
+        } as unknown as ContentBlock,
+        {
+          type: "recent-posts",
+          ...blogContent.recentPosts,
         } as unknown as ContentBlock,
       ];
       updatePage({ content: blocks });
