@@ -241,7 +241,7 @@ export default function ContactPage() {
 
           <div className="form-layout" style={{ display: 'flex', flexDirection: 'row', alignItems: 'stretch', gap: '0' }}>
             {/* Left Side - Dark Form */}
-            <div style={{ background: '#111', padding: '40px', flex: '1' }}>
+            <div style={{ background: '#111', padding: '40px', flex: '1', boxShadow: '8px 8px 0px #d1ab58' }}>
               <div style={{ marginBottom: '32px' }}>
                 <h2 style={{ color: '#fff', fontSize: '30px', fontWeight: '700', marginBottom: '12px', fontFamily: 'Poppins, sans-serif', margin: '0 0 12px 0' }}>
                   {content.form.formTitle}
