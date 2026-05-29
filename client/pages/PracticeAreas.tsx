@@ -120,21 +120,21 @@ export default function PracticeAreas() {
               <div style={{ direction: 'ltr' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                   {item.icon && <img src={item.icon} alt="" style={{ width: '32px', height: '32px', filter: 'invert(72%) sepia(55%) saturate(500%) hue-rotate(5deg)' }} />}
-                  <h3 style={{ fontSize: '22px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>{item.title}</h3>
+                  <h3 style={{ fontSize: '30px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>{item.title}</h3>
                 </div>
-                <p style={{ fontSize: '16px', color: '#444', marginBottom: '20px', lineHeight: '1.7' }}>{item.description}</p>
+                <p style={{ fontSize: '18px', color: '#444', marginBottom: '20px', lineHeight: '1.7' }}>{item.description}</p>
                 <ul style={{ listStyle: 'none', padding: 0, marginBottom: '28px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {item.bullets && item.bullets.map((bullet, i) => (
-                    <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', color: '#333' }}>
+                    <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '16px', color: '#333' }}>
                       <span style={{ color: '#C9A84C', fontWeight: '700' }}>›</span> {bullet}
                     </li>
                   ))}
                 </ul>
                 <div style={{ display: 'flex', gap: '12px' }}>
-                  <a href={item.learnMoreUrl} style={{ padding: '10px 24px', border: '1px solid #C9A84C', color: '#111', textDecoration: 'none', fontSize: '14px', fontWeight: '600' }}>
+                  <a href={item.learnMoreUrl} style={{ padding: '10px 24px', border: '2px solid #C9A84C', color: '#111', background: 'transparent', textDecoration: 'none', fontSize: '16px', fontWeight: '600', letterSpacing: '1px', cursor: 'pointer' }}>
                     Learn More ›
                   </a>
-                  <a href={item.getHelpUrl} style={{ padding: '10px 24px', background: '#C9A84C', color: '#111', textDecoration: 'none', fontSize: '14px', fontWeight: '700' }}>
+                  <a href={item.getHelpUrl} style={{ padding: '10px 24px', border: '2px solid #C9A84C', background: '#C9A84C', color: '#111', textDecoration: 'none', fontSize: '16px', fontWeight: '700', letterSpacing: '1px', cursor: 'pointer' }}>
                     Get Help Now ›
                   </a>
                 </div>
