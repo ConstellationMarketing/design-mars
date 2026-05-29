@@ -135,9 +135,42 @@ function FormInner({
         />
       ))}
 
-      {form.fields.map((field) => (
-        <FormField key={field.id} field={field} />
-      ))}
+      {(() => {
+        const fields = form.fields;
+        const firstNameIndex = fields.findIndex((f) => f.name === "first-name" || f.name === "firstName");
+        const lastNameIndex = fields.findIndex((f) => f.name === "last-name" || f.name === "lastName");
+
+        if (firstNameIndex !== -1 && lastNameIndex !== -1 && Math.abs(firstNameIndex - lastNameIndex) === 1) {
+          // Group first and last name fields
+          const [firstIdx, lastIdx] = firstNameIndex < lastNameIndex ? [firstNameIndex, lastNameIndex] : [lastNameIndex, firstNameIndex];
+          const firstField = fields[firstIdx];
+          const lastField = fields[lastIdx];
+
+          return (
+            <>
+              {fields.slice(0, firstIdx).map((field) => (
+                <FormField key={field.id} field={field} />
+              ))}
+              <div style={{ display: 'flex', gap: '12px' }}>
+                <div style={{ flex: '1' }}>
+                  <FormField key={firstField.id} field={firstField} />
+                </div>
+                <div style={{ flex: '1' }}>
+                  <FormField key={lastField.id} field={lastField} />
+                </div>
+              </div>
+              {fields.slice(lastIdx + 1).map((field) => (
+                <FormField key={field.id} field={field} />
+              ))}
+            </>
+          );
+        }
+
+        // Default: render all fields normally
+        return fields.map((field) => (
+          <FormField key={field.id} field={field} />
+        ));
+      })()}
 
       <div>
         <div className="inline-block border-2 border-brand-accent p-1 w-full hover:border-black transition-all duration-300 hover:bg-white">
