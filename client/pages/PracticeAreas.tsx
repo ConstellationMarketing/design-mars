@@ -76,14 +76,19 @@ export default function PracticeAreas() {
               </p>
             )}
 
-            {/* CTA Button */}
+            {/* CTA Button wrapper */}
             {content.hero.buttonText && (
-              <a
-                href={`tel:${phoneNumber.replace(/\D/g, "")}`}
-                className="mt-8 md:mt-10 bg-brand-accent px-8 py-4 font-poppins text-[18px] font-bold text-black hover:bg-brand-accent-dark transition-colors inline-block"
-              >
-                {content.hero.buttonText}
-              </a>
+              <div className="border-2 border-brand-accent p-1 hover:border-black transition-all duration-300 hover:bg-white inline-block max-w-[80vw] md:max-w-none" style={{ marginTop: '30px', marginBottom: '70px' }}>
+                {/* CTA Button */}
+                <button
+                  onClick={() => window.location.href = '#contact-section'}
+                  className="font-poppins text-[18px] font-normal uppercase text-black bg-brand-accent px-6 py-3 border-2 border-black hover:bg-white hover:text-black hover:border-white transition-all duration-300 flex items-center justify-center gap-3 whitespace-nowrap"
+                  style={{ width: '100%' }}
+                >
+                  {content.hero.buttonText}
+                  <span className="text-xl">›</span>
+                </button>
+              </div>
             )}
           </div>
         </div>
