@@ -242,15 +242,18 @@ export default function ContactPage() {
           <div className="form-layout" style={{ display: 'flex', flexDirection: 'row', alignItems: 'stretch', gap: '0' }}>
             {/* Left Side - Dark Form */}
             <div style={{ background: '#111', padding: '40px', flex: '1' }}>
-              <h2 style={{ color: '#fff', fontSize: '24px', fontWeight: '700', marginBottom: '24px', fontFamily: 'Poppins, sans-serif' }}>
-                {content.form.formTitle}
-              </h2>
+              <div style={{ marginBottom: '32px' }}>
+                <h2 style={{ color: '#fff', fontSize: '30px', fontWeight: '700', marginBottom: '12px', fontFamily: 'Poppins, sans-serif', margin: '0 0 12px 0' }}>
+                  {content.form.formTitle}
+                </h2>
+                <div style={{ width: '80px', height: '1px', background: '#d1ab58' }}></div>
+              </div>
               <ContactForm />
             </div>
 
             {/* Right Side - Benefits */}
             <div className="form-benefits" style={{ flex: '1', paddingLeft: '48px' }}>
-              <h3 style={{ fontSize: '24px', fontWeight: '700', color: '#111', marginBottom: '32px', fontFamily: 'Poppins, sans-serif', margin: '0 0 32px 0' }}>
+              <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#111', marginBottom: '32px', fontFamily: 'Poppins, sans-serif', margin: '0 0 32px 0' }}>
                 {content.form.benefitsTitle}
               </h3>
               {content.form.benefits.map((item) => (
@@ -262,7 +265,7 @@ export default function ContactPage() {
                     <h4 style={{ fontSize: '16px', fontWeight: '700', color: '#111', margin: '0 0 6px 0', fontFamily: 'Poppins, sans-serif' }}>
                       {item.title}
                     </h4>
-                    <p style={{ fontSize: '14px', color: '#555', lineHeight: '1.6', margin: 0, fontFamily: 'Poppins, sans-serif' }}>
+                    <p style={{ fontSize: '18px', color: '#555', lineHeight: '1.6', margin: 0, fontFamily: 'Poppins, sans-serif' }}>
                       {item.description}
                     </p>
                   </div>
