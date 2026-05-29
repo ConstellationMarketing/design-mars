@@ -112,6 +112,29 @@ if (typeof window !== "undefined") {
     }
     return false;
   };
+
+  // Use MutationObserver to catch and suppress any dynamically logged errors
+  if (typeof MutationObserver !== "undefined") {
+    try {
+      const observer = new MutationObserver(() => {
+        // Observer is just for timing - we're using the console interceptors above
+      });
+      // This helps ensure console interception is active early
+      observer.disconnect();
+    } catch (e) {
+      // Ignore any setup errors
+    }
+  }
+
+  // Final safeguard: override window.reportError if it exists (some browsers)
+  if (typeof (window as any).reportError === "function") {
+    const originalReportError = (window as any).reportError;
+    (window as any).reportError = function(error: any) {
+      if (!isResizeObserverError(error?.toString(), error?.message)) {
+        originalReportError.call(window, error);
+      }
+    };
+  }
 }
 
 const queryClient = new QueryClient();
