@@ -108,16 +108,31 @@ export default function PracticeAreas() {
 
       {/* ========== Section 4: Practice Items ========== */}
       <section style={{ background: '#f5f5f5', padding: '80px 0' }}>
+        <style>{`
+          @media (max-width: 768px) {
+            .practice-item-grid {
+              grid-template-columns: 1fr !important;
+              direction: ltr !important;
+              gap: 24px !important;
+            }
+            .practice-item-image {
+              order: -1 !important;
+            }
+            .practice-item-content {
+              direction: ltr !important;
+            }
+          }
+        `}</style>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', display: 'flex', flexDirection: 'column', gap: '80px' }}>
           {content.practiceItems && content.practiceItems.map((item, index) => (
-            <div key={item.id} style={{
+            <div key={item.id} className="practice-item-grid" style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
               gap: '64px',
               alignItems: 'center',
               direction: index % 2 === 0 ? 'ltr' : 'rtl'
             }}>
-              <div style={{ direction: 'ltr' }}>
+              <div className="practice-item-content" style={{ direction: 'ltr' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                   {item.icon && <img src={item.icon} alt="" style={{ width: '32px', height: '32px' }} />}
                   <h3 style={{ fontSize: '30px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>{item.title}</h3>
@@ -130,7 +145,7 @@ export default function PracticeAreas() {
                     </li>
                   ))}
                 </ul>
-                <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+                <div style={{ display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap' }}>
                   <a
                     href={item.learnMoreUrl}
                     onMouseEnter={e => {
@@ -165,7 +180,7 @@ export default function PracticeAreas() {
                   </a>
                 </div>
               </div>
-              <div style={{ direction: 'ltr' }}>
+              <div className="practice-item-image" style={{ direction: 'ltr' }}>
                 {item.image && <img src={item.image} alt={item.title} style={{ width: '100%', height: '380px', objectFit: 'cover' }} />}
               </div>
             </div>
