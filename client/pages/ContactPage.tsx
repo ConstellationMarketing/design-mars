@@ -253,7 +253,7 @@ export default function ContactPage() {
 
             {/* Right Side - Benefits */}
             <div className="form-benefits" style={{ flex: '1', paddingLeft: '48px' }}>
-              <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#111', marginBottom: '32px', fontFamily: 'Poppins, sans-serif', margin: '0 0 32px 0' }}>
+              <h3 style={{ fontSize: '30px', fontWeight: '700', color: '#111', marginBottom: '32px', fontFamily: 'Poppins, sans-serif', margin: '0 0 32px 0' }}>
                 {content.form.benefitsTitle}
               </h3>
               {content.form.benefits.map((item, index) => (
