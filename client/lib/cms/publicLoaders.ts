@@ -718,6 +718,7 @@ export function mergePracticeAreasContentWithDefaults(cmsContent: Partial<Practi
       ...cmsContent.values,
       values: cmsContent.values?.values?.length ? cmsContent.values.values : defaults.values.values,
     },
+    practiceItems: cmsContent.practiceItems?.length ? cmsContent.practiceItems : defaults.practiceItems,
     headingTags: cmsContent.headingTags ?? defaults.headingTags,
   };
 }
