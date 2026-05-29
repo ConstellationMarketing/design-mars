@@ -226,7 +226,7 @@ function PracticeItemsSection({ content, update }: SectionProps) {
   const set = (patch: Partial<typeof items>) => update("practiceItems", patch as typeof items);
 
   return (
-    <Section title="Practice Items" defaultOpen={false}>
+    <Section title="Practice Items" defaultOpen={true}>
       <div className="grid gap-4">
         <p className="text-xs text-gray-600 mb-2">Fully independent from Home page - alternating text/image layout</p>
         <ArrayEditor
