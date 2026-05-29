@@ -62,12 +62,15 @@ export default function RecentBlogPosts({ data }: RecentBlogPostsProps) {
     <section className="bg-white py-[40px] md:py-[60px]">
       <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
         <div className="text-center mb-[30px] md:mb-[50px]">
-          <p className="font-poppins text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-brand-accent mb-[10px]">
-            {data.sectionLabel}
-          </p>
-          <h2 className="font-poppins font-bold text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black">
-            {data.heading}
-          </h2>
+          <div className="inline-block">
+            <p className="font-poppins text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-brand-accent mb-[10px]">
+              {data.sectionLabel}
+            </p>
+            <h2 className="font-poppins font-bold text-[36px] md:text-[48px] leading-tight md:leading-[54px] text-black">
+              {data.heading}
+            </h2>
+            <div className="h-px bg-brand-accent mt-4 max-w-[60%] mx-auto"></div>
+          </div>
         </div>
 
         {loading ? (
