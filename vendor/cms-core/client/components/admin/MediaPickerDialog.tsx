@@ -101,7 +101,18 @@ export default function MediaPickerDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl max-h-[80vh] flex flex-col">
+      <DialogContent
+        className="max-w-3xl max-h-[80vh] flex flex-col"
+        style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          maxHeight: '80vh',
+          overflowY: 'auto',
+          zIndex: 9999
+        }}
+      >
         <DialogHeader>
           <DialogTitle>Browse Media Library</DialogTitle>
         </DialogHeader>
