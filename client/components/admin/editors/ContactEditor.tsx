@@ -16,9 +16,7 @@ export default function ContactEditor({ content, onChange }: ContactEditorProps)
       <HeroSection content={content} update={update} />
       <ContactMethodsSection content={content} update={update} />
       <FormSection content={content} update={update} />
-      <OfficeHoursSection content={content} update={update} />
-      <ProcessSection content={content} update={update} />
-      <VisitOfficeSection content={content} update={update} />
+      <OfficeHoursInfoSection content={content} update={update} />
       <GlobalSectionInfo sectionTitle="Call to Action" managedIn="About Us" />
     </div>
   );
@@ -196,118 +194,107 @@ function FormSection({ content, update }: SectionProps) {
 }
 
 /* ------------------------------------------------------------------ */
-function OfficeHoursSection({ content, update }: SectionProps) {
+function OfficeHoursInfoSection({ content, update }: SectionProps) {
   const oh = content.officeHours;
-  const set = (patch: Partial<typeof oh>) => update("officeHours", { ...oh, ...patch });
-  const ht = useHeadingTag(content, update);
+  const oi = content.officeInfo;
+  const setOh = (patch: Partial<typeof oh>) => update("officeHours", { ...oh, ...patch });
+  const setOi = (patch: Partial<typeof oi>) => update("officeInfo", { ...oi, ...patch });
 
   return (
-    <Section title="Office Hours" defaultOpen={false}>
-      <div className="grid gap-4">
-        <HeadingField
-          label="Heading"
-          value={oh.heading}
-          onChange={(v) => set({ heading: v })}
-          tag={ht.get("officeHours.heading")}
-          onTagChange={(t) => ht.set("officeHours.heading", t)}
-        />
-        <ArrayEditor
-          items={oh.items}
-          onChange={(items) => set({ items })}
-          itemLabel="Schedule"
-          newItem={() => ({ day: "", hours: "" })}
-          renderItem={(item, _, upd) => (
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <Label>Day</Label>
-                <Input value={item.day} onChange={(e) => upd({ ...item, day: e.target.value })} />
-              </div>
-              <div>
-                <Label>Hours</Label>
-                <Input value={item.hours} onChange={(e) => upd({ ...item, hours: e.target.value })} />
-              </div>
+    <Section title="Office Hours & Information" defaultOpen={false}>
+      <div className="grid gap-6">
+        {/* Office Hours Left Column */}
+        <div className="border-b pb-6">
+          <p className="text-sm font-semibold mb-4">Left Column: Office Hours</p>
+          <div className="grid gap-4">
+            <div>
+              <Label>Section Title</Label>
+              <Input value={oh.sectionTitle} onChange={(e) => setOh({ sectionTitle: e.target.value })} placeholder="e.g., Office Hours & Information" />
             </div>
-          )}
-        />
-        <div>
-          <Label>Note</Label>
-          <Textarea value={oh.note} onChange={(e) => set({ note: e.target.value })} rows={2} />
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-function ProcessSection({ content, update }: SectionProps) {
-  const p = content.process;
-  const set = (patch: Partial<typeof p>) => update("process", { ...p, ...patch });
-  const ht = useHeadingTag(content, update);
-
-  return (
-    <Section title="Process Steps" defaultOpen={false}>
-      <div className="grid gap-4">
-        <HeadingField
-          label="Section Heading"
-          value={p.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={ht.get("process.sectionLabel")}
-          onTagChange={(t) => ht.set("process.sectionLabel", t)}
-        />
-        <div>
-          <Label>Subtitle</Label>
-          <Input value={p.heading} onChange={(e) => set({ heading: e.target.value })} />
-        </div>
-        <div>
-          <Label>Subtitle</Label>
-          <Input value={p.subtitle} onChange={(e) => set({ subtitle: e.target.value })} />
-        </div>
-        <ArrayEditor
-          items={p.steps}
-          onChange={(items) => set({ steps: items })}
-          itemLabel="Step"
-          newItem={() => ({ number: String(p.steps.length + 1), title: "", description: "" })}
-          renderItem={(item, _, upd) => (
-            <div className="grid gap-3">
-              <div className="grid grid-cols-4 gap-3">
-                <div>
-                  <Label>Number</Label>
-                  <Input value={item.number} onChange={(e) => upd({ ...item, number: e.target.value })} />
-                </div>
-                <div className="col-span-3">
-                  <Label>Title</Label>
-                  <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} />
-                </div>
-              </div>
-              <RichTextField label="Description" value={item.description} onChange={(v) => upd({ ...item, description: v })} />
+            <div>
+              <p className="text-xs text-gray-600 mb-2">Hours</p>
+              <ArrayEditor
+                items={oh.hours}
+                onChange={(items) => setOh({ hours: items })}
+                itemLabel="Hour Entry"
+                newItem={() => ({ day: "", time: "", highlight: false })}
+                renderItem={(item, _, upd) => (
+                  <div className="grid gap-3">
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <Label>Day/Label</Label>
+                        <Input value={item.day} onChange={(e) => upd({ ...item, day: e.target.value })} placeholder="e.g., Monday - Friday" />
+                      </div>
+                      <div>
+                        <Label>Time</Label>
+                        <Input value={item.time} onChange={(e) => upd({ ...item, time: e.target.value })} placeholder="e.g., 8:00 AM - 6:00 PM" />
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="checkbox"
+                        checked={item.highlight}
+                        onChange={(e) => upd({ ...item, highlight: e.target.checked })}
+                        className="w-4 h-4"
+                      />
+                      <label className="text-sm">Highlight in gold</label>
+                    </div>
+                  </div>
+                )}
+              />
             </div>
-          )}
-        />
-      </div>
-    </Section>
-  );
-}
+            <div>
+              <Label>"What to Expect" Heading</Label>
+              <Input value={oh.expectationsTitle} onChange={(e) => setOh({ expectationsTitle: e.target.value })} placeholder="e.g., What to Expect" />
+            </div>
+            <div>
+              <p className="text-xs text-gray-600 mb-2">Expectations List</p>
+              <ArrayEditor
+                items={oh.expectations}
+                onChange={(items) => setOh({ expectations: items })}
+                itemLabel="Expectation"
+                newItem={() => ""}
+                renderItem={(item, _, upd) => (
+                  <Input value={item} onChange={(e) => upd(e.target.value)} placeholder="e.g., Free, no-obligation consultation" />
+                )}
+              />
+            </div>
+          </div>
+        </div>
 
-/* ------------------------------------------------------------------ */
-function VisitOfficeSection({ content, update }: SectionProps) {
-  const vo = content.visitOffice;
-  const set = (patch: Partial<typeof vo>) => update("visitOffice", { ...vo, ...patch });
-  const ht = useHeadingTag(content, update);
-
-  return (
-    <Section title="Visit Our Office" defaultOpen={false}>
-      <div className="grid gap-4">
-        <HeadingField
-          label="Heading"
-          value={vo.heading}
-          onChange={(v) => set({ heading: v })}
-          tag={ht.get("visitOffice.heading")}
-          onTagChange={(t) => ht.set("visitOffice.heading", t)}
-        />
-        <RichTextField label="Subtext" value={vo.subtext} onChange={(v) => set({ subtext: v })} />
+        {/* Office Info Right Column */}
         <div>
-          <Label>Google Maps Embed URL</Label>
-          <Input value={vo.mapEmbedUrl} onChange={(e) => set({ mapEmbedUrl: e.target.value })} placeholder="https://www.google.com/maps/embed?..." />
+          <p className="text-sm font-semibold mb-4">Right Column: Office Information</p>
+          <div className="grid gap-4">
+            <div>
+              <Label>Section Title</Label>
+              <Input value={oi.sectionTitle} onChange={(e) => setOi({ sectionTitle: e.target.value })} placeholder="e.g., Find Our Office" />
+            </div>
+            <div>
+              <Label>Firm Name</Label>
+              <Input value={oi.firmName} onChange={(e) => setOi({ firmName: e.target.value })} placeholder="e.g., Constellation Law" />
+            </div>
+            <div>
+              <Label>Address Street</Label>
+              <Input value={oi.address} onChange={(e) => setOi({ address: e.target.value })} placeholder="e.g., 84 Peachtree Street" />
+            </div>
+            <div>
+              <Label>City & Zip</Label>
+              <Input value={oi.city} onChange={(e) => setOi({ city: e.target.value })} placeholder="e.g., Atlanta, GA 30303" />
+            </div>
+            <div>
+              <Label>Phone</Label>
+              <Input value={oi.phone} onChange={(e) => setOi({ phone: e.target.value })} placeholder="e.g., 404-555-5555" />
+            </div>
+            <div>
+              <Label>Email</Label>
+              <Input value={oi.email} onChange={(e) => setOi({ email: e.target.value })} placeholder="e.g., info@constellationlaw.com" />
+            </div>
+            <div>
+              <Label>Note</Label>
+              <Textarea value={oi.note} onChange={(e) => setOi({ note: e.target.value })} rows={3} placeholder="Convenient parking available. MARTA accessible. We can also visit you at the hospital or your home if needed." />
+            </div>
+          </div>
         </div>
       </div>
     </Section>

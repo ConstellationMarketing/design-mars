@@ -51,11 +51,6 @@ export default function ContactPage() {
     };
   });
 
-  // Map office hours from CMS content
-  const officeHours = content.officeHours.items;
-
-  // Map process steps from CMS content
-  const whatToExpect = content.process.steps;
 
   if (isLoading) {
     return (
@@ -276,138 +271,164 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* Office Hours Section */}
-      <div className="bg-brand-dark py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
-          {/* Office Hours */}
-          <div className="bg-brand-card border border-brand-border p-[30px] md:p-[40px] mb-[30px] md:mb-[40px] max-w-[600px]">
-            <div className="flex items-center gap-3 mb-[20px]">
-              <div className="bg-brand-accent p-[15px]">
-                <Clock
-                  className="w-[30px] h-[30px] text-black"
-                  strokeWidth={1.5}
-                />
+      {/* Office Hours & Information Section */}
+      <div style={{ backgroundColor: '#f5f5f5', padding: '80px 24px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+          <style>{`
+            .office-hours-grid {
+              display: grid;
+              gridTemplateColumns: 1fr 1fr;
+              gap: 48px;
+              marginTop: 40px;
+            }
+            @media (max-width: 768px) {
+              .office-hours-grid {
+                gridTemplateColumns: 1fr;
+                gap: 32px;
+              }
+            }
+          `}</style>
+
+          {/* LEFT COLUMN: Office Hours & Expectations */}
+          <div className="office-hours-grid">
+            <div>
+              {/* Heading */}
+              <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#111', marginBottom: '24px' }}>
+                {content.officeHours.sectionTitle}
+              </h2>
+
+              {/* Hours Card */}
+              <div style={{ background: '#fff', border: '1px solid #e5e7eb', padding: '0', marginBottom: '32px' }}>
+                {content.officeHours.hours.map((row, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      padding: '16px 24px',
+                      borderBottom: i < content.officeHours.hours.length - 1 ? '1px solid #e5e7eb' : 'none'
+                    }}
+                  >
+                    <span style={{ fontSize: '16px', color: '#111' }}>{row.day}</span>
+                    <span style={{ fontSize: '16px', fontWeight: '600', color: row.highlight ? '#d1ab58' : '#888' }}>
+                      {row.time}
+                    </span>
+                  </div>
+                ))}
               </div>
-              <h3 className="font-poppins text-[24px] md:text-[28px] leading-tight text-black font-bold">
-                {content.officeHours.heading}
+
+              {/* What to Expect */}
+              <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#111', marginTop: '32px', marginBottom: '16px' }}>
+                {content.officeHours.expectationsTitle}
               </h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                {content.officeHours.expectations.map((item, i) => (
+                  <li
+                    key={i}
+                    style={{
+                      display: 'flex',
+                      gap: '10px',
+                      alignItems: 'flex-start',
+                      fontSize: '15px',
+                      color: '#333',
+                      marginBottom: '12px'
+                    }}
+                  >
+                    <span style={{ color: '#d1ab58', fontWeight: '700', fontSize: '18px', lineHeight: '1.3' }}>›</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="space-y-[15px]">
-              {officeHours.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex justify-between items-center pb-[15px] border-b border-brand-border/50 last:border-0 last:pb-0"
-                >
-                  <span className="font-poppins text-[16px] md:text-[18px] text-black/80">
-                    {item.day}
-                  </span>
-                  <span className="font-poppins text-[16px] md:text-[18px] text-brand-accent font-medium">
-                    {item.hours}
-                  </span>
-                </div>
-              ))}
-            </div>
-            {content.officeHours.note && (
-              <div className="mt-[25px] pt-[25px] border-t border-brand-border/50">
-                <RichText
-                  html={content.officeHours.note}
-                  className="font-poppins text-[14px] md:text-[16px] text-black/70 leading-[22px] md:leading-[24px]"
-                />
-              </div>
-            )}
-          </div>
 
-          {/* Call to Action Boxes */}
-          <div className="space-y-[20px] max-w-[600px]">
-            <CallBox
-              icon={Phone}
-              title={phoneLabel}
-              subtitle={phoneDisplay}
-              phone={phoneNumber}
-              className="w-full max-w-none"
-            />
-            <CallBox
-              icon={Calendar}
-              title={content.cta.secondaryButton.label}
-              subtitle={content.cta.secondaryButton.sublabel}
-              className="w-full max-w-none"
-            />
-          </div>
-        </div>
-      </div>
+            {/* RIGHT COLUMN: Office Info */}
+            <div>
+              {/* Heading */}
+              <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#111', marginBottom: '24px' }}>
+                {content.officeInfo.sectionTitle}
+              </h2>
 
-      {/* What to Expect Section */}
-      <div className="bg-white py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[80%]">
-          <div className="text-center mb-[30px] md:mb-[50px]">
-            <div className="mb-[10px]">
-              <DynamicHeading
-                tag={content.headingTags?.["process.sectionLabel"]}
-                defaultTag="h2"
-                className="font-poppins text-[18px] md:text-[24px] leading-tight md:leading-[36px] text-brand-accent"
+              {/* Map Placeholder */}
+              <div
+                style={{
+                  background: '#d1d5db',
+                  height: '240px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '16px'
+                }}
               >
-                {content.process.sectionLabel}
-              </DynamicHeading>
-            </div>
-            <p className="font-poppins text-[32px] md:text-[48px] lg:text-[54px] leading-tight md:leading-[54px] text-black font-bold">
-              {content.process.heading}
-            </p>
-            {content.process.subtitle && (
-              <p className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black/80 mt-[15px]">
-                {content.process.subtitle}
-              </p>
-            )}
-          </div>
+                <span style={{ color: '#6b7280', fontSize: '14px' }}>Interactive Map Coming Soon</span>
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {whatToExpect.map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="mb-[20px] flex justify-center">
-                  <div className="w-[60px] h-[60px] md:w-[70px] md:h-[70px] bg-brand-accent flex items-center justify-center">
-                    <span className="font-poppins text-[32px] md:text-[40px] text-black font-bold">
-                      {item.number}
+              {/* Address Card */}
+              <div style={{ background: '#fff', border: '1px solid #e5e7eb', padding: '24px' }}>
+                <h4 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '16px', margin: '0 0 16px 0' }}>
+                  {content.officeInfo.firmName}
+                </h4>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '16px' }}>
+                  {/* Address */}
+                  <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                    <MapPin
+                      style={{
+                        width: '18px',
+                        height: '18px',
+                        color: '#d1ab58',
+                        flexShrink: 0,
+                        marginTop: '2px'
+                      }}
+                    />
+                    <div>
+                      <p style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>
+                        {content.officeInfo.address}
+                      </p>
+                      <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>
+                        {content.officeInfo.city}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Phone */}
+                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                    <Phone
+                      style={{
+                        width: '18px',
+                        height: '18px',
+                        color: '#d1ab58',
+                        flexShrink: 0
+                      }}
+                    />
+                    <span style={{ fontSize: '15px', fontWeight: '700' }}>
+                      {content.officeInfo.phone}
+                    </span>
+                  </div>
+
+                  {/* Email */}
+                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                    <Mail
+                      style={{
+                        width: '18px',
+                        height: '18px',
+                        color: '#d1ab58',
+                        flexShrink: 0
+                      }}
+                    />
+                    <span style={{ fontSize: '15px' }}>
+                      {content.officeInfo.email}
                     </span>
                   </div>
                 </div>
-                <h3 className="font-poppins text-[22px] md:text-[26px] leading-tight text-black pb-[12px] font-bold">
-                  {item.title}
-                </h3>
-                <RichText
-                  html={item.description}
-                  className="font-poppins text-[14px] md:text-[16px] leading-[22px] md:leading-[24px] text-black/80"
-                />
+
+                {/* Note */}
+                <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '16px' }}>
+                  <p style={{ fontSize: '13px', color: '#888', fontStyle: 'italic', margin: 0 }}>
+                    {content.officeInfo.note}
+                  </p>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Map Section */}
-      <div className="bg-brand-dark py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%]">
-          <div className="text-center mb-[30px] md:mb-[40px]">
-            <h2 className="font-poppins text-[32px] md:text-[48px] leading-tight text-black pb-[10px] font-bold">
-              {content.visitOffice.heading}
-            </h2>
-            {content.visitOffice.subtext && (
-              <RichText
-                html={content.visitOffice.subtext}
-                className="font-poppins text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] text-black/80"
-              />
-            )}
-          </div>
-
-          <div className="bg-brand-card border border-brand-border p-[20px] md:p-[30px]">
-            <iframe
-              src={content.visitOffice.mapEmbedUrl || settings.mapEmbedUrl}
-              width="100%"
-              height="450"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-[350px] md:h-[450px]"
-              title="Office Location"
-            ></iframe>
+            </div>
           </div>
         </div>
       </div>

@@ -39,34 +39,27 @@ export interface ContactFormContent {
   benefits: ContactFormBenefit[];
 }
 
-export interface OfficeHoursItem {
+export interface OfficeHourRow {
   day: string;
-  hours: string;
+  time: string;
+  highlight: boolean;
 }
 
-export interface OfficeHoursContent {
-  heading: string; // "Office Hours"
-  items: OfficeHoursItem[];
-  note: string; // Additional note
+export interface OfficeHoursInfoContent {
+  sectionTitle: string; // "Office Hours & Information"
+  expectationsTitle: string; // "What to Expect"
+  hours: OfficeHourRow[];
+  expectations: string[];
 }
 
-export interface ProcessStepItem {
-  number: string;
-  title: string;
-  description: string;
-}
-
-export interface ProcessContent {
-  sectionLabel: string; // "– The Process"
-  heading: string; // "What to Expect When You Contact Us"
-  subtitle: string; // Subtitle text
-  steps: ProcessStepItem[];
-}
-
-export interface VisitOfficeContent {
-  heading: string; // "Visit Our Office"
-  subtext: string; // Description text
-  mapEmbedUrl: string; // Google Maps embed URL
+export interface OfficeInfoContent {
+  sectionTitle: string; // "Find Our Office"
+  firmName: string; // "Constellation Law"
+  address: string; // "84 Peachtree Street"
+  city: string; // "Atlanta, GA 30303"
+  phone: string; // "404-555-5555"
+  email: string; // "info@constellationlaw.com"
+  note: string; // "Convenient parking available..."
 }
 
 export interface CTAContent {
@@ -88,9 +81,8 @@ export interface ContactPageContent {
   hero: ContactHeroContent;
   contactMethods: ContactMethodsContent;
   form: ContactFormContent;
-  officeHours: OfficeHoursContent;
-  process: ProcessContent;
-  visitOffice: VisitOfficeContent;
+  officeHours: OfficeHoursInfoContent;
+  officeInfo: OfficeInfoContent;
   cta: CTAContent;
   /** Maps heading keys (e.g. "form.heading") to HTML tag names (e.g. "h2") */
   headingTags?: Record<string, string>;
@@ -125,20 +117,29 @@ export const defaultContactContent: ContactPageContent = {
     ],
   },
   officeHours: {
-    heading: "",
-    items: [],
-    note: "",
+    sectionTitle: "Office Hours & Information",
+    expectationsTitle: "What to Expect",
+    hours: [
+      { day: 'Monday - Friday', time: '8:00 AM - 6:00 PM', highlight: true },
+      { day: 'Saturday', time: '9:00 AM - 2:00 PM', highlight: true },
+      { day: 'Sunday', time: 'Emergency Only', highlight: false },
+      { day: 'Emergency Line', time: '24/7 Available', highlight: true }
+    ],
+    expectations: [
+      'Free, no-obligation consultation',
+      'Case evaluation within 24 hours',
+      'Direct communication with attorneys',
+      'Regular updates on your case progress'
+    ],
   },
-  process: {
-    sectionLabel: "",
-    heading: "",
-    subtitle: "",
-    steps: [],
-  },
-  visitOffice: {
-    heading: "",
-    subtext: "",
-    mapEmbedUrl: "",
+  officeInfo: {
+    sectionTitle: "Find Our Office",
+    firmName: "Constellation Law",
+    address: "84 Peachtree Street",
+    city: "Atlanta, GA 30303",
+    phone: "404-555-5555",
+    email: "info@constellationlaw.com",
+    note: "Convenient parking available. MARTA accessible. We can also visit you at the hospital or your home if needed.",
   },
   cta: {
     heading: "",
