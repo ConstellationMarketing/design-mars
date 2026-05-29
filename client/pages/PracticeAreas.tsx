@@ -131,10 +131,36 @@ export default function PracticeAreas() {
                   ))}
                 </ul>
                 <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                  <a href={item.learnMoreUrl} style={{ padding: '10px 22px', border: '1px solid #C9A84C', outline: '1px solid #C9A84C', outlineOffset: '4px', color: '#555', background: 'transparent', textDecoration: 'none', fontSize: '14px', fontWeight: '400', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <a
+                    href={item.learnMoreUrl}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.background = '#C9A84C';
+                      (e.currentTarget as HTMLElement).style.color = '#111';
+                      (e.currentTarget as HTMLElement).style.outlineColor = '#111';
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.background = 'transparent';
+                      (e.currentTarget as HTMLElement).style.color = '#555';
+                      (e.currentTarget as HTMLElement).style.outlineColor = '#C9A84C';
+                    }}
+                    style={{ padding: '10px 22px', border: '1px solid #C9A84C', outline: '1px solid #C9A84C', outlineOffset: '4px', color: '#555', background: 'transparent', textDecoration: 'none', fontSize: '14px', fontWeight: '400', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                  >
                     Learn More ›
                   </a>
-                  <a href={item.getHelpUrl} style={{ padding: '10px 22px', border: '1px solid #8B6914', outline: '1px solid #C9A84C', outlineOffset: '4px', background: '#C9A84C', color: '#111', textDecoration: 'none', fontSize: '14px', fontWeight: '700', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <a
+                    href={item.getHelpUrl}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.background = '#fff';
+                      (e.currentTarget as HTMLElement).style.color = '#C9A84C';
+                      (e.currentTarget as HTMLElement).style.outlineColor = '#111';
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.background = '#C9A84C';
+                      (e.currentTarget as HTMLElement).style.color = '#111';
+                      (e.currentTarget as HTMLElement).style.outlineColor = '#C9A84C';
+                    }}
+                    style={{ padding: '10px 22px', border: '1px solid #8B6914', outline: '1px solid #C9A84C', outlineOffset: '4px', background: '#C9A84C', color: '#111', textDecoration: 'none', fontSize: '14px', fontWeight: '400', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                  >
                     Get Help Now ›
                   </a>
                 </div>
