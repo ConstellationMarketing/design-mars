@@ -29,7 +29,7 @@ export default function ContactPage() {
   const { phoneNumber, phoneDisplay, phoneLabel } = useGlobalPhone();
   const { settings } = useSiteSettings();
 
-  // Map contact methods from CMS content with icon components
+  // Map contact methods from CMS content
   const contactMethods = content.contactMethods.methods.map((method) => {
     let detail = method.detail;
     let subDetail = method.subDetail;
@@ -44,7 +44,7 @@ export default function ContactPage() {
     }
 
     return {
-      icon: iconMap[method.icon] || Phone,
+      icon: method.icon,
       title: method.title,
       detail,
       subdDetail: subDetail,
@@ -150,7 +150,16 @@ export default function ContactPage() {
             gap: '24px'
           }} className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {contactMethods.map((method, index) => {
-              const Icon = method.icon;
+              // Get fallback Lucide icon based on title
+              const getFallbackIcon = (title: string) => {
+                if (title === "Phone") return Phone;
+                if (title === "Office" || title === "Visit Us") return MapPin;
+                if (title === "Email") return Mail;
+                return Phone;
+              };
+
+              const FallbackIcon = getFallbackIcon(method.title);
+
               return (
                 <div
                   key={index}
@@ -176,13 +185,16 @@ export default function ContactPage() {
                   <div style={{
                     width: '56px',
                     height: '56px',
-                    border: '1px solid #C9A84C',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginBottom: '12px'
                   }}>
-                    <Icon style={{ width: '28px', height: '28px', color: '#C9A84C' }} />
+                    {method.icon ? (
+                      <img src={method.icon} alt="" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+                    ) : (
+                      <FallbackIcon style={{ width: '40px', height: '40px', color: '#C9A84C' }} />
+                    )}
                   </div>
 
                   {/* Title */}
