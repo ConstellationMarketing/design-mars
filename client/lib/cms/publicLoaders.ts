@@ -136,6 +136,10 @@ export interface RecentPostsConfig {
   postCount: number;
 }
 
+export interface FeaturedArticleConfig {
+  sectionTitle: string;
+}
+
 export interface BlogSidebarAwardImage {
   src: string;
   alt: string;
@@ -241,6 +245,10 @@ export const DEFAULT_RECENT_POSTS_CONFIG: RecentPostsConfig = {
   sectionLabel: "",
   heading: "",
   postCount: 6,
+};
+
+export const DEFAULT_FEATURED_ARTICLE_CONFIG: FeaturedArticleConfig = {
+  sectionTitle: "Featured Article",
 };
 
 export const DEFAULT_BLOG_SIDEBAR: BlogSidebarData = {
@@ -851,11 +859,13 @@ export function shapePracticeAreaPageDocument(row: CmsPageRow | null, fallbackUr
 
 export function shapeBlogIndexView(document: PreloadedPageDocument<ContentBlock[] | null> | null) {
   let hero = DEFAULT_BLOG_HERO;
+  let featuredArticle = DEFAULT_FEATURED_ARTICLE_CONFIG;
   let recentPosts = DEFAULT_RECENT_POSTS_CONFIG;
 
   const blocks = document?.content;
   if (isContentBlockArray(blocks)) {
     const heroBlock = blocks.find((block) => block.type === "hero");
+    const featuredArticleBlock = blocks.find((block) => block.type === "featured-article");
     const recentPostsBlock = blocks.find((block) => block.type === "recent-posts");
 
     if (heroBlock?.type === "hero") {
@@ -871,6 +881,12 @@ export function shapeBlogIndexView(document: PreloadedPageDocument<ContentBlock[
       };
     }
 
+    if (featuredArticleBlock?.type === "featured-article") {
+      featuredArticle = {
+        sectionTitle: featuredArticleBlock.sectionTitle || DEFAULT_FEATURED_ARTICLE_CONFIG.sectionTitle,
+      };
+    }
+
     if (recentPostsBlock?.type === "recent-posts") {
       recentPosts = {
         sectionLabel: recentPostsBlock.sectionLabel || DEFAULT_RECENT_POSTS_CONFIG.sectionLabel,
@@ -882,6 +898,7 @@ export function shapeBlogIndexView(document: PreloadedPageDocument<ContentBlock[
 
   return {
     hero,
+    featuredArticle,
     recentPosts,
     meta: document?.meta ?? emptyPageMeta,
   };

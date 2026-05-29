@@ -1,12 +1,13 @@
 import Seo from "@site/components/Seo";
 import Layout from "@site/components/layout/Layout";
 import BlogHero from "@site/components/blog/BlogHero";
+import FeaturedArticle from "@site/components/blog/FeaturedArticle";
 import RecentBlogPosts from "@site/components/blog/RecentBlogPosts";
 import { useBlogContent } from "@site/hooks/useBlogContent";
 import { Loader2 } from "lucide-react";
 
 export default function BlogIndex() {
-  const { hero, recentPosts, meta, title, publishedAt, updatedAt, isLoading } = useBlogContent();
+  const { hero, recentPosts, featuredArticle, meta, title, publishedAt, updatedAt, isLoading } = useBlogContent();
 
   if (isLoading) {
     return (
@@ -31,6 +32,9 @@ export default function BlogIndex() {
 
       {/* Hero - CMS-driven, matches About page style */}
       <BlogHero hero={hero} />
+
+      {/* Featured Article - Latest post */}
+      {featuredArticle && <FeaturedArticle sectionTitle={featuredArticle.sectionTitle} />}
 
       {/* Recent Blog Posts - 6 latest */}
       <RecentBlogPosts data={recentPosts} />

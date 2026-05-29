@@ -1,9 +1,9 @@
-import type { BlogHeroData, RecentPostsConfig } from "@site/lib/cms/publicLoaders";
+import type { BlogHeroData, RecentPostsConfig, FeaturedArticleConfig } from "@site/lib/cms/publicLoaders";
 import { Section, ImageField, HeadingField, Input, Label } from "./EditorShared";
 
 interface BlogEditorProps {
-  content: { hero: BlogHeroData; recentPosts: RecentPostsConfig };
-  onSave: (c: { hero: BlogHeroData; recentPosts: RecentPostsConfig }) => void;
+  content: { hero: BlogHeroData; recentPosts: RecentPostsConfig; featuredArticle: FeaturedArticleConfig };
+  onSave: (c: { hero: BlogHeroData; recentPosts: RecentPostsConfig; featuredArticle: FeaturedArticleConfig }) => void;
 }
 
 export default function BlogEditor({ content, onSave }: BlogEditorProps) {
@@ -14,6 +14,7 @@ export default function BlogEditor({ content, onSave }: BlogEditorProps) {
   return (
     <div className="space-y-6">
       <HeroSection content={content} update={update} />
+      <FeaturedArticleSection content={content} update={update} />
       <RecentPostsSection content={content} update={update} />
     </div>
   );
@@ -23,7 +24,7 @@ export default function BlogEditor({ content, onSave }: BlogEditorProps) {
 type Updater = <K extends keyof typeof content>(key: K, value: any) => void;
 
 interface SectionProps {
-  content: { hero: BlogHeroData; recentPosts: RecentPostsConfig };
+  content: { hero: BlogHeroData; recentPosts: RecentPostsConfig; featuredArticle: FeaturedArticleConfig };
   update: Updater;
 }
 
@@ -82,7 +83,25 @@ function HeroSection({ content, update }: SectionProps) {
   );
 }
 
-/* ========== Section 2: Recent Posts Section ========== */
+/* ========== Section 2: Featured Article Section ========== */
+function FeaturedArticleSection({ content, update }: SectionProps) {
+  const featuredArticle = content.featuredArticle;
+  const set = (patch: Partial<typeof featuredArticle>) => update("featuredArticle", { ...featuredArticle, ...patch });
+
+  return (
+    <Section title="Featured Article Section" defaultOpen={false}>
+      <div className="grid gap-4">
+        <p className="text-xs text-gray-600 mb-2">Configure the featured article section title (displays the latest blog post automatically)</p>
+        <div>
+          <Label>Section Title</Label>
+          <Input value={featuredArticle.sectionTitle} onChange={(e) => set({ sectionTitle: e.target.value })} placeholder="e.g., Featured Article" />
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ========== Section 3: Recent Posts Section ========== */
 function RecentPostsSection({ content, update }: SectionProps) {
   const recentPosts = content.recentPosts;
   const set = (patch: Partial<typeof recentPosts>) => update("recentPosts", { ...recentPosts, ...patch });

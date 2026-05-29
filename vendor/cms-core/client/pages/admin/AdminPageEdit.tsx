@@ -15,8 +15,8 @@ import {
   normalizePracticeAreaContentSections,
 } from "@site/lib/cms/practiceAreaPageTypes";
 import type { PracticeAreaPageContent } from "@site/lib/cms/practiceAreaPageTypes";
-import { DEFAULT_BLOG_HERO, DEFAULT_RECENT_POSTS_CONFIG } from "@site/lib/cms/publicLoaders";
-import type { BlogHeroData, RecentPostsConfig } from "@site/lib/cms/publicLoaders";
+import { DEFAULT_BLOG_HERO, DEFAULT_RECENT_POSTS_CONFIG, DEFAULT_FEATURED_ARTICLE_CONFIG } from "@site/lib/cms/publicLoaders";
+import type { BlogHeroData, RecentPostsConfig, FeaturedArticleConfig } from "@site/lib/cms/publicLoaders";
 import { clearPracticeAreaPageCache } from "@site/hooks/usePracticeAreaPageContent";
 import BlogEditor from "@site/components/admin/editors/BlogEditor";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
@@ -349,11 +349,16 @@ export default function AdminPageEdit() {
       const blocks = page?.content as ContentBlock[] | undefined;
       if (Array.isArray(blocks)) {
         const heroBlock = blocks.find((b) => b.type === "hero");
+        const featuredArticleBlock = blocks.find((b) => b.type === "featured-article");
         const recentPostsBlock = blocks.find((b) => b.type === "recent-posts");
         return {
           hero: mergeWithDefaults(
             heroBlock as unknown as Partial<BlogHeroData>,
             DEFAULT_BLOG_HERO
+          ),
+          featuredArticle: mergeWithDefaults(
+            featuredArticleBlock as unknown as Partial<FeaturedArticleConfig>,
+            DEFAULT_FEATURED_ARTICLE_CONFIG
           ),
           recentPosts: mergeWithDefaults(
             recentPostsBlock as unknown as Partial<RecentPostsConfig>,
@@ -363,6 +368,7 @@ export default function AdminPageEdit() {
       }
       return {
         hero: DEFAULT_BLOG_HERO,
+        featuredArticle: DEFAULT_FEATURED_ARTICLE_CONFIG,
         recentPosts: DEFAULT_RECENT_POSTS_CONFIG
       };
     }
@@ -421,13 +427,17 @@ export default function AdminPageEdit() {
   const hasExplicitFaqSchema = parseSchemaTypes(page?.schema_type).includes("FAQPage");
 
   const handleStructuredContentChange = (content: unknown) => {
-    // Handle Blog page: convert { hero, recentPosts } back to ContentBlock[] format
+    // Handle Blog page: convert { hero, featuredArticle, recentPosts } back to ContentBlock[] format
     if (normalizedUrlPath === "/blog") {
-      const blogContent = content as unknown as { hero: BlogHeroData; recentPosts: RecentPostsConfig };
+      const blogContent = content as unknown as { hero: BlogHeroData; featuredArticle: FeaturedArticleConfig; recentPosts: RecentPostsConfig };
       const blocks: ContentBlock[] = [
         {
           type: "hero",
           ...blogContent.hero,
+        } as unknown as ContentBlock,
+        {
+          type: "featured-article",
+          ...blogContent.featuredArticle,
         } as unknown as ContentBlock,
         {
           type: "recent-posts",

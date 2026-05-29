@@ -5,9 +5,11 @@ import type { ContentBlock } from "../lib/blocks";
 import {
   DEFAULT_BLOG_HERO,
   DEFAULT_RECENT_POSTS_CONFIG,
+  DEFAULT_FEATURED_ARTICLE_CONFIG,
   type BlogHeroData,
   type PreloadedPageDocument,
   type RecentPostsConfig,
+  type FeaturedArticleConfig,
   isContentBlockArray,
   loadBlogIndexPageDocument,
   shapeBlogIndexView,
@@ -17,6 +19,7 @@ import { getPreloadedPageDocument } from "../lib/preloadState";
 interface UseBlogContentResult {
   hero: BlogHeroData;
   recentPosts: RecentPostsConfig;
+  featuredArticle: FeaturedArticleConfig;
   meta: PageMeta;
   title: string;
   publishedAt: string | null;
@@ -39,6 +42,7 @@ export function useBlogContent(): UseBlogContentResult {
 
   const [hero, setHero] = useState<BlogHeroData>(initialView.hero);
   const [recentPosts, setRecentPosts] = useState<RecentPostsConfig>(initialView.recentPosts);
+  const [featuredArticle, setFeaturedArticle] = useState<FeaturedArticleConfig>(initialView.featuredArticle);
   const [meta, setMeta] = useState<PageMeta>(initialView.meta || emptyPageMeta);
   const [title, setTitle] = useState(initialTitle);
   const [publishedAt, setPublishedAt] = useState<string | null>(initialPublishedAt);
@@ -54,6 +58,7 @@ export function useBlogContent(): UseBlogContentResult {
       if (isMounted) {
         setHero(initialView.hero);
         setRecentPosts(initialView.recentPosts);
+        setFeaturedArticle(initialView.featuredArticle);
         setMeta(initialView.meta || emptyPageMeta);
         setTitle(initialTitle);
         setPublishedAt(initialPublishedAt);
@@ -72,6 +77,7 @@ export function useBlogContent(): UseBlogContentResult {
         if (isMounted) {
           setHero(view.hero);
           setRecentPosts(view.recentPosts);
+          setFeaturedArticle(view.featuredArticle);
           setMeta(view.meta);
           setTitle(cachedDocument.title);
           setPublishedAt(cachedDocument.publishedAt);
@@ -87,6 +93,7 @@ export function useBlogContent(): UseBlogContentResult {
           if (isMounted) {
             setHero(DEFAULT_BLOG_HERO);
             setRecentPosts(DEFAULT_RECENT_POSTS_CONFIG);
+            setFeaturedArticle(DEFAULT_FEATURED_ARTICLE_CONFIG);
             setMeta(emptyPageMeta);
             setTitle("");
             setPublishedAt(null);
@@ -99,6 +106,7 @@ export function useBlogContent(): UseBlogContentResult {
           if (isMounted) {
             setHero(DEFAULT_BLOG_HERO);
             setRecentPosts(DEFAULT_RECENT_POSTS_CONFIG);
+            setFeaturedArticle(DEFAULT_FEATURED_ARTICLE_CONFIG);
             setMeta(emptyPageMeta);
             setTitle("");
             setPublishedAt(null);
@@ -113,6 +121,7 @@ export function useBlogContent(): UseBlogContentResult {
         if (isMounted) {
           setHero(view.hero);
           setRecentPosts(view.recentPosts);
+          setFeaturedArticle(view.featuredArticle);
           setMeta(view.meta);
           setTitle(routeData.document.title);
           setPublishedAt(routeData.document.publishedAt);
@@ -134,5 +143,5 @@ export function useBlogContent(): UseBlogContentResult {
     };
   }, []);
 
-  return { hero, recentPosts, meta, title, publishedAt, updatedAt, isLoading };
+  return { hero, recentPosts, featuredArticle, meta, title, publishedAt, updatedAt, isLoading };
 }
