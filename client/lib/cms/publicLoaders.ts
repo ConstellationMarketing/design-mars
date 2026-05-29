@@ -119,8 +119,13 @@ export interface PreloadedPageDocument<TContent = unknown> {
 }
 
 export interface BlogHeroData {
-  title: string;
-  subtitle: string;
+  h1Title: string;
+  headline: string;
+  highlightedText: string;
+  tagline: string;
+  buttonText: string;
+  phone: string;
+  phoneLabel: string;
   backgroundImage?: string;
 }
 
@@ -221,8 +226,14 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
 };
 
 export const DEFAULT_BLOG_HERO: BlogHeroData = {
-  title: "",
-  subtitle: "",
+  h1Title: "",
+  headline: "Our Blog",
+  highlightedText: "",
+  tagline: "Legal insights, news, and resources",
+  buttonText: "Contact Us",
+  phone: "",
+  phoneLabel: "",
+  backgroundImage: "",
 };
 
 export const DEFAULT_RECENT_POSTS_CONFIG: RecentPostsConfig = {
@@ -848,8 +859,13 @@ export function shapeBlogIndexView(document: PreloadedPageDocument<ContentBlock[
 
     if (heroBlock?.type === "hero") {
       hero = {
-        title: heroBlock.sectionLabel || DEFAULT_BLOG_HERO.title,
-        subtitle: heroBlock.tagline || DEFAULT_BLOG_HERO.subtitle,
+        h1Title: heroBlock.h1Title || DEFAULT_BLOG_HERO.h1Title,
+        headline: heroBlock.headline || DEFAULT_BLOG_HERO.headline,
+        highlightedText: heroBlock.highlightedText || DEFAULT_BLOG_HERO.highlightedText,
+        tagline: heroBlock.tagline || DEFAULT_BLOG_HERO.tagline,
+        buttonText: heroBlock.buttonText || DEFAULT_BLOG_HERO.buttonText,
+        phone: heroBlock.phone || DEFAULT_BLOG_HERO.phone,
+        phoneLabel: heroBlock.phoneLabel || DEFAULT_BLOG_HERO.phoneLabel,
         backgroundImage: heroBlock.backgroundImage,
       };
     }
