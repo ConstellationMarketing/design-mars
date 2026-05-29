@@ -155,7 +155,7 @@ export default function ContactPage() {
                 <div
                   key={index}
                   style={{
-                    border: '1px solid #111',
+                    border: '1px solid rgb(229, 231, 235)',
                     padding: '32px 24px',
                     textAlign: 'center',
                     background: '#fff',
@@ -169,7 +169,7 @@ export default function ContactPage() {
                     (e.currentTarget as HTMLElement).style.border = '1px solid #C9A84C';
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.border = '1px solid #111';
+                    (e.currentTarget as HTMLElement).style.border = '1px solid rgb(229, 231, 235)';
                   }}
                 >
                   {/* Icon in gold square */}
