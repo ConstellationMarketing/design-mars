@@ -95,18 +95,12 @@ export default function PracticeAreas() {
       </div>
 
       {/* ========== Section 2: Practice Areas Intro ========== */}
-      <PracticeAreasSection 
+      <PracticeAreasSection
         content={content.practiceAreasIntro}
         areas={content.practiceAreas}
       />
 
-      {/* ========== Section 3: Values ========== */}
-      <PracticeAreasValuesSection
-        content={content.values}
-        headingTag={content.headingTags?.["values.valuesTitle"]}
-      />
-
-      {/* ========== Section 4: Practice Items ========== */}
+      {/* ========== Section 3: Practice Items ========== */}
       <section style={{ background: '#f5f5f5', padding: '80px 0' }}>
         <style>{`
           @media (max-width: 768px) {
@@ -187,6 +181,12 @@ export default function PracticeAreas() {
           ))}
         </div>
       </section>
+
+      {/* ========== Section 4: Values ========== */}
+      <PracticeAreasValuesSection
+        content={content.values}
+        headingTag={content.headingTags?.["values.valuesTitle"]}
+      />
     </Layout>
   );
 }
