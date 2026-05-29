@@ -131,10 +131,10 @@ export default function PracticeAreas() {
                   ))}
                 </ul>
                 <div style={{ display: 'flex', gap: '12px' }}>
-                  <a href={item.learnMoreUrl} style={{ padding: '12px 28px', border: '1px solid #C9A84C', color: '#333', background: 'transparent', textDecoration: 'none', fontSize: '16px', fontWeight: '400', letterSpacing: '0.5px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <a href={item.learnMoreUrl} style={{ padding: '10px 22px', border: '1px solid #C9A84C', outline: '3px solid #C9A84C', outlineOffset: '3px', color: '#555', background: 'transparent', textDecoration: 'none', fontSize: '14px', fontWeight: '400', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
                     Learn More ›
                   </a>
-                  <a href={item.getHelpUrl} style={{ padding: '12px 28px', border: '2px solid #8B6914', background: '#C9A84C', color: '#111', textDecoration: 'none', fontSize: '16px', fontWeight: '700', letterSpacing: '0.5px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <a href={item.getHelpUrl} style={{ padding: '10px 22px', border: '1px solid #8B6914', outline: '3px solid #C9A84C', outlineOffset: '3px', background: '#C9A84C', color: '#111', textDecoration: 'none', fontSize: '14px', fontWeight: '700', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
                     Get Help Now ›
                   </a>
                 </div>
