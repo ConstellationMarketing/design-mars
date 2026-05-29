@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { User, Calendar } from "lucide-react";
 import { normalizeSlug } from "@site/lib/utils";
 import type { PreloadedPostDocument } from "@site/lib/cms/publicLoaders";
 
@@ -138,11 +139,13 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
           marginBottom: "16px",
           margin: "0 0 16px 0"
         }}>
-          <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-            👤 Author
+          <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+            <User style={{ width: "14px", height: "14px" }} />
+            Author
           </span>
-          <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-            📅 {new Date(displayDate || Date.now()).toLocaleDateString("en-US", {
+          <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+            <Calendar style={{ width: "14px", height: "14px" }} />
+            {new Date(displayDate || Date.now()).toLocaleDateString("en-US", {
               month: "short",
               day: "numeric",
               year: "numeric",

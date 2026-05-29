@@ -91,12 +91,12 @@ export default function RecentBlogPosts({ data }: RecentBlogPostsProps) {
           </div>
         ) : (
           <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-            gap: "24px",
-            "@media (max-width: 768px)": {
-              gridTemplateColumns: "1fr"
-            }
+            maxWidth: '1280px',
+            margin: '0 auto',
+            padding: '0 24px',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '24px'
           }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {posts.map((post) => (
               <BlogPostCard key={post.id} post={post} />
