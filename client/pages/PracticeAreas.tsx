@@ -46,7 +46,7 @@ export default function PracticeAreas() {
         }}></div>
 
         {/* Content */}
-        <div className="max-w-[1000px] w-[85%] md:w-[90%] relative z-10 text-center">
+        <div className="max-w-[1000px] w-[85%] md:w-[90%] relative z-10 text-center" style={{ paddingTop: '35px' }}>
           <div className="flex flex-col items-center justify-center gap-5 md:gap-6">
             {/* Highlighted Text - large white text on top */}
             {content.hero.highlightedText && (
