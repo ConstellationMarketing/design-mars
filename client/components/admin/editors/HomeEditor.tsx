@@ -418,13 +418,6 @@ function TestimonialsSection({ content, update }: SectionProps) {
   return (
     <Section title="Testimonials" defaultOpen={false}>
       <div className="grid gap-4">
-        <HeadingField
-          label="Section Heading"
-          value={t.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={ht.get("testimonials.sectionLabel")}
-          onTagChange={(t2) => ht.set("testimonials.sectionLabel", t2)}
-        />
         <div>
           <Label>Title</Label>
           <Input value={t.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Committed To Excellence" />
@@ -517,13 +510,6 @@ function VideoTestimonialsSection({ content, update }: SectionProps) {
   return (
     <Section title="Video Testimonials" defaultOpen={false}>
       <div className="grid gap-4">
-        <HeadingField
-          label="Section Heading"
-          value={vt.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={ht.get("videoTestimonials.sectionLabel")}
-          onTagChange={(t) => ht.set("videoTestimonials.sectionLabel", t)}
-        />
         <div>
           <Label>Title</Label>
           <Input value={vt.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Hear What Our Clients Have to Say" />
@@ -584,13 +570,6 @@ function AttorneysSectionEditor({ content, update }: SectionProps) {
   return (
     <Section title="Meet the Attorneys" defaultOpen={false}>
       <div className="grid gap-4">
-        <HeadingField
-          label="Section Heading"
-          value={a.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={ht.get("attorneys.sectionLabel")}
-          onTagChange={(t) => ht.set("attorneys.sectionLabel", t)}
-        />
         <div>
           <Label>Title</Label>
           <Input value={a.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Meet the Attorneys" />
@@ -657,13 +636,6 @@ function BlogSectionEditor({ content, update }: SectionProps) {
   return (
     <Section title="News & Blog" defaultOpen={false}>
       <div className="grid gap-4">
-        <HeadingField
-          label="Section Heading"
-          value={b.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={ht.get("blog.sectionLabel")}
-          onTagChange={(t) => ht.set("blog.sectionLabel", t)}
-        />
         <div>
           <Label>Title</Label>
           <Input value={b.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="News & Blog" />
