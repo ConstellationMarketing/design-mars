@@ -5,10 +5,7 @@ export interface ContactHeroContent {
   h1Title: string; // H1 title text (all caps, ~20px)
   headline: string; // White uppercase text
   highlightedText: string; // Large white text
-  tagline: string; // Gold tagline text
   buttonText: string; // CTA button text
-  phone: string; // Phone number for button
-  phoneLabel: string; // Phone label
   backgroundImage?: string; // Hero background image URL
 }
 
@@ -77,10 +74,7 @@ export const defaultContactContent: ContactPageContent = {
     h1Title: "",
     headline: "",
     highlightedText: "",
-    tagline: "",
     buttonText: "",
-    phone: "",
-    phoneLabel: "",
     backgroundImage: "",
   },
   contactMethods: {

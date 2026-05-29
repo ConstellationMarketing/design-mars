@@ -55,20 +55,8 @@ function HeroSection({ content, update }: SectionProps) {
           <Input value={hero.h1Title} onChange={(e) => set({ h1Title: e.target.value })} placeholder="e.g., – LET'S TALK" />
         </div>
         <div>
-          <Label>Tagline</Label>
-          <Input value={hero.tagline} onChange={(e) => set({ tagline: e.target.value })} placeholder="Gold text under H1" />
-        </div>
-        <div>
           <Label>Button Text</Label>
           <Input value={hero.buttonText} onChange={(e) => set({ buttonText: e.target.value })} placeholder="e.g., CALL NOW" />
-        </div>
-        <div>
-          <Label>Phone Number</Label>
-          <Input value={hero.phone} onChange={(e) => set({ phone: e.target.value })} placeholder="e.g., 404-555-5555" />
-        </div>
-        <div>
-          <Label>Phone Label</Label>
-          <Input value={hero.phoneLabel} onChange={(e) => set({ phoneLabel: e.target.value })} placeholder="e.g., Call Now" />
         </div>
         <div>
           <Label>Background Image</Label>
