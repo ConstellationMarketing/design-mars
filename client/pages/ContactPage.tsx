@@ -272,161 +272,167 @@ export default function ContactPage() {
       </div>
 
       {/* Office Hours & Information Section */}
-      <div style={{ backgroundColor: '#f5f5f5', padding: '80px 24px' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-          <style>{`
-            .office-hours-grid {
-              display: grid;
-              gridTemplateColumns: 1fr 1fr;
-              gap: 48px;
-              marginTop: 40px;
+      <div style={{ backgroundColor: '#f5f5f5' }}>
+        <style>{`
+          .office-hours-wrapper {
+            display: flex;
+            flex-direction: row;
+            gap: 48px;
+            align-items: flex-start;
+          }
+          @media (max-width: 768px) {
+            .office-hours-wrapper {
+              flex-direction: column !important;
             }
-            @media (max-width: 768px) {
-              .office-hours-grid {
-                gridTemplateColumns: 1fr;
-                gap: 32px;
-              }
-            }
-          `}</style>
+          }
+        `}</style>
+
+        <div className="office-hours-wrapper" style={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '48px',
+          alignItems: 'flex-start',
+          maxWidth: '1280px',
+          margin: '0 auto',
+          padding: '80px 24px'
+        }}>
 
           {/* LEFT COLUMN: Office Hours & Expectations */}
-          <div className="office-hours-grid">
-            <div>
-              {/* Heading */}
-              <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#111', marginBottom: '24px' }}>
-                {content.officeHours.sectionTitle}
-              </h2>
+          <div style={{ flex: 1 }}>
+            {/* Heading */}
+            <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#111', marginBottom: '24px' }}>
+              {content.officeHours.sectionTitle}
+            </h2>
 
-              {/* Hours Card */}
-              <div style={{ background: '#fff', border: '1px solid #e5e7eb', padding: '0', marginBottom: '32px' }}>
-                {content.officeHours.hours.map((row, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      padding: '16px 24px',
-                      borderBottom: i < content.officeHours.hours.length - 1 ? '1px solid #e5e7eb' : 'none'
-                    }}
-                  >
-                    <span style={{ fontSize: '16px', color: '#111' }}>{row.day}</span>
-                    <span style={{ fontSize: '16px', fontWeight: '600', color: row.highlight ? '#d1ab58' : '#888' }}>
-                      {row.time}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* What to Expect */}
-              <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#111', marginTop: '32px', marginBottom: '16px' }}>
-                {content.officeHours.expectationsTitle}
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {content.officeHours.expectations.map((item, i) => (
-                  <li
-                    key={i}
-                    style={{
-                      display: 'flex',
-                      gap: '10px',
-                      alignItems: 'flex-start',
-                      fontSize: '15px',
-                      color: '#333',
-                      marginBottom: '12px'
-                    }}
-                  >
-                    <span style={{ color: '#d1ab58', fontWeight: '700', fontSize: '18px', lineHeight: '1.3' }}>›</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            {/* Hours Card */}
+            <div style={{ background: '#fff', border: '1px solid #e5e7eb', padding: '0', marginBottom: '32px' }}>
+              {content.officeHours.hours.map((row, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    padding: '16px 24px',
+                    borderBottom: i < content.officeHours.hours.length - 1 ? '1px solid #e5e7eb' : 'none'
+                  }}
+                >
+                  <span style={{ fontSize: '16px', color: '#111' }}>{row.day}</span>
+                  <span style={{ fontSize: '16px', fontWeight: '600', color: row.highlight ? '#d1ab58' : '#888' }}>
+                    {row.time}
+                  </span>
+                </div>
+              ))}
             </div>
 
-            {/* RIGHT COLUMN: Office Info */}
-            <div>
-              {/* Heading */}
-              <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#111', marginBottom: '24px' }}>
-                {content.officeInfo.sectionTitle}
-              </h2>
+            {/* What to Expect */}
+            <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#111', marginTop: '32px', marginBottom: '16px' }}>
+              {content.officeHours.expectationsTitle}
+            </h3>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              {content.officeHours.expectations.map((item, i) => (
+                <li
+                  key={i}
+                  style={{
+                    display: 'flex',
+                    gap: '10px',
+                    alignItems: 'flex-start',
+                    fontSize: '15px',
+                    color: '#333',
+                    marginBottom: '12px'
+                  }}
+                >
+                  <span style={{ color: '#d1ab58', fontWeight: '700', fontSize: '18px', lineHeight: '1.3' }}>›</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              {/* Map Placeholder */}
-              <div
-                style={{
-                  background: '#d1d5db',
-                  height: '240px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '16px'
-                }}
-              >
-                <span style={{ color: '#6b7280', fontSize: '14px' }}>Interactive Map Coming Soon</span>
+          {/* RIGHT COLUMN: Office Info */}
+          <div style={{ flex: 1 }}>
+            {/* Heading */}
+            <h2 style={{ fontSize: '24px', fontWeight: 'bold', color: '#111', marginBottom: '24px' }}>
+              {content.officeInfo.sectionTitle}
+            </h2>
+
+            {/* Map Placeholder */}
+            <div
+              style={{
+                background: '#d1d5db',
+                height: '240px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '16px'
+              }}
+            >
+              <span style={{ color: '#6b7280', fontSize: '14px' }}>Interactive Map Coming Soon</span>
+            </div>
+
+            {/* Address Card */}
+            <div style={{ background: '#fff', border: '1px solid #e5e7eb', padding: '24px' }}>
+              <h4 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '16px', margin: '0 0 16px 0' }}>
+                {content.officeInfo.firmName}
+              </h4>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '16px' }}>
+                {/* Address */}
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                  <MapPin
+                    style={{
+                      width: '18px',
+                      height: '18px',
+                      color: '#d1ab58',
+                      flexShrink: 0,
+                      marginTop: '2px'
+                    }}
+                  />
+                  <div>
+                    <p style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>
+                      {content.officeInfo.address}
+                    </p>
+                    <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>
+                      {content.officeInfo.city}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Phone */}
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                  <Phone
+                    style={{
+                      width: '18px',
+                      height: '18px',
+                      color: '#d1ab58',
+                      flexShrink: 0
+                    }}
+                  />
+                  <span style={{ fontSize: '15px', fontWeight: '700' }}>
+                    {content.officeInfo.phone}
+                  </span>
+                </div>
+
+                {/* Email */}
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                  <Mail
+                    style={{
+                      width: '18px',
+                      height: '18px',
+                      color: '#d1ab58',
+                      flexShrink: 0
+                    }}
+                  />
+                  <span style={{ fontSize: '15px' }}>
+                    {content.officeInfo.email}
+                  </span>
+                </div>
               </div>
 
-              {/* Address Card */}
-              <div style={{ background: '#fff', border: '1px solid #e5e7eb', padding: '24px' }}>
-                <h4 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '16px', margin: '0 0 16px 0' }}>
-                  {content.officeInfo.firmName}
-                </h4>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '16px' }}>
-                  {/* Address */}
-                  <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                    <MapPin
-                      style={{
-                        width: '18px',
-                        height: '18px',
-                        color: '#d1ab58',
-                        flexShrink: 0,
-                        marginTop: '2px'
-                      }}
-                    />
-                    <div>
-                      <p style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>
-                        {content.officeInfo.address}
-                      </p>
-                      <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>
-                        {content.officeInfo.city}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Phone */}
-                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                    <Phone
-                      style={{
-                        width: '18px',
-                        height: '18px',
-                        color: '#d1ab58',
-                        flexShrink: 0
-                      }}
-                    />
-                    <span style={{ fontSize: '15px', fontWeight: '700' }}>
-                      {content.officeInfo.phone}
-                    </span>
-                  </div>
-
-                  {/* Email */}
-                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                    <Mail
-                      style={{
-                        width: '18px',
-                        height: '18px',
-                        color: '#d1ab58',
-                        flexShrink: 0
-                      }}
-                    />
-                    <span style={{ fontSize: '15px' }}>
-                      {content.officeInfo.email}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Note */}
-                <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '16px' }}>
-                  <p style={{ fontSize: '13px', color: '#888', fontStyle: 'italic', margin: 0 }}>
-                    {content.officeInfo.note}
-                  </p>
-                </div>
+              {/* Note */}
+              <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '16px' }}>
+                <p style={{ fontSize: '13px', color: '#888', fontStyle: 'italic', margin: 0 }}>
+                  {content.officeInfo.note}
+                </p>
               </div>
             </div>
           </div>
