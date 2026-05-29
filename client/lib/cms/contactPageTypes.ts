@@ -32,8 +32,6 @@ export interface ContactFormBenefit {
 }
 
 export interface ContactFormContent {
-  heading: string; // "Send Us a Message"
-  subtext: string; // Description below heading
   formTitle: string; // "Free Case Evaluation"
   benefitsTitle: string; // "Why Contact Constellation Law?"
   benefits: ContactFormBenefit[];
@@ -62,20 +60,6 @@ export interface OfficeInfoContent {
   note: string; // "Convenient parking available..."
 }
 
-export interface CTAContent {
-  heading: string; // "Ready to Discuss Your Case?"
-  description: string; // Subtitle text
-  primaryButton: {
-    label: string; // "Call Us Now"
-    phone: string; // Phone number
-  };
-  secondaryButton: {
-    label: string; // "Schedule Consultation"
-    sublabel: string; // "Free Case Review"
-    link: string; // Link URL
-  };
-}
-
 // Complete Contact page content structure
 export interface ContactPageContent {
   hero: ContactHeroContent;
@@ -83,7 +67,6 @@ export interface ContactPageContent {
   form: ContactFormContent;
   officeHours: OfficeHoursInfoContent;
   officeInfo: OfficeInfoContent;
-  cta: CTAContent;
   /** Maps heading keys (e.g. "form.heading") to HTML tag names (e.g. "h2") */
   headingTags?: Record<string, string>;
 }
@@ -105,8 +88,6 @@ export const defaultContactContent: ContactPageContent = {
     heading: "Get In Touch Today",
   },
   form: {
-    heading: "",
-    subtext: "",
     formTitle: "Free Case Evaluation",
     benefitsTitle: "Why Contact Constellation Law?",
     benefits: [
@@ -140,18 +121,5 @@ export const defaultContactContent: ContactPageContent = {
     phone: "404-555-5555",
     email: "info@constellationlaw.com",
     note: "Convenient parking available. MARTA accessible. We can also visit you at the hospital or your home if needed.",
-  },
-  cta: {
-    heading: "",
-    description: "",
-    primaryButton: {
-      label: "",
-      phone: "",
-    },
-    secondaryButton: {
-      label: "",
-      sublabel: "",
-      link: "",
-    },
   },
 };

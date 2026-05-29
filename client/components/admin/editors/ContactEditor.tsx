@@ -132,20 +132,10 @@ function ContactMethodsSection({ content, update }: SectionProps) {
 function FormSection({ content, update }: SectionProps) {
   const form = content.form;
   const set = (patch: Partial<typeof form>) => update("form", { ...form, ...patch });
-  const ht = useHeadingTag(content, update);
 
   return (
     <Section title="Contact Form" defaultOpen={false}>
       <div className="grid gap-4">
-        <HeadingField
-          label="Heading"
-          value={form.heading}
-          onChange={(v) => set({ heading: v })}
-          tag={ht.get("form.heading")}
-          onTagChange={(t) => ht.set("form.heading", t)}
-        />
-        <RichTextField label="Subtext" value={form.subtext} onChange={(v) => set({ subtext: v })} />
-
         <div className="border-t pt-6 mt-6">
           <p className="text-sm font-semibold mb-4">Contact Form Section</p>
           <div className="grid gap-4">
