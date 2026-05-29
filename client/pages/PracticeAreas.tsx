@@ -119,7 +119,7 @@ export default function PracticeAreas() {
             }}>
               <div style={{ direction: 'ltr' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                  {item.icon && <img src={item.icon} alt="" style={{ width: '32px', height: '32px', filter: 'invert(72%) sepia(55%) saturate(500%) hue-rotate(5deg)' }} />}
+                  {item.icon && <img src={item.icon} alt="" style={{ width: '32px', height: '32px' }} />}
                   <h3 style={{ fontSize: '30px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>{item.title}</h3>
                 </div>
                 <p style={{ fontSize: '18px', color: '#444', marginBottom: '20px', lineHeight: '1.7' }}>{item.description}</p>
