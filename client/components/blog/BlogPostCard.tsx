@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Calendar, Tag } from "lucide-react";
 import { normalizeSlug } from "@site/lib/utils";
 import type { PreloadedPostDocument } from "@site/lib/cms/publicLoaders";
 
@@ -12,44 +11,138 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
   const cleanSlug = normalizeSlug(post.slug);
   const fallbackOgImage = typeof post.og_image === "string" ? post.og_image : post.og_image?.url || "";
   const cardImage = post.featured_image || fallbackOgImage;
+  const categoryName = post.post_categories?.name || "Blog";
 
   return (
     <Link
       to={`/blog/${cleanSlug}/`}
-      className="group block bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
+      style={{
+        display: "block",
+        background: "#fff",
+        borderRadius: "4px",
+        overflow: "hidden",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+        textDecoration: "none",
+        color: "inherit"
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "translateY(-2px)";
+        e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.12)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
+      }}
     >
-      {cardImage ? (
-        <div className="aspect-[16/9] overflow-hidden bg-gray-100">
+      {/* Image Container with Category Badge */}
+      <div style={{ position: "relative", width: "100%", height: "220px", overflow: "hidden" }}>
+        {cardImage ? (
           <img
             src={cardImage}
             alt={post.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            width={600}
-            height={338}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+              transition: "transform 0.3s ease"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
           />
-        </div>
-      ) : (
-        <div className="aspect-[16/9] bg-gradient-to-br from-[#183658] to-[#0f2742] flex items-center justify-center">
-          <span
-            className="text-white/30 text-6xl font-light"
-            style={{ fontFamily: "Poppins, sans-serif" }}
-          >
-            {post.title.charAt(0)}
-          </span>
-        </div>
-      )}
-
-      <div className="p-5">
-        <div className="flex items-center gap-3 mb-3 text-sm text-gray-500">
-          {post.post_categories?.name && (
-            <span className="flex items-center gap-1 text-[#6b8d0c] font-medium">
-              <Tag className="h-3 w-3" />
-              {post.post_categories.name}
+        ) : (
+          <div style={{
+            width: "100%",
+            height: "100%",
+            background: "linear-gradient(135deg, #183658 0%, #0f2742 100%)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}>
+            <span style={{
+              color: "rgba(255,255,255,0.3)",
+              fontSize: "60px",
+              fontWeight: "300",
+              fontFamily: "Poppins, sans-serif"
+            }}>
+              {post.title.charAt(0)}
             </span>
-          )}
-          <span className="flex items-center gap-1">
-            <Calendar className="h-3 w-3" />
-            {new Date(displayDate || Date.now()).toLocaleDateString("en-US", {
+          </div>
+        )}
+
+        {/* Category Badge */}
+        <span style={{
+          position: "absolute",
+          top: "12px",
+          left: "12px",
+          background: "#C9A84C",
+          color: "#111",
+          fontSize: "11px",
+          fontWeight: "700",
+          textTransform: "uppercase",
+          padding: "4px 10px",
+          letterSpacing: "1px",
+          borderRadius: "2px"
+        }}>
+          {categoryName}
+        </span>
+      </div>
+
+      {/* Content Container */}
+      <div style={{ padding: "20px" }}>
+        {/* Title */}
+        <h3 style={{
+          fontSize: "18px",
+          fontWeight: "700",
+          color: "#111",
+          marginBottom: "10px",
+          lineHeight: "1.4",
+          margin: "0 0 10px 0",
+          display: "-webkit-box",
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: "vertical",
+          overflow: "hidden"
+        }}>
+          {post.title}
+        </h3>
+
+        {/* Excerpt */}
+        {post.excerpt && (
+          <p style={{
+            fontSize: "14px",
+            color: "#666",
+            lineHeight: "1.6",
+            marginBottom: "16px",
+            margin: "0 0 16px 0",
+            display: "-webkit-box",
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden"
+          }}>
+            {post.excerpt}
+          </p>
+        )}
+
+        {/* Author and Date Row */}
+        <div style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          fontSize: "13px",
+          color: "#888",
+          marginBottom: "16px",
+          margin: "0 0 16px 0"
+        }}>
+          <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            👤 Author
+          </span>
+          <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            📅 {new Date(displayDate || Date.now()).toLocaleDateString("en-US", {
               month: "short",
               day: "numeric",
               year: "numeric",
@@ -57,20 +150,22 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
           </span>
         </div>
 
-        <h2
-          className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#183658] transition-colors line-clamp-2"
-          style={{ fontFamily: "Archivo, sans-serif" }}
-        >
-          {post.title}
-        </h2>
-
-        {post.excerpt && (
-          <p className="text-gray-600 text-sm line-clamp-3">{post.excerpt}</p>
-        )}
-
-        <span className="inline-block mt-4 text-sm font-semibold text-[#183658] group-hover:text-[#6b8d0c] transition-colors">
+        {/* Read More Link */}
+        <a href={`/blog/${cleanSlug}/`} style={{
+          color: "#C9A84C",
+          fontWeight: "600",
+          fontSize: "14px",
+          textDecoration: "none",
+          transition: "color 0.3s ease"
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.color = "#d1ab58";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.color = "#C9A84C";
+        }}>
           Read More →
-        </span>
+        </a>
       </div>
     </Link>
   );
