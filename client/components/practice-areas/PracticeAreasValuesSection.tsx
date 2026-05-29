@@ -13,7 +13,7 @@ export default function PracticeAreasValuesSection({ content, headingTag = "h2" 
   const HeadingTag = headingTag as keyof JSX.IntrinsicElements;
 
   return (
-    <section className="w-full py-20" style={{ backgroundColor: "#f5f5f5" }}>
+    <section className="w-full py-20" style={{ backgroundColor: "#ffffff" }}>
       <div className="max-w-[1280px] mx-auto w-[95%] md:w-[90%]">
         {/* Title */}
         {content.valuesTitle && (
