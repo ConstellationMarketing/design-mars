@@ -35,8 +35,8 @@ export default function AboutUs() {
         updatedTime={updatedAt}
       />
 
-      {/* Hero Section - same as home page */}
-      <div className="w-full flex items-center justify-center py-[40px] md:py-[100px] pb-[100px] md:pb-[120px] relative overflow-visible" style={{ position: 'relative', overflow: 'visible' }}>
+      {/* Hero Section */}
+      <div className="w-full flex items-center justify-center py-[40px] md:py-[100px] pb-[100px] md:pb-[120px] relative overflow-visible">
         {/* Dark overlay for text readability */}
         <div style={{
           position: 'absolute',
