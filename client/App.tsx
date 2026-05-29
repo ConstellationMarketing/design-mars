@@ -21,8 +21,9 @@ if (typeof window !== "undefined") {
   }
 }
 
-// Suppress ResizeObserver loop error from Radix UI components
-// This is a non-critical warning that occurs with rapid layout changes and fixed positioning
+// Suppress ResizeObserver loop error from Radix UI and other components
+// This is a non-critical browser warning that occurs with rapid layout changes
+// The error is harmless and does not affect functionality
 if (typeof window !== "undefined") {
   // Helper to detect ResizeObserver errors - check all arguments
   const isResizeObserverError = (...args: any[]): boolean => {
@@ -32,9 +33,10 @@ if (typeof window !== "undefined") {
     });
   };
 
-  // Intercept console methods - check all arguments
+  // Intercept console methods
   const originalError = console.error;
   const originalWarn = console.warn;
+  const originalLog = console.log;
 
   console.error = (...args: any[]) => {
     if (!isResizeObserverError(...args)) {
@@ -48,7 +50,14 @@ if (typeof window !== "undefined") {
     }
   };
 
-  // Intercept uncaught errors and prevent them from logging
+  // Also suppress if logged via console.log
+  console.log = (...args: any[]) => {
+    if (!isResizeObserverError(...args)) {
+      originalLog.apply(console, args);
+    }
+  };
+
+  // Intercept uncaught errors
   window.addEventListener(
     "error",
     (event: ErrorEvent) => {
@@ -73,16 +82,16 @@ if (typeof window !== "undefined") {
     true
   );
 
-  // Override ResizeObserver to suppress error reporting
+  // Override ResizeObserver constructor to catch internal errors
   if (window.ResizeObserver) {
     const OriginalResizeObserver = window.ResizeObserver;
     window.ResizeObserver = class extends OriginalResizeObserver {
       constructor(callback: ResizeObserverCallback) {
-        // Wrap the callback to suppress ResizeObserver errors silently
         super((entries, observer) => {
           try {
             callback(entries, observer);
           } catch (e) {
+            // Silently ignore ResizeObserver loop errors
             if (!String(e || "").includes("ResizeObserver loop completed")) {
               throw e;
             }
@@ -92,11 +101,11 @@ if (typeof window !== "undefined") {
     } as any;
   }
 
-  // Additional: suppress via onError handler for errors that bubble up
+  // Suppress via window.onerror handler
   const originalOnError = window.onerror;
   window.onerror = function(message, source, lineno, colno, error) {
     if (String(message || "").includes("ResizeObserver loop completed")) {
-      return true; // Suppress the error
+      return true; // Suppress
     }
     if (originalOnError) {
       return originalOnError(message, source, lineno, colno, error);
