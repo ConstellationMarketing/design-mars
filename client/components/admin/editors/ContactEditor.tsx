@@ -1,5 +1,5 @@
 import type { ContactPageContent } from "@site/lib/cms/contactPageTypes";
-import { Section, ArrayEditor, GlobalSectionInfo, RichTextField, HeadingField, Input, Label, Textarea } from "./EditorShared";
+import { Section, ArrayEditor, GlobalSectionInfo, RichTextField, HeadingField, Input, Label, Textarea, ImageField } from "./EditorShared";
 
 interface ContactEditorProps {
   content: ContactPageContent;
@@ -101,15 +101,17 @@ function ContactMethodsSection({ content, update }: SectionProps) {
         newItem={() => ({ icon: "Phone", title: "", detail: "", subDetail: "" })}
         renderItem={(item, _, upd) => (
           <div className="grid gap-3">
-            <div className="grid grid-cols-4 gap-3">
-              <div>
-                <Label>Icon</Label>
-                <Input value={item.icon} onChange={(e) => upd({ ...item, icon: e.target.value })} placeholder="Lucide icon name" />
-              </div>
-              <div className="col-span-3">
-                <Label>Title</Label>
-                <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} />
-              </div>
+            <div>
+              <ImageField
+                label="Icon"
+                value={item.icon}
+                onChange={(v) => upd({ ...item, icon: v })}
+                folder="contact-icons"
+              />
+            </div>
+            <div>
+              <Label>Title</Label>
+              <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} />
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
