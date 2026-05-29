@@ -41,7 +41,7 @@ export default function PracticeAreasValuesSection({ content, headingTag = "h2" 
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '18px',
+                fontSize: '24px',
                 fontWeight: '700',
                 color: '#111',
                 flexShrink: 0,
