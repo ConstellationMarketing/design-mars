@@ -290,13 +290,6 @@ function PracticeAreasIntroSection({ content, update }: SectionProps) {
   return (
     <Section title="Practice Areas Intro" defaultOpen={false}>
       <div className="grid gap-4">
-        <HeadingField
-          label="Title"
-          value={intro.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={ht.get("practiceAreasIntro.sectionLabel")}
-          onTagChange={(t) => ht.set("practiceAreasIntro.sectionLabel", t)}
-        />
         <div>
           <Label>Main Heading</Label>
           <Input value={intro.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Where We Fight For You" />
@@ -370,13 +363,6 @@ function AwardsSection({ content, update }: SectionProps) {
   return (
     <Section title="Awards & Memberships" defaultOpen={false}>
       <div className="grid gap-4">
-        <HeadingField
-          label="Section Heading"
-          value={awards.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={ht.get("awards.sectionLabel")}
-          onTagChange={(t) => ht.set("awards.sectionLabel", t)}
-        />
         <div>
           <Label>Title</Label>
           <Input value={awards.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Press & Recognition" />
