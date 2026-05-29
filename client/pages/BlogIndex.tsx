@@ -18,8 +18,10 @@ export default function BlogIndex() {
     );
   }
 
+  const heroBackgroundImage = hero.backgroundImage || 'https://atzgmwcxbdnswerpqzzi.supabase.co/storage/v1/object/public/media/library/1779351750724-20d0za.webp';
+
   return (
-    <Layout>
+    <Layout heroBackgroundImage={heroBackgroundImage}>
       <Seo
         title={title || "Blog"}
         meta={meta}

@@ -23,9 +23,9 @@ export default function BlogHero({ hero }: BlogHeroProps) {
       {/* Content */}
       <div className="max-w-[1000px] w-[85%] md:w-[90%] relative z-10 text-center" style={{ paddingTop: '35px' }}>
         <div className="flex flex-col items-center justify-center gap-5 md:gap-6">
-          {/* Highlighted Text - large white text on top */}
+          {/* Highlighted Text - large gold text on top */}
           {hero.highlightedText && (
-            <p className="font-poppins text-[48px] sm:text-[48px] md:text-[96px] font-bold leading-[1.0] text-white max-w-4xl">
+            <p className="font-poppins text-[48px] sm:text-[48px] md:text-[96px] font-bold leading-[1.0] max-w-4xl" style={{ color: '#C9A84C' }}>
               {hero.highlightedText}
             </p>
           )}
