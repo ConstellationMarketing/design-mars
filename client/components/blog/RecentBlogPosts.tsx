@@ -101,10 +101,10 @@ export default function RecentBlogPosts({ data }: RecentBlogPostsProps) {
             maxWidth: '1280px',
             margin: '0 auto',
             padding: '0 24px',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
+            display: 'flex',
+            flexDirection: 'column',
             gap: '24px'
-          }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          }}>
             {posts.map((post) => (
               <BlogPostCard key={post.id} post={post} />
             ))}
