@@ -70,13 +70,6 @@ export default function PracticeAreas() {
               </h1>
             )}
 
-            {/* Tagline */}
-            {content.hero.tagline && (
-              <p className="font-poppins text-[16px] md:text-[18px] text-white/90 max-w-[700px] mt-2">
-                {content.hero.tagline}
-              </p>
-            )}
-
             {/* CTA Button wrapper */}
             {content.hero.buttonText && (
               <div className="border-2 border-brand-accent p-1 hover:border-black transition-all duration-300 hover:bg-white inline-block max-w-[80vw] md:max-w-none" style={{ marginTop: '30px', marginBottom: '70px' }}>
