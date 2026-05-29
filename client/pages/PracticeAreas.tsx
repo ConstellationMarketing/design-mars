@@ -2,11 +2,9 @@ import Seo from "@site/components/Seo";
 import Layout from "@site/components/layout/Layout";
 import { usePracticeAreasContent } from "@site/hooks/usePracticeAreasContent";
 import { useGlobalPhone } from "@site/contexts/SiteSettingsContext";
-import { Loader2, Phone } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
 import AboutValuesSection from "@site/components/about/AboutValuesSection";
-import DynamicHeading from "@site/components/shared/DynamicHeading";
-import RichText from "@site/components/shared/RichText";
 
 export default function PracticeAreas() {
   const { content, meta, title, publishedAt, updatedAt, isLoading } = usePracticeAreasContent();
@@ -66,13 +64,9 @@ export default function PracticeAreas() {
 
             {/* H1 Title - small yellow text on bottom */}
             {content.hero.h1Title && (
-              <DynamicHeading
-                tag={content.headingTags?.["hero.h1Title"]}
-                defaultTag="h1"
-                className="font-poppins text-[18px] md:text-[24px] font-bold text-brand-accent uppercase tracking-wider"
-              >
+              <h1 className="font-poppins text-[14px] md:text-[15px] font-normal tracking-widest uppercase text-brand-accent max-w-[60%] mx-auto text-center" style={{ marginTop: 0 }}>
                 {content.hero.h1Title}
-              </DynamicHeading>
+              </h1>
             )}
 
             {/* Tagline */}
