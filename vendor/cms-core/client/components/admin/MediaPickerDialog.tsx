@@ -106,7 +106,7 @@ export default function MediaPickerDialog({
         style={{
           position: 'fixed',
           top: '50%',
-          left: '50%',
+          left: 'calc(50% + 128px)',
           transform: 'translate(-50%, -50%)',
           zIndex: 9999,
           background: '#fff',
