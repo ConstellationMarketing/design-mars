@@ -344,6 +344,23 @@ export default function AdminPageEdit() {
 
   // Normalize content by merging with defaults based on page type
   const normalizedContent = useMemo(() => {
+    // Handle Blog page by path
+    if (normalizedUrlPath === "/blog") {
+      const blocks = page?.content as ContentBlock[] | undefined;
+      if (Array.isArray(blocks)) {
+        const heroBlock = blocks.find((b) => b.type === "hero");
+        return {
+          hero: mergeWithDefaults(
+            heroBlock as unknown as Partial<BlogHeroData>,
+            DEFAULT_BLOG_HERO
+          )
+        };
+      }
+      return {
+        hero: DEFAULT_BLOG_HERO
+      };
+    }
+
     if (!isStructuredPage) return page?.content;
     if (!page?.content && !isPracticeAreaPage) return page?.content;
 
@@ -387,7 +404,7 @@ export default function AdminPageEdit() {
         }
         return page.content;
     }
-  }, [page?.content, page?.page_id, page?.page_type, page?.og_image, isStructuredPage]);
+  }, [page?.content, page?.page_id, page?.page_type, page?.og_image, isStructuredPage, normalizedUrlPath]);
 
   // Detect FAQ items in current page content for the SEO tab notice
   const faqItems = useMemo(
