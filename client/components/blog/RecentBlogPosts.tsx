@@ -97,14 +97,7 @@ export default function RecentBlogPosts({ data }: RecentBlogPostsProps) {
             </p>
           </div>
         ) : (
-          <div style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            padding: '0 24px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '24px'
-          }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-[1280px] mx-auto px-6">
             {posts.map((post) => (
               <BlogPostCard key={post.id} post={post} />
             ))}
