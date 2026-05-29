@@ -200,7 +200,7 @@ function ValuesSection({ content, update }: SectionProps) {
             <div className="grid gap-3">
               <div>
                 <Label>Badge Text</Label>
-                <Input value={item.badgeText} onChange={(e) => upd({ ...item, badgeText: e.target.value })} placeholder="e.g., 150+, $0, 24/7" />
+                <Input value={item.badgeText || ""} onChange={(e) => upd({ ...item, badgeText: e.target.value })} placeholder="e.g., 150+, $0, 24/7" />
               </div>
               <div>
                 <Label>Title</Label>
