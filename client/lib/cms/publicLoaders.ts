@@ -227,10 +227,10 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
 
 export const DEFAULT_BLOG_HERO: BlogHeroData = {
   h1Title: "",
-  headline: "Our Blog",
-  highlightedText: "",
-  tagline: "Legal insights, news, and resources",
-  buttonText: "Contact Us",
+  headline: "BLOG",
+  highlightedText: "STAY INFORMED ABOUT YOUR RIGHTS",
+  tagline: "LEGAL INSIGHTS & NEWS",
+  buttonText: "ASK A QUESTION",
   phone: "",
   phoneLabel: "",
   backgroundImage: "",
