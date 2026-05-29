@@ -5,10 +5,8 @@ interface BlogHeroProps {
 }
 
 export default function BlogHero({ hero }: BlogHeroProps) {
-  const heroBackgroundImage = hero.backgroundImage || 'https://atzgmwcxbdnswerpqzzi.supabase.co/storage/v1/object/public/media/library/1779351750724-20d0za.webp';
-
   return (
-    <div className="w-full flex items-center justify-center py-[40px] md:py-[100px] pb-[100px] md:pb-[120px] relative overflow-visible" style={{ backgroundImage: `url(${heroBackgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className="w-full flex items-center justify-center py-[40px] md:py-[100px] pb-[100px] md:pb-[120px] relative overflow-visible">
       {/* Dark overlay */}
       <div style={{
         position: 'absolute',
