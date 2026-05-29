@@ -124,8 +124,8 @@ export interface BlogHeroData {
   h1Title: string;
   tagline: string;
   buttonText: string;
-  buttonUrl: string;
   backgroundImage?: string;
+  headingTags?: Record<string, string>;
 }
 
 export interface RecentPostsConfig {
@@ -230,7 +230,6 @@ export const DEFAULT_BLOG_HERO: BlogHeroData = {
   h1Title: "",
   tagline: "LEGAL INSIGHTS & NEWS",
   buttonText: "ASK A QUESTION",
-  buttonUrl: "/contact/",
   backgroundImage: "",
 };
 
@@ -862,7 +861,6 @@ export function shapeBlogIndexView(document: PreloadedPageDocument<ContentBlock[
         h1Title: heroBlock.h1Title || DEFAULT_BLOG_HERO.h1Title,
         tagline: heroBlock.tagline || DEFAULT_BLOG_HERO.tagline,
         buttonText: heroBlock.buttonText || DEFAULT_BLOG_HERO.buttonText,
-        buttonUrl: heroBlock.buttonUrl || DEFAULT_BLOG_HERO.buttonUrl,
         backgroundImage: heroBlock.backgroundImage,
       };
     }

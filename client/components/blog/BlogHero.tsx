@@ -56,7 +56,7 @@ export default function BlogHero({ hero }: BlogHeroProps) {
             <div className="border-2 border-brand-accent p-1 hover:border-black transition-all duration-300 hover:bg-white inline-block max-w-[80vw] md:max-w-none" style={{ marginTop: '30px', marginBottom: '70px' }}>
               {/* CTA Button */}
               <button
-                onClick={() => window.location.href = hero.buttonUrl || '/contact/'}
+                onClick={() => window.location.href = '/contact/'}
                 className="font-poppins text-[18px] font-normal uppercase text-black bg-brand-accent px-6 py-3 border-2 border-black hover:bg-white hover:text-black hover:border-white transition-all duration-300 flex items-center justify-center gap-3 whitespace-nowrap"
                 style={{ width: '100%' }}
               >
