@@ -92,22 +92,28 @@ export default function MediaPickerDialog({
   if (!open) return null;
 
   return (
-    <>
+    <div style={{
+      position: 'absolute',
+      inset: 0,
+      zIndex: 9999,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      pointerEvents: 'none'
+    }}>
       <div
         onClick={() => onOpenChange(false)}
         style={{
           position: 'fixed',
           inset: 0,
           background: 'rgba(0,0,0,0.5)',
-          zIndex: 9998
+          zIndex: 9998,
+          pointerEvents: 'auto'
         }}
       />
       <div
         style={{
-          position: 'fixed',
-          top: '50%',
-          left: 'calc(50% + 128px)',
-          transform: 'translate(-50%, -50%)',
+          position: 'relative',
           zIndex: 9999,
           background: '#fff',
           borderRadius: '8px',
@@ -117,7 +123,8 @@ export default function MediaPickerDialog({
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
-          padding: '24px'
+          padding: '24px',
+          pointerEvents: 'auto'
         }}
       >
         <h2 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '16px' }}>
@@ -200,6 +207,6 @@ export default function MediaPickerDialog({
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
