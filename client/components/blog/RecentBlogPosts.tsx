@@ -60,6 +60,13 @@ export default function RecentBlogPosts({ data }: RecentBlogPostsProps) {
 
   return (
     <section className="bg-white py-[40px] md:py-[60px]">
+      <style>{`
+        @media (max-width: 768px) {
+          .recent-articles-underline {
+            max-width: 60% !important;
+          }
+        }
+      `}</style>
       <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
         <div className="text-center mb-[30px] md:mb-[50px]">
           <div className="inline-block">
@@ -73,7 +80,7 @@ export default function RecentBlogPosts({ data }: RecentBlogPostsProps) {
                 <h2 className="font-poppins font-bold text-[36px] md:text-[48px] leading-tight md:leading-[54px] text-black m-0">
                   {data.heading}
                 </h2>
-                <div className="h-px bg-brand-accent mt-4 max-w-[60%] mx-auto"></div>
+                <div className="recent-articles-underline h-px bg-brand-accent mt-4 mx-auto" style={{ maxWidth: "768px" }}></div>
               </>
             )}
           </div>

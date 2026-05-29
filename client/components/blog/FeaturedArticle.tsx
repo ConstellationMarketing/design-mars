@@ -51,6 +51,9 @@ export default function FeaturedArticle({ sectionTitle }: FeaturedArticleProps) 
             padding-left: 0 !important;
             padding-top: 24px;
           }
+          .featured-article-underline {
+            max-width: 60% !important;
+          }
         }
       `}</style>
 
@@ -67,12 +70,7 @@ export default function FeaturedArticle({ sectionTitle }: FeaturedArticleProps) 
             }}>
               {sectionTitle}
             </h2>
-            <div style={{
-              width: "80px",
-              height: "2px",
-              background: "#C9A84C",
-              margin: "0 auto"
-            }}></div>
+            <div className="featured-article-underline h-px bg-brand-accent mt-4 mx-auto" style={{ maxWidth: "768px" }}></div>
           </div>
         </div>
 
