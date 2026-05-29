@@ -29,20 +29,6 @@ export interface AboutStat {
   label: string;
 }
 
-export interface AboutContent {
-  sectionLabel: string;
-  heading: string;
-  description: string;
-  phone: string;
-  phoneLabel: string;
-  contactLabel: string;
-  contactText: string;
-  attorneyImage: string;
-  attorneyImageAlt: string;
-  features: AboutFeature[];
-  stats: AboutStat[];
-}
-
 export interface PracticeAreaItem {
   title: string;
   image: string;
@@ -234,7 +220,6 @@ export interface AboutPageContent {
   partnerLogos: PartnerLogo[];
   stats: StatsContent;
   homeAbout: HomeAboutContent;
-  about: AboutContent;
   practiceAreasIntro: AboutPracticeAreasIntroContent;
   practiceAreas: PracticeAreaItem[];
   awards: AwardsContent;
@@ -246,6 +231,8 @@ export interface AboutPageContent {
   googleReviews: GoogleReviewsContent;
   faq: FaqContent;
   contact: ContactContent;
+  values: ValuesContent;
+  cta: CTAContent;
   /** Maps heading keys (e.g. "about.heading") to HTML tag names (e.g. "h2") */
   headingTags?: Record<string, string>;
 }
@@ -280,19 +267,6 @@ export const defaultAboutContent: AboutPageContent = {
     yearsLabel: "About Us — YEARS OF EXPERIENCE",
     experienceDescription: "About Us — Constellation Law is a top rated law firm with 150 years of collective experience. Our partners worked for the largest firm in Atlanta, and now leverage their backgrounds and legal knowledge to stand up to the corporations they once defended",
     featuresDescription: "About Us — Features Description",
-  },
-  about: {
-    sectionLabel: "About Us — Section Label",
-    heading: "About Us — Heading",
-    description: "About Us — Description",
-    phone: "",
-    phoneLabel: "",
-    contactLabel: "About Us — Contact Label",
-    contactText: "About Us — Contact Text",
-    attorneyImage: "",
-    attorneyImageAlt: "",
-    features: [],
-    stats: [],
   },
   practiceAreasIntro: {
     sectionLabel: "About Us — Our Values",

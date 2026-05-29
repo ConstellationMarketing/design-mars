@@ -272,21 +272,10 @@ const HOME_CONTENT_KEYS: (keyof HomePageContent)[] = [
 
 const ABOUT_CONTENT_KEYS: (keyof AboutPageContent)[] = [
   "hero",
-  "partnerLogos",
-  "stats",
   "homeAbout",
-  "about",
   "practiceAreasIntro",
-  "practiceAreas",
   "awards",
-  "testimonials",
-  "videoTestimonials",
-  "attorneys",
-  "blog",
-  "process",
-  "googleReviews",
-  "faq",
-  "contact",
+  "headingTags",
 ];
 
 const CONTACT_CONTENT_KEYS: (keyof ContactPageContent)[] = [
@@ -591,67 +580,31 @@ export function mergeAboutContentWithDefaults(cmsContent: Partial<AboutPageConte
 
   return {
     hero: { ...defaults.hero, ...cmsContent.hero },
-    partnerLogos: cmsContent.partnerLogos?.length ? cmsContent.partnerLogos : defaults.partnerLogos,
-    stats: {
-      ...defaults.stats,
-      ...cmsContent.stats,
-      cases: cmsContent.stats?.cases?.length ? cmsContent.stats.cases : defaults.stats.cases,
-    },
+    partnerLogos: defaults.partnerLogos,
+    stats: defaults.stats,
     homeAbout: {
       ...defaults.homeAbout,
       ...cmsContent.homeAbout,
-      features: cmsContent.homeAbout?.features?.length ? cmsContent.homeAbout.features : defaults.homeAbout.features,
-    },
-    about: {
-      ...defaults.about,
-      ...cmsContent.about,
-      features: cmsContent.about?.features?.length ? cmsContent.about.features : defaults.about.features,
-      stats: cmsContent.about?.stats?.length ? cmsContent.about.stats : defaults.about.stats,
     },
     practiceAreasIntro: {
       ...defaults.practiceAreasIntro,
       ...(cmsContent.practiceAreasIntro || {}),
     },
-    practiceAreas: cmsContent.practiceAreas?.length ? cmsContent.practiceAreas : defaults.practiceAreas,
+    practiceAreas: defaults.practiceAreas,
     awards: {
       ...defaults.awards,
       ...cmsContent.awards,
     },
-    testimonials: {
-      ...defaults.testimonials,
-      ...(cmsContent.testimonials || {}),
-      items: cmsContent.testimonials?.items?.length ? cmsContent.testimonials.items : defaults.testimonials.items,
-    },
-    videoTestimonials: {
-      ...defaults.videoTestimonials,
-      ...(cmsContent.videoTestimonials || {}),
-      videos: cmsContent.videoTestimonials?.videos?.length ? cmsContent.videoTestimonials.videos : defaults.videoTestimonials.videos,
-    },
-    attorneys: {
-      ...defaults.attorneys,
-      ...(cmsContent.attorneys || {}),
-      attorneys: cmsContent.attorneys?.attorneys?.length ? cmsContent.attorneys.attorneys : defaults.attorneys.attorneys,
-    },
-    blog: {
-      ...defaults.blog,
-      ...(cmsContent.blog || {}),
-    },
-    process: {
-      ...defaults.process,
-      ...cmsContent.process,
-      steps: cmsContent.process?.steps?.length ? cmsContent.process.steps : defaults.process.steps,
-    },
-    googleReviews: {
-      ...defaults.googleReviews,
-      ...cmsContent.googleReviews,
-      reviews: cmsContent.googleReviews?.reviews?.length ? cmsContent.googleReviews.reviews : defaults.googleReviews.reviews,
-    },
-    faq: {
-      ...defaults.faq,
-      ...cmsContent.faq,
-      items: cmsContent.faq?.items?.length ? cmsContent.faq.items : defaults.faq.items,
-    },
-    contact: { ...defaults.contact, ...cmsContent.contact },
+    testimonials: defaults.testimonials,
+    videoTestimonials: defaults.videoTestimonials,
+    attorneys: defaults.attorneys,
+    blog: defaults.blog,
+    process: defaults.process,
+    googleReviews: defaults.googleReviews,
+    faq: defaults.faq,
+    contact: defaults.contact,
+    values: defaults.values,
+    cta: defaults.cta,
     headingTags: cmsContent.headingTags ?? defaults.headingTags,
   };
 }
