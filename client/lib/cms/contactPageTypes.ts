@@ -2,9 +2,14 @@
 // Each section maps directly to a static component's data needs
 
 export interface ContactHeroContent {
-  sectionLabel: string; // "– Contact Us" (H1)
-  tagline: string; // "Let's Talk About Your Case" (styled paragraph)
-  description: string; // Description paragraph
+  h1Title: string; // H1 title text (all caps, ~20px)
+  headline: string; // White uppercase text
+  highlightedText: string; // Large white text
+  tagline: string; // Gold tagline text
+  buttonText: string; // CTA button text
+  phone: string; // Phone number for button
+  phoneLabel: string; // Phone label
+  backgroundImage?: string; // Hero background image URL
 }
 
 export interface ContactMethodItem {
@@ -83,9 +88,14 @@ export interface ContactPageContent {
 // Default content - empty defaults, content comes exclusively from the CMS
 export const defaultContactContent: ContactPageContent = {
   hero: {
-    sectionLabel: "",
+    h1Title: "",
+    headline: "",
+    highlightedText: "",
     tagline: "",
-    description: "",
+    buttonText: "",
+    phone: "",
+    phoneLabel: "",
+    backgroundImage: "",
   },
   contactMethods: {
     methods: [],

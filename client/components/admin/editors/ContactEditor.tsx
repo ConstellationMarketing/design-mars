@@ -40,23 +40,42 @@ function useHeadingTag(content: ContactPageContent, update: Updater) {
 function HeroSection({ content, update }: SectionProps) {
   const hero = content.hero;
   const set = (patch: Partial<typeof hero>) => update("hero", { ...hero, ...patch });
-  const ht = useHeadingTag(content, update);
 
   return (
     <Section title="Hero Section">
       <div className="grid gap-4">
-        <HeadingField
-          label="Section Heading"
-          value={hero.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={content.headingTags?.["hero.sectionLabel"] ?? "h1"}
-          onTagChange={(t) => ht.set("hero.sectionLabel", t)}
-        />
+        <div>
+          <Label>Highlighted Text</Label>
+          <Input value={hero.highlightedText} onChange={(e) => set({ highlightedText: e.target.value })} placeholder="e.g., CONTACT US" />
+        </div>
+        <div>
+          <Label>Headline</Label>
+          <Input value={hero.headline} onChange={(e) => set({ headline: e.target.value })} placeholder="e.g., GET IN TOUCH" />
+        </div>
+        <div>
+          <Label>H1 Title</Label>
+          <Input value={hero.h1Title} onChange={(e) => set({ h1Title: e.target.value })} placeholder="e.g., – LET'S TALK" />
+        </div>
         <div>
           <Label>Tagline</Label>
-          <Input value={hero.tagline} onChange={(e) => set({ tagline: e.target.value })} />
+          <Input value={hero.tagline} onChange={(e) => set({ tagline: e.target.value })} placeholder="Gold text under H1" />
         </div>
-        <RichTextField label="Description" value={hero.description} onChange={(v) => set({ description: v })} />
+        <div>
+          <Label>Button Text</Label>
+          <Input value={hero.buttonText} onChange={(e) => set({ buttonText: e.target.value })} placeholder="e.g., CALL NOW" />
+        </div>
+        <div>
+          <Label>Phone Number</Label>
+          <Input value={hero.phone} onChange={(e) => set({ phone: e.target.value })} placeholder="e.g., 404-555-5555" />
+        </div>
+        <div>
+          <Label>Phone Label</Label>
+          <Input value={hero.phoneLabel} onChange={(e) => set({ phoneLabel: e.target.value })} placeholder="e.g., Call Now" />
+        </div>
+        <div>
+          <Label>Background Image</Label>
+          <Input value={hero.backgroundImage || ""} onChange={(e) => set({ backgroundImage: e.target.value })} placeholder="Image URL" />
+        </div>
       </div>
     </Section>
   );
