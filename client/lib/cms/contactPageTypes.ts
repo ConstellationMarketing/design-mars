@@ -21,6 +21,7 @@ export interface ContactMethodItem {
 
 export interface ContactMethodsContent {
   methods: ContactMethodItem[];
+  heading?: string; // Section heading "Get In Touch Today"
 }
 
 export interface ContactFormContent {
@@ -99,6 +100,7 @@ export const defaultContactContent: ContactPageContent = {
   },
   contactMethods: {
     methods: [],
+    heading: "Get In Touch Today",
   },
   form: {
     heading: "",

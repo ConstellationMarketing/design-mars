@@ -83,11 +83,20 @@ function HeroSection({ content, update }: SectionProps) {
 
 /* ------------------------------------------------------------------ */
 function ContactMethodsSection({ content, update }: SectionProps) {
+  const cm = content.contactMethods;
+  const set = (patch: Partial<typeof cm>) => update("contactMethods", { ...cm, ...patch });
+
   return (
     <Section title="Contact Methods" defaultOpen={false}>
+      <div className="grid gap-4 mb-6">
+        <div>
+          <Label>Section Heading</Label>
+          <Input value={cm.heading || ""} onChange={(e) => set({ heading: e.target.value })} placeholder="e.g., Get In Touch Today" />
+        </div>
+      </div>
       <ArrayEditor
-        items={content.contactMethods.methods}
-        onChange={(items) => update("contactMethods", { methods: items })}
+        items={cm.methods}
+        onChange={(items) => set({ methods: items })}
         itemLabel="Method"
         newItem={() => ({ icon: "Phone", title: "", detail: "", subDetail: "" })}
         renderItem={(item, _, upd) => (

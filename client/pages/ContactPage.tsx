@@ -139,7 +139,7 @@ export default function ContactPage() {
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
           {/* Section Heading */}
           <h2 style={{ fontSize: '36px', fontWeight: '700', textAlign: 'center', marginBottom: '12px', color: '#111' }}>
-            Get In Touch Today
+            {content.contactMethods.heading || "Get In Touch Today"}
           </h2>
           <div style={{ width: '80px', height: '2px', background: '#C9A84C', margin: '0 auto 48px' }}></div>
 
@@ -151,19 +151,25 @@ export default function ContactPage() {
           }} className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {contactMethods.map((method, index) => {
               const Icon = method.icon;
-              const isMiddleCard = contactMethods.length === 3 && index === 1;
               return (
                 <div
                   key={index}
                   style={{
-                    border: isMiddleCard ? '2px solid #C9A84C' : '1px solid #e5e7eb',
+                    border: '1px solid #111',
                     padding: '32px 24px',
                     textAlign: 'center',
                     background: '#fff',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    gap: '8px'
+                    gap: '8px',
+                    transition: 'border-color 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.border = '1px solid #C9A84C';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.border = '1px solid #111';
                   }}
                 >
                   {/* Icon in gold square */}
@@ -180,12 +186,12 @@ export default function ContactPage() {
                   </div>
 
                   {/* Title */}
-                  <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#111', margin: '0 0 8px 0' }}>
+                  <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#111', margin: '0 0 8px 0' }}>
                     {method.title}
                   </h3>
 
                   {/* Main value (phone/address/email) */}
-                  <p style={{ fontSize: '18px', fontWeight: '700', color: '#C9A84C', margin: '0 0 8px 0' }}>
+                  <p style={{ fontSize: '24px', fontWeight: '700', color: '#C9A84C', margin: '0 0 8px 0' }}>
                     {method.title === "Phone" ? (
                       <a href={`tel:${method.detail.replace(/\D/g, "")}`} style={{ color: '#C9A84C', textDecoration: 'none' }}>
                         {method.detail}
@@ -196,7 +202,7 @@ export default function ContactPage() {
                   </p>
 
                   {/* Sub text */}
-                  <p style={{ fontSize: '14px', color: '#888', margin: 0 }}>
+                  <p style={{ fontSize: '16px', color: '#888', margin: 0 }}>
                     {method.subdDetail}
                   </p>
                 </div>
