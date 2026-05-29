@@ -213,7 +213,10 @@ export default function AdminPostEdit() {
           {/* Hero Background Image */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Hero Background Image</CardTitle>
+              <div className="inline-block">
+                <CardTitle className="text-base">Hero Background Image</CardTitle>
+                <div className="h-px bg-brand-accent mt-2 max-w-[768px] mx-auto" style={{width: "768px", margin: "8px auto 0"}}></div>
+              </div>
               <CardDescription>
                 This image appears as the full-width hero background on the
                 public blog post page.
@@ -232,7 +235,10 @@ export default function AdminPostEdit() {
           {/* Post Body — RichTextEditor */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Post Body</CardTitle>
+              <div className="inline-block">
+                <CardTitle className="text-base">Post Body</CardTitle>
+                <div className="h-px bg-brand-accent mt-2 max-w-[768px] mx-auto" style={{width: "768px", margin: "8px auto 0"}}></div>
+              </div>
               <CardDescription>
                 Write your post content. Use the toolbar for formatting,
                 lists, blockquotes, links, and inline images.
