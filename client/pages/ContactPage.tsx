@@ -135,37 +135,68 @@ export default function ContactPage() {
       </div>
 
       {/* Contact Methods Section */}
-      <div className="bg-white py-[40px] md:py-[60px]">
-        <div className="max-w-[2560px] mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <div className="bg-white" style={{ padding: '80px 24px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+          {/* Section Heading */}
+          <h2 style={{ fontSize: '36px', fontWeight: '700', textAlign: 'center', marginBottom: '12px', color: '#111' }}>
+            Get In Touch Today
+          </h2>
+          <div style={{ width: '80px', height: '2px', background: '#C9A84C', margin: '0 auto 48px' }}></div>
+
+          {/* Cards Grid */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '24px'
+          }} className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {contactMethods.map((method, index) => {
               const Icon = method.icon;
+              const isMiddleCard = contactMethods.length === 3 && index === 1;
               return (
                 <div
                   key={index}
-                  className="bg-brand-card border border-brand-border p-[30px] md:p-[40px] text-center group hover:border-brand-accent transition-all duration-300"
+                  style={{
+                    border: isMiddleCard ? '2px solid #C9A84C' : '1px solid #e5e7eb',
+                    padding: '32px 24px',
+                    textAlign: 'center',
+                    background: '#fff',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}
                 >
-                  <div className="flex justify-center mb-[20px]">
-                    <div className="bg-brand-accent p-[20px] inline-block transition-all duration-300 group-hover:bg-white group-hover:scale-110">
-                      <Icon
-                        className="w-[35px] h-[35px] md:w-[40px] md:h-[40px] text-black"
-                        strokeWidth={1.5}
-                      />
-                    </div>
+                  {/* Icon in gold square */}
+                  <div style={{
+                    width: '56px',
+                    height: '56px',
+                    border: '1px solid #C9A84C',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '12px'
+                  }}>
+                    <Icon style={{ width: '28px', height: '28px', color: '#C9A84C' }} />
                   </div>
-                  <h3 className="font-poppins text-[24px] md:text-[28px] leading-tight text-brand-accent mb-[15px] font-bold">
+
+                  {/* Title */}
+                  <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#111', margin: '0 0 8px 0' }}>
                     {method.title}
                   </h3>
-                  <p className="font-poppins text-[18px] md:text-[20px] text-black mb-[8px]">
+
+                  {/* Main value (phone/address/email) */}
+                  <p style={{ fontSize: '18px', fontWeight: '700', color: '#C9A84C', margin: '0 0 8px 0' }}>
                     {method.title === "Phone" ? (
-                      <a href={`tel:${method.detail.replace(/\D/g, "")}`}>
+                      <a href={`tel:${method.detail.replace(/\D/g, "")}`} style={{ color: '#C9A84C', textDecoration: 'none' }}>
                         {method.detail}
                       </a>
                     ) : (
                       method.detail
                     )}
                   </p>
-                  <p className="font-poppins text-[14px] md:text-[16px] text-black/70">
+
+                  {/* Sub text */}
+                  <p style={{ fontSize: '14px', color: '#888', margin: 0 }}>
                     {method.subdDetail}
                   </p>
                 </div>
