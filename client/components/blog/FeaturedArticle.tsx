@@ -215,7 +215,7 @@ export default function FeaturedArticle({ sectionTitle }: FeaturedArticleProps) 
                   textTransform: "uppercase",
                   letterSpacing: "1px",
                   textDecoration: "none",
-                  border: "2px solid #8B6914",
+                  border: "2px solid black",
                   outline: "1px solid #C9A84C",
                   outlineOffset: "4px",
                   transition: "all 0.3s ease",
@@ -223,11 +223,11 @@ export default function FeaturedArticle({ sectionTitle }: FeaturedArticleProps) 
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "#d1ab58";
-                  e.currentTarget.style.borderColor = "#a0821a";
+                  e.currentTarget.style.borderColor = "black";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = "#C9A84C";
-                  e.currentTarget.style.borderColor = "#8B6914";
+                  e.currentTarget.style.borderColor = "black";
                 }}
               >
                 READ FULL ARTICLE →
