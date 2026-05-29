@@ -131,10 +131,10 @@ export default function PracticeAreas() {
                   ))}
                 </ul>
                 <div style={{ display: 'flex', gap: '12px' }}>
-                  <a href={item.learnMoreUrl} style={{ padding: '10px 24px', border: '2px solid #C9A84C', color: '#111', background: 'transparent', textDecoration: 'none', fontSize: '16px', fontWeight: '600', letterSpacing: '1px', cursor: 'pointer' }}>
+                  <a href={item.learnMoreUrl} style={{ padding: '12px 28px', border: '1px solid #C9A84C', color: '#333', background: 'transparent', textDecoration: 'none', fontSize: '16px', fontWeight: '400', letterSpacing: '0.5px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
                     Learn More ›
                   </a>
-                  <a href={item.getHelpUrl} style={{ padding: '10px 24px', border: '2px solid #C9A84C', background: '#C9A84C', color: '#111', textDecoration: 'none', fontSize: '16px', fontWeight: '700', letterSpacing: '1px', cursor: 'pointer' }}>
+                  <a href={item.getHelpUrl} style={{ padding: '12px 28px', border: '2px solid #8B6914', background: '#C9A84C', color: '#111', textDecoration: 'none', fontSize: '16px', fontWeight: '700', letterSpacing: '0.5px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
                     Get Help Now ›
                   </a>
                 </div>
