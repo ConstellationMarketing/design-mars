@@ -256,13 +256,13 @@ export default function ContactPage() {
               <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#111', marginBottom: '32px', fontFamily: 'Poppins, sans-serif', margin: '0 0 32px 0' }}>
                 {content.form.benefitsTitle}
               </h3>
-              {content.form.benefits.map((item) => (
+              {content.form.benefits.map((item, index) => (
                 <div key={item.id} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', marginBottom: '24px' }}>
                   {item.icon && (
-                    <img src={item.icon} alt="" style={{ width: '48px', height: '48px', objectFit: 'contain', flexShrink: 0 }} />
+                    <img src={item.icon} alt="" style={{ width: index === 0 ? '96px' : '32px', height: index === 0 ? '96px' : '32px', objectFit: 'contain', flexShrink: 0 }} />
                   )}
                   <div>
-                    <h4 style={{ fontSize: '16px', fontWeight: '700', color: '#111', margin: '0 0 6px 0', fontFamily: 'Poppins, sans-serif' }}>
+                    <h4 style={{ fontSize: '20px', fontWeight: '700', color: '#111', margin: '0 0 6px 0', fontFamily: 'Poppins, sans-serif' }}>
                       {item.title}
                     </h4>
                     <p style={{ fontSize: '18px', color: '#555', lineHeight: '1.6', margin: 0, fontFamily: 'Poppins, sans-serif' }}>
