@@ -195,20 +195,12 @@ function ValuesSection({ content, update }: SectionProps) {
           items={values.values}
           onChange={(items) => set({ values: items })}
           itemLabel="Value"
-          newItem={() => ({ id: "excellence" as const, title: "", description: "" })}
+          newItem={() => ({ id: "excellence" as const, badgeText: "", title: "", description: "" })}
           renderItem={(item, _, upd) => (
             <div className="grid gap-3">
               <div>
-                <Label>Icon Type</Label>
-                <select
-                  value={item.id}
-                  onChange={(e) => upd({ ...item, id: e.target.value as "excellence" | "integrity" | "compassion", iconType: e.target.value as "excellence" | "integrity" | "compassion" })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded bg-white"
-                >
-                  <option value="excellence">Excellence (Trophy)</option>
-                  <option value="integrity">Integrity (Crown)</option>
-                  <option value="compassion">Compassion (People)</option>
-                </select>
+                <Label>Badge Text</Label>
+                <Input value={item.badgeText} onChange={(e) => upd({ ...item, badgeText: e.target.value })} placeholder="e.g., 150+, $0, 24/7" />
               </div>
               <div>
                 <Label>Title</Label>

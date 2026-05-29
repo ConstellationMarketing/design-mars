@@ -33,9 +33,9 @@ export interface PracticeAreasIntroContent {
 }
 
 // ========== Section 3: Values / Practice Areas Intro (copied from About, completely independent)
-export interface ValueItemWithIcon {
+export interface PracticeAreasValueItem {
   id: "excellence" | "integrity" | "compassion" | string;
-  iconType?: "excellence" | "integrity" | "compassion";
+  badgeText: string;
   title: string;
   description: string;
 }
@@ -43,7 +43,7 @@ export interface ValueItemWithIcon {
 export interface PracticeAreasValuesContent {
   sectionLabel: string;
   valuesTitle: string;
-  values: ValueItemWithIcon[];
+  values: PracticeAreasValueItem[];
 }
 
 // ========== Complete page structure
@@ -146,21 +146,21 @@ export const defaultPracticeAreasContent: PracticeAreasPageContent = {
     values: [
       {
         id: "excellence",
-        iconType: "excellence",
-        title: "Excellence",
-        description: "We strive for excellence in every case, every motion, and every interaction with our clients.",
+        badgeText: "150+",
+        title: "Cases Won",
+        description: "We have successfully handled over 150 cases with outstanding results.",
       },
       {
         id: "integrity",
-        iconType: "integrity",
-        title: "Integrity",
-        description: "Our commitment to honesty and ethical practice is the foundation of our firm's reputation.",
+        badgeText: "$0",
+        title: "Upfront Fees",
+        description: "We work on a contingency basis - you only pay if we win your case.",
       },
       {
         id: "compassion",
-        iconType: "compassion",
-        title: "Compassion",
-        description: "We understand that behind every case is a person with real challenges and real needs.",
+        badgeText: "24/7",
+        title: "Availability",
+        description: "Our attorneys are available around the clock for consultations and emergencies.",
       },
     ],
   },

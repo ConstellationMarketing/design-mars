@@ -4,7 +4,7 @@ import { usePracticeAreasContent } from "@site/hooks/usePracticeAreasContent";
 import { useGlobalPhone } from "@site/contexts/SiteSettingsContext";
 import { Loader2 } from "lucide-react";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
-import AboutValuesSection from "@site/components/about/AboutValuesSection";
+import PracticeAreasValuesSection from "@site/components/practice-areas/PracticeAreasValuesSection";
 
 export default function PracticeAreas() {
   const { content, meta, title, publishedAt, updatedAt, isLoading } = usePracticeAreasContent();
@@ -101,7 +101,7 @@ export default function PracticeAreas() {
       />
 
       {/* ========== Section 3: Values ========== */}
-      <AboutValuesSection 
+      <PracticeAreasValuesSection
         content={content.values}
         headingTag={content.headingTags?.["values.valuesTitle"]}
       />
