@@ -104,10 +104,14 @@
 
   body {
     @apply bg-background text-foreground font-poppins overflow-x-hidden;
+    /* Prevent excessive ResizeObserver callbacks by containing layout calculations */
+    contain: layout style paint;
   }
 
   html {
     @apply overflow-x-hidden;
+    /* Optimize for layout stability */
+    contain-intrinsic-size: auto 100vh;
   }
 
   p {

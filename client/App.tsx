@@ -82,21 +82,52 @@ if (typeof window !== "undefined") {
     true
   );
 
-  // Override ResizeObserver constructor to catch internal errors
+  // Override ResizeObserver constructor to debounce and suppress errors
   if (window.ResizeObserver) {
     const OriginalResizeObserver = window.ResizeObserver;
+    let resizeTimeout: NodeJS.Timeout;
+    let pendingEntries: ResizeObserverEntry[] = [];
+    let isProcessing = false;
+
     window.ResizeObserver = class extends OriginalResizeObserver {
       constructor(callback: ResizeObserverCallback) {
-        super((entries, observer) => {
+        // Debounce rapid successive callbacks
+        const debouncedCallback = (entries: ResizeObserverEntry[], observer: ResizeObserver) => {
+          if (isProcessing) {
+            pendingEntries = entries;
+            return;
+          }
+
+          isProcessing = true;
+          clearTimeout(resizeTimeout);
+
           try {
             callback(entries, observer);
           } catch (e) {
             // Silently ignore ResizeObserver loop errors
             if (!String(e || "").includes("ResizeObserver loop completed")) {
-              throw e;
+              console.error("Actual ResizeObserver error:", e);
+            }
+          } finally {
+            isProcessing = false;
+
+            // Process any pending entries
+            if (pendingEntries.length > 0) {
+              resizeTimeout = setTimeout(() => {
+                try {
+                  callback(pendingEntries, observer);
+                  pendingEntries = [];
+                } catch (e) {
+                  if (!String(e || "").includes("ResizeObserver loop completed")) {
+                    console.error("Error processing pending resize:", e);
+                  }
+                }
+              }, 50);
             }
           }
-        });
+        };
+
+        super(debouncedCallback);
       }
     } as any;
   }
