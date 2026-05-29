@@ -3,12 +3,12 @@ import { Section, ImageField, HeadingField, Input, Label } from "./EditorShared"
 
 interface BlogEditorProps {
   content: { hero: BlogHeroData };
-  onChange: (c: { hero: BlogHeroData }) => void;
+  onSave: (c: { hero: BlogHeroData }) => void;
 }
 
-export default function BlogEditor({ content, onChange }: BlogEditorProps) {
+export default function BlogEditor({ content, onSave }: BlogEditorProps) {
   const update = <K extends keyof typeof content>(key: K, value: typeof content[K]) => {
-    onChange({ ...content, [key]: value });
+    onSave({ ...content, [key]: value });
   };
 
   return (
@@ -28,8 +28,11 @@ interface SectionProps {
 
 function useHeadingTag(content: { hero: BlogHeroData }, update: Updater) {
   return {
-    get: (key: string) => "h2", // Blog hero doesn't use heading tags
-    set: (key: string, tag: string) => {}, // No-op
+    get: (key: string) => content.hero.headingTags?.[key as keyof typeof content.hero.headingTags] ?? "h2",
+    set: (key: string, tag: string) => {
+      const hero = content.hero as any;
+      update("hero", { ...hero, headingTags: { ...hero.headingTags, [key]: tag } });
+    },
   };
 }
 
@@ -42,7 +45,7 @@ function HeroSection({ content, update }: SectionProps) {
   return (
     <Section title="Hero Section">
       <div className="grid gap-4">
-        <p className="text-xs text-gray-600 mb-2">Fully independent from Home and Practice Areas pages</p>
+        <p className="text-xs text-gray-600 mb-2">Fully independent from Home, About, and Practice Areas pages</p>
         <HeadingField
           label="H1 Title"
           value={hero.h1Title}
@@ -65,10 +68,6 @@ function HeroSection({ content, update }: SectionProps) {
         <div>
           <Label>Button Text</Label>
           <Input value={hero.buttonText} onChange={(e) => set({ buttonText: e.target.value })} />
-        </div>
-        <div>
-          <Label>Button URL</Label>
-          <Input value={hero.buttonUrl} onChange={(e) => set({ buttonUrl: e.target.value })} />
         </div>
         <ImageField
           label="Background Image"
