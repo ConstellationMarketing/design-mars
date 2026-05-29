@@ -60,10 +60,6 @@ function HeroSection({ content, update }: SectionProps) {
           <Input value={hero.highlightedText} onChange={(e) => set({ highlightedText: e.target.value })} />
         </div>
         <div>
-          <Label>Tagline</Label>
-          <Input value={hero.tagline} onChange={(e) => set({ tagline: e.target.value })} />
-        </div>
-        <div>
           <Label>Button Text</Label>
           <Input value={hero.buttonText} onChange={(e) => set({ buttonText: e.target.value })} />
         </div>
