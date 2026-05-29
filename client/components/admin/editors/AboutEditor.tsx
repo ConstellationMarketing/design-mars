@@ -134,13 +134,6 @@ function PracticeAreasIntroSection({ content, update }: SectionProps) {
   return (
     <Section title="Practice Areas Intro" defaultOpen={false}>
       <div className="grid gap-4">
-        <HeadingField
-          label="Section Label"
-          value={intro.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={ht.get("practiceAreasIntro.sectionLabel")}
-          onTagChange={(t) => ht.set("practiceAreasIntro.sectionLabel", t)}
-        />
         <div>
           <Label>Values Title</Label>
           <Input value={intro.valuesTitle} onChange={(e) => set({ valuesTitle: e.target.value })} placeholder="Our Values" />
@@ -204,13 +197,6 @@ function ValuesSection({ content, update }: SectionProps) {
   return (
     <Section title="Our Values" defaultOpen={false}>
       <div className="grid gap-4">
-        <HeadingField
-          label="Section Heading"
-          value={values.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={ht.get("values.sectionLabel")}
-          onTagChange={(t) => ht.set("values.sectionLabel", t)}
-        />
         <div>
           <Label>Title</Label>
           <Input value={values.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Our Values" />
@@ -281,13 +267,6 @@ function AwardsSection({ content, update }: SectionProps) {
   return (
     <Section title="Awards & Memberships" defaultOpen={false}>
       <div className="grid gap-4">
-        <HeadingField
-          label="Section Heading"
-          value={awards.sectionLabel}
-          onChange={(v) => set({ sectionLabel: v })}
-          tag={ht.get("awards.sectionLabel")}
-          onTagChange={(t) => ht.set("awards.sectionLabel", t)}
-        />
         <div>
           <Label>Title</Label>
           <Input value={awards.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="Press & Recognition" />

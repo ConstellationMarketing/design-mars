@@ -89,10 +89,6 @@ function PracticeAreasIntroSection({ content, update }: SectionProps) {
     <Section title="Practice Areas Intro" defaultOpen={false}>
       <div className="grid gap-4">
         <p className="text-xs text-gray-600 mb-2">Fully independent from Home page</p>
-        <div>
-          <Label>Section Label</Label>
-          <Input value={intro.sectionLabel} onChange={(e) => set({ sectionLabel: e.target.value })} />
-        </div>
         <HeadingField
           label="Heading"
           value={intro.heading}
@@ -181,10 +177,6 @@ function ValuesSection({ content, update }: SectionProps) {
     <Section title="Values Section (Our Values)" defaultOpen={false}>
       <div className="grid gap-4">
         <p className="text-xs text-gray-600 mb-2">Fully independent from About page</p>
-        <div>
-          <Label>Section Label</Label>
-          <Input value={values.sectionLabel} onChange={(e) => set({ sectionLabel: e.target.value })} />
-        </div>
         <HeadingField
           label="Values Title"
           value={values.valuesTitle}
