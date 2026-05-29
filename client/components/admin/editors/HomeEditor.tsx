@@ -152,15 +152,12 @@ function AboutSectionEditor({ content, update }: SectionProps) {
           <Label>Years Label (below number)</Label>
           <Input value={homeAbout.yearsLabel} onChange={(e) => set({ yearsLabel: e.target.value })} placeholder="YEARS OF EXPERIENCE" />
         </div>
-        <div>
-          <Label>Experience Description</Label>
-          <Textarea
-            value={homeAbout.experienceDescription}
-            onChange={(e) => set({ experienceDescription: e.target.value })}
-            placeholder="Description text about the firm..."
-            rows={4}
-          />
-        </div>
+        <RichTextField
+          label="Experience Description"
+          value={homeAbout.experienceDescription}
+          onChange={(v) => set({ experienceDescription: v })}
+          placeholder="Description text about the firm..."
+        />
 
         <h4 className="font-medium mt-4">Features (Right Side - 5 items)</h4>
         <ArrayEditor
@@ -174,15 +171,12 @@ function AboutSectionEditor({ content, update }: SectionProps) {
                 <Label>Feature Title</Label>
                 <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="e.g. AMAZING TEAM" />
               </div>
-              <div>
-                <Label>Feature Description</Label>
-                <Textarea
-                  value={item.description}
-                  onChange={(e) => upd({ ...item, description: e.target.value })}
-                  placeholder="Feature description text..."
-                  rows={3}
-                />
-              </div>
+              <RichTextField
+                label="Feature Description"
+                value={item.description}
+                onChange={(v) => upd({ ...item, description: v })}
+                placeholder="Feature description text..."
+              />
             </div>
           )}
         />
@@ -456,10 +450,12 @@ function TestimonialsSection({ content, update }: SectionProps) {
           newItem={() => ({ text: "", author: "", clientType: "", badgeType: "google", badgeServiceName: "Google", badgeLogo: "", badgeLogoAlt: "", badgeStarCount: 5, badgeRating: "5.0" })}
           renderItem={(item, _, upd) => (
             <div className="grid gap-3">
-              <div>
-                <Label>Testimonial Text</Label>
-                <Textarea value={item.text} onChange={(e) => upd({ ...item, text: e.target.value })} placeholder="Enter testimonial text..." />
-              </div>
+              <RichTextField
+                label="Testimonial Text"
+                value={item.text}
+                onChange={(v) => upd({ ...item, text: v })}
+                placeholder="Enter testimonial text..."
+              />
               <div>
                 <Label>Author Name</Label>
                 <Input value={item.author} onChange={(e) => upd({ ...item, author: e.target.value })} placeholder="e.g., Maria Gonzalez" />
@@ -686,10 +682,12 @@ function BlogSectionEditor({ content, update }: SectionProps) {
           <Label>Title</Label>
           <Input value={b.heading} onChange={(e) => set({ heading: e.target.value })} placeholder="News & Blog" />
         </div>
-        <div>
-          <Label>Description</Label>
-          <Textarea value={b.description} onChange={(e) => set({ description: e.target.value })} placeholder="Enter description text..." />
-        </div>
+        <RichTextField
+          label="Description"
+          value={b.description}
+          onChange={(v) => set({ description: v })}
+          placeholder="Enter description text..."
+        />
         <div>
           <Label>Button Text</Label>
           <Input value={b.buttonText} onChange={(e) => set({ buttonText: e.target.value })} placeholder="MORE NEWS" />

@@ -5,6 +5,7 @@ import { useGlobalPhone } from "@site/contexts/SiteSettingsContext";
 import { Loader2 } from "lucide-react";
 import PracticeAreasSection from "@site/components/home/PracticeAreasSection";
 import PracticeAreasValuesSection from "@site/components/practice-areas/PracticeAreasValuesSection";
+import RichText from "@site/components/shared/RichText";
 
 export default function PracticeAreas() {
   const { content, meta, title, publishedAt, updatedAt, isLoading } = usePracticeAreasContent();
@@ -131,7 +132,9 @@ export default function PracticeAreas() {
                   {item.icon && <img src={item.icon} alt="" style={{ width: '32px', height: '32px' }} />}
                   <h3 style={{ fontSize: '30px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>{item.title}</h3>
                 </div>
-                <p style={{ fontSize: '18px', color: '#444', marginBottom: '20px', lineHeight: '1.7' }}>{item.description}</p>
+                <div style={{ fontSize: '18px', color: '#444', marginBottom: '20px', lineHeight: '1.7' }}>
+                  <RichText html={item.description} />
+                </div>
                 <ul style={{ listStyle: 'none', padding: 0, marginBottom: '28px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {item.bullets && item.bullets.map((bullet, i) => (
                     <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '16px', color: '#333' }}>

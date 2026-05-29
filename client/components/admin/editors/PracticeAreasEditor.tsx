@@ -207,10 +207,11 @@ function ValuesSection({ content, update }: SectionProps) {
                 <Label>Title</Label>
                 <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} />
               </div>
-              <div>
-                <Label>Description</Label>
-                <Textarea value={item.description} onChange={(e) => upd({ ...item, description: e.target.value })} />
-              </div>
+              <RichTextField
+                label="Description"
+                value={item.description}
+                onChange={(v) => upd({ ...item, description: v })}
+              />
             </div>
           )}
         />
@@ -245,10 +246,11 @@ function PracticeItemsSection({ content, update }: SectionProps) {
                 <Label>Title</Label>
                 <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} />
               </div>
-              <div>
-                <Label>Description</Label>
-                <Textarea value={item.description} onChange={(e) => upd({ ...item, description: e.target.value })} />
-              </div>
+              <RichTextField
+                label="Description"
+                value={item.description}
+                onChange={(v) => upd({ ...item, description: v })}
+              />
               <div>
                 <Label>Bullet 1</Label>
                 <Input value={item.bullets[0] || ""} onChange={(e) => upd({ ...item, bullets: [e.target.value, item.bullets[1] || "", item.bullets[2] || "", item.bullets[3] || ""] })} />

@@ -1,4 +1,5 @@
 import type { TestimonialsContent } from "@site/lib/cms/homePageTypes";
+import RichText from "@site/components/shared/RichText";
 
 interface TestimonialsSectionProps {
   content?: TestimonialsContent;
@@ -84,9 +85,15 @@ export default function TestimonialsSection({
               </div>
 
               {/* Testimonial text */}
-              <p className="text-white text-[18px] leading-relaxed mb-6 flex-grow text-center">
-                "{testimonial.text}"
-              </p>
+              <div className="text-white text-[18px] leading-relaxed mb-6 flex-grow text-center">
+                <span className="text-white">"{' '}</span>
+                <RichText
+                  html={testimonial.text}
+                  inline
+                  className="text-white"
+                />
+                <span className="text-white">{' '}"</span>
+              </div>
 
               {/* Author and client type in gold */}
               <div className="text-sm md:text-sm font-semibold uppercase tracking-wider text-center" style={{ color: "#cfab57" }}>

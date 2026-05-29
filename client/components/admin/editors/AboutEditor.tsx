@@ -107,15 +107,12 @@ function AboutSectionEditor({ content, update }: SectionProps) {
           <Label>Years Label (below number)</Label>
           <Input value={homeAbout.yearsLabel} onChange={(e) => set({ yearsLabel: e.target.value })} placeholder="YEARS OF EXPERIENCE" />
         </div>
-        <div>
-          <Label>Experience Description</Label>
-          <Textarea
-            value={homeAbout.experienceDescription}
-            onChange={(e) => set({ experienceDescription: e.target.value })}
-            placeholder="Description text about the firm..."
-            rows={4}
-          />
-        </div>
+        <RichTextField
+          label="Experience Description"
+          value={homeAbout.experienceDescription}
+          onChange={(v) => set({ experienceDescription: v })}
+          placeholder="Description text about the firm..."
+        />
 
         <h4 className="font-medium mt-4">Features</h4>
         <RichTextField
@@ -173,10 +170,12 @@ function PracticeAreasIntroSection({ content, update }: SectionProps) {
                 <Label>Title</Label>
                 <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="e.g. Excellence" />
               </div>
-              <div>
-                <Label>Description</Label>
-                <Textarea value={item.description} onChange={(e) => upd({ ...item, description: e.target.value })} placeholder="Description text..." rows={3} />
-              </div>
+              <RichTextField
+                label="Description"
+                value={item.description}
+                onChange={(v) => upd({ ...item, description: v })}
+                placeholder="Description text..."
+              />
             </div>
           )}
         />
@@ -259,10 +258,12 @@ function ValuesSection({ content, update }: SectionProps) {
                 <Label>Title</Label>
                 <Input value={item.title} onChange={(e) => upd({ ...item, title: e.target.value })} placeholder="e.g. Excellence" />
               </div>
-              <div>
-                <Label>Description</Label>
-                <Textarea value={item.description} onChange={(e) => upd({ ...item, description: e.target.value })} placeholder="Description text..." rows={3} />
-              </div>
+              <RichTextField
+                label="Description"
+                value={item.description}
+                onChange={(v) => upd({ ...item, description: v })}
+                placeholder="Description text..."
+              />
             </div>
           )}
         />

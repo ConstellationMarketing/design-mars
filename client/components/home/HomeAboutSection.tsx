@@ -1,5 +1,6 @@
 import type { HomeAboutContent } from "@site/lib/cms/homePageTypes";
 import { GraduationCap, Crown, Clock, Globe, Trophy } from "lucide-react";
+import RichText from "@site/components/shared/RichText";
 
 interface HomeAboutSectionProps {
   content: HomeAboutContent;
@@ -49,11 +50,14 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
                 <div className="font-poppins text-[14px] md:text-[16px] font-normal text-brand-accent tracking-widest uppercase mb-6">
                   {content.yearsLabel}
                 </div>
-                <div className="pt-6">
-                  <p className="font-poppins text-[16px] md:text-[18px] font-normal text-white leading-relaxed">
-                    {content.experienceDescription}
-                  </p>
-                </div>
+                {content.experienceDescription && (
+                  <div className="pt-6">
+                    <RichText
+                      html={content.experienceDescription}
+                      className="font-poppins text-[16px] md:text-[18px] font-normal text-white leading-relaxed text-center"
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -74,9 +78,10 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
                       <h3 className="font-poppins text-[16px] md:text-[20px] font-semibold text-black tracking-wider uppercase mb-2">
                         {feature.title}
                       </h3>
-                      <p className="font-poppins text-[16px] md:text-[18px] font-normal text-black/80 leading-relaxed">
-                        {feature.description}
-                      </p>
+                      <RichText
+                        html={feature.description}
+                        className="font-poppins text-[16px] md:text-[18px] font-normal text-black/80 leading-relaxed"
+                      />
                     </div>
                   </div>
                 );
@@ -100,9 +105,10 @@ export default function HomeAboutSection({ content }: HomeAboutSectionProps) {
                       <h3 className="font-poppins text-[16px] md:text-[20px] font-semibold text-black tracking-wider uppercase mb-2">
                         {content.features[4].title}
                       </h3>
-                      <p className="font-poppins text-[16px] md:text-[18px] font-normal text-black/80 leading-relaxed">
-                        {content.features[4].description}
-                      </p>
+                      <RichText
+                        html={content.features[4].description}
+                        className="font-poppins text-[16px] md:text-[18px] font-normal text-black/80 leading-relaxed"
+                      />
                     </div>
                   </div>
                 </div>

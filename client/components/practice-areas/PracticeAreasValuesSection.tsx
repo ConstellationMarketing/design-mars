@@ -1,4 +1,5 @@
 import type { PracticeAreasValuesContent } from "@site/lib/cms/practiceAreasPageTypes";
+import RichText from "@site/components/shared/RichText";
 
 interface PracticeAreasValuesSectionProps {
   content?: PracticeAreasValuesContent;
@@ -56,9 +57,10 @@ export default function PracticeAreasValuesSection({ content, headingTag = "h2" 
               </h3>
 
               {/* Description */}
-              <p className="font-poppins text-[18px] md:text-[18px] leading-[1.6] text-gray-700">
-                {item.description}
-              </p>
+              <RichText
+                html={item.description}
+                className="font-poppins text-[18px] md:text-[18px] leading-[1.6] text-gray-700"
+              />
             </div>
           ))}
         </div>

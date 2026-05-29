@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import type { BlogSectionContent, PreloadedPostDocument } from "@site/lib/cms/homePageTypes";
 import { loadRecentPosts } from "@site/lib/cms/publicLoaders";
+import RichText from "@site/components/shared/RichText";
 
 interface BlogSectionProps {
   content?: BlogSectionContent;
@@ -74,7 +75,10 @@ export default function BlogSection({
               {/* Description */}
               {data.description && (
                 <div className="pb-5 border-b border-gray-300">
-                  <p className="text-gray-700 text-sm md:text-base leading-relaxed">{data.description}</p>
+                  <RichText
+                    html={data.description}
+                    className="text-gray-700 text-sm md:text-base leading-relaxed"
+                  />
                 </div>
               )}
 
