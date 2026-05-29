@@ -1,17 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase";
 import type { Media } from "../../lib/database.types";
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Loader2, Search, Image as ImageIcon, AlertCircle } from "lucide-react";
-import { cn } from "@/lib/utils";
 import {
   createSelectedImageAsset,
   type SelectedImageAsset,
@@ -99,71 +89,92 @@ export default function MediaPickerDialog({
     onOpenChange(false);
   };
 
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent
-        className="!fixed !top-1/2 !left-1/2 !-translate-x-1/2 !-translate-y-1/2 !z-[9999] max-w-3xl !max-h-[80vh] flex flex-col overflow-hidden"
-      >
-        <DialogHeader>
-          <DialogTitle>Browse Media Library</DialogTitle>
-        </DialogHeader>
+  if (!open) return null;
 
-        {/* Search input */}
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-          <Input
+  return (
+    <>
+      <div
+        onClick={() => onOpenChange(false)}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(0,0,0,0.5)',
+          zIndex: 9998
+        }}
+      />
+      <div
+        style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 9999,
+          background: '#fff',
+          borderRadius: '8px',
+          width: '90%',
+          maxWidth: '768px',
+          maxHeight: '80vh',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
+          padding: '24px'
+        }}
+      >
+        <h2 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '16px' }}>
+          Browse Media Library
+        </h2>
+
+        <div style={{ position: 'relative', marginBottom: '16px' }}>
+          <Search style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', width: '16px', height: '16px', color: '#9ca3af' }} />
+          <input
             type="text"
             placeholder="Search by filename or alt text..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10"
+            style={{ width: '100%', padding: '8px 8px 8px 36px', border: '1px solid #e5e7eb', borderRadius: '6px', fontSize: '14px', boxSizing: 'border-box' }}
           />
         </div>
 
-        {/* Media grid */}
-        <div className="flex-1 overflow-y-auto min-h-0">
+        <div style={{ flex: 1, overflowY: 'auto', minHeight: 0 }}>
           {loading ? (
-            <div className="flex items-center justify-center h-48">
-              <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+              <Loader2 style={{ width: '32px', height: '32px', color: '#9ca3af' }} className="animate-spin" />
             </div>
           ) : fetchError ? (
-            <div className="flex flex-col items-center justify-center h-48 text-center text-amber-600 px-6">
-              <AlertCircle className="h-12 w-12 mb-3" />
-              <p className="text-sm">{fetchError}</p>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '200px', color: '#d97706', textAlign: 'center', padding: '24px' }}>
+              <AlertCircle style={{ width: '48px', height: '48px', marginBottom: '12px' }} />
+              <p style={{ fontSize: '14px' }}>{fetchError}</p>
             </div>
           ) : filteredMedia.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-48 text-center text-gray-400 px-6">
-              <ImageIcon className="h-12 w-12 mb-3" />
-              <p className="text-sm">
-                {searchQuery
-                  ? "No images found matching your search"
-                  : "No images in the library yet"}
-              </p>
-              <p className="mt-1 text-xs">
-                Upload a new image from the field behind this dialog, or paste an image URL there instead.
-              </p>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '200px', color: '#9ca3af', textAlign: 'center', padding: '24px' }}>
+              <ImageIcon style={{ width: '48px', height: '48px', marginBottom: '12px' }} />
+              <p style={{ fontSize: '14px' }}>{searchQuery ? 'No images found matching your search' : 'No images in the library yet'}</p>
             </div>
           ) : (
-            <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 p-1">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px', padding: '4px' }}>
               {filteredMedia.map((media) => (
                 <button
                   key={media.id}
                   type="button"
                   onClick={() => setSelectedUrl(media.public_url)}
-                  className={cn(
-                    "relative aspect-square rounded-lg overflow-hidden border-2 transition-all focus:outline-none",
-                    selectedUrl === media.public_url
-                      ? "border-blue-500 ring-2 ring-blue-200"
-                      : "border-transparent hover:border-gray-300",
-                  )}
+                  style={{
+                    position: 'relative',
+                    aspectRatio: '1',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    border: selectedUrl === media.public_url ? '2px solid #3b82f6' : '2px solid transparent',
+                    cursor: 'pointer',
+                    padding: 0,
+                    background: 'none'
+                  }}
                 >
                   <img
                     src={media.public_url}
                     alt={media.alt_text || media.file_name}
-                    className="w-full h-full object-cover"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/60 px-1.5 py-0.5">
-                    <p className="text-white text-[10px] truncate">
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'rgba(0,0,0,0.6)', padding: '2px 6px' }}>
+                    <p style={{ color: '#fff', fontSize: '10px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', margin: 0 }}>
                       {media.file_name}
                     </p>
                   </div>
@@ -173,15 +184,22 @@ export default function MediaPickerDialog({
           )}
         </div>
 
-        <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px', marginTop: '16px', paddingTop: '16px', borderTop: '1px solid #e5e7eb' }}>
+          <button
+            onClick={() => onOpenChange(false)}
+            style={{ padding: '8px 16px', border: '1px solid #e5e7eb', borderRadius: '6px', background: '#fff', cursor: 'pointer', fontSize: '14px' }}
+          >
             Cancel
-          </Button>
-          <Button onClick={handleConfirm} disabled={!selectedMedia}>
+          </button>
+          <button
+            onClick={handleConfirm}
+            disabled={!selectedMedia}
+            style={{ padding: '8px 16px', border: 'none', borderRadius: '6px', background: selectedMedia ? '#111' : '#9ca3af', color: '#fff', cursor: selectedMedia ? 'pointer' : 'not-allowed', fontSize: '14px' }}
+          >
             Select
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+          </button>
+        </div>
+      </div>
+    </>
   );
 }
