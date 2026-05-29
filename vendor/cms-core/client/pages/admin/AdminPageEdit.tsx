@@ -15,7 +15,10 @@ import {
   normalizePracticeAreaContentSections,
 } from "@site/lib/cms/practiceAreaPageTypes";
 import type { PracticeAreaPageContent } from "@site/lib/cms/practiceAreaPageTypes";
+import { DEFAULT_BLOG_HERO } from "@site/lib/cms/publicLoaders";
+import type { BlogHeroData } from "@site/lib/cms/publicLoaders";
 import { clearPracticeAreaPageCache } from "@site/hooks/usePracticeAreaPageContent";
+import BlogEditor from "@site/components/admin/editors/BlogEditor";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -329,6 +332,7 @@ export default function AdminPageEdit() {
     ABOUT: 2,
     CONTACT: 3,
     PRACTICE_LISTING: 4,
+    BLOG: 5,
   };
 
   // Check if this is a structured page using stable page_id (not URL path)
@@ -365,6 +369,13 @@ export default function AdminPageEdit() {
           page.content as unknown as Partial<PracticeAreasPageContent>,
           defaultPracticeAreasContent
         );
+      case 5: // Blog
+        return {
+          hero: mergeWithDefaults(
+            (page.content as unknown as { hero?: Partial<BlogHeroData> })?.hero,
+            DEFAULT_BLOG_HERO
+          )
+        };
       default:
         // Individual practice area pages (detected by page_type)
         if (isPracticeAreaPage) {
@@ -482,7 +493,12 @@ export default function AdminPageEdit() {
 
         <TabsContent value="content" className="mt-6">
           <div className="grid grid-cols-1 gap-6">
-            {isStructuredPage ? (
+            {page?.page_id === 5 ? (
+              <BlogEditor
+                content={normalizedContent as unknown as { hero: BlogHeroData }}
+                onSave={handleStructuredContentChange}
+              />
+            ) : isStructuredPage ? (
               <div>
                 <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                   <p className="text-sm text-blue-800">
